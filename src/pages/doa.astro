@@ -1,69 +1,88 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 
-// Kumpulan Doa Harian (Bisa Panjenengan tambah sendiri nanti)
-const doaList = [
+// Koleksi Doa Harian (Saged dipun-tambah piyambak benjang)
+const daftarDoa = [
+    {
+        judul: "Doa Sapu Jagad (Kebaikan Dunia Akhirat)",
+        arab: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+        latin: "Rabbanaa aatinaa fiddunyaa hasanah, wa fil aakhirati hasanah, waqinaa 'adzaaban naar.",
+        arti: "Ya Tuhan kami, berilah kami kebaikan di dunia dan kebaikan di akhirat dan peliharalah kami dari siksa neraka."
+    },
+    {
+        judul: "Doa Kepada Kedua Orang Tua",
+        arab: "رَبِّ اغْفِرْ لِي وَلِوَالِدَيَّ وَارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+        latin: "Rabbighfir lii wa liwaalidayya warhamhumaa kamaa rabbayaanii shaghiiraa.",
+        arti: "Tuhanku, ampunilah dosaku dan dosa kedua orang tuaku, dan sayangilah keduanya sebagaimana mereka menyayangiku di waktu kecil."
+    },
+    {
+        judul: "Doa Memohon Kelapangan Hati (Nalar Teras)",
+        arab: "رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي وَاحْلُلْ عُقْدَةً مِنْ لِسَانِي يَفْقَهُوا قَوْلِي",
+        latin: "Rabbishrah lii shadri, wa yassir lii amrii, wahlul 'uqdatam mil lisaanii, yafqahuu qaulii.",
+        arti: "Ya Tuhanku, lapangkanlah untukku dadaku, dan mudahkanlah untukku urusanku, dan lepaskanlah kekakuan dari lidahku, supaya mereka mengerti perkataanku."
+    },
     {
         judul: "Doa Sebelum Tidur",
-        arab: "بِسْمِكَ اللّٰهُمَّ اَحْيَا وَاَمُوْتُ",
-        latin: "Bismikallaahumma ahyaa wa amuutu",
-        arti: "Dengan menyebut nama-Mu ya Allah, aku hidup dan aku mati."
+        arab: "بِاسْمِكَ اللّٰهُمَّ أَحْيَا وَبِاسْمِكَ أَمُوتُ",
+        latin: "Bismikallaahumma ahyaa wa bismika amuutu.",
+        arti: "Dengan menyebut nama-Mu ya Allah, aku hidup dan dengan menyebut nama-Mu aku mati."
     },
     {
         judul: "Doa Bangun Tidur",
         arab: "اَلْحَمْدُ لِلَّهِ الَّذِيْ أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُوْرُ",
-        latin: "Alhamdu lillahil ladzii ahyaanaa ba'da maa amaatanaa wa ilaihin nusyuur",
+        latin: "Alhamdu lillaahil ladzii ahyaanaa ba'da maa amaatanaa wa ilaihin nusyuur.",
         arti: "Segala puji bagi Allah yang telah menghidupkan kami sesudah kami mati (bangun dari tidur) dan hanya kepada-Nya kami dikembalikan."
-    },
-    {
-        judul: "Doa Sebelum Makan",
-        arab: "اَللّٰهُمَّ بَارِكْ لَنَا فِيْمَا رَزَقْتَنَا وَقِنَا عَذَابَ النَّارِ",
-        latin: "Allahumma baarik lanaa fiimaa rozaqtanaa wa qinaa 'adzaaban naar",
-        arti: "Ya Allah, berkahilah kami dalam rezeki yang telah Engkau berikan kepada kami dan peliharalah kami dari siksa api neraka."
     },
     {
         judul: "Doa Keluar Rumah",
         arab: "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
-        latin: "Bismillahi tawakkaltu 'alallahi, laa hawla wa laa quwwata illaa billaah",
+        latin: "Bismillaahi tawakkaltu 'alallaah, laa hawla wa laa quwwata illaa billaah.",
         arti: "Dengan nama Allah, aku bertawakal kepada Allah. Tiada daya dan kekuatan kecuali dengan (pertolongan) Allah."
+    },
+    {
+        judul: "Doa Naik Kendaraan",
+        arab: "سُبْحَانَ الَّذِيْ سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِيْنَ. وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُوْنَ",
+        latin: "Subhaanal ladzii sakhkhara lanaa haadzaa, wamaa kunnaa lahuu muqriniin, wa innaa ilaa rabbinaa lamunqalibuun.",
+        arti: "Maha Suci Tuhan yang telah menundukkan semua ini bagi kami padahal kami sebelumnya tidak mampu menguasainya, dan sesungguhnya kami akan kembali kepada Tuhan kami."
     }
 ];
 ---
 
 <MainLayout title="Doa Harian">
-    <div class="mb-12">
-        <h1 class="text-3xl md:text-4xl font-serif font-bold text-slate-900 dark:text-white mb-4">Doa Harian</h1>
-        <p class="text-slate-600 dark:text-slate-400">Senjata paling ampuh bagi seorang mukmin adalah doanya.</p>
-        <div class="mt-8 h-px w-full bg-slate-200 dark:bg-slate-800/50"></div>
+    <div class="mb-8 text-center md:text-left">
+        <h1 class="text-3xl md:text-4xl font-poppins font-bold text-emerald-900 dark:text-emerald-400 mb-3 tracking-tight">Doa Harian</h1>
+        <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">
+            Kumpulan doa sehari-hari untuk menjaga lisan dan hati agar senantiasa terhubung dengan Sang Maha Pencipta.
+        </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {doaList.map((doa) => (
-            <div class="p-6 md:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 group flex flex-col justify-between">
+        {daftarDoa.map((doa) => (
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                 
-                <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-8 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors border-b border-slate-100 dark:border-slate-800 pb-4">
-                    {doa.judul}
-                </h2>
-                
-                <div class="flex-1">
-                    <div class="text-right mb-6">
-                        <p class="text-3xl md:text-4xl font-serif text-slate-900 dark:text-slate-200 leading-[2.2] md:leading-[2.2]">
-                            {doa.arab}
-                        </p>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <p class="text-emerald-700 dark:text-emerald-400 font-medium text-sm md:text-base leading-relaxed">
-                            {doa.latin}
-                        </p>
-                    </div>
-                    
+                <div class="flex items-center gap-3 mb-5 border-b border-slate-100 dark:border-slate-800 pb-4">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 text-sm">🤲</span>
+                    <h2 class="font-poppins font-bold text-slate-800 dark:text-slate-200 text-lg group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{doa.judul}</h2>
+                </div>
+
+                <div class="mb-6">
+                    <p class="font-serif text-right text-2xl md:text-3xl text-emerald-950 dark:text-emerald-50 leading-relaxed md:leading-loose">
+                        {doa.arab}
+                    </p>
+                </div>
+
+                <div class="space-y-3 bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/50">
                     <div>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed italic">
-                            "{doa.arti}"
-                        </p>
+                        <span class="text-[10px] uppercase tracking-widest text-emerald-600 dark:text-emerald-500 font-bold mb-1 block">Latin:</span>
+                        <p class="text-sm text-slate-700 dark:text-slate-300 italic">"{doa.latin}"</p>
+                    </div>
+                    <div class="h-px w-full bg-slate-200 dark:bg-slate-800"></div>
+                    <div>
+                        <span class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold mb-1 block">Artinya:</span>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{doa.arti}</p>
                     </div>
                 </div>
+
             </div>
         ))}
     </div>

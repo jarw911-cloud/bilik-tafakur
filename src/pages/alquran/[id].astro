@@ -1,0 +1,234 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export async function getStaticPaths() {
+    const response = await fetch('https://api.quran.gading.dev/surah');
+    const responseData = await response.json();
+    const suratList = responseData.data;
+
+    return suratList.map((surat: any) => ({
+        params: { id: surat.number.toString() },
+    }));
+}
+
+const { id } = Astro.params;
+const currentId = parseInt(id);
+const prevId = currentId > 1 ? currentId - 1 : null;
+const nextId = currentId < 114 ? currentId + 1 : null;
+
+const detailResponse = await fetch(`https://api.quran.gading.dev/surah/${id}`);
+const detailData = await detailResponse.json();
+const surat = detailData.data;
+
+let tajweedVerses = [];
+try {
+    const tajweedResponse = await fetch(`https://api.quran.com/api/v4/quran/verses/uthmani_tajweed?chapter_number=${id}`);
+    const tajweedData = await tajweedResponse.json();
+    tajweedVerses = tajweedData.verses;
+} catch (e) {
+    console.error("Gagal mengambil data tajwid", e);
+}
+---
+
+<MainLayout title={`Surat ${surat.name.transliteration.id}`}>
+    
+    <div class="flex items-center justify-between mb-8 relative z-40">
+        <a href="/alquran" class="inline-flex items-center text-sm font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors group">
+            <span class="mr-2 group-hover:-translate-x-1 transition-transform">←</span> Kembali ke Daftar Surat
+        </a>
+
+        <div class="relative">
+            <button id="btn-settings" class="w-10 h-10 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 rounded-full flex items-center justify-center hover:text-emerald-600 hover:border-emerald-500 dark:hover:text-emerald-400 dark:hover:border-emerald-500 hover:rotate-90 transition-all duration-500 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </button>
+
+            <div id="settings-panel" class="absolute top-12 right-0 w-72 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-2xl scale-0 origin-top-right transition-all duration-300 opacity-0 invisible">
+                <h3 class="text-sm font-bold text-slate-800 dark:text-slate-100 mb-6 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Pengaturan
+                </h3>
+                <div class="mb-6">
+                    <p class="text-[10px] uppercase tracking-widest text-slate-400 mb-3 font-bold">Ukuran Arab</p>
+                    <div class="flex items-center gap-3">
+                        <button id="btn-zoom-out" class="flex-1 py-2 bg-slate-50 dark:bg-slate-800 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition border border-slate-100 dark:border-slate-700 text-lg font-bold text-slate-600 dark:text-slate-300">-</button>
+                        <button id="btn-zoom-in" class="flex-1 py-2 bg-slate-50 dark:bg-slate-800 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition border border-slate-100 dark:border-slate-700 text-lg font-bold text-slate-600 dark:text-slate-300">+</button>
+                    </div>
+                </div>
+                <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                    <label class="flex items-center justify-between cursor-pointer group">
+                        <span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-emerald-600 transition">Latin</span>
+                        <input type="checkbox" id="toggle-latin" class="w-5 h-5 accent-emerald-600 rounded-lg cursor-pointer" />
+                    </label>
+                    <label class="flex items-center justify-between cursor-pointer group">
+                        <span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-emerald-600 transition">Terjemah</span>
+                        <input type="checkbox" id="toggle-terjemah" class="w-5 h-5 accent-emerald-600 rounded-lg cursor-pointer" />
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mb-12">
+        <div class="flex items-center justify-center gap-4 md:gap-6 mb-4">
+            {prevId ? (
+                <a href={`/alquran/${prevId}`} class="flex-shrink-0 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full text-slate-400 hover:text-emerald-600 dark:text-slate-500 dark:hover:text-emerald-400 hover:border-emerald-500 hover:shadow-md transition-all group">
+                    <span class="text-lg md:text-xl font-bold group-hover:-translate-x-1 transition-transform">❮</span>
+                </a>
+            ) : <div class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0"></div>}
+
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white px-2">
+                {surat.name.transliteration.id}
+            </h1>
+
+            {nextId ? (
+                <a href={`/alquran/${nextId}`} class="flex-shrink-0 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full text-slate-400 hover:text-emerald-600 dark:text-slate-500 dark:hover:text-emerald-400 hover:border-emerald-500 hover:shadow-md transition-all group">
+                    <span class="text-lg md:text-xl font-bold group-hover:translate-x-1 transition-transform">❯</span>
+                </a>
+            ) : <div class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0"></div>}
+        </div>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-6">
+            {surat.name.translation.id} • {surat.numberOfVerses} Ayat
+        </p>
+        <div class="text-4xl md:text-5xl font-serif text-emerald-800 dark:text-emerald-400">
+            {surat.name.short}
+        </div>
+    </div>
+
+    {surat.preBismillah && (
+        <div class="py-6 border-y border-slate-200 dark:border-slate-800 text-center mb-10">
+            <p class="teks-arab font-serif text-slate-800 dark:text-slate-200 leading-[2.2]" style="font-size: 40px;">
+                {surat.preBismillah.text.arab}
+            </p>
+        </div>
+    )}
+
+    <div class="space-y-10">
+        {surat.verses.map((ayat: any, index: number) => {
+            const tajwidAyat = tajweedVerses[index]?.text_uthmani_tajweed || ayat.text.arab;
+            
+            return (
+            <div class="group relative pt-4 scroll-mt-24 border-b border-slate-100 dark:border-slate-800/50 pb-8" id={`ayat-${ayat.number.inSurah}`}>
+                <div class="flex flex-col gap-4">
+                    <div class="text-right w-full">
+                        <p class="teks-arab font-serif text-slate-900 dark:text-slate-100 leading-[2.2]" 
+                           style="font-size: 40px; word-wrap: break-word;" 
+                           set:html={tajwidAyat}>
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col gap-2 border-l-2 border-emerald-100 dark:border-emerald-900/50 pl-4 md:pl-6">
+                        <div class="teks-latin">
+                            <p class="text-emerald-700 dark:text-emerald-400 font-medium text-xs md:text-sm italic">
+                                {ayat.text.transliteration.en}
+                            </p>
+                        </div>
+                        <div class="teks-terjemah">
+                            <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">
+                                <span class="inline-block w-6 h-6 bg-slate-100 dark:bg-slate-800 text-slate-400 text-[10px] rounded-md text-center leading-6 mr-2 font-bold">{ayat.number.inSurah}</span>
+                                {ayat.translation.id}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <button class="btn-audio flex items-center gap-2 text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-100 dark:border-emerald-800 px-3 py-1.5 rounded-full hover:bg-emerald-600 hover:text-white transition-all" data-audio={ayat.audio.primary}>
+                            <span class="icon-play">▶ Putar Ayat</span>
+                        </button>
+                        <button class="btn-bookmark flex items-center gap-2 text-[10px] font-bold text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 px-3 py-1.5 rounded-full transition-all" data-ayat={ayat.number.inSurah}>
+                            🔖 Tandai Ayat
+                        </button>
+                    </div>
+                </div>
+            </div>
+            );
+        })}
+    </div>
+
+    <div class="flex items-center justify-between mt-16 mb-8">
+        {prevId ? <a href={`/alquran/${prevId}`} class="flex items-center gap-2 px-5 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium text-slate-600 hover:text-emerald-600 transition shadow-sm">← Sebelumnya</a> : <div class="w-1/2"></div>} 
+        {nextId ? <a href={`/alquran/${nextId}`} class="flex items-center gap-2 px-6 py-3 bg-emerald-700 text-white rounded-xl text-sm font-medium hover:bg-emerald-800 transition shadow-sm ml-auto">Selanjutnya →</a> : <div class="w-1/2"></div>}
+    </div>
+
+    <script is:inline define:vars={{ id, name: surat.name.transliteration.id }}>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ... (Kode Gear & Zoom tetap ada di sini) ...
+            const btnSettings = document.getElementById('btn-settings');
+            const panel = document.getElementById('settings-panel');
+            btnSettings.onclick = (e) => { e.stopPropagation(); panel.classList.toggle('scale-0'); panel.classList.toggle('opacity-0'); panel.classList.toggle('invisible'); };
+            document.onclick = (e) => { if(!panel.contains(e.target) && !btnSettings.contains(e.target)) panel.classList.add('scale-0', 'opacity-0', 'invisible'); };
+
+            const btnIn = document.getElementById('btn-zoom-in'); const btnOut = document.getElementById('btn-zoom-out');
+            const tLatin = document.getElementById('toggle-latin'); const tTerjemah = document.getElementById('toggle-terjemah');
+            const teksArab = document.querySelectorAll('.teks-arab'); const teksLatin = document.querySelectorAll('.teks-latin'); const teksTerjemah = document.querySelectorAll('.teks-terjemah');
+            let size = parseInt(localStorage.getItem('fSize')) || 40; let sLat = localStorage.getItem('sLat') !== 'f'; let sTer = localStorage.getItem('sTer') !== 'f';
+            const updateUI = () => {
+                teksArab.forEach(el => el.style.fontSize = size + 'px');
+                teksLatin.forEach(el => el.style.display = sLat ? 'block' : 'none');
+                teksTerjemah.forEach(el => el.style.display = sTer ? 'block' : 'none');
+                localStorage.setItem('fSize', size); localStorage.setItem('sLat', sLat ? 't' : 'f'); localStorage.setItem('sTer', sTer ? 't' : 'f');
+                tLatin.checked = sLat; tTerjemah.checked = sTer;
+            };
+            updateUI();
+            btnIn.onclick = () => { if(size < 80) size += 4; updateUI(); };
+            btnOut.onclick = () => { if(size > 20) size -= 4; updateUI(); };
+            tLatin.onchange = (e) => { sLat = e.target.checked; updateUI(); };
+            tTerjemah.onchange = (e) => { sTer = e.target.checked; updateUI(); };
+
+            // LOGIKA AUDIO (MAHAKARYA BARU)
+            let currentAudio = null;
+            const btnAudios = document.querySelectorAll('.btn-audio');
+            
+            btnAudios.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const audioUrl = btn.getAttribute('data-audio');
+                    const icon = btn.querySelector('.icon-play');
+
+                    // Jika klik tombol yang sama saat sedang bunyi, maka stop
+                    if (currentAudio && !currentAudio.paused && currentAudio.src === audioUrl) {
+                        currentAudio.pause();
+                        icon.innerText = '▶ Putar Ayat';
+                        btn.classList.remove('bg-emerald-600', 'text-white');
+                        return;
+                    }
+
+                    // Stop audio sebelumnya jika ada
+                    if (currentAudio) {
+                        currentAudio.pause();
+                        document.querySelectorAll('.icon-play').forEach(i => i.innerText = '▶ Putar Ayat');
+                        document.querySelectorAll('.btn-audio').forEach(b => b.classList.remove('bg-emerald-600', 'text-white'));
+                    }
+
+                    // Putar Audio Baru
+                    currentAudio = new Audio(audioUrl);
+                    currentAudio.play();
+                    icon.innerText = '⏹ Berhenti';
+                    btn.classList.add('bg-emerald-600', 'text-white');
+
+                    currentAudio.onended = () => {
+                        icon.innerText = '▶ Putar Ayat';
+                        btn.classList.remove('bg-emerald-600', 'text-white');
+                    };
+                });
+            });
+
+            // LOGIKA BOOKMARK
+            const btnBookmarks = document.querySelectorAll('.btn-bookmark');
+            btnBookmarks.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const ayatNum = btn.getAttribute('data-ayat');
+                    localStorage.setItem('lastReadId', id);
+                    localStorage.setItem('lastReadName', name);
+                    localStorage.setItem('lastReadAyat', ayatNum);
+                    const orig = btn.innerHTML;
+                    btn.innerHTML = `✓ Tersimpan`;
+                    setTimeout(() => btn.innerHTML = orig, 2000);
+                });
+            });
+        });
+    </script>
+</MainLayout>
+
+<style is:global>
+    /* Style Tajwid sama seperti sebelumnya */
+    [class*="madda"] { color: #2144C1; } [class*="ghunnah"] { color: #FF7E1E; } [class*="idgham"] { color: #169777; } [class*="ikhfa"] { color: #9400D3; } [class*="iqlab"] { color: #26BFFD; } [class*="qalaqah"], [class*="qalqalah"] { color: #DD0008; } [class*="slnt"] { color: #94A3B8; }
+    html.dark [class*="madda"] { color: #60A5FA; } html.dark [class*="ghunnah"] { color: #FDBA74; } html.dark [class*="idgham"] { color: #34D399; } html.dark [class*="ikhfa"] { color: #C084FC; } html.dark [class*="iqlab"] { color: #7DD3FC; } html.dark [class*="qalaqah"] { color: #F87171; }
+</style>

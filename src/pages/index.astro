@@ -1,17 +1,356 @@
 ---
+import MainLayout from '../layouts/MainLayout.astro';
 
+const motivasi = [
+    { text: "Hati yang tenang adalah awal dari ibadah yang khusyuk.", source: "Bilik Tafakur" },
+    { text: "Maka sesungguhnya bersama kesulitan ada kemudahan.", source: "QS. Al-Insyirah: 5" },
+    { text: "Cukuplah Allah bagi kami, dan Dia adalah sebaik-baik pelindung.", source: "QS. Ali Imran: 173" },
+    { text: "Jangan menjelaskan tentang dirimu kepada siapapun, karena yang menyukaimu tidak butuh itu.", source: "Ali bin Abi Thalib" },
+    { text: "Dunia hanyalah tempat persinggahan, akhirat adalah tujuan abadi.", source: "Nasihat Bijak" }
+];
+const randomQuote = motivasi[Math.floor(Math.random() * motivasi.length)];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="Beranda">
+    <div class="flex flex-col items-center justify-start min-h-[80vh] text-center max-w-3xl mx-auto relative pb-40 pt-4">
+        
+        <div id="last-read-container" class="hidden mb-6">
+            <a id="last-read-link" href="#" class="inline-flex items-center gap-3 px-5 py-2.5 bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 rounded-full text-sm font-medium text-emerald-800 dark:text-emerald-300 hover:shadow-md hover:scale-105 transition-all duration-300">
+                <span class="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                Lanjutkan Membaca: <strong id="last-read-name"></strong>
+            </a>
+        </div>
+
+        <div class="w-full mb-12">
+            <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-2">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center justify-center md:justify-start gap-2">
+                            <span class="text-emerald-600">🕌</span> Jadwal Sholat
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Temanggung & Sekitarnya</p>
+                    </div>
+                    <div class="text-center md:text-right">
+                        <p class="text-sm font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1 rounded-lg inline-block" id="tanggal-sholat">Memuat waktu...</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-5 gap-2 md:gap-4" id="waktu-sholat-container">
+                    <div class="col-span-5 text-sm text-slate-400 animate-pulse py-4">Menyelaraskan waktu dengan matahari...</div>
+                </div>
+            </div>
+        </div>
+
+        <span class="px-4 py-1.5 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 text-xs font-semibold rounded-full uppercase tracking-widest mb-8 border border-transparent dark:border-emerald-800/50">
+            Tafakur Hari Ini
+        </span>
+
+        <blockquote class="relative">
+            <h2 class="text-3xl md:text-5xl font-serif italic text-slate-900 dark:text-white leading-tight mb-6 transition-colors duration-300">
+                "{randomQuote.text}"
+            </h2>
+            <cite class="text-lg text-slate-500 dark:text-slate-400 not-italic transition-colors duration-300">— {randomQuote.source}</cite>
+        </blockquote>
+
+        <div class="mt-12 flex flex-wrap justify-center gap-4">
+            <a href="/alquran" class="px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full text-sm font-bold hover:scale-105 transition-transform shadow-md">
+                Baca Al-Quran
+            </a>
+            <a href="/doa" class="px-8 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-sm font-bold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-sm">
+                Kumpulan Doa
+            </a>
+        </div>
+
+        <div id="chat-history" class="w-full mt-16 flex flex-col gap-6 text-left"></div>
+    </div>
+
+    <div class="fixed bottom-0 left-0 w-full z-50 bg-gradient-to-t from-slate-50 via-slate-50 to-transparent dark:from-[#0f172a] dark:via-[#0f172a] dark:to-transparent pt-12 pb-6 px-4">
+        <div class="max-w-3xl mx-auto relative">
+            <div class="relative flex items-center bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-full p-2 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] focus-within:ring-2 focus-within:ring-emerald-500/50 focus-within:border-emerald-500 transition-all duration-300">
+                <span class="pl-4 text-2xl">🌱</span>
+                <input 
+                    type="text" 
+                    id="curhat-input" 
+                    class="w-full bg-transparent border-none px-4 py-3 text-sm md:text-base text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-0 placeholder-slate-400 dark:placeholder-slate-500 disabled:opacity-50" 
+                    placeholder="Apa yang sedang Panjenengan rasakan hari ini? (Ketik keluh kesah di sini...)" 
+                    autocomplete="off" 
+                />
+               <button 
+                    id="btn-submit-curhat" 
+                    class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 bg-slate-900 dark:bg-emerald-600 text-white rounded-full flex items-center justify-center hover:bg-emerald-700 hover:scale-105 transition-all shadow-sm ml-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    title="Kirim Keluh Kesah"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 19V5"/>
+                        <path d="m5 12 7-7 7 7"/>
+                    </svg>
+                </button>
+            </div>
+            <p class="text-[10.5px] text-center text-slate-400 dark:text-slate-500 mt-4 tracking-wide font-medium">
+                Sistem P3K Batin ini hanya bisa digunakan sekali per kunjungan untuk menjaga kekhusyukan.
+            </p>
+        </div>
+    </div>
+
+    <script is:inline>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 1. TERAKHIR BACA
+            const lastId = localStorage.getItem('lastReadId');
+            const lastName = localStorage.getItem('lastReadName');
+            const lastAyat = localStorage.getItem('lastReadAyat');
+            if (lastId && lastName) {
+                document.getElementById('last-read-container').classList.remove('hidden');
+                let displayText = lastName;
+                let targetUrl = `/alquran/${lastId}`;
+                if (lastAyat) { displayText += ` - Ayat ${lastAyat}`; targetUrl += `#ayat-${lastAyat}`; }
+                document.getElementById('last-read-name').innerText = displayText;
+                document.getElementById('last-read-link').href = targetUrl;
+            }
+
+            // 2. JADWAL SHOLAT
+            const container = document.getElementById('waktu-sholat-container');
+            const tanggalEl = document.getElementById('tanggal-sholat');
+            try {
+                const res = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Temanggung&country=Indonesia&method=20');
+                const data = await res.json();
+                if(data.code === 200) {
+                    const timings = data.data.timings;
+                    tanggalEl.innerText = new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                    const jadwal = [{nama:'Subuh',waktu:timings.Fajr},{nama:'Dzuhur',waktu:timings.Dhuhr},{nama:'Ashar',waktu:timings.Asr},{nama:'Maghrib',waktu:timings.Maghrib},{nama:'Isya',waktu:timings.Isha}];
+                    let html = '';
+                    jadwal.forEach(j => { html += `<div class="text-center p-2 md:p-3 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm hover:border-emerald-500 transition group cursor-default"><p class="text-[10px] md:text-xs font-bold text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 uppercase tracking-wider mb-1">${j.nama}</p><p class="text-sm md:text-xl font-bold text-emerald-700 dark:text-emerald-400">${j.waktu}</p></div>`; });
+                    container.innerHTML = html;
+                }
+            } catch (error) { container.innerHTML = '<p class="text-center w-full col-span-5 text-sm text-red-500">Gagal memuat jadwal sholat.</p>'; }
+
+            // 3. DATABASE NASIHAT MASIF (Diperbanyak)
+            const inputCurhat = document.getElementById('curhat-input');
+            const btnSubmit = document.getElementById('btn-submit-curhat');
+            const chatHistory = document.getElementById('chat-history');
+
+            const resepNasihat = {
+                lelah: [
+                    { k: "Istirahatlah sejenak, dunia tidak akan hancur karena kau merebahkan badan.", s: "Nasihat" },
+                    { k: "Lelahmu hari ini adalah bekal senyummu di akhirat kelak.", s: "Bilik Tafakur" },
+                    { k: "Jangan memikul beban esok hari pada pundak hari ini.", s: "Pepatah Arab" },
+                    { k: "Allah tidak membebani seseorang melainkan sesuai dengan kesanggupannya.", s: "QS. Al-Baqarah: 286" },
+                    { k: "Setiap tetes keringat lelahmu dalam mencari kebaikan akan bernilai pahala.", s: "Hadits" },
+                    { k: "Tidurlah, tubuhmu juga memiliki hak atas dirimu.", s: "HR. Bukhari" },
+                    { k: "Lelah dalam ketaatan lebih manis daripada segar dalam kemaksiatan.", s: "Ulama Salaf" },
+                    { k: "Orang hebat tidak dihasilkan dari kemudahan, kesenangan, dan kenyamanan.", s: "Nasihat" },
+                    { k: "Rasa lelah ini hanya mampir, sabarlah sebentar.", s: "Bilik Tafakur" },
+                    { k: "Jadikan lelahmu sebagai lillah (karena Allah), maka ia akan menjadi alhamdulillah.", s: "Nasihat Bijak" },
+                    { k: "Beban ini berat, tapi pundakmu diciptakan cukup kuat untuk memikulnya.", s: "Bilik Tafakur" },
+                    { k: "Berhentilah sejenak, bukan untuk menyerah, tapi untuk menghela napas panjang.", s: "Nasihat" },
+                    { k: "Pahala orang yang bersabar di kala lelah tanpa keluh kesah itu tanpa batas.", s: "QS. Az-Zumar: 10" },
+                    { k: "Jika dunia membuatmu lelah, jadikan sholat sebagai istirahatmu.", s: "Hadits" },
+                    { k: "Tidak ada lelah yang sia-sia di mata Allah.", s: "Bilik Tafakur" },
+                    { k: "Hanya di surga kelak tidak ada kata lelah. Bertahanlah hingga ke sana.", s: "Nasihat Sufi" },
+                    { k: "Keringat yang menetes karena lelah mencari rezeki halal akan memadamkan api neraka.", s: "Atsar" },
+                    { k: "Semoga lelahmu menjadi pelebur dosa-dosamu yang lalu.", s: "HR. Muslim" },
+                    { k: "Bawalah lelahmu di atas sajadah, biarkan Allah yang mendekapnya.", s: "Bilik Tafakur" },
+                    { k: "Terkadang yang kau butuhkan hanyalah tidur yang nyenyak dengan hati yang memaafkan.", s: "Nasihat" },
+                    { k: "Pejamkan mata, serahkan sisa urusan hari ini pada Allah.", s: "Bilik Tafakur" },
+                    { k: "Kelelahan yang paling menyiksa adalah lelah batin. Banyak-banyaklah berdzikir.", s: "Nasihat" },
+                    { k: "Jangan biarkan lelah memadamkan cahaya ikhlas di hatimu.", s: "Nasihat" },
+                    { k: "Esok hari matahari akan terbit lagi, begitu pula harapan baru untukmu.", s: "Nasihat Bijak" },
+                    { k: "Istirahat terindah adalah saat kita meletakkan dunia dari pikiran kita.", s: "Bilik Tafakur" }
+                ],
+                sedih: [
+                    { k: "Jangan bersedih, sesungguhnya Allah bersama kita.", s: "QS. At-Taubah: 40" },
+                    { k: "Kesedihanmu adalah cara Allah mengosongkan hatimu agar bisa diisi dengan kebahagiaan baru.", s: "Bilik Tafakur" },
+                    { k: "Menangislah, air mata yang jatuh karena kelemahan di hadapan-Nya adalah doa.", s: "Nasihat Sufi" },
+                    { k: "Dunia memang tempatnya ujian, wajar jika kadang hatimu hancur. Bertahanlah.", s: "Nasihat" },
+                    { k: "Barangsiapa yang Allah kehendaki kebaikan baginya, Dia akan mengujinya.", s: "HR. Bukhari" },
+                    { k: "Kesedihan yang mendekatkanmu kepada Allah lebih baik dari kebahagiaan yang melalaikanmu.", s: "Ibnu Qayyim" },
+                    { k: "Hanya kepada Allah aku mengadukan kesusahan dan kesedihanku.", s: "QS. Yusuf: 86" },
+                    { k: "Boleh jadi kamu membenci sesuatu, padahal ia amat baik bagimu.", s: "QS. Al-Baqarah: 216" },
+                    { k: "Tidak ada penderitaan yang kekal di dunia ini, begitu pun kesedihanmu.", s: "Imam Syafi'i" },
+                    { k: "Bawalah lukamu kepada-Nya, Dia adalah sebaik-baik penyembuh.", s: "Bilik Tafakur" },
+                    { k: "Kesedihan akan luntur oleh waktu dan doa yang tiada putus.", s: "Nasihat Bijak" },
+                    { k: "Langit tak selamanya mendung, matahari akan kembali tersenyum untukmu.", s: "Nasihat" },
+                    { k: "Terkadang hati harus patah agar cahaya hidayah bisa masuk melaluinya.", s: "Jalaluddin Rumi" },
+                    { k: "Sesungguhnya bersama kesulitan ada kemudahan.", s: "QS. Al-Insyirah: 6" },
+                    { k: "Cukupkan Allah sebagai penawar rindu dan pelipur lara.", s: "Nasihat" },
+                    { k: "Orang yang paling berat ujiannya adalah para Nabi, kemudian yang setelahnya.", s: "HR. Tirmidzi" },
+                    { k: "Jangan biarkan kesedihan membuatmu lupa nikmat yang masih tersisa.", s: "Umar bin Khattab" },
+                    { k: "Tarik napas panjang, dan katakan 'Alhamdulillah ala kulli hal'.", s: "Hadits" },
+                    { k: "Air matamu mahal, jangan habiskan untuk menangisi dunia.", s: "Nasihat Ulama" },
+                    { k: "Doa di kala sedih dan terjepit adalah anak panah yang langsung menembus langit.", s: "Bilik Tafakur" },
+                    { k: "Semua akan berlalu. Yang tersisa hanyalah bagaimana sikapmu saat melewatinya.", s: "Ali bin Abi Thalib" },
+                    { k: "Berikan ruang pada dirimu untuk merasa sedih, tapi jangan berikan izin untuk menyerah.", s: "Nasihat" },
+                    { k: "Kesedihan ini adalah tamu, jamulah dengan sabar hingga ia pamit.", s: "Bilik Tafakur" },
+                    { k: "Pahala kesabaranmu hari ini sedang ditabung untuk memberatkan timbanganmu kelak.", s: "Hadits" },
+                    { k: "Peluklah dirimu sendiri dengan doa, Allah senantiasa memelukmu dengan rahmat-Nya.", s: "Nasihat" }
+                ],
+                marah: [
+                    { k: "Orang yang kuat bukanlah yang jago bergulat, tapi yang bisa menahan amarahnya.", s: "HR. Bukhari" },
+                    { k: "Jika marah saat berdiri, duduklah. Jika masih marah, berbaringlah.", s: "HR. Abu Dawud" },
+                    { k: "Amarah bagaikan api, ia akan membakar kebaikanmu sendiri jika dibiarkan.", s: "Nasihat Bijak" },
+                    { k: "Maafkanlah mereka, itu lebih menenangkan batinmu daripada menyimpan dendam.", s: "Bilik Tafakur" },
+                    { k: "Jadilah pemaaf dan suruhlah orang mengerjakan yang ma'ruf.", s: "QS. Al-A'raf: 199" },
+                    { k: "Marah itu dari setan, dan setan dari api. Padamkan dengan wudhu.", s: "HR. Abu Dawud" },
+                    { k: "Diamlah ketika engkau sedang marah.", s: "HR. Ahmad" },
+                    { k: "Menyimpan marah ibarat meminum racun tapi berharap orang lain yang mati.", s: "Pepatah" },
+                    { k: "Berlapang dadalah, tak semua hal harus berjalan sesuai kehendakmu.", s: "Nasihat" },
+                    { k: "Orang yang mulia adalah yang mudah memaafkan sebelum diminta.", s: "Nasihat Ulama" },
+                    { k: "Kalahkan amarahmu dengan diam, kalahkan kebodohan dengan ilmu.", s: "Imam Syafi'i" },
+                    { k: "Siapa yang menahan amarah padahal ia mampu melampiaskannya, Allah penuhi hatinya dengan kedamaian.", s: "HR. Abu Dawud" },
+                    { k: "Mengalah bukan berarti kalah, tapi mengalahkan ego sendiri.", s: "Bilik Tafakur" },
+                    { k: "Lepaskan beban dendam di hatimu, kau tak pantas membawa sampah di pikiranmu.", s: "Nasihat" },
+                    { k: "Memaafkan adalah ciri jiwa yang merdeka.", s: "Bilik Tafakur" },
+                    { k: "Jangan mengambil keputusan apa pun saat engkau sedang marah.", s: "Ali bin Abi Thalib" },
+                    { k: "Tarik napas, ucapkan Ta'awudz. Lindungi dirimu dari bisikan setan yang mengipas amarah.", s: "Nasihat" },
+                    { k: "Balaslah keburukan dengan cara yang lebih baik.", s: "QS. Fushshilat: 34" },
+                    { k: "Ketenangan akan kembali saat kau menyadari bahwa Allah yang Maha Menghakimi.", s: "Nasihat" },
+                    { k: "Semua hal di dunia ini terlalu sepele untuk merusak kedamaian hatimu.", s: "Bilik Tafakur" },
+                    { k: "Doakan kebaikan bagi mereka yang memancing emosimu, hatimu akan lapang seketika.", s: "Nasihat Ulama" },
+                    { k: "Jangan biarkan kata-kata kasar keluar dari lisanmu, sebab ia tak bisa ditarik kembali.", s: "Nasihat" },
+                    { k: "Jadikan amarahmu sebagai energi untuk memperbaiki diri, bukan merusak keadaan.", s: "Nasihat Bijak" },
+                    { k: "Orang yang paling sabar adalah yang bisa tersenyum di puncak amarahnya.", s: "Bilik Tafakur" },
+                    { k: "Tinggalkan perdebatan meskipun engkau di pihak yang benar.", s: "HR. Abu Dawud" }
+                ],
+                cemas: [
+                    { k: "Apa yang sudah ditakdirkan untukmu, takkan pernah melewatkanmu.", s: "Umar bin Khattab" },
+                    { k: "Jangan cemas, skenario Allah selalu lebih indah dari rencanamu.", s: "Bilik Tafakur" },
+                    { k: "Cukuplah Allah sebagai penolong kami, dan Dia sebaik-baik pelindung.", s: "QS. Ali Imran: 173" },
+                    { k: "Hari esok adalah rahasia Allah, tugasmu hanya berusaha sebaik mungkin hari ini.", s: "Nasihat" },
+                    { k: "Ketakutanmu hanyalah ilusi pikiran. Serahkan segalanya pada Yang Maha Mengatur.", s: "Nasihat" },
+                    { k: "Tawakkal adalah menyerahkan kemudi hidupmu pada sebaik-baik Sutradara.", s: "Bilik Tafakur" },
+                    { k: "Jika Allah bersamamu, lalu apa yang kau takutkan?", s: "Ibnu Qayyim" },
+                    { k: "Hati menjadi gelisah karena terlalu memikirkan hal yang belum terjadi.", s: "Ali bin Abi Thalib" },
+                    { k: "Burung bangun di pagi hari tanpa tahu di mana rezekinya, tapi Allah selalu mengenyangkannya.", s: "HR. Tirmidzi" },
+                    { k: "Fokuslah pada hari ini. Jika besok tiba, Allah akan memberikan kekuatan yang baru.", s: "Nasihat Bijak" },
+                    { k: "Lepaskan hal-hal yang tidak bisa kau kontrol, itu bukan urusanmu.", s: "Bilik Tafakur" },
+                    { k: "Kecemasan tidak mengubah masa depan, ia hanya merampas kedamaian masa kinimu.", s: "Nasihat" },
+                    { k: "Beristighfarlah, kecemasan seringkali lahir dari dosa yang menumpuk.", s: "Hasan Al-Bashri" },
+                    { k: "Takdir Allah selalu baik, meski kadang dibungkus dengan ujian yang tidak kau sukai.", s: "Nasihat Ulama" },
+                    { k: "Sesungguhnya hanya dengan mengingat Allah hati menjadi tenteram.", s: "QS. Ar-Ra'd: 28" },
+                    { k: "Tidur yang lelap adalah obat pertama untuk pikiran yang sedang kacau.", s: "Nasihat" },
+                    { k: "Kau sudah berhasil melewati 100% masa-masa sulitmu di masa lalu. Kali ini pun kau akan selamat.", s: "Bilik Tafakur" },
+                    { k: "Gelisahmu pertanda engkau butuh sajadah.", s: "Bilik Tafakur" },
+                    { k: "Jangan biarkan *overthinking* merampas rasa syukur atas nikmat yang ada di depan mata.", s: "Nasihat" },
+                    { k: "Dunia ini diurus oleh Dzat yang tidak pernah tidur, lantas mengapa kau harus begadang karena cemas?", s: "Nasihat Bijak" },
+                    { k: "Ketidakpastian adalah cara Allah menyuruhmu untuk bertawakkal.", s: "Bilik Tafakur" },
+                    { k: "Katakan pada kecemasanmu: Aku punya Tuhan yang Maha Besar.", s: "Nasihat" },
+                    { k: "Hentikan sejenak roda pikiranmu. Tarik napas. Allah tidak pernah meninggalkanmu.", s: "Nasihat" },
+                    { k: "Rezekimu tidak akan tertukar dengan rezeki orang lain, tenangkan hatimu.", s: "Hasan Al-Bashri" },
+                    { k: "Percayalah, di ujung jalan yang tak terlihat ini, ada kemudahan yang menanti.", s: "Bilik Tafakur" }
+                ],
+                umum: [
+                    { k: "Hati yang tenang adalah rezeki yang jarang disadari.", s: "Bilik Tafakur" },
+                    { k: "Maka sesungguhnya bersama kesulitan ada kemudahan.", s: "QS. Al-Insyirah: 5" },
+                    { k: "Bersyukurlah, karena syukur adalah magnet keajaiban.", s: "Bilik Tafakur" },
+                    { k: "Apapun yang terjadi hari ini, jadikan sebagai ladang pahala.", s: "Nasihat" },
+                    { k: "Hati yang senantiasa berdzikir takkan mudah goyah oleh badai dunia.", s: "Nasihat" },
+                    { k: "Tersenyumlah, Allah sedang mempersiapkan hadiah terbaik untuk kesabaranmu.", s: "Bilik Tafakur" },
+                    { k: "Jangan meremehkan kebaikan sekecil apa pun.", s: "HR. Muslim" },
+                    { k: "Sebaik-baik manusia adalah yang paling bermanfaat bagi orang lain.", s: "HR. Ath-Thabrani" },
+                    { k: "Ikhlaslah dalam segala hal, niscaya kau takkan mudah lelah.", s: "Nasihat Ulama" },
+                    { k: "Dunia hanyalah bayangan, kejar akhirat maka dunia akan mengikutimu.", s: "Ibnu Qayyim" },
+                    { k: "Semoga hari esok lebih baik dari hari ini.", s: "Doa" },
+                    { k: "Berbuat baiklah walau orang tak melihat, sebab Allah selalu melihat.", s: "Nasihat" },
+                    { k: "Kejujuran adalah perhiasan jiwa yang paling mahal.", s: "Ali bin Abi Thalib" },
+                    { k: "Sabar dan Sholat adalah penolong sejati.", s: "QS. Al-Baqarah: 45" },
+                    { k: "Sedekah akan menghapus dosa sebagaimana air memadamkan api.", s: "HR. Tirmidzi" },
+                    { k: "Jagalah lisan, karena ia bisa menembus apa yang tak tertembus oleh pedang.", s: "Imam Syafi'i" },
+                    { k: "Mencintai karena Allah adalah ikatan iman yang paling kuat.", s: "HR. Ahmad" },
+                    { k: "Banyak mengingat kematian akan menghidupkan hati.", s: "Nasihat Ulama" },
+                    { k: "Bekerjalah untuk duniamu seakan kau hidup selamanya, beribadahlah seakan kau mati esok.", s: "Atsar" },
+                    { k: "Kebaikan yang paling cepat balasannya adalah menyambung tali silaturahmi.", s: "HR. Abu Dawud" },
+                    { k: "Semua masalah menjadi ringan jika diletakkan di bawah lututmu saat sujud.", s: "Bilik Tafakur" },
+                    { k: "Jangan biarkan hari berlalu tanpa menambah amal kebaikan.", s: "Nasihat" },
+                    { k: "Maafkan mereka yang bersalah padamu, agar Allah mengampuni kesalahanmu.", s: "Nasihat" },
+                    { k: "Setiap tarikan napas adalah kesempatan baru untuk bertaubat.", s: "Nasihat Bijak" },
+                    { k: "Berprasangka baiklah kepada Allah dalam segala hal yang kau temui.", s: "HR. Muslim" }
+                ]
+            };
+
+            const deteksiEmosi = (teks) => {
+                const kata = teks.toLowerCase();
+                if (kata.includes('cape') || kata.includes('lelah') || kata.includes('berat') || kata.includes('mumet') || kata.includes('nyerah') || kata.includes('pusing') || kata.includes('ngantuk')) return 'lelah';
+                if (kata.includes('sedih') || kata.includes('kecewa') || kata.includes('hancur') || kata.includes('nangis') || kata.includes('sakit') || kata.includes('patah')) return 'sedih';
+                if (kata.includes('marah') || kata.includes('kesal') || kata.includes('emosi') || kata.includes('benci') || kata.includes('mangkel') || kata.includes('bego')) return 'marah';
+                if (kata.includes('takut') || kata.includes('khawatir') || kata.includes('bingung') || kata.includes('cemas') || kata.includes('overthink') || kata.includes('gelisah') || kata.includes('deg')) return 'cemas';
+                return 'umum';
+            };
+
+            const kirimCurhat = () => {
+                const teks = inputCurhat.value.trim();
+                if (!teks) return;
+
+                // Kunci input agar cuma bisa sekali
+                inputCurhat.disabled = true;
+                btnSubmit.disabled = true;
+
+                // Balon Chat User
+                const userBubble = `
+                    <div class="flex justify-end fade-in-up">
+                        <div class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 px-6 py-4 rounded-3xl rounded-br-sm max-w-[85%] text-sm md:text-base border border-slate-200 dark:border-slate-700 shadow-sm leading-relaxed">
+                            "${teks}"
+                        </div>
+                    </div>
+                `;
+
+                // Deteksi Emosi & MESIN PENGACAK 5 NASIHAT
+                const kategori = deteksiEmosi(teks);
+                
+                // Salin array, lalu acak urutannya (Shuffle), ambil 5 yang paling depan
+                const semuaNasihat = [...resepNasihat[kategori]];
+                const nasihatAcak = semuaNasihat.sort(() => 0.5 - Math.random()).slice(0, 5);
+
+                let aiQuotes = '';
+                nasihatAcak.forEach(n => {
+                    aiQuotes += `
+                        <div class="mb-4 p-5 bg-white dark:bg-slate-900 rounded-2xl border border-emerald-100 dark:border-emerald-900/50 shadow-sm hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors">
+                            <p class="text-base md:text-lg font-serif text-slate-800 dark:text-slate-200 leading-relaxed">"${n.k}"</p>
+                            <div class="flex items-center gap-3 mt-4">
+                                <div class="w-6 h-[1px] bg-emerald-500"></div>
+                                <p class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">${n.s}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // Balon Chat AI
+                const aiBubble = `
+                    <div class="flex justify-start mt-2 fade-in-up" style="animation-delay: 0.3s; animation-fill-mode: both;">
+                        <div class="bg-emerald-50/50 dark:bg-emerald-900/10 w-full px-4 md:px-8 py-8 rounded-3xl border border-emerald-100 dark:border-emerald-900/30">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="text-2xl">✨</span>
+                                <span class="text-sm font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-widest">Resep Penyejuk Batin</span>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                ${aiQuotes}
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                chatHistory.innerHTML = userBubble + aiBubble;
+
+                // Bersihkan dan ubah placeholder
+                inputCurhat.value = '';
+                inputCurhat.placeholder = "Semoga hatimu kembali tenang. (Sesi ditutup)";
+
+                // Scroll mulus
+                setTimeout(() => {
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                }, 100);
+            };
+
+            btnSubmit.onclick = kirimCurhat;
+            inputCurhat.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') kirimCurhat();
+            });
+        });
+    </script>
+
+    <style is:global>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+    </style>
+</MainLayout>

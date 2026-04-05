@@ -1,0 +1,70 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+// Kumpulan Doa Harian (Bisa Panjenengan tambah sendiri nanti)
+const doaList = [
+    {
+        judul: "Doa Sebelum Tidur",
+        arab: "بِسْمِكَ اللّٰهُمَّ اَحْيَا وَاَمُوْتُ",
+        latin: "Bismikallaahumma ahyaa wa amuutu",
+        arti: "Dengan menyebut nama-Mu ya Allah, aku hidup dan aku mati."
+    },
+    {
+        judul: "Doa Bangun Tidur",
+        arab: "اَلْحَمْدُ لِلَّهِ الَّذِيْ أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُوْرُ",
+        latin: "Alhamdu lillahil ladzii ahyaanaa ba'da maa amaatanaa wa ilaihin nusyuur",
+        arti: "Segala puji bagi Allah yang telah menghidupkan kami sesudah kami mati (bangun dari tidur) dan hanya kepada-Nya kami dikembalikan."
+    },
+    {
+        judul: "Doa Sebelum Makan",
+        arab: "اَللّٰهُمَّ بَارِكْ لَنَا فِيْمَا رَزَقْتَنَا وَقِنَا عَذَابَ النَّارِ",
+        latin: "Allahumma baarik lanaa fiimaa rozaqtanaa wa qinaa 'adzaaban naar",
+        arti: "Ya Allah, berkahilah kami dalam rezeki yang telah Engkau berikan kepada kami dan peliharalah kami dari siksa api neraka."
+    },
+    {
+        judul: "Doa Keluar Rumah",
+        arab: "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+        latin: "Bismillahi tawakkaltu 'alallahi, laa hawla wa laa quwwata illaa billaah",
+        arti: "Dengan nama Allah, aku bertawakal kepada Allah. Tiada daya dan kekuatan kecuali dengan (pertolongan) Allah."
+    }
+];
+---
+
+<MainLayout title="Doa Harian">
+    <div class="mb-12">
+        <h1 class="text-3xl md:text-4xl font-serif font-bold text-slate-900 dark:text-white mb-4">Doa Harian</h1>
+        <p class="text-slate-600 dark:text-slate-400">Senjata paling ampuh bagi seorang mukmin adalah doanya.</p>
+        <div class="mt-8 h-px w-full bg-slate-200 dark:bg-slate-800/50"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {doaList.map((doa) => (
+            <div class="p-6 md:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 group flex flex-col justify-between">
+                
+                <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-8 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors border-b border-slate-100 dark:border-slate-800 pb-4">
+                    {doa.judul}
+                </h2>
+                
+                <div class="flex-1">
+                    <div class="text-right mb-6">
+                        <p class="text-3xl md:text-4xl font-serif text-slate-900 dark:text-slate-200 leading-[2.2] md:leading-[2.2]">
+                            {doa.arab}
+                        </p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <p class="text-emerald-700 dark:text-emerald-400 font-medium text-sm md:text-base leading-relaxed">
+                            {doa.latin}
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed italic">
+                            "{doa.arti}"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</MainLayout>

@@ -1,6 +1,6 @@
 ---
-// 1. IMPORT SENSOR ANALYTICS (Supados pengunjung saged dipun-itung)
 import Analytics from '@vercel/analytics/astro';
+import { daftarDoa } from '../data/doa.js'; // <- GUDANG DATA DIPUN-PANGGIL MALIH
 
 const { title } = Astro.props;
 ---
@@ -12,23 +12,16 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/logo-bilik.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bilik Tafakur | {title}</title>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo-bilik.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bilik Tafakur | {title}</title>
-
-    <meta name="description" content="Bilik Tafakur - Ruang perenungan, Al-Quran Digital, dan doa harian untuk menenangkan batin. Dipersembahkan untuk Widd." />
-    <meta name="keywords" content="Al-Quran Digital, Doa Harian, Motivasi Islam, Tafakur Islami" />
-    <meta name="author" content="Bilik Tafakur" />
+    
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#10b981" />
+    <meta name="description" content="Bilik Tafakur - Ruang renungan, Al-Quran Digital, dan doa harian untuk menenangkan batin dan memperkuat nalar katur kagem Widd." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 
     <script is:inline>
-        // Inisialisasi Dark Mode supados mboten kelip-kelip
         const theme = (() => {
             if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) return localStorage.getItem('theme');
             if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
@@ -41,7 +34,7 @@ const { title } = Astro.props;
     
     <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-white dark:bg-slate-950 text-slate-800 dark:text-white z-[120] transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col border-r border-slate-200 dark:border-slate-800 shadow-2xl">
         
-        <div class="h-20 flex items-center px-6 border-b border-slate-100 dark:border-slate-800 bg-gradient-to-br from-emerald-50/50 to-white dark:from-emerald-950/20 dark:to-slate-950">
+        <div class="h-20 flex items-center px-6 border-b border-slate-100 dark:border-slate-800 bg-gradient-to-br from-emerald-50/50 to-white dark:from-emerald-950/20 dark:to-slate-950 flex-shrink-0">
             <div class="flex items-center gap-3">
                 <img src="/logo-bilik.svg" class="w-10 h-10 rounded-full shadow-sm border-2 border-emerald-100 dark:border-emerald-800" alt="Logo" />
                 <div class="flex flex-col">
@@ -53,53 +46,71 @@ const { title } = Astro.props;
 
         <nav class="flex-1 px-3 py-6 space-y-1.5 overflow-y-auto no-scrollbar">
             <a href="/" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all duration-300">
-                <span class="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform">🏠</span>
+                <span class="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform flex-shrink-0">🏠</span>
                 <span class="font-semibold text-sm tracking-tight">Beranda</span>
             </a>
             <a href="/alquran" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all duration-300">
-                <span class="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform">📖</span>
+                <span class="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform flex-shrink-0">📖</span>
                 <span class="font-semibold text-sm tracking-tight">Al-Quran Digital</span>
             </a>
             <a href="/juzamma" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all duration-300">
-                <span class="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform">📘</span>
+                <span class="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform flex-shrink-0">📘</span>
                 <span class="font-semibold text-sm tracking-tight">Juz Amma</span>
             </a>
+            
+            <div class="relative">
+                <a href="#" id="nav-doa" class="flex items-center justify-between px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <span class="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform flex-shrink-0">🤲</span>
+                        <span class="font-semibold text-sm tracking-tight">Doa Harian</span>
+                    </div>
+                    <svg id="icon-doa" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 transition-transform duration-300 flex-shrink-0"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </a>
+                
+               <div id="submenu-doa" class="hidden flex-col gap-2 pl-[4.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
+                    {daftarDoa.map((doa, index) => (
+                        <a href={`/doa?id=${index}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{doa.judul}</span>
+                        </a>
+                    ))}
+                    <div class="h-px w-full bg-slate-200 dark:bg-slate-700/50 my-1"></div>
+                    <a href="/doa" class="text-[11px] uppercase tracking-wider font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 transition-colors flex items-center gap-1 py-1">
+                        Lihat Semua Doa <span>→</span>
+                    </a>
+                </div>
+            </div>
+
             <a href="/iqra" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all duration-300">
-                <span class="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform">📕</span>
+                <span class="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform flex-shrink-0">📕</span>
                 <span class="font-semibold text-sm tracking-tight">Iqra Digital</span>
             </a>
-            <a href="/doa" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all duration-300">
-                <span class="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform">🤲</span>
-                <span class="font-semibold text-sm tracking-tight">Doa Harian</span>
-            </a>
             <a href="/motivasi" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all duration-300">
-                <span class="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform">✨</span>
+                <span class="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 group-hover:scale-110 transition-transform flex-shrink-0">✨</span>
                 <span class="font-semibold text-sm tracking-tight">Motivasi & Tafakur</span>
             </a>
         </nav>
 
-        <div class="p-6 border-t border-slate-100 dark:border-slate-800 bg-emerald-50/30 dark:bg-black/20 mt-auto">
+        <div class="p-6 border-t border-slate-100 dark:border-slate-800 bg-emerald-50/30 dark:bg-black/20 mt-auto flex-shrink-0">
             <div class="text-center group">
                 <p class="text-[11px] text-emerald-800 dark:text-emerald-400 font-serif italic mb-1">"Mengharap Ridho Allah semata."</p>
                 <div class="h-1 w-6 bg-emerald-300 dark:bg-emerald-700 mx-auto my-2 rounded-full"></div>
                 <p class="text-[9px] text-slate-400 uppercase tracking-[0.2em] mb-1">Katur kagem</p>
                 <p class="text-sm font-bold text-emerald-900 dark:text-white">Widd <span class="inline-block animate-pulse text-emerald-500">🤍</span></p>
             </div>
-            <p class="mt-4 text-[8px] text-center text-slate-300 dark:text-slate-700 font-medium tracking-widest uppercase">© 2026 BILIK TAFAKUR</p>
         </div>
     </aside>
 
     <div class="flex-1 flex flex-col overflow-hidden w-full relative">
-        <header class="h-16 flex items-center justify-between px-4 md:px-8 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-[110]">
+      <header class="h-16 flex items-center justify-between px-4 md:px-8 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-[110] flex-shrink-0">
             <div class="flex items-center gap-3">
                 <button id="btn-menu" class="p-2.5 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 rounded-2xl transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
                 
-                <div class="flex items-center gap-2.5">
-                    <img src="/logo-bilik.svg" class="w-8 h-8 rounded-full shadow-sm" alt="Logo" />
-                    <span class="font-poppins font-bold text-lg md:text-xl text-emerald-900 dark:text-emerald-400 tracking-tight">Bilik Tafakur</span>
-                </div>
+                <a href="/" class="flex items-center gap-2.5 hover:opacity-75 transition-opacity cursor-pointer flex-shrink-0">
+                    <img src="/logo-bilik.svg" alt="Logo" class="rounded-full shadow-sm object-cover" style="width: 40px; height: 32px; min-width: 32px; max-width: 32px;" />
+                    <span class="font-poppins font-bold text-lg md:text-xl text-emerald-900 dark:text-emerald-400 tracking-tight whitespace-nowrap">Bilik Tafakur</span>
+                </a>
             </div>
             
             <button id="theme-toggle" class="p-2.5 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:scale-110 transition-all shadow-sm">
@@ -117,49 +128,56 @@ const { title } = Astro.props;
         <div id="sidebar-overlay" class="fixed inset-0 bg-black/30 backdrop-blur-[2px] z-[90] hidden transition-opacity duration-300"></div>
     </div>
 
+    <button id="btn-share" class="fixed bottom-6 right-6 z-[100] p-3.5 md:p-4 bg-emerald-600 dark:bg-emerald-700 hover:bg-emerald-500 text-white rounded-full shadow-2xl hover:scale-110 transition-all duration-300 border-2 border-white/20">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+    </button>
+
+    <Analytics />
+
     <script is:inline>
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('sidebar-overlay');
         const btnMenu = document.getElementById('btn-menu');
-
         const toggleSidebar = () => {
             const isClosed = sidebar.classList.contains('-translate-x-full');
-            if (isClosed) {
-                sidebar.classList.remove('-translate-x-full');
-                overlay.classList.remove('hidden');
-                document.body.classList.add('overflow-hidden');
-            } else {
-                sidebar.classList.add('-translate-x-full');
-                overlay.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
-            }
+            if (isClosed) { sidebar.classList.remove('-translate-x-full'); overlay.classList.remove('hidden'); document.body.classList.add('overflow-hidden'); } 
+            else { sidebar.classList.add('-translate-x-full'); overlay.classList.add('hidden'); document.body.classList.remove('overflow-hidden'); }
         };
+        btnMenu.onclick = toggleSidebar; overlay.onclick = toggleSidebar;
 
-        btnMenu.onclick = toggleSidebar;
-        overlay.onclick = toggleSidebar;
+        const navDoa = document.getElementById('nav-doa');
+        const submenuDoa = document.getElementById('submenu-doa');
+        const iconDoa = document.getElementById('icon-doa');
+        let isDoaOpen = false;
+        if (navDoa && submenuDoa && iconDoa) {
+            navDoa.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (!isDoaOpen) { submenuDoa.classList.remove('hidden'); submenuDoa.classList.add('flex'); iconDoa.classList.add('rotate-180'); isDoaOpen = true; } 
+                else { submenuDoa.classList.add('hidden'); submenuDoa.classList.remove('flex'); iconDoa.classList.remove('rotate-180'); isDoaOpen = false; }
+            });
+        }
 
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.onclick = () => {
+        document.getElementById('theme-toggle').onclick = () => {
             const isDark = document.documentElement.classList.toggle('dark');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         };
-    </script>
 
-    <Analytics />
+        const btnShare = document.getElementById('btn-share');
+        if (btnShare) {
+            btnShare.addEventListener('click', async () => {
+                try { if (navigator.share) await navigator.share({ title: 'Bilik Tafakur', text: 'Mari sejenak menenangkan batin bersama.', url: window.location.origin });
+                else { await navigator.clipboard.writeText(window.location.origin); alert('Link sampun disalin!'); } } catch (err) {}
+            });
+        }
+    </script>
 
     <style is:global>
         :root { --font-jakarta: 'Plus Jakarta Sans', sans-serif; --font-poppins: 'Poppins', sans-serif; }
         .font-jakarta { font-family: var(--font-jakarta); }
         .font-poppins { font-family: var(--font-poppins); }
         .font-serif { font-family: 'Amiri', serif; }
-
-        /* Mbusak Scrollbar supados luwih bersih */
         .no-scrollbar::-webkit-scrollbar { width: 0px; height: 0px; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.8; } }
-        .animate-pulse { animation: pulse 2.5s infinite; }
-        
         html { scroll-behavior: smooth; }
     </style>
 </body>

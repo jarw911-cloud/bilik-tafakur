@@ -3,7 +3,10 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  // PESHTEKAKE IKI PERSIS ALAMAT VERCEL-MU
-  site: 'https://bilik-tafakur.vercel.app', 
-  integrations: [tailwind(), sitemap()],
+  // GANTOS ALAMAT IKI NGANGGE DOMAIN ANYAR (TANPA TANDHA / ING MBURI)
+  site: 'https://bilik-tafakur.my.id', 
+  integrations: [
+    tailwind(), 
+    sitemap()
+  ],
 });

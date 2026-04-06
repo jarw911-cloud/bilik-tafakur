@@ -1,144 +1,126 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import { daftarDoa } from '../data/doa.js'; // Manggil saking gudang data
+import { daftarDoa } from '../data/doa.js';
 ---
 
-<MainLayout title="Doa Harian">
-    <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div class="text-center md:text-left">
-            <h1 id="page-title" class="text-3xl md:text-4xl font-poppins font-bold text-emerald-900 dark:text-emerald-400 mb-3 tracking-tight">Doa Harian</h1>
-            <p id="page-desc" class="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">
-                Klik ing salah sawijining judul doa kagem maos lafal Arab, Latin, saha artine.
-            </p>
+<MainLayout title="Kumpulan Doa Harian">
+    
+    <div id="single-doa-container" class="hidden max-w-2xl mx-auto py-4 animate-fade-in">
+        <div class="mb-8 flex items-center justify-between">
+            <a href="/doa" class="text-sm font-bold text-emerald-700 dark:text-emerald-400 hover:scale-105 transition-all flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                KEMBALI KE DAFTAR
+            </a>
+            <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Bilik Tafakur</span>
         </div>
 
-        <div class="flex justify-center md:justify-end items-center h-12">
-            <div id="search-container" class="flex items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-full p-1 transition-all duration-500 ease-in-out w-12 overflow-hidden shadow-sm hover:shadow-md">
-                <button id="btn-search-toggle" class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 rounded-full transition-colors outline-none" title="Pados Doa">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                </button>
-                <input type="text" id="input-search-doa" placeholder="Cari doa (misal: tidur, hujan)..." class="w-full bg-transparent border-none focus:outline-none text-sm md:text-base px-3 text-slate-700 dark:text-slate-200 opacity-0 pointer-events-none transition-opacity duration-300 font-jakarta" autocomplete="off" />
-                <button id="btn-search-close" class="hidden w-8 h-8 flex-shrink-0 flex items-center justify-center text-slate-400 hover:text-red-500 rounded-full transition-colors mr-1 outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
+        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
+            <div id="single-header" class="bg-emerald-50/50 dark:bg-emerald-900/20 px-8 py-6 border-b border-slate-100 dark:border-slate-800">
+                <h1 id="single-judul" class="text-2xl md:text-3xl font-poppins font-bold text-emerald-900 dark:text-emerald-400 text-center leading-tight"></h1>
+            </div>
+
+            <div class="p-8 md:p-10 space-y-10">
+                <div class="text-right">
+                    <p id="single-arab" class="font-serif text-3xl md:text-5xl text-slate-900 dark:text-slate-50 leading-[2.8] md:leading-[3]"></p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-l-4 border-emerald-500">
+                        <span class="text-[10px] uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-bold mb-2 block">Bacaan Latin:</span>
+                        <p id="single-latin" class="text-base md:text-lg text-slate-700 dark:text-slate-200 italic font-medium leading-relaxed"></p>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2 block">Artinya:</span>
+                        <p id="single-arti" class="text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/50 dark:bg-amber-900/10 p-6 md:p-8 rounded-3xl border border-amber-200/50 dark:border-amber-800/30 relative">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-xl">📜</span>
+                        <span class="text-[10px] uppercase tracking-widest text-amber-700 dark:text-amber-500 font-bold">Kisah & Sanad Hadits:</span>
+                    </div>
+                    <p id="single-narasi" class="text-sm md:text-base text-slate-700 dark:text-slate-300 leading-relaxed italic mb-4"></p>
+                    <div class="pt-4 border-t border-amber-200/30">
+                        <span id="single-sumber" class="text-[11px] font-bold text-amber-800 dark:text-amber-400 uppercase tracking-widest"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="no-result-msg" class="hidden text-center py-10 bg-emerald-50/50 dark:bg-slate-900/50 rounded-2xl border border-dashed border-emerald-200 dark:border-slate-700 mb-4">
-        <p class="text-slate-500 dark:text-slate-400 font-medium">Ngapunten, donga ingkang dipun-padosi dèrèng wonten.</p>
+    <div id="list-doa-container" class="">
+        <div class="mb-10 text-center md:text-left">
+            <h1 class="text-3xl md:text-4xl font-poppins font-bold text-emerald-900 dark:text-emerald-400 mb-3 tracking-tight">Kumpulan Doa</h1>
+            <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">Pilih doa untuk melihat bacaan lengkap beserta riwayat haditsnya.</p>
+        </div>
+
+        <div class="mb-10 relative max-w-xl">
+            <input type="text" id="search-doa" placeholder="Cari doa (misal: Tidur, Makan)..." class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl px-6 py-4 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 shadow-sm transition-all" />
+            <span class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 text-xl">🔍</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="doa-grid">
+            {daftarDoa.map((item, index) => (
+                <a href={`/doa?id=${index}`} class="doa-card group flex items-center justify-between p-5 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md hover:border-emerald-300 dark:hover:border-emerald-700 transition-all">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 flex items-center justify-center bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition-all text-sm">{index + 1}</div>
+                        <h3 class="doa-title font-bold text-slate-800 dark:text-slate-200 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">{item.judul}</h3>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 group-hover:text-emerald-500 transition-colors"><path d="m9 18 6-6-6-6"/></svg>
+                </a>
+            ))}
+        </div>
     </div>
 
-    <div class="space-y-4" id="doa-list-container">
-        {daftarDoa.map((doa, index) => (
-            <details id={`doa-card-${index}`} class="doa-item group bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-                <summary class="flex items-center justify-between cursor-pointer p-4 md:p-5 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
-                    <div class="flex items-start md:items-center gap-3 md:gap-4">
-                        <div class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0 mt-2 md:mt-0 shadow-sm border border-emerald-200 dark:border-emerald-700"></div>
-                        <h2 class="doa-title font-poppins font-semibold text-slate-800 dark:text-slate-200 text-[15px] md:text-lg group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors leading-snug">
-                            {doa.judul}
-                        </h2>
-                    </div>
-                    <div class="text-slate-400 group-open:rotate-180 transition-transform duration-300 flex-shrink-0 ml-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </div>
-                </summary>
-                
-                <div class="p-5 md:p-6 bg-slate-50 dark:bg-slate-950/50 border-t border-slate-100 dark:border-slate-800">
-                    <div class="mb-6">
-                        <p class="font-serif text-right text-2xl md:text-3xl text-emerald-950 dark:text-emerald-50 leading-[2.5] md:leading-[2.5]">{doa.arab}</p>
-                    </div>
-                    <div class="space-y-3 bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                        <div><span class="text-[10px] uppercase tracking-widest text-emerald-600 dark:text-emerald-500 font-bold mb-1 block">Latin:</span><p class="doa-latin text-sm text-slate-700 dark:text-slate-300 italic">"{doa.latin}"</p></div>
-                        <div class="h-px w-full bg-slate-100 dark:bg-slate-800 my-3"></div>
-                        <div><span class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold mb-1 block">Artinya:</span><p class="doa-arti text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{doa.arti}</p></div>
-                    </div>
-                </div>
-            </details>
-        ))}
-    </div>
-
-    <div id="btn-kembali" class="hidden mt-8 text-center">
-        <a href="/doa" class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 rounded-xl font-medium hover:bg-emerald-200 dark:hover:bg-emerald-800 transition-colors shadow-sm">
-            ← Tampilkan Semua Doa
-        </a>
-    </div>
-
-    <script is:inline>
+    <script is:inline define:vars={{ daftarDoa }}>
         document.addEventListener('DOMContentLoaded', () => {
-            const searchContainer = document.getElementById('search-container');
-            const btnSearchToggle = document.getElementById('btn-search-toggle');
-            const btnSearchClose = document.getElementById('btn-search-close');
-            const inputSearchDoa = document.getElementById('input-search-doa');
-            const doaItems = document.querySelectorAll('.doa-item');
-            const noResultMsg = document.getElementById('no-result-msg');
-            let isSearchOpen = false;
+            const listContainer = document.getElementById('list-doa-container');
+            const singleContainer = document.getElementById('single-doa-container');
+            
+            // Ambil ID saking URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
 
-            const toggleSearch = () => {
-                isSearchOpen = !isSearchOpen;
-                if (isSearchOpen) {
-                    searchContainer.classList.remove('w-12');
-                    searchContainer.classList.add('w-full', 'md:w-80');
-                    inputSearchDoa.classList.remove('opacity-0', 'pointer-events-none');
-                    inputSearchDoa.classList.add('opacity-100');
-                    btnSearchClose.classList.remove('hidden');
-                    inputSearchDoa.focus();
-                } else {
-                    searchContainer.classList.remove('w-full', 'md:w-80');
-                    searchContainer.classList.add('w-12');
-                    inputSearchDoa.classList.remove('opacity-100');
-                    inputSearchDoa.classList.add('opacity-0', 'pointer-events-none');
-                    btnSearchClose.classList.add('hidden');
-                    inputSearchDoa.value = '';
-                    filterDoa('');
-                }
-            };
+            if (id !== null && daftarDoa[id]) {
+                // --- MODE SINGLE DOA ---
+                const doa = daftarDoa[id];
+                
+                // Isi data menyang elemen
+                document.getElementById('single-judul').innerText = doa.judul;
+                document.getElementById('single-arab').innerText = doa.arab;
+                document.getElementById('single-latin').innerText = `"${doa.latin}"`;
+                document.getElementById('single-arti').innerText = doa.arti;
+                document.getElementById('single-narasi').innerText = doa.narasi || "Riwayat hadits lengkap sedang dalam penyusunan...";
+                document.getElementById('single-sumber').innerText = `SUMBER: ${doa.riwayat}`;
 
-            btnSearchToggle.addEventListener('click', toggleSearch);
-            btnSearchClose.addEventListener('click', toggleSearch);
+                // Tampilkan Single, Delidake List
+                listContainer.classList.add('hidden');
+                singleContainer.classList.remove('hidden');
+            } else {
+                // --- MODE LIST DOA ---
+                listContainer.classList.remove('hidden');
+                singleContainer.classList.add('hidden');
 
-            const filterDoa = (query) => {
-                const keyword = query.toLowerCase();
-                let foundCount = 0;
-
-                doaItems.forEach(item => {
-                    const judul = item.querySelector('.doa-title').innerText.toLowerCase();
-                    const latin = item.querySelector('.doa-latin').innerText.toLowerCase();
-                    const arti = item.querySelector('.doa-arti').innerText.toLowerCase();
-
-                    if (judul.includes(keyword) || latin.includes(keyword) || arti.includes(keyword)) {
-                        item.style.display = 'block';
-                        foundCount++;
-                    } else {
-                        item.style.display = 'none';
-                    }
+                // Fungsi Search
+                const searchInput = document.getElementById('search-doa');
+                const cards = document.querySelectorAll('.doa-card');
+                searchInput.addEventListener('input', (e) => {
+                    const term = e.target.value.toLowerCase();
+                    cards.forEach(card => {
+                        const title = card.querySelector('.doa-title').innerText.toLowerCase();
+                        card.style.display = title.includes(term) ? 'flex' : 'none';
+                    });
                 });
-
-                if (foundCount === 0 && keyword !== '') {
-                    noResultMsg.classList.remove('hidden');
-                } else {
-                    noResultMsg.classList.add('hidden');
-                }
-            };
-
-            inputSearchDoa.addEventListener('input', (e) => {
-                filterDoa(e.target.value);
-            });
-
-            const params = new URLSearchParams(window.location.search);
-            const id = params.get('id');
-
-            if (id !== null) {
-                doaItems.forEach(card => { card.style.display = 'none'; });
-                const targetDoa = document.getElementById('doa-card-' + id);
-                if (targetDoa) {
-                    targetDoa.style.display = 'block';
-                    targetDoa.setAttribute('open', 'true');
-                    document.getElementById('page-title').innerText = "Doa Pilihan";
-                    document.getElementById('page-desc').innerText = "Tafakur sejenak dengan doa pilihan Anda.";
-                    document.getElementById('btn-kembali').classList.remove('hidden');
-                }
             }
         });
     </script>
+
+    <style>
+        .animate-fade-in { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </MainLayout>

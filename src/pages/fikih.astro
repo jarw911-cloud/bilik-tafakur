@@ -72,44 +72,21 @@ import { daftarFikih } from '../data/fikih.js';
         ))}
     </div>
 
-    <script is:inline>
-        document.addEventListener('DOMContentLoaded', () => {
-            const searchContainer = document.getElementById('search-container');
-            const btnToggle = document.getElementById('btn-search-toggle');
-            const btnClose = document.getElementById('btn-search-close');
-            const input = document.getElementById('input-search-fikih');
-            const items = document.querySelectorAll('.fikih-item');
+   <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        const globalSearch = document.getElementById('global-search-input'); // Ambil input header
+        const items = document.querySelectorAll('.fikih-item');
 
-            const toggle = () => {
-                const isOpen = searchContainer.classList.contains('w-full');
-                if (!isOpen) {
-                    searchContainer.classList.replace('w-12', 'w-full');
-                    searchContainer.classList.add('md:w-80');
-                    input.classList.replace('opacity-0', 'opacity-100');
-                    input.classList.remove('pointer-events-none');
-                    btnClose.classList.remove('hidden');
-                    input.focus();
-                } else {
-                    searchContainer.classList.replace('w-full', 'w-12');
-                    searchContainer.classList.remove('md:w-80');
-                    input.classList.replace('opacity-100', 'opacity-0');
-                    input.classList.add('pointer-events-none');
-                    btnClose.classList.add('hidden');
-                    input.value = '';
-                    items.forEach(i => i.style.display = 'block');
-                }
-            };
-
-            btnToggle.onclick = toggle;
-            btnClose.onclick = toggle;
-
-            input.oninput = (e) => {
+        if (globalSearch) {
+            globalSearch.addEventListener('input', (e) => {
                 const term = e.target.value.toLowerCase();
                 items.forEach(item => {
                     const title = item.querySelector('.fikih-title').innerText.toLowerCase();
+                    // Saring tampilan adhedhasar judul
                     item.style.display = title.includes(term) ? 'block' : 'none';
                 });
-            };
-        });
-    </script>
+            });
+        }
+    });
+</script>
 </MainLayout>

@@ -12,6 +12,8 @@ const { title } = Astro.props;
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/logo-bilik.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://bilik-tafakur.vercel.app/" />
     <title>Bilik Tafakur | {title}</title>
     
     <link rel="manifest" href="/manifest.json" />
@@ -110,21 +112,36 @@ const { title } = Astro.props;
     </aside>
 
     <div class="flex-1 flex flex-col overflow-hidden w-full relative">
-        <header class="h-16 flex items-center justify-between px-4 md:px-8 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-[130] flex-shrink-0">
-            <div class="flex items-center gap-3">
-                <button id="btn-menu" class="p-2.5 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 rounded-2xl transition-all relative z-[140]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                </button>
-                <a href="/" class="flex items-center gap-2.5 hover:opacity-75 transition-opacity cursor-pointer flex-shrink-0">
-                    <img src="/logo-bilik.svg" alt="Logo" class="rounded-full shadow-sm object-cover" style="width: 32px; height: 32px; min-width: 32px; max-width: 32px;" />
-                    <span class="font-poppins font-bold text-lg md:text-xl text-emerald-900 dark:text-emerald-400 tracking-tight whitespace-nowrap">Bilik Tafakur</span>
-                </a>
-            </div>
-            <button id="theme-toggle" class="p-2.5 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:scale-110 transition-all shadow-sm">
-                <span class="hidden dark:block text-lg">☀️</span>
-                <span class="block dark:hidden text-lg text-slate-600">🌙</span>
+       <header class="h-16 flex items-center justify-between px-4 md:px-8 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-[130] flex-shrink-0">
+    <div class="flex items-center gap-3">
+        <button id="btn-menu" class="p-2.5 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 rounded-2xl transition-all relative z-[140]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <a href="/" class="flex items-center gap-2.5 hover:opacity-75 transition-opacity cursor-pointer flex-shrink-0">
+            <img src="/logo-bilik.svg" alt="Logo" class="rounded-full shadow-sm object-cover" style="width: 32px; height: 32px; min-width: 32px; max-width: 32px;" />
+            <span class="font-poppins font-bold text-lg md:text-xl text-emerald-900 dark:text-emerald-400 tracking-tight whitespace-nowrap hidden sm:block">Bilik Tafakur</span>
+        </a>
+    </div>
+
+    <div class="flex items-center gap-2">
+        <div id="global-search-container" class="flex items-center bg-slate-100 dark:bg-slate-800 rounded-full transition-all duration-500 w-10 overflow-hidden group">
+            <button id="btn-search-trigger" class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-emerald-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
-        </header>
+            <input 
+                type="text" 
+                id="global-search-input" 
+                placeholder="Cari..." 
+                class="bg-transparent border-none focus:outline-none text-sm w-0 opacity-0 transition-all duration-500 font-jakarta pr-4 dark:text-white"
+            />
+        </div>
+
+        <button id="theme-toggle" class="p-2.5 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:scale-110 transition-all shadow-sm">
+            <span class="hidden dark:block text-lg">☀️</span>
+            <span class="block dark:hidden text-lg text-slate-600">🌙</span>
+        </button>
+    </div>
+</header>
 
         <main class="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-950 no-scrollbar">
             <div class="max-w-4xl w-full mx-auto py-8 px-4 md:py-12">
@@ -209,6 +226,41 @@ const { title } = Astro.props;
                 } catch (err) {}
             });
         }
+        // LOGIKA SEARCH HEADER (Lensa Icon)
+    const searchContainer = document.getElementById('global-search-container');
+    const searchTrigger = document.getElementById('btn-search-trigger');
+    const searchInput = document.getElementById('global-search-input');
+
+    searchTrigger.addEventListener('click', () => {
+        const isOpen = searchContainer.classList.contains('w-48');
+        
+        if (!isOpen) {
+            // MBYAK (MBREKAK) SEARCH BAR
+            searchContainer.classList.replace('w-10', 'w-48');
+            searchContainer.classList.add('md:w-64', 'px-1');
+            searchInput.classList.replace('w-0', 'w-full');
+            searchInput.classList.replace('opacity-0', 'opacity-100');
+            searchInput.focus();
+        } else {
+            // NUTUP SEARCH BAR
+            searchContainer.classList.replace('w-48', 'w-10');
+            searchContainer.classList.remove('md:w-64', 'px-1');
+            searchInput.classList.replace('w-full', 'w-0');
+            searchInput.classList.replace('opacity-100', 'opacity-0');
+            searchInput.value = ''; // Ngresiki input
+            
+            // Nek nutup, otomatis ngilangke filter ing halaman (opsional)
+            const event = new Event('input');
+            searchInput.dispatchEvent(event);
+        }
+    });
+
+    // Menawi klik ing jabone search bar, otomatis nutup
+    document.addEventListener('click', (e) => {
+        if (!searchContainer.contains(e.target) && searchContainer.classList.contains('w-48')) {
+            searchTrigger.click();
+        }
+    });
     </script>
 
     <style is:global>

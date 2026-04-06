@@ -73,48 +73,71 @@ import { daftarDoa } from '../data/doa.js';
         </div>
     </div>
 
-    <script is:inline define:vars={{ daftarDoa }}>
-        document.addEventListener('DOMContentLoaded', () => {
-            const listContainer = document.getElementById('list-doa-container');
-            const singleContainer = document.getElementById('single-doa-container');
+  <script is:inline define:vars={{ daftarDoa }}>
+    document.addEventListener('DOMContentLoaded', () => {
+        const listContainer = document.getElementById('list-doa-container');
+        const singleContainer = document.getElementById('single-doa-container');
+        const globalSearch = document.getElementById('global-search-input'); // Lensa Header
+        const localSearch = document.getElementById('search-doa'); // Search Halaman
+        const cards = document.querySelectorAll('.doa-card');
+        
+        // 1. LOGIKA URL ID (Cek menapa mbukak donga siji)
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        if (id !== null && daftarDoa[id]) {
+            const doa = daftarDoa[id];
+            document.getElementById('single-judul').innerText = doa.judul;
+            document.getElementById('single-arab').innerText = doa.arab;
+            document.getElementById('single-latin').innerText = `"${doa.latin}"`;
+            document.getElementById('single-arti').innerText = doa.arti;
+            document.getElementById('single-narasi').innerText = doa.narasi;
+            document.getElementById('single-sumber').innerText = `SUMBER: ${doa.riwayat}`;
             
-            // Ambil ID saking URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const id = urlParams.get('id');
+            listContainer.classList.add('hidden');
+            singleContainer.classList.remove('hidden');
+        }
 
-            if (id !== null && daftarDoa[id]) {
-                // --- MODE SINGLE DOA ---
-                const doa = daftarDoa[id];
-                
-                // Isi data menyang elemen
-                document.getElementById('single-judul').innerText = doa.judul;
-                document.getElementById('single-arab').innerText = doa.arab;
-                document.getElementById('single-latin').innerText = `"${doa.latin}"`;
-                document.getElementById('single-arti').innerText = doa.arti;
-                document.getElementById('single-narasi').innerText = doa.narasi || "Riwayat hadits lengkap sedang dalam penyusunan...";
-                document.getElementById('single-sumber').innerText = `SUMBER: ${doa.riwayat}`;
+        // 2. FUNGSI PENYARING (FILTER)
+        const filterDoa = (term) => {
+            let found = 0;
+            cards.forEach(card => {
+                const title = card.querySelector('.doa-title').innerText.toLowerCase();
+                if (title.includes(term.toLowerCase())) {
+                    card.style.display = 'flex';
+                    found++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
 
-                // Tampilkan Single, Delidake List
-                listContainer.classList.add('hidden');
-                singleContainer.classList.remove('hidden');
-            } else {
-                // --- MODE LIST DOA ---
-                listContainer.classList.remove('hidden');
+            // MEKSA DHAPTAR MEDAL: Menawi nembe ngetik, Single View ilang, List medal
+            if (term.length > 0) {
                 singleContainer.classList.add('hidden');
-
-                // Fungsi Search
-                const searchInput = document.getElementById('search-doa');
-                const cards = document.querySelectorAll('.doa-card');
-                searchInput.addEventListener('input', (e) => {
-                    const term = e.target.value.toLowerCase();
-                    cards.forEach(card => {
-                        const title = card.querySelector('.doa-title').innerText.toLowerCase();
-                        card.style.display = title.includes(term) ? 'flex' : 'none';
-                    });
-                });
+                listContainer.classList.remove('hidden');
+                // Busak ID ing URL supados mboten bingung (tanpa reload)
+                window.history.replaceState({}, '', '/doa');
             }
-        });
-    </script>
+        };
+
+        // 3. NYAMBUNGKE LENSA HEADER & SEARCH HALAMAN
+        if (globalSearch) {
+            globalSearch.addEventListener('input', (e) => {
+                filterDoa(e.target.value);
+                // Menawi ngetik ing lensa, input ing halaman melu keganti isine
+                if(localSearch) localSearch.value = e.target.value;
+            });
+        }
+
+        if (localSearch) {
+            localSearch.addEventListener('input', (e) => {
+                filterDoa(e.target.value);
+                // Menawi ngetik ing halaman, lensa ing header melu keganti
+                if(globalSearch) globalSearch.value = e.target.value;
+            });
+        }
+    });
+</script>
 
     <style>
         .animate-fade-in { animation: fadeIn 0.4s ease-out; }

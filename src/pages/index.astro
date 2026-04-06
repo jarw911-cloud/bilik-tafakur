@@ -123,155 +123,48 @@ const randomQuote = motivasi[Math.floor(Math.random() * motivasi.length)];
                 }
             } catch (error) { container.innerHTML = '<p class="text-center w-full col-span-5 text-sm text-red-500">Gagal memuat jadwal sholat.</p>'; }
 
-            // 3. DATABASE NASIHAT MASIF (Diperbanyak)
+            // 3. LOGIKA CHAT SALING BALAS
             const inputCurhat = document.getElementById('curhat-input');
             const btnSubmit = document.getElementById('btn-submit-curhat');
             const chatHistory = document.getElementById('chat-history');
 
-            const resepNasihat = {
-                lelah: [
-                    { k: "Istirahatlah sejenak, dunia tidak akan hancur karena kau merebahkan badan.", s: "Nasihat" },
-                    { k: "Lelahmu hari ini adalah bekal senyummu di akhirat kelak.", s: "Bilik Tafakur" },
-                    { k: "Jangan memikul beban esok hari pada pundak hari ini.", s: "Pepatah Arab" },
-                    { k: "Allah tidak membebani seseorang melainkan sesuai dengan kesanggupannya.", s: "QS. Al-Baqarah: 286" },
-                    { k: "Setiap tetes keringat lelahmu dalam mencari kebaikan akan bernilai pahala.", s: "Hadits" },
-                    { k: "Tidurlah, tubuhmu juga memiliki hak atas dirimu.", s: "HR. Bukhari" },
-                    { k: "Lelah dalam ketaatan lebih manis daripada segar dalam kemaksiatan.", s: "Ulama Salaf" },
-                    { k: "Orang hebat tidak dihasilkan dari kemudahan, kesenangan, dan kenyamanan.", s: "Nasihat" },
-                    { k: "Rasa lelah ini hanya mampir, sabarlah sebentar.", s: "Bilik Tafakur" },
-                    { k: "Jadikan lelahmu sebagai lillah (karena Allah), maka ia akan menjadi alhamdulillah.", s: "Nasihat Bijak" },
-                    { k: "Beban ini berat, tapi pundakmu diciptakan cukup kuat untuk memikulnya.", s: "Bilik Tafakur" },
-                    { k: "Berhentilah sejenak, bukan untuk menyerah, tapi untuk menghela napas panjang.", s: "Nasihat" },
-                    { k: "Pahala orang yang bersabar di kala lelah tanpa keluh kesah itu tanpa batas.", s: "QS. Az-Zumar: 10" },
-                    { k: "Jika dunia membuatmu lelah, jadikan sholat sebagai istirahatmu.", s: "Hadits" },
-                    { k: "Tidak ada lelah yang sia-sia di mata Allah.", s: "Bilik Tafakur" },
-                    { k: "Hanya di surga kelak tidak ada kata lelah. Bertahanlah hingga ke sana.", s: "Nasihat Sufi" },
-                    { k: "Keringat yang menetes karena lelah mencari rezeki halal akan memadamkan api neraka.", s: "Atsar" },
-                    { k: "Semoga lelahmu menjadi pelebur dosa-dosamu yang lalu.", s: "HR. Muslim" },
-                    { k: "Bawalah lelahmu di atas sajadah, biarkan Allah yang mendekapnya.", s: "Bilik Tafakur" },
-                    { k: "Terkadang yang kau butuhkan hanyalah tidur yang nyenyak dengan hati yang memaafkan.", s: "Nasihat" },
-                    { k: "Pejamkan mata, serahkan sisa urusan hari ini pada Allah.", s: "Bilik Tafakur" },
-                    { k: "Kelelahan yang paling menyiksa adalah lelah batin. Banyak-banyaklah berdzikir.", s: "Nasihat" },
-                    { k: "Jangan biarkan lelah memadamkan cahaya ikhlas di hatimu.", s: "Nasihat" },
-                    { k: "Esok hari matahari akan terbit lagi, begitu pula harapan baru untukmu.", s: "Nasihat Bijak" },
-                    { k: "Istirahat terindah adalah saat kita meletakkan dunia dari pikiran kita.", s: "Bilik Tafakur" }
-                ],
-                sedih: [
-                    { k: "Jangan bersedih, sesungguhnya Allah bersama kita.", s: "QS. At-Taubah: 40" },
-                    { k: "Kesedihanmu adalah cara Allah mengosongkan hatimu agar bisa diisi dengan kebahagiaan baru.", s: "Bilik Tafakur" },
-                    { k: "Menangislah, air mata yang jatuh karena kelemahan di hadapan-Nya adalah doa.", s: "Nasihat Sufi" },
-                    { k: "Dunia memang tempatnya ujian, wajar jika kadang hatimu hancur. Bertahanlah.", s: "Nasihat" },
-                    { k: "Barangsiapa yang Allah kehendaki kebaikan baginya, Dia akan mengujinya.", s: "HR. Bukhari" },
-                    { k: "Kesedihan yang mendekatkanmu kepada Allah lebih baik dari kebahagiaan yang melalaikanmu.", s: "Ibnu Qayyim" },
-                    { k: "Hanya kepada Allah aku mengadukan kesusahan dan kesedihanku.", s: "QS. Yusuf: 86" },
-                    { k: "Boleh jadi kamu membenci sesuatu, padahal ia amat baik bagimu.", s: "QS. Al-Baqarah: 216" },
-                    { k: "Tidak ada penderitaan yang kekal di dunia ini, begitu pun kesedihanmu.", s: "Imam Syafi'i" },
-                    { k: "Bawalah lukamu kepada-Nya, Dia adalah sebaik-baik penyembuh.", s: "Bilik Tafakur" },
-                    { k: "Kesedihan akan luntur oleh waktu dan doa yang tiada putus.", s: "Nasihat Bijak" },
-                    { k: "Langit tak selamanya mendung, matahari akan kembali tersenyum untukmu.", s: "Nasihat" },
-                    { k: "Terkadang hati harus patah agar cahaya hidayah bisa masuk melaluinya.", s: "Jalaluddin Rumi" },
-                    { k: "Sesungguhnya bersama kesulitan ada kemudahan.", s: "QS. Al-Insyirah: 6" },
-                    { k: "Cukupkan Allah sebagai penawar rindu dan pelipur lara.", s: "Nasihat" },
-                    { k: "Orang yang paling berat ujiannya adalah para Nabi, kemudian yang setelahnya.", s: "HR. Tirmidzi" },
-                    { k: "Jangan biarkan kesedihan membuatmu lupa nikmat yang masih tersisa.", s: "Umar bin Khattab" },
-                    { k: "Tarik napas panjang, dan katakan 'Alhamdulillah ala kulli hal'.", s: "Hadits" },
-                    { k: "Air matamu mahal, jangan habiskan untuk menangisi dunia.", s: "Nasihat Ulama" },
-                    { k: "Doa di kala sedih dan terjepit adalah anak panah yang langsung menembus langit.", s: "Bilik Tafakur" },
-                    { k: "Semua akan berlalu. Yang tersisa hanyalah bagaimana sikapmu saat melewatinya.", s: "Ali bin Abi Thalib" },
-                    { k: "Berikan ruang pada dirimu untuk merasa sedih, tapi jangan berikan izin untuk menyerah.", s: "Nasihat" },
-                    { k: "Kesedihan ini adalah tamu, jamulah dengan sabar hingga ia pamit.", s: "Bilik Tafakur" },
-                    { k: "Pahala kesabaranmu hari ini sedang ditabung untuk memberatkan timbanganmu kelak.", s: "Hadits" },
-                    { k: "Peluklah dirimu sendiri dengan doa, Allah senantiasa memelukmu dengan rahmat-Nya.", s: "Nasihat" }
-                ],
-                marah: [
-                    { k: "Orang yang kuat bukanlah yang jago bergulat, tapi yang bisa menahan amarahnya.", s: "HR. Bukhari" },
-                    { k: "Jika marah saat berdiri, duduklah. Jika masih marah, berbaringlah.", s: "HR. Abu Dawud" },
-                    { k: "Amarah bagaikan api, ia akan membakar kebaikanmu sendiri jika dibiarkan.", s: "Nasihat Bijak" },
-                    { k: "Maafkanlah mereka, itu lebih menenangkan batinmu daripada menyimpan dendam.", s: "Bilik Tafakur" },
-                    { k: "Jadilah pemaaf dan suruhlah orang mengerjakan yang ma'ruf.", s: "QS. Al-A'raf: 199" },
-                    { k: "Marah itu dari setan, dan setan dari api. Padamkan dengan wudhu.", s: "HR. Abu Dawud" },
-                    { k: "Diamlah ketika engkau sedang marah.", s: "HR. Ahmad" },
-                    { k: "Menyimpan marah ibarat meminum racun tapi berharap orang lain yang mati.", s: "Pepatah" },
-                    { k: "Berlapang dadalah, tak semua hal harus berjalan sesuai kehendakmu.", s: "Nasihat" },
-                    { k: "Orang yang mulia adalah yang mudah memaafkan sebelum diminta.", s: "Nasihat Ulama" },
-                    { k: "Kalahkan amarahmu dengan diam, kalahkan kebodohan dengan ilmu.", s: "Imam Syafi'i" },
-                    { k: "Siapa yang menahan amarah padahal ia mampu melampiaskannya, Allah penuhi hatinya dengan kedamaian.", s: "HR. Abu Dawud" },
-                    { k: "Mengalah bukan berarti kalah, tapi mengalahkan ego sendiri.", s: "Bilik Tafakur" },
-                    { k: "Lepaskan beban dendam di hatimu, kau tak pantas membawa sampah di pikiranmu.", s: "Nasihat" },
-                    { k: "Memaafkan adalah ciri jiwa yang merdeka.", s: "Bilik Tafakur" },
-                    { k: "Jangan mengambil keputusan apa pun saat engkau sedang marah.", s: "Ali bin Abi Thalib" },
-                    { k: "Tarik napas, ucapkan Ta'awudz. Lindungi dirimu dari bisikan setan yang mengipas amarah.", s: "Nasihat" },
-                    { k: "Balaslah keburukan dengan cara yang lebih baik.", s: "QS. Fushshilat: 34" },
-                    { k: "Ketenangan akan kembali saat kau menyadari bahwa Allah yang Maha Menghakimi.", s: "Nasihat" },
-                    { k: "Semua hal di dunia ini terlalu sepele untuk merusak kedamaian hatimu.", s: "Bilik Tafakur" },
-                    { k: "Doakan kebaikan bagi mereka yang memancing emosimu, hatimu akan lapang seketika.", s: "Nasihat Ulama" },
-                    { k: "Jangan biarkan kata-kata kasar keluar dari lisanmu, sebab ia tak bisa ditarik kembali.", s: "Nasihat" },
-                    { k: "Jadikan amarahmu sebagai energi untuk memperbaiki diri, bukan merusak keadaan.", s: "Nasihat Bijak" },
-                    { k: "Orang yang paling sabar adalah yang bisa tersenyum di puncak amarahnya.", s: "Bilik Tafakur" },
-                    { k: "Tinggalkan perdebatan meskipun engkau di pihak yang benar.", s: "HR. Abu Dawud" }
-                ],
-                cemas: [
-                    { k: "Apa yang sudah ditakdirkan untukmu, takkan pernah melewatkanmu.", s: "Umar bin Khattab" },
-                    { k: "Jangan cemas, skenario Allah selalu lebih indah dari rencanamu.", s: "Bilik Tafakur" },
-                    { k: "Cukuplah Allah sebagai penolong kami, dan Dia sebaik-baik pelindung.", s: "QS. Ali Imran: 173" },
-                    { k: "Hari esok adalah rahasia Allah, tugasmu hanya berusaha sebaik mungkin hari ini.", s: "Nasihat" },
-                    { k: "Ketakutanmu hanyalah ilusi pikiran. Serahkan segalanya pada Yang Maha Mengatur.", s: "Nasihat" },
-                    { k: "Tawakkal adalah menyerahkan kemudi hidupmu pada sebaik-baik Sutradara.", s: "Bilik Tafakur" },
-                    { k: "Jika Allah bersamamu, lalu apa yang kau takutkan?", s: "Ibnu Qayyim" },
-                    { k: "Hati menjadi gelisah karena terlalu memikirkan hal yang belum terjadi.", s: "Ali bin Abi Thalib" },
-                    { k: "Burung bangun di pagi hari tanpa tahu di mana rezekinya, tapi Allah selalu mengenyangkannya.", s: "HR. Tirmidzi" },
-                    { k: "Fokuslah pada hari ini. Jika besok tiba, Allah akan memberikan kekuatan yang baru.", s: "Nasihat Bijak" },
-                    { k: "Lepaskan hal-hal yang tidak bisa kau kontrol, itu bukan urusanmu.", s: "Bilik Tafakur" },
-                    { k: "Kecemasan tidak mengubah masa depan, ia hanya merampas kedamaian masa kinimu.", s: "Nasihat" },
-                    { k: "Beristighfarlah, kecemasan seringkali lahir dari dosa yang menumpuk.", s: "Hasan Al-Bashri" },
-                    { k: "Takdir Allah selalu baik, meski kadang dibungkus dengan ujian yang tidak kau sukai.", s: "Nasihat Ulama" },
-                    { k: "Sesungguhnya hanya dengan mengingat Allah hati menjadi tenteram.", s: "QS. Ar-Ra'd: 28" },
-                    { k: "Tidur yang lelap adalah obat pertama untuk pikiran yang sedang kacau.", s: "Nasihat" },
-                    { k: "Kau sudah berhasil melewati 100% masa-masa sulitmu di masa lalu. Kali ini pun kau akan selamat.", s: "Bilik Tafakur" },
-                    { k: "Gelisahmu pertanda engkau butuh sajadah.", s: "Bilik Tafakur" },
-                    { k: "Jangan biarkan *overthinking* merampas rasa syukur atas nikmat yang ada di depan mata.", s: "Nasihat" },
-                    { k: "Dunia ini diurus oleh Dzat yang tidak pernah tidur, lantas mengapa kau harus begadang karena cemas?", s: "Nasihat Bijak" },
-                    { k: "Ketidakpastian adalah cara Allah menyuruhmu untuk bertawakkal.", s: "Bilik Tafakur" },
-                    { k: "Katakan pada kecemasanmu: Aku punya Tuhan yang Maha Besar.", s: "Nasihat" },
-                    { k: "Hentikan sejenak roda pikiranmu. Tarik napas. Allah tidak pernah meninggalkanmu.", s: "Nasihat" },
-                    { k: "Rezekimu tidak akan tertukar dengan rezeki orang lain, tenangkan hatimu.", s: "Hasan Al-Bashri" },
-                    { k: "Percayalah, di ujung jalan yang tak terlihat ini, ada kemudahan yang menanti.", s: "Bilik Tafakur" }
-                ],
-                umum: [
-                    { k: "Hati yang tenang adalah rezeki yang jarang disadari.", s: "Bilik Tafakur" },
-                    { k: "Maka sesungguhnya bersama kesulitan ada kemudahan.", s: "QS. Al-Insyirah: 5" },
-                    { k: "Bersyukurlah, karena syukur adalah magnet keajaiban.", s: "Bilik Tafakur" },
-                    { k: "Apapun yang terjadi hari ini, jadikan sebagai ladang pahala.", s: "Nasihat" },
-                    { k: "Hati yang senantiasa berdzikir takkan mudah goyah oleh badai dunia.", s: "Nasihat" },
-                    { k: "Tersenyumlah, Allah sedang mempersiapkan hadiah terbaik untuk kesabaranmu.", s: "Bilik Tafakur" },
-                    { k: "Jangan meremehkan kebaikan sekecil apa pun.", s: "HR. Muslim" },
-                    { k: "Sebaik-baik manusia adalah yang paling bermanfaat bagi orang lain.", s: "HR. Ath-Thabrani" },
-                    { k: "Ikhlaslah dalam segala hal, niscaya kau takkan mudah lelah.", s: "Nasihat Ulama" },
-                    { k: "Dunia hanyalah bayangan, kejar akhirat maka dunia akan mengikutimu.", s: "Ibnu Qayyim" },
-                    { k: "Semoga hari esok lebih baik dari hari ini.", s: "Doa" },
-                    { k: "Berbuat baiklah walau orang tak melihat, sebab Allah selalu melihat.", s: "Nasihat" },
-                    { k: "Kejujuran adalah perhiasan jiwa yang paling mahal.", s: "Ali bin Abi Thalib" },
-                    { k: "Sabar dan Sholat adalah penolong sejati.", s: "QS. Al-Baqarah: 45" },
-                    { k: "Sedekah akan menghapus dosa sebagaimana air memadamkan api.", s: "HR. Tirmidzi" },
-                    { k: "Jagalah lisan, karena ia bisa menembus apa yang tak tertembus oleh pedang.", s: "Imam Syafi'i" },
-                    { k: "Mencintai karena Allah adalah ikatan iman yang paling kuat.", s: "HR. Ahmad" },
-                    { k: "Banyak mengingat kematian akan menghidupkan hati.", s: "Nasihat Ulama" },
-                    { k: "Bekerjalah untuk duniamu seakan kau hidup selamanya, beribadahlah seakan kau mati esok.", s: "Atsar" },
-                    { k: "Kebaikan yang paling cepat balasannya adalah menyambung tali silaturahmi.", s: "HR. Abu Dawud" },
-                    { k: "Semua masalah menjadi ringan jika diletakkan di bawah lututmu saat sujud.", s: "Bilik Tafakur" },
-                    { k: "Jangan biarkan hari berlalu tanpa menambah amal kebaikan.", s: "Nasihat" },
-                    { k: "Maafkan mereka yang bersalah padamu, agar Allah mengampuni kesalahanmu.", s: "Nasihat" },
-                    { k: "Setiap tarikan napas adalah kesempatan baru untuk bertaubat.", s: "Nasihat Bijak" },
-                    { k: "Berprasangka baiklah kepada Allah dalam segala hal yang kau temui.", s: "HR. Muslim" }
-                ]
+            const resepNalar = {
+                kerjaan: {
+                    lelah: { k: "Istirahatlah, pekerjaanmu tidak akan pernah selesai jika kau terus mengejarnya. Bekerjalah secukupnya, beribadahlah sepenuh hati.", s: "Nalar Teras" },
+                    sedih: { k: "Mungkin usahamu saat ini tidak dihargai, tapi Allah mencatat setiap tetes keringatmu sebagai ibadah.", s: "Bilik Tafakur" },
+                    marah: { k: "Rekan atau atasan yang buruk adalah ujian kesabaran. Jangan biarkan mereka merusak pahalamu dengan amarah.", s: "Nasihat" },
+                    cemas: { k: "Rezekimu tidak akan tertukar. Pekerjaan bisa hilang, tapi Allah tidak akan pernah memutuskan rezekimu.", s: "Stoikisme Islami" },
+                    umum:  { k: "Tawakal itu setelah berusaha maksimal. Sisanya, biarkan Allah yang mengatur skenarionya.", s: "Nasihat Bijak" }
+                },
+                keuangan: {
+                    lelah: { k: "Mencari harta memang melelahkan. Tapi ingat, yang kau butuhkan hanya cukup untuk hari ini, bukan untuk seratus tahun ke depan.", s: "Nalar Teras" },
+                    sedih: { k: "Dompet yang kosong lebih baik daripada hati yang kosong. Sabarlah, rezeki Allah Maha Luas.", s: "Nasihat" },
+                    marah: { k: "Merasa marah karena tertipu atau kehilangan? Ikhlaskan. Harta yang hilang akan diganti Allah dengan yang lebih baik.", s: "Bilik Tafakur" },
+                    cemas: { k: "Burung di langit tidak punya tabungan, tapi Allah selalu mengenyangkannya. Mengapa engkau cemas akan hari esok?", s: "HR. Tirmidzi" },
+                    umum:  { k: "Kekayaan sejati bukanlah banyaknya harta, melainkan kekayaan jiwa (rasa cukup).", s: "Hadits" }
+                },
+                asmara: {
+                    lelah: { k: "Lelah karena urusan hati? Lepaskanlah. Hati yang kau paksa menggenggam duri hanya akan berdarah.", s: "Nalar Teras" },
+                    sedih: { k: "Orang yang tepat tidak akan pernah membuatmu mengemis. Kembalilah pada-Nya yang tak pernah meninggalkanmu.", s: "Bilik Tafakur" },
+                    marah: { k: "Jangan biarkan masalah seseorang membuatmu menjadi pendendam. Maafkan, agar hatimu merdeka.", s: "Nasihat" },
+                    cemas: { k: "Jodoh & keluarga sudah diatur oleh Dzat Yang Maha Mengetahui. Tenangkan hatimu dengan sholat.", s: "Stoikisme Islami" },
+                    umum:  { k: "Cintai makhluk sekadarnya, karena ia bisa pergi. Cintai Allah sepenuhnya, karena Dia kekal abadi.", s: "Nasihat" }
+                },
+                lainnya: {
+                    lelah: { k: "Dunia memang tempatnya capek. Istirahatlah di atas sajadahmu malam ini.", s: "Bilik Tafakur" },
+                    sedih: { k: "Kesedihan ini hanya tamu. Jamulah dengan sabar hingga ia pamit dengan sendirinya.", s: "Nalar Teras" },
+                    marah: { k: "Tarik napas, ucapkan istighfar. Amarah hanya akan membakar akal sehatmu.", s: "Nasihat" },
+                    cemas: { k: "Takdir Allah selalu baik, meski kadang dibungkus dengan ujian yang tidak kau sukai.", s: "Stoikisme Islami" },
+                    umum:  { k: "Apapun yang terjadi, katakan 'Alhamdulillah ala kulli hal' (Segala puji bagi Allah atas setiap keadaan).", s: "Sunnah" }
+                }
             };
 
             const deteksiEmosi = (teks) => {
                 const kata = teks.toLowerCase();
-                if (kata.includes('cape') || kata.includes('lelah') || kata.includes('berat') || kata.includes('mumet') || kata.includes('nyerah') || kata.includes('pusing') || kata.includes('ngantuk')) return 'lelah';
-                if (kata.includes('sedih') || kata.includes('kecewa') || kata.includes('hancur') || kata.includes('nangis') || kata.includes('sakit') || kata.includes('patah')) return 'sedih';
-                if (kata.includes('marah') || kata.includes('kesal') || kata.includes('emosi') || kata.includes('benci') || kata.includes('mangkel') || kata.includes('bego')) return 'marah';
-                if (kata.includes('takut') || kata.includes('khawatir') || kata.includes('bingung') || kata.includes('cemas') || kata.includes('overthink') || kata.includes('gelisah') || kata.includes('deg')) return 'cemas';
+                if (kata.includes('cape') || kata.includes('lelah') || kata.includes('berat') || kata.includes('mumet') || kata.includes('ngantuk')) return 'lelah';
+                if (kata.includes('sedih') || kata.includes('kecewa') || kata.includes('hancur') || kata.includes('nangis') || kata.includes('sakit')) return 'sedih';
+                if (kata.includes('marah') || kata.includes('kesal') || kata.includes('emosi') || kata.includes('benci') || kata.includes('mangkel')) return 'marah';
+                if (kata.includes('takut') || kata.includes('khawatir') || kata.includes('bingung') || kata.includes('cemas') || kata.includes('overthink') || kata.includes('gelisah')) return 'cemas';
                 return 'umum';
             };
 
@@ -282,61 +175,86 @@ const randomQuote = motivasi[Math.floor(Math.random() * motivasi.length)];
                 // Kunci input agar cuma bisa sekali
                 inputCurhat.disabled = true;
                 btnSubmit.disabled = true;
+                inputCurhat.placeholder = "Sesi Nalar Teras sampun diproses.";
 
-                // Balon Chat User
-                const userBubble = `
+                // 1. Tampilkan Balon User
+                chatHistory.insertAdjacentHTML('beforeend', `
                     <div class="flex justify-end fade-in-up">
                         <div class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 px-6 py-4 rounded-3xl rounded-br-sm max-w-[85%] text-sm md:text-base border border-slate-200 dark:border-slate-700 shadow-sm leading-relaxed">
                             "${teks}"
                         </div>
                     </div>
-                `;
+                `);
 
-                // Deteksi Emosi & MESIN PENGACAK 5 NASIHAT
-                const kategori = deteksiEmosi(teks);
-                
-                // Salin array, lalu acak urutannya (Shuffle), ambil 5 yang paling depan
-                const semuaNasihat = [...resepNasihat[kategori]];
-                const nasihatAcak = semuaNasihat.sort(() => 0.5 - Math.random()).slice(0, 5);
+                const emosi = deteksiEmosi(teks);
 
-                let aiQuotes = '';
-                nasihatAcak.forEach(n => {
-                    aiQuotes += `
-                        <div class="mb-4 p-5 bg-white dark:bg-slate-900 rounded-2xl border border-emerald-100 dark:border-emerald-900/50 shadow-sm hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors">
-                            <p class="text-base md:text-lg font-serif text-slate-800 dark:text-slate-200 leading-relaxed">"${n.k}"</p>
-                            <div class="flex items-center gap-3 mt-4">
-                                <div class="w-6 h-[1px] bg-emerald-500"></div>
-                                <p class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">${n.s}</p>
-                            </div>
-                        </div>
-                    `;
-                });
-
-                // Balon Chat AI
-                const aiBubble = `
-                    <div class="flex justify-start mt-2 fade-in-up" style="animation-delay: 0.3s; animation-fill-mode: both;">
-                        <div class="bg-emerald-50/50 dark:bg-emerald-900/10 w-full px-4 md:px-8 py-8 rounded-3xl border border-emerald-100 dark:border-emerald-900/30">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="text-2xl">✨</span>
-                                <span class="text-sm font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-widest">Resep Penyejuk Batin</span>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                ${aiQuotes}
-                            </div>
-                        </div>
-                    </div>
-                `;
-
-                chatHistory.innerHTML = userBubble + aiBubble;
-
-                // Bersihkan dan ubah placeholder
-                inputCurhat.value = '';
-                inputCurhat.placeholder = "Semoga hatimu kembali tenang. (Sesi ditutup)";
-
-                // Scroll mulus
+                // 2. Balasan Bot + Tombol Konfirmasi (Muncul setelah delay)
                 setTimeout(() => {
+                    let tanya = "Kula ngertos rasane. Sabar nggih. Menawi angsal ngertos, napa ingkang ndamel beban niki?";
+                    if(emosi === 'sedih') tanya = "Nangis mboten napa-napa, iku tandhane manungsa. Napa ingkang ndamel Panjenengan sedih?";
+                    if(emosi === 'lelah') tanya = "Pancen donya niki panggenan kagem capek. Ingkang ndamel lelah pikiran niku babagan menapa?";
+                    if(emosi === 'marah') tanya = "Kula mangertos rasane mangkel. Sinten utawi napa ingkang mancing emosi Panjenengan dinten niki?";
+                    if(emosi === 'cemas') tanya = "Tarik napas panjang rumiyin. Napa ingkang dipun-kuwatiraken badhe kedadosan?";
+
+                    const botId = 'bot-' + Date.now();
+                    chatHistory.insertAdjacentHTML('beforeend', `
+                        <div class="flex justify-start mt-2 fade-in-up" id="${botId}">
+                            <div class="bg-emerald-50/50 dark:bg-emerald-900/10 w-full px-4 md:px-8 py-6 rounded-3xl border border-emerald-100 dark:border-emerald-900/30">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span class="text-2xl">🌿</span>
+                                    <span class="text-sm font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-widest">Nalar Teras</span>
+                                </div>
+                                <p class="text-slate-700 dark:text-slate-300 mb-5 leading-relaxed">${tanya}</p>
+                                <div class="flex flex-wrap gap-2" id="opsi-${botId}">
+                                    <button class="opsi-btn px-4 py-2 bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white transition-colors shadow-sm" data-akar="kerjaan">💼 Pekerjaan</button>
+                                    <button class="opsi-btn px-4 py-2 bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white transition-colors shadow-sm" data-akar="keuangan">💰 Keuangan</button>
+                                    <button class="opsi-btn px-4 py-2 bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white transition-colors shadow-sm" data-akar="asmara">💔 Asmara/Keluarga</button>
+                                    <button class="opsi-btn px-4 py-2 bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white transition-colors shadow-sm" data-akar="lainnya">🌫️ Liyane</button>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+
                     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                }, 100);
+
+                    // 3. Logika pas tombol diklik
+                    document.querySelectorAll(`#opsi-${botId} .opsi-btn`).forEach(btn => {
+                        btn.onclick = () => {
+                            const akar = btn.getAttribute('data-akar');
+                            const label = btn.innerText;
+                            
+                            // Ilangi tombol sakwise diklik
+                            document.getElementById(`opsi-${botId}`).innerHTML = '';
+
+                            // Tampilake Balon User (pilihane)
+                            chatHistory.insertAdjacentHTML('beforeend', `
+                                <div class="flex justify-end mt-4 fade-in-up">
+                                    <div class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 px-6 py-4 rounded-3xl rounded-br-sm max-w-[85%] text-sm md:text-base border border-slate-200 dark:border-slate-700 shadow-sm">
+                                        ${label}
+                                    </div>
+                                </div>
+                            `);
+
+                            // 4. Tampilake Resep Pungkasan (Final)
+                            setTimeout(() => {
+                                const resep = resepNalar[akar][emosi] || resepNalar['lainnya']['umum'];
+                                chatHistory.insertAdjacentHTML('beforeend', `
+                                    <div class="flex justify-start mt-4 fade-in-up">
+                                        <div class="bg-emerald-50/50 dark:bg-emerald-900/10 w-full px-4 md:px-8 py-6 rounded-3xl border border-emerald-100 dark:border-emerald-900/30">
+                                            <p class="text-base md:text-lg font-serif italic text-emerald-900 dark:text-emerald-100 mb-4 leading-relaxed">"${resep.k}"</p>
+                                            <div class="flex items-center gap-2">
+                                                <span class="w-4 h-[1px] bg-emerald-500"></span>
+                                                <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">${resep.s}</span>
+                                            </div>
+                                            <p class="mt-6 text-sm text-slate-600 dark:text-slate-400">Mugi-mugi Gusti Allah paring ketenangan kagem Panjenengan dinten niki. 🤍</p>
+                                        </div>
+                                    </div>
+                                `);
+                                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                            }, 800);
+                        };
+                    });
+                }, 600);
             };
 
             btnSubmit.onclick = kirimCurhat;
@@ -351,6 +269,6 @@ const randomQuote = motivasi[Math.floor(Math.random() * motivasi.length)];
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
     </style>
 </MainLayout>

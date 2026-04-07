@@ -1,13 +1,12 @@
 // File: src/data/fikih.js
 
-// Wonten ing file src/data/fikih.js
 export const daftarFikih = [
- {
+    { 
         judul: "Tata Cara Wudhu", 
         arab: "نَوَيْتُ الْوُضُوءَ لِرَفْعِ الْحَدَثِ الْأَصْغَرِ فَرْضًا لِلَّهِ تَعَالَى", 
         latin: "Nawaitul whudu-a liraf'il hadatsil ashghari fardhal lillaahi ta'aalaa.", 
         arti: "Aku niat berwudhu untuk menghilangkan hadats kecil fardhu karena Allah Ta'ala.", 
-        riwayat: "Syarat Sah Shalat", 
+        riwayat: "Syarat Sah Shalat (QS. Al-Ma'idah: 6 & Muttafaq 'Alaih)", 
         narasi: `Langkah-langkah utama wudhu:
 1. Membasuh telapak tangan (3x).
 2. Berkumur-kumur (3x).
@@ -26,7 +25,7 @@ Wudhu mboten namung ngresiki raga saking kotoran, nanging ugi minangka "jeda Sto
         arab: "نَوَيْتُ الْغُسْلَ لِرَفْعِ الْحَدَثِ الأَكْبَرِ مِنَ الجِنَابَةِ فَرْضًا لِلَّهِ تَعَالَى", 
         latin: "Nawaitul ghusla liraf'il hadatsil akbari minal janabati fardhal lillaahi ta'aalaa.", 
         arti: "Aku niat mandi untuk menghilangkan hadats besar dari janabah, fardhu karena Allah Ta'ala.", 
-        riwayat: "Syarat Suci dari Hadats Besar", 
+        riwayat: "Syarat Suci Hadats Besar (HR. Bukhari no. 248 & Muslim)", 
         narasi: `Tata Cara Mandi Wajib:
 1. Mencuci kedua tangan (3x).
 2. Membersihkan kemaluan dan kotoran dengan tangan kiri.
@@ -43,7 +42,7 @@ Mandi wajib ngelingake kita bilih fitrah manungsa punika suci. Saben-saben kita 
         arab: "أُصَلِّيْ سُنَّةَ الضُّحَى رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
         latin: "Ushalli sunnatadh dhuhaa rak'ataini lillaahi ta'aalaa.", 
         arti: "Aku niat shalat sunnah Dhuha dua rakaat karena Allah Ta'ala.", 
-        riwayat: "Sunnah Muakkadah (Sangat Dianjurkan)", 
+        riwayat: "Sunnah Muakkadah (HR. Bukhari no. 1981 & Muslim)", 
         narasi: `Waktu & Pelaksanaan:
 - Dikerjakan setelah matahari terbit (± pukul 07.00) hingga sebelum Dzuhur.
 - Jumlah rakaat minimal 2, maksimal 12 (salam setiap 2 rakaat).
@@ -56,7 +55,7 @@ Shalat Dhuha punika wujud rasa syukur atas nikmat dinten énggal. Kita nyicil re
         arab: "أُصَلِّيْ سُنَّةَ التَّهَجُّدِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
         latin: "Ushalli sunnatat tahajjudi rak'ataini lillaahi ta'aalaa.", 
         arti: "Aku niat shalat sunnah Tahajud dua rakaat karena Allah Ta'ala.", 
-        riwayat: "Sunnah Qiyamul Lail", 
+        riwayat: "Sunnah Qiyamul Lail (QS. Al-Isra: 79)", 
         narasi: `Syarat & Pelaksanaan:
 - Harus dikerjakan setelah bangun dari tidur malam (walau tidurnya sebentar).
 - Waktu paling utama adalah sepertiga malam terakhir (± jam 01.00 - 04.00).
@@ -69,22 +68,20 @@ Wanci dalu punika wanci ingkang paling jernih kagem Nalar Teras. Nalika tiyang s
         arab: "أُصَلِّيْ سُنَّةَ التَّوْبَةِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
         latin: "Ushalli sunnatat taubati rak'ataini lillaahi ta'aalaa.", 
         arti: "Aku niat shalat sunnah Taubat dua rakaat karena Allah Ta'ala.", 
-        riwayat: "Shalat Sunnah Munfarid", 
+        riwayat: "Shalat Sunnah Munfarid (HR. Abu Dawud no. 1521 & Tirmidzi)", 
         narasi: `Waktu & Pelaksanaan:
 - Bisa dikerjakan kapan saja saat menyadari kesalahan (kecuali di waktu terlarang shalat).
 - Dikerjakan 2 rakaat seperti biasa.
 - Setelah salam, sangat dianjurkan memperbanyak Istighfar (minimal 100x) dan menyesali dosa dengan sungguh-sungguh.
 
 Shalat Taubat minangka terapi psikologis ingkang paling ampuh. Kita ngakoni bilih kita namung manungsa biasa ingkang asring luput, lajeng pasrah lan nyuwun ampunan supados batin wangsul tentrem.`
-    }, 
-    // ... (data 1-5 ingkang sampun wonten) ...
-    ,
+    },
     { 
         judul: "Tata Cara Tayammum", 
         arab: "نَوَيْتُ التَّيَمُّمَ لِاسْتِبَاحَةِ الصَّلَاةِ فَرْضًا لِلَّهِ تَعَالَى", 
         latin: "Nawaitut tayammuma listibaahatish shalaati fardhal lillaahi ta'aalaa.", 
         arti: "Aku niat bertayammum untuk dapat mengerjakan shalat, fardhu karena Allah Ta'ala.", 
-        riwayat: "Bersuci saat darurat / ketiadaan air", 
+        riwayat: "Rukhshah / Keringanan (QS. Al-Ma'idah: 6 & HR. Bukhari no. 347)", 
         narasi: `Langkah-langkah Tayammum:
 1. Membaca basmalah dan niat.
 2. Menepukkan kedua telapak tangan ke permukaan debu/tanah yang bersih.
@@ -100,7 +97,7 @@ Tayammum punika wujud fleksibilitas syariat. Nalika kahanan mboten sampurna (dar
         arab: "أُصَلِّيْ سُنَّةَ الاِسْتِخَارَةِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
         latin: "Ushalli sunnatal istikhaarati rak'ataini lillaahi ta'aalaa.", 
         arti: "Aku niat shalat sunnah Istikharah dua rakaat karena Allah Ta'ala.", 
-        riwayat: "Shalat Memohon Pilihan Terbaik", 
+        riwayat: "Sunnah Memohon Pilihan (HR. Bukhari no. 1162)", 
         narasi: `Waktu & Pelaksanaan:
 - Bisa dikerjakan kapan saja saat butuh mengambil keputusan (sangat dianjurkan di sepertiga malam).
 - Dikerjakan 2 rakaat seperti shalat biasa.
@@ -113,7 +110,7 @@ Istikharah minangka puncak saking Nalar Teras (Stoikisme Islami). Kita sampun ik
         arab: "أُصَلِّيْ سُنَّةَ الْحَاجَةِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
         latin: "Ushalli sunnatal haajati rak'ataini lillaahi ta'aalaa.", 
         arti: "Aku niat shalat sunnah Hajat dua rakaat karena Allah Ta'ala.", 
-        riwayat: "Shalat Memohon Kebutuhan / Solusi", 
+        riwayat: "Sunnah Memohon Solusi (HR. Tirmidzi no. 479 & Ibnu Majah)", 
         narasi: `Waktu & Pelaksanaan:
 - Dikerjakan saat memiliki hajat/keinginan mendesak, atau saat menghadapi masalah berat.
 - Minimal 2 rakaat, maksimal 12 rakaat (salam setiap 2 rakaat).
@@ -126,7 +123,7 @@ Shalat Hajat punika ibarat "proposal" langsung dhateng "Pusat". Daripada ngemis 
         arab: "أُصَلِّيْ سُنَّةَ الْوِتْرِ رَكْعَتَيْنِ / رَكْعَةً لِلَّهِ تَعَالَى", 
         latin: "Ushalli sunnatal witri rak'ataini / rak'atan lillaahi ta'aalaa.", 
         arti: "Aku niat shalat sunnah Witir dua rakaat / satu rakaat karena Allah Ta'ala.", 
-        riwayat: "Sunnah Penutup Shalat Malam", 
+        riwayat: "Sunnah Muakkadah (HR. Bukhari no. 998 & Muslim)", 
         narasi: `Waktu & Pelaksanaan:
 - Dikerjakan setelah shalat Isya hingga menjelang adzan Subuh (biasanya sebagai penutup shalat Tahajud/Tarawih).
 - Jumlah rakaat harus ganjil (1, 3, 5, dst). 
@@ -139,7 +136,7 @@ Gusti Allah punika Ganjil (Esa) lan remen dhateng ingkang ganjil (Witir). Shalat
         arab: "أُصَلِّي عَلَى هَذَا الْمَيِّتِ أَرْبَعَ تَكْبِيرَاتٍ فَرْضَ كِفَايَةٍ لِلَّهِ تَعَالَى", 
         latin: "Ushalli 'alaa haadzal mayyiti (pria) / haadzihil mayyitati (wanita) arba'a takbiiraatin fardha kifaayatin lillaahi ta'aalaa.", 
         arti: "Aku niat shalat atas jenazah ini empat kali takbir fardhu kifayah karena Allah Ta'ala.", 
-        riwayat: "Fardhu Kifayah (Kewajiban Kolektif)", 
+        riwayat: "Fardhu Kifayah (HR. Bukhari no. 1333 & Muslim)", 
         narasi: `Tata Cara (Dikerjakan sambil BERDIRI tanpa Ruku' & Sujud):
 1. Takbir ke-1 (Bersamaan Niat): Membaca Al-Fatihah.
 2. Takbir ke-2: Membaca Shalawat Nabi (Minimal: Allahumma shalli 'alaa Muhammad).
@@ -148,5 +145,5 @@ Gusti Allah punika Ganjil (Esa) lan remen dhateng ingkang ganjil (Witir). Shalat
 
 Minangka makhluk sosial, shalat jenazah niki *Memento Mori* (Peling Kematian) ingkang paling nyata. Kita ndongakake sedulur kita ingkang wangsul rumiyin, kalih ngeling-eling bilih mbenjang kita ingkang badhe dipun-dongakake wonten ngajeng jamaah.`
     }
- 
 ];
+ 

@@ -76,5 +76,77 @@ Wanci dalu punika wanci ingkang paling jernih kagem Nalar Teras. Nalika tiyang s
 - Setelah salam, sangat dianjurkan memperbanyak Istighfar (minimal 100x) dan menyesali dosa dengan sungguh-sungguh.
 
 Shalat Taubat minangka terapi psikologis ingkang paling ampuh. Kita ngakoni bilih kita namung manungsa biasa ingkang asring luput, lajeng pasrah lan nyuwun ampunan supados batin wangsul tentrem.`
+    }, 
+    // ... (data 1-5 ingkang sampun wonten) ...
+    ,
+    { 
+        judul: "Tata Cara Tayammum", 
+        arab: "نَوَيْتُ التَّيَمُّمَ لِاسْتِبَاحَةِ الصَّلَاةِ فَرْضًا لِلَّهِ تَعَالَى", 
+        latin: "Nawaitut tayammuma listibaahatish shalaati fardhal lillaahi ta'aalaa.", 
+        arti: "Aku niat bertayammum untuk dapat mengerjakan shalat, fardhu karena Allah Ta'ala.", 
+        riwayat: "Bersuci saat darurat / ketiadaan air", 
+        narasi: `Langkah-langkah Tayammum:
+1. Membaca basmalah dan niat.
+2. Menepukkan kedua telapak tangan ke permukaan debu/tanah yang bersih.
+3. Meniup tipis debu yang menempel di tangan.
+4. Mengusapkan ke seluruh wajah (cukup 1 kali usapan).
+5. Menepukkan tangan kembali ke debu.
+6. Mengusapkan tangan kiri ke tangan kanan hingga siku/pergelangan, lalu sebaliknya (1 kali).
+
+Tayammum punika wujud fleksibilitas syariat. Nalika kahanan mboten sampurna (darurat sakit utawi mboten wonten toya), kita tetep saged nyambung dhateng Allah mawi fasilitas ingkang wonten. Niki selaras kaliyan Nalar Teras: fokus dhateng punapa ingkang saged dipun-lampahi sakmenika, sanès ngresula marang kahanan.`
+    },
+    { 
+        judul: "Panduan Shalat Istikharah", 
+        arab: "أُصَلِّيْ سُنَّةَ الاِسْتِخَارَةِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
+        latin: "Ushalli sunnatal istikhaarati rak'ataini lillaahi ta'aalaa.", 
+        arti: "Aku niat shalat sunnah Istikharah dua rakaat karena Allah Ta'ala.", 
+        riwayat: "Shalat Memohon Pilihan Terbaik", 
+        narasi: `Waktu & Pelaksanaan:
+- Bisa dikerjakan kapan saja saat butuh mengambil keputusan (sangat dianjurkan di sepertiga malam).
+- Dikerjakan 2 rakaat seperti shalat biasa.
+- Setelah salam, sangat dianjurkan membaca Doa Istikharah kagem nyuwun pitedah.
+
+Istikharah minangka puncak saking Nalar Teras (Stoikisme Islami). Kita sampun ikhtiar nimbang-nimbang pilihan mawi akal sehat, nanging keputusan pungkasan kita pasrahaken dhateng Sang Maha Pirsa. Kita nampi punapa kemawon asilipun kanthi lapang dada amargi niku pilihanipun Allah.`
+    },
+    { 
+        judul: "Panduan Shalat Hajat", 
+        arab: "أُصَلِّيْ سُنَّةَ الْحَاجَةِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
+        latin: "Ushalli sunnatal haajati rak'ataini lillaahi ta'aalaa.", 
+        arti: "Aku niat shalat sunnah Hajat dua rakaat karena Allah Ta'ala.", 
+        riwayat: "Shalat Memohon Kebutuhan / Solusi", 
+        narasi: `Waktu & Pelaksanaan:
+- Dikerjakan saat memiliki hajat/keinginan mendesak, atau saat menghadapi masalah berat.
+- Minimal 2 rakaat, maksimal 12 rakaat (salam setiap 2 rakaat).
+- Setelah salam, memuji Allah, bershalawat, lalu sujud dan mengutarakan hajat dengan bahasa sendiri.
+
+Shalat Hajat punika ibarat "proposal" langsung dhateng "Pusat". Daripada ngemis pitulungan dhateng manungsa ingkang asring nguciwani, langkung sae ngemis dhateng Dzat Ingkang Mboten Nate Nulak pandonganing kawulane.`
+    },
+    { 
+        judul: "Panduan Shalat Witir", 
+        arab: "أُصَلِّيْ سُنَّةَ الْوِتْرِ رَكْعَتَيْنِ / رَكْعَةً لِلَّهِ تَعَالَى", 
+        latin: "Ushalli sunnatal witri rak'ataini / rak'atan lillaahi ta'aalaa.", 
+        arti: "Aku niat shalat sunnah Witir dua rakaat / satu rakaat karena Allah Ta'ala.", 
+        riwayat: "Sunnah Penutup Shalat Malam", 
+        narasi: `Waktu & Pelaksanaan:
+- Dikerjakan setelah shalat Isya hingga menjelang adzan Subuh (biasanya sebagai penutup shalat Tahajud/Tarawih).
+- Jumlah rakaat harus ganjil (1, 3, 5, dst). 
+- Jika 3 rakaat, bisa dikerjakan dengan 2 rakaat salam + 1 rakaat salam.
+
+Gusti Allah punika Ganjil (Esa) lan remen dhateng ingkang ganjil (Witir). Shalat Witir dados stempel panutup ibadah dalu kita. Iki minangka wujud disiplin batin sadurungé mungkasi aktivitas dalu lan sumarah ing sare.`
+    },
+    { 
+        judul: "Tata Cara Shalat Jenazah", 
+        arab: "أُصَلِّي عَلَى هَذَا الْمَيِّتِ أَرْبَعَ تَكْبِيرَاتٍ فَرْضَ كِفَايَةٍ لِلَّهِ تَعَالَى", 
+        latin: "Ushalli 'alaa haadzal mayyiti (pria) / haadzihil mayyitati (wanita) arba'a takbiiraatin fardha kifaayatin lillaahi ta'aalaa.", 
+        arti: "Aku niat shalat atas jenazah ini empat kali takbir fardhu kifayah karena Allah Ta'ala.", 
+        riwayat: "Fardhu Kifayah (Kewajiban Kolektif)", 
+        narasi: `Tata Cara (Dikerjakan sambil BERDIRI tanpa Ruku' & Sujud):
+1. Takbir ke-1 (Bersamaan Niat): Membaca Al-Fatihah.
+2. Takbir ke-2: Membaca Shalawat Nabi (Minimal: Allahumma shalli 'alaa Muhammad).
+3. Takbir ke-3: Mendoakan jenazah (Minimal: Allahummaghfirlahu warhamhu wa 'aafihi wa'fu 'anhu).
+4. Takbir ke-4: Membaca doa ("Allahumma laa tahrimnaa ajrahu walaa taftinna ba'dahu...") lalu Salam ke kanan dan ke kiri.
+
+Minangka makhluk sosial, shalat jenazah niki *Memento Mori* (Peling Kematian) ingkang paling nyata. Kita ndongakake sedulur kita ingkang wangsul rumiyin, kalih ngeling-eling bilih mbenjang kita ingkang badhe dipun-dongakake wonten ngajeng jamaah.`
     }
+ 
 ];

@@ -179,10 +179,11 @@ const { title } = Astro.props;
 
             if (!searchContainer || !searchTrigger) return;
 
-            const allData = [
-                ...(daftarDoa || []).map((item, i) => ({ title: item.judul, type: 'Doa', url: `/doa?id=${i}`, icon: '🤲' })),
-                ...(daftarFikih || []).map((item, i) => ({ title: item.judul, type: 'Fikih', url: `/fikih?id=${i}`, icon: '🕋' }))
-            ];
+           // Padosi baris niki ing njero script search
+const allData = [
+    ...daftarDoa.map((item, i) => ({ title: item.judul, type: 'Doa', url: `/doa?id=${i}`, icon: '🤲' })),
+    ...daftarFikih.map((item) => ({ title: item.judul, type: 'Fikih', url: `/fikih/${item.slug}`, icon: '🕋' }))
+];
 
             searchTrigger.addEventListener('click', () => {
                 const isOpen = searchContainer.classList.contains('w-48');

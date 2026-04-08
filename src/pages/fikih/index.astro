@@ -1,94 +1,50 @@
-// File: src/data/fikih.js
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { daftarFikih } from '../../data/fikih.js';
+---
 
-export const daftarFikih = [
-    { 
-        judul: "Tata Cara Wudhu", 
-        slug: "wudhu",
-        arab: "نَوَيْتُ الْوُضُوءَ لِرَفْعِ الْحَدَثِ الْأَصْغَرِ فَرْضًا لِلَّهِ تَعَالَى", 
-        latin: "Nawaitul whudu-a liraf'il hadatsil ashghari fardhal lillaahi ta'aalaa.", 
-        arti: "Aku niat berwudhu untuk menghilangkan hadats kecil fardhu karena Allah Ta'ala.", 
-        riwayat: "Berdasarkan QS. Al-Ma'idah ayat 6: 'Hai orang-orang yang beriman, apabila kamu hendak mengerjakan shalat, maka basuhlah mukamu dan tanganmu sampai dengan siku, dan sapulah kepalamu dan (basuh) kakimu sampai dengan kedua mata kaki.' Ditambah sabda Nabi (Muttafaq 'Alaih) bahwa Allah tidak menerima shalat seseorang yang batal hingga ia berwudhu.", 
-        narasi: "Wudhu tidak hanya membersihkan raga dari kotoran, tetapi juga berfungsi sebagai 'jeda Stoik' untuk membersihkan pikiran dari emosi negatif sebelum kita berdiri menghadap Sang Pencipta."
-    },
-    { 
-        judul: "Mandi Wajib (Junub)", 
-        slug: "mandi-wajib",
-        arab: "نَوَيْتُ الْغُسْلَ لِرَفْعِ الْحَدَثِ الأَكْبَرِ مِنَ الجِنَابَةِ فَرْضًا لِلَّهِ تَعَالَى", 
-        latin: "Nawaitul ghusla liraf'il hadatsil akbari minal janabati fardhal lillaahi ta'aalaa.", 
-        arti: "Aku niat mandi untuk menghilangkan hadats besar dari janabah, fardhu karena Allah Ta'ala.", 
-        riwayat: "QS. Al-Baqarah ayat 222 menyebutkan: 'Dan jika kamu junub, maka mandilah'. Berdasarkan riwayat Aisyah (HR. Bukhari no. 248), Nabi memulai mandi dengan mencuci tangannya, lalu berwudhu seperti wudhu untuk shalat, kemudian mengguyur air ke kepala hingga merata di kulit kepala sebelum mengguyur seluruh badannya.", 
-        narasi: "Mandi wajib mengingatkan kita bahwa fitrah manusia itu pada dasarnya suci. Setiap kali kita terkena hadats, kita diberi kesempatan untuk melakukan 'reset' dan kembali pada keadaan spiritual yang bersih."
-    },
-    { 
-        judul: "Panduan Shalat Dhuha", 
-        slug: "shalat-dhuha",
-        arab: "أُصَلِّيْ سُنَّةَ الضُّحَى رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
-        latin: "Ushalli sunnatadh dhuhaa rak'ataini lillaahi ta'aalaa.", 
-        arti: "Aku niat shalat sunnah Dhuha dua rakaat karena Allah Ta'ala.", 
-        riwayat: "Berdasarkan hadits Abu Hurairah (HR. Bukhari no. 1981): 'Kekasihku (Rasulullah) memberi wasiat kepadaku tiga perkara: Puasa tiga hari setiap bulan, shalat Dhuha dua rakaat, dan shalat witir sebelum tidur.'", 
-        narasi: "Shalat Dhuha adalah wujud rasa syukur atas nikmat datangnya hari yang baru. Kita menyicil rezeki bukan hanya dengan tenaga fisik (ikhtiar bumi), tetapi juga dengan ketundukan doa (ikhtiar langit)."
-    },
-    { 
-        judul: "Panduan Shalat Tahajud", 
-        slug: "shalat-tahajud",
-        arab: "أُصَلِّيْ سُنَّةَ التَّهَجُّدِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
-        latin: "Ushalli sunnatat tahajjudi rak'ataini lillaahi ta'aalaa.", 
-        arti: "Aku niat shalat sunnah Tahajud dua rakaat karena Allah Ta'ala.", 
-        riwayat: "Dari QS. Al-Isra ayat 79: 'Dan pada sebahagian malam hari bersembahyang tahajudlah kamu sebagai suatu ibadah tambahan bagimu; mudah-mudahan Tuhan-mu mengangkat kamu ke tempat yang terpuji.'", 
-        narasi: "Waktu malam adalah waktu yang paling jernih untuk menerapkan Nalar Teras. Saat orang lain terlelap, kita bangun untuk merancang hari esok dan meminta petunjuk arah kepada-Nya."
-    },
-    { 
-        judul: "Panduan Shalat Taubat", 
-        slug: "shalat-taubat",
-        arab: "أُصَلِّيْ سُنَّةَ التَّوْبَةِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
-        latin: "Ushalli sunnatat taubati rak'ataini lillaahi ta'aalaa.", 
-        arti: "Aku niat shalat sunnah Taubat dua rakaat karena Allah Ta'ala.", 
-        riwayat: "Nabi bersabda (HR. Abu Dawud no. 1521): 'Tidaklah seorang hamba melakukan dosa, kemudian ia berwudhu dengan sempurna, lalu berdiri shalat dua rakaat, dan memohon ampun kepada Allah, melainkan Allah pasti akan mengampuni dosanya.'", 
-        narasi: "Shalat Taubat adalah terapi psikologis yang paling ampuh. Kita mengakui secara jujur bahwa kita hanyalah manusia biasa yang sering luput, lalu memohon ampunan agar batin kembali tenteram."
-    },
-    { 
-        judul: "Tata Cara Tayammum", 
-        slug: "tayammum",
-        arab: "نَوَيْتُ التَّيَمُّمَ لِاسْتِبَاحَةِ الصَّلَاةِ فَرْضًا لِلَّهِ تَعَالَى", 
-        latin: "Nawaitut tayammuma listibaahatish shalaati fardhal lillaahi ta'aalaa.", 
-        arti: "Aku niat bertayammum untuk dapat mengerjakan shalat, fardhu karena Allah Ta'ala.", 
-        riwayat: "Allah memberikan keringanan dalam QS. Al-Ma'idah ayat 6: '...dan jika kamu sakit atau dalam perjalanan... lalu kamu tidak memperoleh air, maka bertayammumlah dengan tanah yang baik (bersih).'", 
-        narasi: "Tayammum adalah wujud fleksibilitas syariat. Saat keadaan tidak sempurna, kita tetap bisa terhubung dengan Allah. Fokus pada apa yang bisa dilakukan, bukan mengeluhkan keadaan."
-    },
-    { 
-        judul: "Panduan Shalat Istikharah", 
-        slug: "shalat-istikharah",
-        arab: "أُصَلِّيْ سُنَّةَ الاِسْتِخَارَةِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
-        latin: "Ushalli sunnatal istikhaarati rak'ataini lillaahi ta'aalaa.", 
-        arti: "Aku niat shalat sunnah Istikharah dua rakaat karena Allah Ta'ala.", 
-        riwayat: "Dari Jabir bin Abdullah (HR. Bukhari no. 1162): 'Rasulullah mengajarkan kepada kami shalat Istikharah dalam semua urusan sebagaimana beliau mengajarkan surat dari Al-Quran.'", 
-        narasi: "Istikharah adalah puncak dari Nalar Teras. Kita berikhtiar dengan akal, namun keputusan akhir diserahkan kepada Sang Maha Mengetahui. Kita bersiap menerima apa pun hasilnya."
-    },
-    { 
-        judul: "Panduan Shalat Hajat", 
-        slug: "shalat-hajat",
-        arab: "أُصَلِّيْ سُنَّةَ الْحَاجَةِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
-        latin: "Ushalli sunnatal haajati rak'ataini lillaahi ta'aalaa.", 
-        arti: "Aku niat shalat sunnah Hajat dua rakaat karena Allah Ta'ala.", 
-        riwayat: "Berdasarkan riwayat Abdullah bin Aufa (HR. Tirmidzi no. 479): 'Barangsiapa memiliki hajat kepada Allah atau manusia, berwudhulah dengan baik, shalat dua rakaat, lalu memuji Allah dan bershalawat.'", 
-        narasi: "Shalat Hajat ibarat mengajukan proposal langsung ke 'Pusat'. Jauh lebih elegan dan menenangkan jika kita meminta kepada Dzat Yang Tidak Pernah Menolak doa hamba-Nya."
-    },
-    { 
-        judul: "Panduan Shalat Witir", 
-        slug: "shalat-witir",
-        arab: "أُصَلِّيْ سُنَّةَ الْوِتْرِ رَكْعَتَيْنِ / رَكْعَةً لِلَّهِ تَعَالَى", 
-        latin: "Ushalli sunnatal witri rak'ataini / rak'atan lillaahi ta'aalaa.", 
-        arti: "Aku niat shalat sunnah Witir dua rakaat / satu rakaat karena Allah Ta'ala.", 
-        riwayat: "Berdasarkan sabda Nabi (HR. Bukhari no. 998): 'Jadikanlah shalat terakhirmu di malam hari itu shalat Witir.'", 
-        narasi: "Allah itu Esa dan mencintai yang ganjil (Witir). Shalat Witir menjadi stempel penutup ibadah malam kita, wujud kedisiplinan batin sebelum kita beristirahat total."
-    },
-    { 
-        judul: "Tata Cara Shalat Jenazah", 
-        slug: "shalat-jenazah",
-        arab: "أُصَلِّي عَلَى هَذَا الْمَيِّتِ أَرْبَعَ تَكْبِيرَاتٍ فَرْضَ كِفَايَةٍ لِلَّهِ تَعَالَى", 
-        latin: "Ushalli 'alaa haadzal mayyiti arba'a takbiiraatin fardha kifaayatin lillaahi ta'aalaa.", 
-        arti: "Aku niat shalat atas jenazah ini empat kali takbir fardhu kifayah karena Allah Ta'ala.", 
-        riwayat: "Berdasarkan perintah Nabi dalam HR. Bukhari (1333): 'Shalatilah saudaramu yang meninggal.' Pahala menyalati jenazah adalah satu qirath (sebesar gunung Uhud).", 
-        narasi: "Shalat jenazah adalah Memento Mori yang nyata. Kita mendoakan saudara kita, sekaligus sadar bahwa kelak tubuh kita lah yang akan terbujur kaku untuk didoakan."
-    }
-];
+<MainLayout title="Daftar Fikih & Ibadah - Bilik Tafakur">
+    <div class="max-w-4xl mx-auto py-8 px-4 md:py-12 animate-fade-in">
+        
+        <div class="mb-10 text-center md:text-left">
+            <h1 class="text-3xl md:text-4xl font-poppins font-bold text-emerald-900 dark:text-emerald-400 mb-3 tracking-tight">Fikih & Ibadah</h1>
+            <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">Panduan ringkas tata cara ibadah dinten-dinten adhedhasar dalil ingkang shahih.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {daftarFikih.map((item, index) => (
+                <a href={`/fikih/${item.slug}`} class="group flex flex-col p-5 md:p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md hover:border-emerald-300 dark:hover:border-emerald-700 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 flex items-center justify-center bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition-all text-sm">
+                                {index + 1}
+                            </div>
+                            <span class="text-[10px] text-emerald-600 dark:text-emerald-400 uppercase tracking-widest font-bold px-2.5 py-1 bg-emerald-50 dark:bg-emerald-900/30 rounded-md border border-emerald-100 dark:border-emerald-800">
+                                Ibadah
+                            </span>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors"><path d="m9 18 6-6-6-6"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg md:text-xl text-slate-800 dark:text-slate-200 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors mb-2">{item.judul}</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">{item.arti}</p>
+                </a>
+            ))}
+        </div>
+    </div>
+
+    <style>
+        .animate-fade-in { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+    </style>
+</MainLayout>

@@ -3,6 +3,7 @@
 export const daftarFikih = [
     { 
         judul: "Tata Cara Wudhu", 
+        slug: "wudhu",
         arab: "نَوَيْتُ الْوُضُوءَ لِرَفْعِ الْحَدَثِ الْأَصْغَرِ فَرْضًا لِلَّهِ تَعَالَى", 
         latin: "Nawaitul whudu-a liraf'il hadatsil ashghari fardhal lillaahi ta'aalaa.", 
         arti: "Aku niat berwudhu untuk menghilangkan hadats kecil fardhu karena Allah Ta'ala.", 
@@ -22,6 +23,7 @@ Wudhu tidak hanya membersihkan raga dari kotoran, tetapi juga berfungsi sebagai 
     },
     { 
         judul: "Mandi Wajib (Junub)", 
+        slug: "mandi-wajib",
         arab: "نَوَيْتُ الْغُسْلَ لِرَفْعِ الْحَدَثِ الأَكْبَرِ مِنَ الجِنَابَةِ فَرْضًا لِلَّهِ تَعَالَى", 
         latin: "Nawaitul ghusla liraf'il hadatsil akbari minal janabati fardhal lillaahi ta'aalaa.", 
         arti: "Aku niat mandi untuk menghilangkan hadats besar dari janabah, fardhu karena Allah Ta'ala.", 
@@ -39,6 +41,7 @@ Mandi wajib mengingatkan kita bahwa fitrah manusia itu pada dasarnya suci. Setia
     },
     { 
         judul: "Panduan Shalat Dhuha", 
+        slug: "shalat-dhuha",
         arab: "أُصَلِّيْ سُنَّةَ الضُّحَى رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
         latin: "Ushalli sunnatadh dhuhaa rak'ataini lillaahi ta'aalaa.", 
         arti: "Aku niat shalat sunnah Dhuha dua rakaat karena Allah Ta'ala.", 
@@ -52,6 +55,7 @@ Shalat Dhuha adalah wujud rasa syukur atas nikmat datangnya hari yang baru. Kita
     },
     { 
         judul: "Panduan Shalat Tahajud", 
+        slug: "shalat-tahajud",
         arab: "أُصَلِّيْ سُنَّةَ التَّهَجُّدِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
         latin: "Ushalli sunnatat tahajjudi rak'ataini lillaahi ta'aalaa.", 
         arti: "Aku niat shalat sunnah Tahajud dua rakaat karena Allah Ta'ala.", 
@@ -65,10 +69,11 @@ Waktu malam adalah waktu yang paling jernih untuk menerapkan Nalar Teras. Saat o
     },
     { 
         judul: "Panduan Shalat Taubat", 
+        slug: "shalat-taubat",
         arab: "أُصَلِّيْ سُنَّةَ التَّوْبَةِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
         latin: "Ushalli sunnatat taubati rak'ataini lillaahi ta'aalaa.", 
         arti: "Aku niat shalat sunnah Taubat dua rakaat karena Allah Ta'ala.", 
-        riwayat: "Nabi bersabda (HR. Abu Dawud no. 1521): 'Tidaklah seorang hamba melakukan dosa, kemudian ia berwudhu dengan sempurna, lalu berdiri shalat dua rakaat, dan memohon ampun kepada Allah, melainkan Allah pasti akan mengampuni dosanya.' Kemudian Nabi membaca QS. Ali Imran ayat 135 tentang ciri orang yang bertaqwa yang segera bertaubat saat berbuat keji.", 
+        riwayat: "Nabi bersabda (HR. Abu Dawud no. 1521): 'Tidaklah seorang hamba melakukan dosa, kemudian ia berwudhu dengan sempurna, lalu berdiri shalat dua rakaat, dan memohon ampun kepada Allah, melainkan Allah pasti akan mengampuni dosanya.'", 
         narasi: `Waktu & Pelaksanaan:
 - Bisa dikerjakan kapan saja saat menyadari kesalahan (kecuali di waktu terlarang shalat).
 - Dikerjakan 2 rakaat seperti shalat sunnah biasa.
@@ -78,6 +83,7 @@ Shalat Taubat adalah terapi psikologis yang paling ampuh. Kita mengakui secara j
     },
     { 
         judul: "Tata Cara Tayammum", 
+        slug: "tayammum",
         arab: "نَوَيْتُ التَّيَمُّمَ لِاسْتِبَاحَةِ الصَّلَاةِ فَرْضًا لِلَّهِ تَعَالَى", 
         latin: "Nawaitut tayammuma listibaahatish shalaati fardhal lillaahi ta'aalaa.", 
         arti: "Aku niat bertayammum untuk dapat mengerjakan shalat, fardhu karena Allah Ta'ala.", 
@@ -90,10 +96,11 @@ Shalat Taubat adalah terapi psikologis yang paling ampuh. Kita mengakui secara j
 5. Menepukkan tangan kembali ke debu.
 6. Mengusapkan tangan kiri ke punggung tangan kanan hingga pergelangan, lalu sebaliknya (1 kali).
 
-Tayammum adalah wujud fleksibilitas syariat Islam. Saat keadaan tidak sempurna (darurat sakit atau kelangkaan air), kita tetap bisa terhubung dengan Allah. Ini selaras dengan prinsip Nalar Teras: fokus pada apa yang bisa dilakukan dengan fasilitas yang ada saat ini, bukan mengeluhkan keadaan yang di luar kendali kita.`
+Tayammum adalah wujud fleksibilitas syariat Islam. Saat keadaan tidak sempurna (darurat sakit atau kelangkaan air), kita tetap bisa terhubung dengan Allah. Ini selaras dengan prinsip Nalar Teras: fokus pada apa yang bisa dilakukan dengan fasilitas yang ada.`
     },
     { 
         judul: "Panduan Shalat Istikharah", 
+        slug: "shalat-istikharah",
         arab: "أُصَلِّيْ سُنَّةَ الاِسْتِخَارَةِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
         latin: "Ushalli sunnatal istikhaarati rak'ataini lillaahi ta'aalaa.", 
         arti: "Aku niat shalat sunnah Istikharah dua rakaat karena Allah Ta'ala.", 
@@ -103,23 +110,25 @@ Tayammum adalah wujud fleksibilitas syariat Islam. Saat keadaan tidak sempurna (
 - Dikerjakan 2 rakaat seperti shalat biasa.
 - Setelah salam, sangat dianjurkan membaca Doa Istikharah untuk memohon kemantapan hati.
 
-Istikharah adalah puncak dari Nalar Teras (Stoikisme Islami). Kita sudah berikhtiar menimbang berbagai pilihan dengan akal sehat, namun keputusan akhirnya kita serahkan kepada Sang Maha Mengetahui. Kita bersiap menerima apa pun hasilnya dengan lapang dada karena kita yakin itu adalah pilihan terbaik dari Allah.`
+Istikharah adalah puncak dari Nalar Teras (Stoikisme Islami). Kita sudah berikhtiar menimbang berbagai pilihan dengan akal sehat, namun keputusan akhirnya kita serahkan kepada Sang Maha Mengetahui. Kita bersiap menerima apa pun hasilnya dengan lapang dada.`
     },
     { 
         judul: "Panduan Shalat Hajat", 
+        slug: "shalat-hajat",
         arab: "أُصَلِّيْ سُنَّةَ الْحَاجَةِ رَكْعَتَيْنِ لِلَّهِ تَعَالَى", 
         latin: "Ushalli sunnatal haajati rak'ataini lillaahi ta'aalaa.", 
         arti: "Aku niat shalat sunnah Hajat dua rakaat karena Allah Ta'ala.", 
-        riwayat: "Berdasarkan riwayat Abdullah bin Aufa (HR. Tirmidzi no. 479): 'Barangsiapa memiliki hajat kepada Allah atau kepada salah seorang manusia, maka berwudhulah dengan baik, lalu shalatlah dua rakaat, kemudian memuji Allah, membaca shalawat atas Nabi, dan bacalah doa hajat (Laa ilaaha illallaahul haliimul kariim...).'", 
+        riwayat: "Berdasarkan riwayat Abdullah bin Aufa (HR. Tirmidzi no. 479): 'Barangsiapa memiliki hajat kepada Allah atau kepada salah seorang manusia, maka berwudhulah dengan baik, lalu shalatlah dua rakaat, kemudian memuji Allah, membaca shalawat atas Nabi, dan bacalah doa hajat.'", 
         narasi: `Waktu & Pelaksanaan:
 - Dikerjakan saat memiliki keinginan yang mendesak, atau saat menghadapi jalan buntu dan masalah berat.
 - Minimal 2 rakaat, maksimal 12 rakaat (salam setiap 2 rakaat).
 - Setelah salam, memuji Allah, bershalawat, lalu sujud dan mengutarakan hajat dengan bahasa sendiri.
 
-Shalat Hajat ibarat mengajukan "proposal" langsung ke "Pusat". Daripada mengemis pertolongan kepada manusia yang memiliki keterbatasan dan sering mengecewakan, jauh lebih elegan dan menenangkan jika kita mengemis kepada Dzat Yang Tidak Pernah Menolak doa hamba-Nya.`
+Shalat Hajat ibarat mengajukan "proposal" langsung ke "Pusat". Daripada mengemis pertolongan kepada manusia yang memiliki keterbatasan, jauh lebih elegan dan menenangkan jika kita mengemis kepada Dzat Yang Tidak Pernah Menolak doa hamba-Nya.`
     },
     { 
         judul: "Panduan Shalat Witir", 
+        slug: "shalat-witir",
         arab: "أُصَلِّيْ سُنَّةَ الْوِتْرِ رَكْعَتَيْنِ / رَكْعَةً لِلَّهِ تَعَالَى", 
         latin: "Ushalli sunnatal witri rak'ataini / rak'atan lillaahi ta'aalaa.", 
         arti: "Aku niat shalat sunnah Witir dua rakaat / satu rakaat karena Allah Ta'ala.", 
@@ -133,6 +142,7 @@ Allah itu Ganjil (Esa) dan menyukai yang ganjil (Witir). Shalat Witir menjadi st
     },
     { 
         judul: "Tata Cara Shalat Jenazah", 
+        slug: "shalat-jenazah",
         arab: "أُصَلِّي عَلَى هَذَا الْمَيِّتِ أَرْبَعَ تَكْبِيرَاتٍ فَرْضَ كِفَايَةٍ لِلَّهِ تَعَالَى", 
         latin: "Ushalli 'alaa haadzal mayyiti (pria) / haadzihil mayyitati (wanita) arba'a takbiiraatin fardha kifaayatin lillaahi ta'aalaa.", 
         arti: "Aku niat shalat atas jenazah ini empat kali takbir fardhu kifayah karena Allah Ta'ala.", 
@@ -143,6 +153,6 @@ Allah itu Ganjil (Esa) dan menyukai yang ganjil (Witir). Shalat Witir menjadi st
 3. Takbir ke-3: Mendoakan jenazah (Minimal: Allahummaghfirlahu warhamhu wa 'aafihi wa'fu 'anhu).
 4. Takbir ke-4: Membaca doa ("Allahumma laa tahrimnaa ajrahu walaa taftinna ba'dahu...") lalu Salam menoleh ke kanan dan ke kiri.
 
-Sebagai makhluk sosial, shalat jenazah ini adalah "Memento Mori" (Pengingat Kematian) yang paling nyata. Kita mendoakan saudara kita yang pulang lebih dulu, sekaligus menundukkan kesombongan kita karena sadar bahwa kelak tubuh kita lah yang akan terbujur kaku untuk didoakan di depan jamaah.`
+Sebagai makhluk sosial, shalat jenazah ini adalah "Memento Mori" (Pengingat Kematian) yang paling nyata. Kita mendoakan saudara kita yang pulang lebih dulu, sekaligus menundukkan kesombongan kita karena sadar bahwa kelak tubuh kita lah yang akan terbujur kaku untuk didoakan.`
     }
 ];

@@ -3,143 +3,16 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import { daftarFikih } from '../../data/fikih.js';
 ---
 
-<MainLayout title="Fikih Ibadah - Bilik Tafakur">
-    
-    <div id="single-fikih-container" class="hidden max-w-2xl mx-auto py-4 animate-fade-in">
-        <div class="mb-8 flex items-center justify-between">
-            <a href="/fikih" class="text-sm font-bold text-emerald-700 dark:text-emerald-400 hover:scale-105 transition-all flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-                KEMBALI KE DAFTAR
-            </a>
-            <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Fikih Ibadah</span>
-        </div>
-
-        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
-            <div id="single-header" class="bg-emerald-50/50 dark:bg-emerald-900/20 px-8 py-6 border-b border-slate-100 dark:border-slate-800">
-                <h1 id="single-judul" class="text-2xl md:text-3xl font-poppins font-bold text-emerald-900 dark:text-emerald-400 text-center leading-tight"></h1>
-            </div>
-
-            <div class="p-8 md:p-10 space-y-10">
-                <div class="text-right">
-                    <p id="single-arab" class="font-serif text-3xl md:text-5xl text-slate-900 dark:text-slate-50 leading-[2.8] md:leading-[3]"></p>
-                </div>
-
-                <div class="space-y-6">
-                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-l-4 border-emerald-500">
-                        <span class="text-[10px] uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-bold mb-2 block">Bacaan Latin:</span>
-                        <p id="single-latin" class="text-base md:text-lg text-slate-700 dark:text-slate-200 italic font-medium leading-relaxed"></p>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2 block">Artinya:</span>
-                        <p id="single-arti" class="text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed"></p>
-                    </div>
-                </div>
-
-                <div class="bg-amber-50/50 dark:bg-amber-900/10 p-6 md:p-8 rounded-3xl border border-amber-200/50 dark:border-amber-800/30 relative">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="text-xl">🕋</span>
-                        <span class="text-[10px] uppercase tracking-widest text-amber-700 dark:text-amber-500 font-bold">Tata Cara & Penjelasan:</span>
-                    </div>
-                    <p id="single-narasi" class="text-sm md:text-base text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line mb-4"></p>
-                    
-                    <div class="pt-4 border-t border-amber-200/30">
-                        <span id="single-sumber" class="text-[11px] font-bold text-amber-800 dark:text-amber-400 uppercase tracking-widest"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="list-fikih-container" class="">
-        <div class="mb-10 text-center md:text-left">
-            <h1 class="text-3xl md:text-4xl font-poppins font-bold text-emerald-900 dark:text-emerald-400 mb-3 tracking-tight">Fikih & Ibadah</h1>
-            <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">Panduan ringkas tata cara ibadah dinten-dinten.</p>
-        </div>
-
-        <div class="mb-10 relative max-w-xl">
-            <input type="text" id="search-fikih" placeholder="Cari panduan (misal: Wudhu, Tahajud)..." class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl px-6 py-4 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 shadow-sm transition-all" />
-            <span class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 text-xl">🔍</span>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="fikih-grid">
-            {daftarFikih.map((item, index) => (
-                <a href={`/fikih?id=${index}`} class="fikih-card group flex items-center justify-between p-5 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md hover:border-emerald-300 dark:hover:border-emerald-700 transition-all">
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 flex items-center justify-center bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition-all text-sm">{index + 1}</div>
-                        <h3 class="fikih-title font-bold text-slate-800 dark:text-slate-200 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">{item.judul}</h3>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 group-hover:text-emerald-500 transition-colors"><path d="m9 18 6-6-6-6"/></svg>
+<MainLayout title="Daftar Fikih - Bilik Tafakur">
+    <div class="max-w-4xl mx-auto py-8">
+        <h1 class="text-3xl font-bold text-emerald-900 dark:text-emerald-400 mb-6">Fikih & Ibadah</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {daftarFikih.map((item) => (
+                <a href={`/fikih/${item.slug}`} class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-emerald-500 transition-all">
+                    <h3 class="font-bold text-slate-800 dark:text-slate-200">{item.judul}</h3>
+                    <p class="text-sm text-slate-500 mt-2 line-clamp-2">{item.arti}</p>
                 </a>
             ))}
         </div>
     </div>
-
-  <script is:inline define:vars={{ daftarFikih }}>
-    document.addEventListener('DOMContentLoaded', () => {
-        const listContainer = document.getElementById('list-fikih-container');
-        const singleContainer = document.getElementById('single-fikih-container');
-        const globalSearch = document.getElementById('global-search-input'); 
-        const localSearch = document.getElementById('search-fikih');
-        const cards = document.querySelectorAll('.fikih-card');
-
-        // LOGIKA URL ID
-        const urlParams = new URLSearchParams(window.location.search);
-        const id = urlParams.get('id');
-
-        if (id !== null && daftarFikih[id]) {
-            const fikih = daftarFikih[id];
-            document.getElementById('single-judul').innerText = fikih.judul;
-            document.getElementById('single-arab').innerText = fikih.arab;
-            document.getElementById('single-latin').innerText = `"${fikih.latin}"`;
-            document.getElementById('single-arti').innerText = fikih.arti;
-            document.getElementById('single-narasi').innerText = fikih.narasi;
-            document.getElementById('single-sumber').innerText = `KATEGORI: ${fikih.riwayat}`;
-            
-            listContainer.classList.add('hidden');
-            singleContainer.classList.remove('hidden');
-        }
-
-        // FUNGSI PENYARING (FILTER)
-        const filterFikih = (term) => {
-            let found = 0;
-            cards.forEach(card => {
-                const title = card.querySelector('.fikih-title').innerText.toLowerCase();
-                if (title.includes(term.toLowerCase())) {
-                    card.style.display = 'flex';
-                    found++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            if (term.length > 0) {
-                singleContainer.classList.add('hidden');
-                listContainer.classList.remove('hidden');
-                window.history.replaceState({}, '', '/fikih');
-            }
-        };
-
-        if (globalSearch) {
-            globalSearch.addEventListener('input', (e) => {
-                filterFikih(e.target.value);
-                if(localSearch) localSearch.value = e.target.value;
-            });
-        }
-
-        if (localSearch) {
-            localSearch.addEventListener('input', (e) => {
-                filterFikih(e.target.value);
-                if(globalSearch) globalSearch.value = e.target.value;
-            });
-        }
-    });
-</script>
-
-    <style>
-        .animate-fade-in { animation: fadeIn 0.4s ease-out; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
 </MainLayout>

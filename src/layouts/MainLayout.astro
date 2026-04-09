@@ -2,7 +2,7 @@
 import Analytics from '@vercel/analytics/astro';
 import { daftarDoa } from '../data/doa.js';
 import { daftarFikih } from '../data/fikih.js'; 
-
+import { daftarMotivasi } from '../data/motivasi.js';
 const { title } = Astro.props;
 ---
 
@@ -51,10 +51,14 @@ const { title } = Astro.props;
                     <div class="flex items-center gap-4"><span>🤲</span> <span class="font-semibold text-sm">Doa Harian</span></div>
                     <svg id="icon-doa" class="w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
-                <div id="submenu-doa" class="hidden flex-col gap-2 pl-[4.5rem] pr-4 py-3 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl">
-                    {daftarDoa.map((doa, index) => (
-                        <a href={`/doa?id=${index}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 truncate py-1 block">
-                            • {doa.judul}
+                <div id="submenu-doa" class="hidden flex-col gap-2 pl-[4.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
+                    <a href="/doa" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+                        <span>Lihat Semua Doa</span>
+                    </a>
+                    {daftarDoa && daftarDoa.slice(0, 10).map((item, index) => (
+                        <a href={`/doa?id=${index}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{item.judul}</span>
                         </a>
                     ))}
                 </div>
@@ -65,24 +69,60 @@ const { title } = Astro.props;
                     <div class="flex items-center gap-4"><span>🕋</span> <span class="font-semibold text-sm">Fikih & Ibadah</span></div>
                     <svg id="icon-fikih" class="w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </a>
-               <div id="submenu-fikih" class="hidden flex-col gap-2 pl-[4.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
-       
-    </a>
-    
-    {daftarFikih && daftarFikih.map((item) => (
-        <a href={`/fikih/${item.slug}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{item.judul}</span>
-        </a>
-    ))}
-</div>
+                <div id="submenu-fikih" class="hidden flex-col gap-2 pl-[4.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
+                    <a href="/fikih" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+                        <span>Lihat Semua Fikih</span>
+                    </a>
+                    {daftarFikih && daftarFikih.slice(0, 10).map((item) => (
+                        <a href={`/fikih/${item.slug}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{item.judul}</span>
+                        </a>
+                    ))}
+                </div>
             </div>
 
-            <a href="/iqra" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all">
-                <span>📕</span> <span class="font-semibold text-sm">Iqra Digital</span>
-            </a>
-            <a href="/motivasi" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all">
-                <span>✨</span> <span class="font-semibold text-sm">Motivasi & Tafakur</span>
-            </a>
+            <div class="relative">
+                <a href="#" id="nav-iqra" class="flex items-center justify-between px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <span class="flex items-center justify-center text-xl group-hover:scale-110 transition-transform flex-shrink-0">📕</span>
+                        <span class="font-semibold text-sm tracking-tight">Iqra Digital</span>
+                    </div>
+                    <svg id="icon-iqra" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 transition-transform duration-300 flex-shrink-0"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </a>
+                <div id="submenu-iqra" class="hidden flex-col gap-2 pl-[4.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
+                    <a href="/iqra" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+                        <span>Lihat Semua Iqra</span>
+                    </a>
+                    {[1, 2, 3, 4, 5, 6].map((jilid) => (
+                        <a href={`/iqra/jilid-${jilid}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">Iqra Jilid {jilid}</span>
+                        </a>
+                    ))}
+                </div>
+            </div>
+
+            <div class="relative">
+                <a href="#" id="nav-motivasi" class="flex items-center justify-between px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <span class="flex items-center justify-center text-xl group-hover:scale-110 transition-transform flex-shrink-0">✨</span>
+                        <span class="font-semibold text-sm tracking-tight">Motivasi & Tafakur</span>
+                    </div>
+                    <svg id="icon-motivasi" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 transition-transform duration-300 flex-shrink-0"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </a>
+                <div id="submenu-motivasi" class="hidden flex-col gap-2 pl-[4.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
+                    <a href="/motivasi" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+                        <span>Lihat Semua Motivasi</span>
+                    </a>
+                    {daftarMotivasi && daftarMotivasi.slice(0, 10).map((item) => (
+                        <a href={`/motivasi/${item.slug}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{item.judul}</span>
+                        </a>
+                    ))}
+                </div>
+            </div>
         </nav>
         
         <div class="p-6 border-t border-slate-100 dark:border-slate-800 bg-emerald-50/30 dark:bg-black/20 mt-auto flex-shrink-0 text-center">
@@ -127,7 +167,7 @@ const { title } = Astro.props;
 
     <Analytics />
 
-    <script is:inline define:vars={{ daftarDoa, daftarFikih }}>
+   <script is:inline define:vars={{ daftarDoa, daftarFikih, daftarMotivasi }}>
         document.addEventListener('DOMContentLoaded', () => {
             const searchContainer = document.getElementById('global-search-container');
             const searchTrigger = document.getElementById('btn-search-trigger');
@@ -139,7 +179,8 @@ const { title } = Astro.props;
             // 1. DATA PENCARIAN 
             const allData = [
                 ...(daftarDoa || []).map((item, i) => ({ title: item.judul, type: 'Doa', url: `/doa?id=${i}`, icon: '🤲' })),
-                ...(daftarFikih || []).map((item) => ({ title: item.judul, type: 'Fikih', url: `/fikih/${item.slug}`, icon: '🕋' }))
+                ...(daftarFikih || []).map((item) => ({ title: item.judul, type: 'Fikih', url: `/fikih/${item.slug}`, icon: '🕋' })),
+                ...(daftarMotivasi || []).map((item) => ({ title: item.judul, type: 'Motivasi', url: `/motivasi/${item.slug}`, icon: '✨' }))
             ];
 
             // 2. SEARCH INTERACTION
@@ -220,20 +261,26 @@ const { title } = Astro.props;
                 };
             }
 
-            // 4. DROPDOWNS
+            // 4. DROPDOWNS (Ringkes & Canggih)
             const setupDropdown = (btnId, subId, iconId) => {
                 const btn = document.getElementById(btnId);
                 const sub = document.getElementById(subId);
                 const icon = document.getElementById(iconId);
                 let isOpen = false;
                 if(btn && sub) btn.onclick = (e) => {
-                    e.preventDefault(); isOpen = !isOpen;
+                    e.preventDefault(); 
+                    isOpen = !isOpen;
                     sub.classList.toggle('hidden', !isOpen);
-                    icon.classList.toggle('rotate-180', isOpen);
+                    sub.classList.toggle('flex', isOpen);
+                    if(icon) icon.classList.toggle('rotate-180', isOpen);
                 };
             };
+            
+            // Pasang fungsi dropdown kagem 4 menu sekaligus
             setupDropdown('nav-doa', 'submenu-doa', 'icon-doa');
             setupDropdown('nav-fikih', 'submenu-fikih', 'icon-fikih');
+            setupDropdown('nav-iqra', 'submenu-iqra', 'icon-iqra');
+            setupDropdown('nav-motivasi', 'submenu-motivasi', 'icon-motivasi');
 
             // 5. THEME
             const themeToggle = document.getElementById('theme-toggle');

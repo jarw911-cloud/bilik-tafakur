@@ -2,10 +2,12 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 import { daftarFikih } from '../../data/fikih.js';
 
+// 1. Fungsi kagem ndamel alamat URL otomatis saking data fikih.js
 export function getStaticPaths() {
     return daftarFikih.map((materi) => {
+        const slugOtomatis = materi.slug || materi.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
         return {
-            params: { slug: materi.slug || materi.judul.toLowerCase().replace(/\s+/g, '-') },
+            params: { slug: slugOtomatis },
             props: { materi }
         };
     });
@@ -24,35 +26,68 @@ const { materi } = Astro.props;
             </a>
         </div>
 
-        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden p-8 md:p-14">
-            <h1 class="text-3xl md:text-5xl font-poppins font-bold text-emerald-900 dark:text-emerald-400 text-center mb-12">{materi.judul}</h1>
+        <article class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden p-8 md:p-14">
             
-            <div class="text-right mb-10">
-                <p class="font-serif text-4xl md:text-5xl text-slate-900 dark:text-slate-50 leading-[2.5]">{materi.arab}</p>
+            <div class="text-center mb-10 border-b border-slate-200 dark:border-slate-800 pb-8">
+                <span class="text-4xl mb-4 block">🕋</span>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-poppins font-bold text-emerald-900 dark:text-emerald-400 mb-6 leading-tight">
+                    {materi.judul}
+                </h1>
+                
+                {materi.riwayat && (
+                    <span class="inline-block bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold px-4 py-2 rounded-full border border-emerald-100 dark:border-emerald-800/50">
+                        Sumber: {materi.riwayat}
+                    </span>
+                )}
+            </div>
+            
+            {materi.arab && (
+                <div class="text-center mb-12 px-2 md:px-8 py-4 overflow-visible">
+                    <p dir="rtl" class="font-serif text-[2.25rem] md:text-5xl lg:text-[3.25rem] text-slate-900 dark:text-slate-50" style="line-height: 3.5 !important;">
+                        {materi.arab}
+                    </p>
+                </div>
+            )}
+
+            {(materi.latin || materi.arti) && (
+                <div class="p-6 md:p-10 bg-emerald-50/50 dark:bg-emerald-900/10 rounded-3xl border border-emerald-100 dark:border-emerald-800/30 text-center mb-12">
+                    {materi.latin && (
+                        <p class="text-lg md:text-xl text-emerald-800 dark:text-emerald-300 italic font-medium mb-6 font-jakarta leading-relaxed">
+                            "{materi.latin}"
+                        </p>
+                    )}
+                    
+                    {materi.latin && materi.arti && <div class="h-px w-16 bg-emerald-200 dark:bg-emerald-800 mx-auto mb-6"></div>}
+                    
+                    {materi.arti && (
+                        <p class="text-base md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                            <span class="font-bold uppercase tracking-widest text-xs block mb-2 text-slate-400 italic">Artinya:</span> 
+                            <span class="font-medium text-slate-700 dark:text-slate-200">{materi.arti}</span>
+                        </p>
+                    )}
+                </div>
+            )}
+
+            <div class="prose prose-lg prose-emerald dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-jakarta leading-relaxed">
+                <Fragment set:html={materi.narasi || ""} />
             </div>
 
-            <div class="p-6 md:p-8 bg-slate-50 dark:bg-slate-800/50 rounded-3xl border-l-4 border-emerald-500 mb-10">
-                <p class="text-lg md:text-xl text-slate-700 dark:text-slate-200 italic font-medium mb-3">"{materi.latin}"</p>
-                <p class="text-base text-slate-600 dark:text-slate-400">{materi.arti}</p>
-            </div>
-
-            <div class="prose prose-slate dark:prose-invert prose-lg max-w-none text-slate-700 dark:text-slate-300 leading-relaxed custom-article" set:html={materi.narasi}></div>
-            
-            <div class="mt-12 pt-6 border-t border-slate-200 dark:border-slate-800 text-sm font-bold text-amber-600 dark:text-amber-500 uppercase tracking-widest leading-relaxed">
-                DASAR HUKUM: <br/>
-                <span class="font-normal text-slate-500 dark:text-slate-400 normal-case tracking-normal mt-2 block">{materi.riwayat}</span>
-            </div>
-        </div>
+        </article>
     </div>
 </MainLayout>
 
 <style>
     .animate-fade-in { animation: fadeIn 0.4s ease-out; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    :global(.custom-article p) { margin-bottom: 1.5em; }
-    :global(.custom-article h3) { margin-top: 2em; margin-bottom: 1em; font-weight: bold; color: #065f46; }
-    :global(.dark .custom-article h3) { color: #34d399; }
-    :global(.custom-article ul) { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1.5em; }
-    :global(.custom-article ol) { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 1.5em; }
-    :global(.custom-article li) { margin-bottom: 0.5em; }
+    
+    /* Styling otomatis kagem konten ing njero narasi */
+    :global(.prose p) { margin-bottom: 1.5em; }
+    :global(.prose h3) { color: #065f46; margin-top: 2.5em; margin-bottom: 1em; font-weight: 700; font-size: 1.5rem; }
+    :global(.dark .prose h3) { color: #34d399; }
+    :global(.prose h4) { color: #92400e; font-weight: 700; }
+    :global(.dark .prose h4) { color: #f59e0b; }
+    :global(.prose ul), :global(.prose ol) { margin-bottom: 1.5em; padding-left: 1.5em; }
+    :global(.prose li) { margin-bottom: 0.5em; }
+    :global(.prose strong) { color: #064e3b; font-weight: 800; }
+    :global(.dark .prose strong) { color: #6ee7b7; }
 </style>

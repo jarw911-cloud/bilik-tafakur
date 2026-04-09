@@ -255,5 +255,74 @@ export const daftarMotivasi = [
 
             <p>Orang yang memulai paginya dengan mengalahkan egonya di hadapan Allah, tidak akan mudah dikalahkan oleh masalah duniawi di siang harinya. Mulailah harimu dengan kemenangan batin!</p>
         `
+    }, // <- Ampun lali koma niki
+    {
+        judul: "Seni Berikhtiar: Nalar Teras Ibunda Hajar di Bukit Shafa",
+        slug: "ikhtiar-ibunda-hajar",
+        tanggal: "7 April 2026",
+        kategori: "Tafakur",
+        icon: "🏜️",
+        kutipan: "Tugas manusia hanyalah berlari di antara Shafa dan Marwah. Kapan dan dari mana air Zam-zam itu memancar, itu murni urusan Allah.",
+        isiHtml: `
+            <p class="mb-4">Seringkali kita merasa frustrasi saat usaha keras kita—baik dalam membangun karir, mencari rezeki, atau merintis usaha—tidak segera membuahkan hasil. Kita merasa sudah melakukan segalanya, tapi pintu jalan keluar seolah masih tertutup rapat.</p>
+
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4">Pelajaran dari Padang Pasir Tandus</h3>
+            <p class="mb-4">Mari kita renungkan kisah Siti Hajar saat ditinggalkan Nabi Ibrahim a.s. di lembah Bakkah (Makkah) yang tak berpenghuni. Saat bayi Ismail menangis kehausan, Hajar tidak diam meratapi nasib. Ia berikhtiar memeras tenaga, berlari bolak-balik antara Bukit Shafa dan Marwah sebanyak 7 kali mencari sumber air atau kafilah yang lewat.</p>
+            
+            <p class="mb-4">Secara logika manusia (nalar), jika ia berlari di bukit, seharusnya air atau pertolongan ditemukan di bukit tersebut. Namun, apa yang terjadi? Air Zam-zam justru memancar <strong>dari bawah tumit kaki bayi Ismail</strong>, di tempat yang jauh dari titik Hajar memeras keringat.</p>
+
+            <ul class="list-disc pl-5 space-y-2 mb-6">
+                <li><strong>Fokus Pada Usaha, Bukan Hasil:</strong> Tugas kita hanyalah berusaha (berlari). Hasilnya adalah hak prerogatif Allah. Terkadang Allah tidak memberikan rezeki dari pintu tempat kita mengetuk keras-keras, tapi dari pintu lain yang sama sekali tidak kita sangka.</li>
+                <li><strong>Gugurnya Kewajiban:</strong> Ikhtiar adalah ibadah. Saat kita bekerja dengan jujur dan sungguh-sungguh untuk meluaskan manfaat bagi keluarga atau warga sekitar, nilai ibadahnya sudah tercatat, terlepas dari besar kecilnya hasil materi yang didapat.</li>
+            </ul>
+
+            <p>Berusahalah sekuat tenaga, lalu lepaskan ekspektasi berlebihan pada hasilnya. Tawakkal adalah puncak dari ikhtiar yang paripurna.</p>
+        `
+    },
+    {
+        judul: "Menerima Ujian: Belajar Tabah dari Nabi Ayyub",
+        slug: "tabah-nabi-ayyub",
+        tanggal: "8 April 2026",
+        kategori: "Mentalitas",
+        icon: "🌧️",
+        kutipan: "Dan (ingatlah kisah) Ayub, ketika ia menyeru Tuhannya: '(Ya Tuhanku), sesungguhnya aku telah ditimpa penyakit dan Engkau adalah Tuhan Yang Maha Penyayang.' (QS. Al-Anbiya: 83)",
+        isiHtml: `
+            <p class="mb-4">Ketika musibah datang bertubi-tubi—kehilangan harta, anak yang meninggal, hingga penyakit fisik—reaksi alami manusia adalah bertanya, <em>"Kenapa Allah melakukan ini padaku? Apa salahku?"</em></p>
+
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4">Diamnya Sang Manusia Pilihan</h3>
+            <p class="mb-4">Nabi Ayyub a.s. adalah simbol ketabahan absolut. Beliau adalah nabi yang sangat kaya raya, memiliki anak yang banyak, dan kesehatan yang prima. Kemudian Allah mengujinya: hartanya habis, anak-anaknya wafat, dan ia ditimpa penyakit kulit yang parah selama bertahun-tahun hingga dijauhi masyarakat.</p>
+            
+            <p class="mb-4">Bagaimana Nalar Teras seorang Nabi Ayyub bekerja? Saat istrinya meminta beliau untuk berdoa memohon kesembuhan (karena doa Nabi pasti dikabulkan), Ayyub menolak. Ia merasa malu. <em>"Allah telah memberiku kesehatan dan kemewahan selama puluhan tahun. Masa ujian ini belum ada apa-apanya dibandingkan masa sehatku."</em></p>
+
+            <div class="my-6 p-6 bg-amber-50 dark:bg-amber-900/10 rounded-2xl border border-amber-100 dark:border-amber-800/30">
+                <p class="italic text-slate-700 dark:text-slate-300 font-medium mb-2">Mengeluh ke Arah yang Benar:</p>
+                <p class="text-emerald-800 dark:text-emerald-400 font-bold">Nabi Ayyub tidak pernah mengeluhkan rasa sakitnya kepada manusia. Ketika akhirnya beliau berdoa, kalimatnya sangat indah dan penuh adab. Ia tidak menyuruh Allah menyembuhkannya, ia hanya berkata: "Aku ditimpa penyakit, dan Engkaulah Yang Maha Penyayang."</p>
+            </div>
+
+            <p>Kesedihan tidak dilarang, namun keluhan yang diumbar ke sembarang tempat hanya akan menggerus pahala sabar. Menangislah, tapi hanya di atas sajadah, ke arah Dzat yang mampu menyelesaikan masalahmu.</p>
+        `
+    },
+    {
+        judul: "Menggenggam Dunia di Tangan: Mentalitas Abdurrahman bin Auf",
+        slug: "menggenggam-dunia",
+        tanggal: "9 April 2026",
+        kategori: "Kehidupan",
+        icon: "⚖️",
+        kutipan: "Jadikanlah dunia di tanganmu agar mudah kau lepaskan, jangan letakkan ia di hatimu agar kau tak hancur saat ia pergi.",
+        isiHtml: `
+            <p class="mb-4">Banyak yang salah paham bahwa menjadi relijius berarti harus miskin dan membenci harta. Padahal, harta di tangan orang yang beriman dan cerdas akan menjadi fasilitas ibadah yang sangat dahsyat.</p>
+
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4">"Tunjukkan Saja Letak Pasarnya"</h3>
+            <p class="mb-4">Abdurrahman bin Auf r.a. adalah seorang milyarder di Makkah. Saat hijrah ke Madinah, ia meninggalkan seluruh hartanya demi mempertahankan iman. Ia tiba di Madinah dengan status miskin total.</p>
+            
+            <p class="mb-4">Sa'ad bin Rabi', saudara angkatnya dari kaum Anshar yang juga kaya raya, menawarkan setengah hartanya secara cuma-cuma. Apa respons Abdurrahman? Ia menolak dengan halus dan bermartabat. Ia hanya meminta satu hal: <em>"Semoga Allah memberkahi keluarga dan hartamu. Tunjukkan saja kepadaku di mana letak pasarnya."</em></p>
+
+            <ul class="list-disc pl-5 space-y-2 mb-6">
+                <li><strong>Kemandirian Total:</strong> Ia memulai dari nol dengan berniaga kecil-kecilan. Berkat insting bisnis dan kejujurannya, dalam waktu singkat ia kembali menjadi salah satu sahabat paling kaya di Madinah.</li>
+                <li><strong>Hati yang Merdeka:</strong> Meski kaya raya, hatinya tidak terikat pada hartanya. Suatu hari, kafilah dagangnya yang membawa 700 ekor unta penuh barang dagangan tiba. Saat istrinya memberi tahu bahwa Aisyah r.a. memuji kedermawanannya, Abdurrahman bin Auf langsung menyedekahkan <strong>seluruh 700 unta beserta isinya</strong> di jalan Allah.</li>
+            </ul>
+
+            <p>Inilah puncak kemerdekaan finansial. Mencari rezeki dengan kerja keras dan cerdas, namun saat Allah memintanya kembali, ia melepaskannya semudah membalikkan telapak tangan. Dunia hanya mampir di tangannya, bukan bertahta di hatinya.</p>
+        `
     }
 ];

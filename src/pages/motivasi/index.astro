@@ -1,6 +1,14 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
 import { daftarMotivasi } from '../../data/motivasi.js';
+
+// NIKI TRIK-E: Kita damel 4 variasi tumpul/lancip ingkang badhe dipun-puter otomatis
+const variasiBorder = [
+    "rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-xl rounded-bl-xl", // Kados godhong miring nengen
+    "rounded-tr-[3rem] rounded-bl-[3rem] rounded-tl-xl rounded-br-xl", // Kados godhong miring ngiri
+    "rounded-t-[3rem] rounded-bl-[3rem] rounded-br-xl",                // Tumpul dhuwur & ngisor kiwa
+    "rounded-b-[3rem] rounded-tr-[3rem] rounded-tl-xl"                 // Tumpul ngisor & dhuwur tengen
+];
 ---
 
 <MainLayout title="Motivasi & Tafakur - Bilik Tafakur">
@@ -16,30 +24,31 @@ import { daftarMotivasi } from '../../data/motivasi.js';
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {daftarMotivasi.map((item) => (
-                <a href={`/motivasi/${item.slug}`} class="group relative p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 hover:shadow-2xl transition-all duration-500 overflow-hidden">
-                    <div class="absolute -right-4 -top-4 text-7xl opacity-10 group-hover:scale-125 transition-transform">
+            {daftarMotivasi.map((item, index) => (
+                <a href={`/motivasi/${item.slug}`} class={`group relative p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 hover:shadow-2xl transition-all duration-500 overflow-hidden ${variasiBorder[index % 4]}`}>
+                    
+                    <div class="absolute -right-4 -top-4 text-7xl opacity-5 dark:opacity-10 group-hover:scale-125 group-hover:opacity-10 transition-all duration-500">
                         {item.icon}
                     </div>
                     
                     <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-[10px] uppercase tracking-widest text-emerald-600 font-bold px-3 py-1 bg-emerald-50 dark:bg-emerald-900/30 rounded-full">
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="text-[10px] uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-bold px-3 py-1 bg-emerald-50 dark:bg-emerald-900/30 rounded-full">
                                 {item.kategori}
                             </span>
                             <span class="text-xs text-slate-400">{item.tanggal}</span>
                         </div>
 
-                        <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 group-hover:text-emerald-600 transition-colors mb-4 leading-tight">
+                        <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-4 leading-tight">
                             {item.judul}
                         </h2>
 
-                        <p class="text-slate-500 dark:text-slate-400 italic border-l-2 border-emerald-200 pl-4 mb-6 line-clamp-3">
+                        <p class="text-slate-500 dark:text-slate-400 italic border-l-2 border-emerald-200 dark:border-emerald-800 pl-4 mb-8 line-clamp-3">
                             "{item.kutipan}"
                         </p>
 
-                        <div class="flex items-center gap-2 text-xs font-bold text-emerald-700 dark:text-emerald-400">
-                            Selengkapnya <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        <div class="flex items-center gap-2 text-xs font-bold text-emerald-700 dark:text-emerald-400 group-hover:translate-x-2 transition-transform">
+                            SELENGKAPNYA <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                         </div>
                     </div>
                 </a>
@@ -47,3 +56,8 @@ import { daftarMotivasi } from '../../data/motivasi.js';
         </div>
     </div>
 </MainLayout>
+
+<style>
+    .animate-fade-in { animation: fadeIn 0.4s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+</style>

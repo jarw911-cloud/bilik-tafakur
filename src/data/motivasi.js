@@ -1,6 +1,96 @@
 // File: src/data/motivasi.js
 
 export const daftarMotivasi = [
+    {
+        judul: "Rezeki Tak Akan Tertukar: Seni Menerima Ketetapan-Nya",
+        slug: "rezeki-tak-akan-tertukar",
+        tanggal: "12 April 2026",
+        kategori: "Ketenangan Batin",
+        icon: "💼",
+        kutipan: "Kita lelah karena terus berlari mengejar sesuatu yang belum tentu milik kita, dan lupa mensyukuri apa yang sudah ada di genggaman.",
+        isiHtml: `
+            <p class="mb-4">Salah satu penyebab terbesar hilangnya ketenangan batin (<em>peace of mind</em>) manusia modern adalah kecemasan finansial. Kita sering overthinking memikirkan hari esok: <em>Bagaimana kalau gaji tidak cukup? Bagaimana kalau bisnis ini gagal? Bagaimana kalau saya di-PHK?</em></p>
+            
+            <p class="mb-4">Dalam pandangan <em>Nalar Teras</em>, kecemasan lahir karena kita mencoba mengontrol hal-hal yang berada di luar kendali kita. Hasil akhir dari sebuah usaha, besaran keuntungan, dan penilaian atasan adalah wilayah yang tidak bisa kita pastikan 100%. Tugas kita hanyalah fokus pada "ikhtiar" (usaha maksimal), lalu melepaskan sisanya kepada Sang Maha Pemberi Rezeki.</p>
+
+            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-6 md:p-8 rounded-2xl border border-emerald-100 dark:border-emerald-800 text-center my-8 shadow-sm">
+                <p class="font-serif text-[1.75rem] md:text-[2.25rem] text-emerald-900 dark:text-emerald-300 my-6" dir="rtl" style="line-height: 2.5 !important;">
+                    وَمَنْ يَتَّقِ اللَّهَ يَجْعَلْ لَهُ مَخْرَجًا * وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ ۚ وَمَنْ يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ
+                </p>
+                <div class="h-px w-16 bg-emerald-200 dark:bg-emerald-800 mx-auto mb-6"></div>
+                <p class="text-sm md:text-base italic text-slate-600 dark:text-slate-400">
+                    "Barangsiapa bertakwa kepada Allah niscaya Dia akan mengadakan baginya jalan keluar. Dan memberinya rezeki dari arah yang tiada disangka-sangkanya. Dan barangsiapa yang bertawakkal kepada Allah niscaya Allah akan mencukupkan (keperluan)nya." <br/>
+                    <span class="font-bold text-xs not-italic mt-2 inline-block text-emerald-700 dark:text-emerald-500">(QS. At-Thalaq: 2-3)</span>
+                </p>
+            </div>
+
+            <p class="mb-4">Perhatikan janji Allah di atas. Syarat untuk dicukupkan rezekinya bukanlah "bekerja 24 jam tanpa henti", melainkan <strong>Taqwa</strong> dan <strong>Tawakkal</strong>. Bekerja keras itu wajib sebagai bentuk ibadah fisik, namun menggantungkan hati pada hasil pekerjaan adalah sebuah kesalahan spiritual.</p>
+
+            <ul class="list-disc pl-5 space-y-3 mb-6 text-slate-700 dark:text-slate-300">
+                <li>Burung berangkat pagi dengan perut kosong dan pulang sore dengan perut kenyang, tanpa pernah tahu di mana letak biji-bijian hari itu. Modalnya hanya kepakan sayap (ikhtiar) dan tawakkal.</li>
+                <li>Jika rezeki adalah jatah yang sudah ditakar, maka ia tidak akan pernah tertukar. Kejar rezekimu dengan cara yang halal, dan jangan rusak kehormatanmu demi sesuatu yang diharamkan.</li>
+            </ul>
+        `
+    },
+    {
+        judul: "Ekspektasi pada Manusia: Mengapa Kita Sering Terluka?",
+        slug: "ekspektasi-pada-manusia",
+        tanggal: "15 April 2026",
+        kategori: "Kecerdasan Emosi",
+        icon: "🥀",
+        kutipan: "Aku sudah pernah merasakan semua kepahitan dalam hidup, dan yang paling pahit ialah berharap kepada manusia. (Ali bin Abi Thalib)",
+        isiHtml: `
+            <p class="mb-4">Pernahkah Panjenengan merasa begitu kecewa karena kebaikan dibalas dengan pengkhianatan? Atau merasa sakit hati karena seseorang yang sangat dipercaya justru menjadi alasan jatuhnya air mata?</p>
+            
+            <p class="mb-4">Kekecewaan memiliki rumus yang sangat sederhana: <strong>Realita dikurangi Ekspektasi</strong>. Semakin tinggi ekspektasi kita terhadap manusia, akan semakin dalam jurang kekecewaan yang akan kita rasakan saat mereka gagal memenuhinya. Manusia, sehebat dan sebaik apa pun, pada dasarnya adalah makhluk yang rapuh, berubah-ubah (dinamis), dan memiliki kepentingannya sendiri.</p>
+
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4">Seni Melepaskan Ketergantungan</h3>
+            <p class="mb-4">Al-Quran memberikan resep penawar yang sangat ampuh ketika kita ditinggalkan, dikecewakan, atau dikhianati oleh manusia. Saat semua orang berpaling, kita diajarkan untuk memproklamirkan kemerdekaan batin kita:</p>
+
+            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-6 md:p-8 rounded-2xl border border-emerald-100 dark:border-emerald-800 text-center my-8 shadow-sm">
+                <p class="font-serif text-[1.75rem] md:text-[2.25rem] text-emerald-900 dark:text-emerald-300 my-6" dir="rtl" style="line-height: 2.5 !important;">
+                    فَإِنْ تَوَلَّوْا فَقُلْ حَسْبِيَ اللَّهُ لَا إِلَهَ إِلَّا هُوَ ۖ عَلَيْهِ تَوَكَّلْتُ ۖ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ
+                </p>
+                <div class="h-px w-16 bg-emerald-200 dark:bg-emerald-800 mx-auto mb-6"></div>
+                <p class="text-sm md:text-base italic text-slate-600 dark:text-slate-400">
+                    "Jika mereka berpaling (dari keimanan/kebaikan), maka katakanlah: Cukuplah Allah bagiku; tidak ada Tuhan selain Dia. Hanya kepada-Nya aku bertawakkal dan Dia adalah Tuhan yang memiliki 'Arsy yang agung." <br/>
+                    <span class="font-bold text-xs not-italic mt-2 inline-block text-emerald-700 dark:text-emerald-500">(QS. At-Taubah: 129)</span>
+                </p>
+            </div>
+
+            <p class="mb-4">Kata <em>"Hasbiyallah"</em> (Cukuplah Allah bagiku) adalah perisai pelindung hati yang paling kuat. Saat kita menyadari bahwa Sang Pemilik Arsy yang agung senantiasa membersamai kita, maka kehilangan validasi, pujian, atau kehadiran seorang manusia tidak lagi terasa menakutkan.</p>
+
+            <p class="mb-6">Berbuat baiklah kepada manusia karena Allah memerintahkannya, bukan karena mengharap balasan budi dari mereka. Dengan begitu, entah mereka berterima kasih atau malah membuang muka, hati kita akan tetap utuh dan damai.</p>
+        `
+    },
+    {
+        judul: "Seni Merelakan: Menyadari Bahwa Semuanya Adalah Titipan",
+        slug: "seni-merelakan-titipan",
+        tanggal: "18 April 2026",
+        kategori: "Renungan Batin",
+        icon: "🍂",
+        kutipan: "Kehilangan akan selalu terasa menyakitkan bagi mereka yang mengira bahwa ia adalah pemilik, bukan peminjam.",
+        isiHtml: `
+            <p class="mb-4">Dalam hidup ini, kita pasti akan menghadapi yang namanya kehilangan. Entah itu kehilangan harta, pekerjaan, peluang, kesehatan, atau bahkan orang-orang yang paling kita cintai. Rasa sakit yang muncul dari kehilangan adalah sesuatu yang sangat manusiawi.</p>
+            
+            <p class="mb-4">Namun, penderitaan yang berkepanjangan seringkali terjadi karena kita salah menempatkan status kepemilikan. Kita merasa "memiliki" sepenuhnya hal-hal tersebut. Padahal, dunia dan seisinya ini tak lebih dari sekadar barang pinjaman. Sebuah titipan yang kapan saja bisa diambil kembali oleh Pemilik Sah-nya tanpa perlu meminta persetujuan kita.</p>
+
+            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-6 md:p-8 rounded-2xl border border-emerald-100 dark:border-emerald-800 text-center my-8 shadow-sm">
+                <p class="font-serif text-[1.75rem] md:text-[2.25rem] text-emerald-900 dark:text-emerald-300 my-6" dir="rtl" style="line-height: 2.5 !important;">
+                    وَلَنَبْلُوَنَّكُمْ بِشَيْءٍ مِنَ الْخَوْفِ وَالْجُوعِ وَنَقْصٍ مِنَ الْأَمْوَالِ وَالْأَنْفُسِ وَالثَّمَرَاتِ ۗ وَبَشِّرِ الصَّابِرِينَ * الَّذِينَ إِذَا أَصَابَتْهُمْ مُصِيبَةٌ قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ
+                </p>
+                <div class="h-px w-16 bg-emerald-200 dark:bg-emerald-800 mx-auto mb-6"></div>
+                <p class="text-sm md:text-base italic text-slate-600 dark:text-slate-400">
+                    "Dan sungguh akan Kami berikan cobaan kepadamu, dengan sedikit ketakutan, kelaparan, kekurangan harta, jiwa dan buah-buahan. Dan berikanlah berita gembira kepada orang-orang yang sabar. (Yaitu) orang-orang yang apabila ditimpa musibah, mereka mengucapkan: Inna lillaahi wa innaa ilaihi raaji'uun (Sesungguhnya kami adalah milik Allah dan kepada-Nya-lah kami kembali)." <br/>
+                    <span class="font-bold text-xs not-italic mt-2 inline-block text-emerald-700 dark:text-emerald-500">(QS. Al-Baqarah: 155-156)</span>
+                </p>
+            </div>
+
+            <p class="mb-4">Kalimat istirja' (<em>Inna lillahi...</em>) bukanlah sekadar ucapan belasungkawa saat ada yang meninggal dunia. Ia adalah deklarasi kemerdekaan jiwa seorang mukmin. Saat musibah datang, kita memprogram ulang pikiran kita: <em>"Aku ini milik Allah, hartaku milik Allah, keluargaku milik Allah, dan besok pun aku akan pulang menemui-Nya."</em></p>
+
+            <p class="mb-6">Seni merelakan (ikhlas) bermula dari pengakuan akan ke-Maha Kuasaan Tuhan. Menangis boleh, bersedih itu wajar. Namun, menolak takdir dan meratap berkepanjangan hanya akan menyiksa diri sendiri tanpa bisa mengubah kenyataan. Ridhalah kepada ketetapan-Nya, maka Allah akan meridhulami hidupmu.</p>
+        `
+    },
      {
         judul: "Kabut, Jalanan, dan Kendali Diri",
         slug: "kabut-jalanan-kendali-diri",
@@ -49,17 +139,41 @@ export const daftarMotivasi = [
         icon: "💍",
         kutipan: "Sebaik-baik kalian adalah yang paling baik terhadap keluarganya, dan aku adalah yang paling baik terhadap keluargaku. (HR. Tirmidzi)",
         isiHtml: `
-            <p class="mb-4">Pernikahan dalam Islam disebut sebagai <em>Mitsaqan Ghalizha</em> (perjanjian yang sangat agung). Ia bukan sekadar penyatuan dua hati, melainkan penyatuan dua isi kepala yang memiliki latar belakang, ego, dan kekurangan masing-masing.</p>
+            <p class="mb-4">Pernikahan dalam Islam disebut sebagai <em>Mitsaqan Ghalizha</em> (perjanjian yang sangat berat dan agung). Ia bukan sekadar penyatuan dua hati, melainkan penyatuan dua isi kepala yang memiliki latar belakang, ego, dan kekurangan masing-masing.</p>
             
-            <p class="mb-4">Terkadang, konflik muncul dari hal sepele. Di sinilah kedewasaan iman diuji. Kita diajarkan untuk tidak mudah terpancing amarah saat melihat kekurangan pasangan.</p>
+            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-6 md:p-8 rounded-2xl border border-emerald-100 dark:border-emerald-800 text-center my-8 shadow-sm">
+                <p class="font-serif text-[1.75rem] md:text-[2.25rem] text-emerald-900 dark:text-emerald-300 my-6" dir="rtl" style="line-height: 2.5 !important;">
+                    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِقَوْمٍ يَتَفَكَّرُونَ
+                </p>
+                <div class="h-px w-16 bg-emerald-200 dark:bg-emerald-800 mx-auto mb-6"></div>
+                <p class="text-sm md:text-base italic text-slate-600 dark:text-slate-400">
+                    "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir." <br/>
+                    <span class="font-bold text-xs not-italic mt-2 inline-block text-emerald-700 dark:text-emerald-500">(QS. Ar-Rum: 21)</span>
+                </p>
+            </div>
 
-            <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4">Teladan Kanjeng Nabi dalam Rumah Tangga</h3>
-            <p class="mb-4">Dalam sebuah riwayat, Sayyidah Aisyah r.a. pernah marah hingga tanpa sengaja memecahkan piring berisi makanan di depan para tamu. Apa respons Rasulullah SAW? Beliau tidak membentak atau memaki. Beliau justru berjongkok, memungut pecahan piring dan makanan tersebut sambil tersenyum dan berkata kepada para tamunya, <em>"Ibu kalian sedang cemburu."</em> (HR. Bukhari).</p>
+            <p class="mb-4">Perhatikan penutup dari ayat di atas: <em>"bagi kaum yang berpikir"</em>. Mewujudkan keluarga yang <em>Sakinah, Mawaddah, wa Rahmah</em> ternyata tidak cukup hanya dengan modal perasaan (cinta) semata, tetapi sangat membutuhkan nalar atau akal sehat (kognitif) untuk mengelola konflik.</p>
+
+            <p class="mb-4">Terkadang, perselisihan muncul dari hal sepele. Di sinilah kedewasaan iman diuji. Allah SWT berfirman tentang bagaimana kita harus memperlakukan pasangan, bahkan ketika kita sedang merasa kesal kepadanya:</p>
+
+            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-6 md:p-8 rounded-2xl border border-emerald-100 dark:border-emerald-800 text-center my-8 shadow-sm">
+                <p class="font-serif text-[1.75rem] md:text-[2.25rem] text-emerald-900 dark:text-emerald-300 my-6" dir="rtl" style="line-height: 2.5 !important;">
+                    وَعَاشِرُوهُنَّ بِالْمَعْرُوفِ ۚ فَإِنْ كَرِهْتُمُوهُنَّ فَعَسَىٰ أَنْ تَكْرَهُوا شَيْئًا وَيَجْعَلَ اللَّهُ فِيهِ خَيْرًا كَثِيرًا
+                </p>
+                <div class="h-px w-16 bg-emerald-200 dark:bg-emerald-800 mx-auto mb-6"></div>
+                <p class="text-sm md:text-base italic text-slate-600 dark:text-slate-400">
+                    "Dan bergaullah dengan mereka secara patut. Kemudian bila kamu tidak menyukai mereka, (maka bersabarlah) karena mungkin kamu tidak menyukai sesuatu, padahal Allah menjadikan padanya kebaikan yang banyak." <br/>
+                    <span class="font-bold text-xs not-italic mt-2 inline-block text-emerald-700 dark:text-emerald-500">(QS. An-Nisa: 19)</span>
+                </p>
+            </div>
+
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-10 mb-4">Teladan Kanjeng Nabi dalam Rumah Tangga</h3>
+            <p class="mb-4">Dalam sebuah riwayat, Sayyidah Aisyah r.a. pernah marah hingga tanpa sengaja memecahkan piring berisi makanan di depan para tamu. Apa respons Rasulullah SAW? Beliau tidak membentak atau memaki istrinya di depan umum. Beliau justru berjongkok, memungut pecahan piring dan makanan tersebut sambil tersenyum dan berkata kepada para tamunya, <em>"Ibu kalian sedang cemburu."</em> (HR. Bukhari).</p>
             
-            <ul class="list-disc pl-5 space-y-2 mb-6">
+            <ul class="list-disc pl-5 space-y-3 mb-6 text-slate-700 dark:text-slate-300">
                 <li><strong>Terima Kekurangan:</strong> "Janganlah seorang mukmin membenci mukminah (istrinya). Jika ia membenci satu akhlaknya, ia pasti ridha dengan akhlaknya yang lain." (HR. Muslim).</li>
-                <li><strong>Redam Amarah:</strong> Jangan mengambil keputusan saat marah. Jeda sejenak, berwudhu, dan bicarakan setelah hati tenang.</li>
-                <li><strong>Fokus Kelebihan:</strong> Ingatlah kebaikan-kebaikan kecil pasangan saat setan membisikkan kekurangannya di matamu.</li>
+                <li><strong>Redam Amarah:</strong> Jangan mengambil keputusan saat marah. Jeda sejenak, menyingkir, berwudhu, dan bicarakan setelah hati kembali dingin.</li>
+                <li><strong>Fokus Kelebihan:</strong> Ingatlah kebaikan-kebaikan kecil pasangan saat setan mulai membisikkan kekurangannya di matamu.</li>
             </ul>
         `
     },

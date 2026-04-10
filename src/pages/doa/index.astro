@@ -18,7 +18,7 @@ const variasiBorder = [
                🤲 Doa Harian
             </h1>
             <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed font-jakarta">
-                Kumpulan doa amalan saben dinten kagem mbetengi jiwa lan nyuwun ridha-Nya.
+                Kumpulan doa harian untuk membentengi diri dan memohon ridha-Nya.
             </p>
         </div>
 
@@ -26,16 +26,16 @@ const variasiBorder = [
             {daftarDoa.map((item, index) => {
                 const slugDoa = item.slug || item.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
                 return (
-                <a href={`/doa/${slugDoa}`} class={`group relative p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 hover:shadow-2xl transition-all duration-500 overflow-hidden ${variasiBorder[index % 4]}`}>
+                <a href={`/doa/${slugDoa}`} class={`group relative p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col justify-between ${variasiBorder[index % 4]}`}>
                     
                     <div class="absolute -right-4 -top-4 text-7xl opacity-5 dark:opacity-10 group-hover:scale-125 group-hover:opacity-10 transition-all duration-500">
                         🤲
                     </div>
                     
-                    <div class="relative z-10">
+                    <div class="relative z-10 flex-grow">
                         <div class="flex items-center gap-3 mb-5">
-                            <span class="text-[10px] uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-bold px-3 py-1 bg-emerald-50 dark:bg-emerald-900/30 rounded-full">
-                                ---
+                            <span class="text-[10px] uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-bold px-3 py-1 bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-100 dark:border-emerald-800/50 rounded-full flex items-center gap-1.5">
+                                <span class="text-xs">📜</span> {item.riwayat ? item.riwayat : 'Doa Pilihan'}
                             </span>
                         </div>
 
@@ -43,14 +43,19 @@ const variasiBorder = [
                             {item.judul}
                         </h2>
 
-                        <p class="text-right font-serif text-[1.65rem] text-slate-900 dark:text-slate-100 leading-normal mb-4 line-clamp-2">
+                        <p class="text-right font-serif text-[1.65rem] text-slate-900 dark:text-slate-100 mb-6 line-clamp-2" style="line-height: 2 !important;">
                             {item.arab}
                         </p>
 
                         <p class="text-slate-500 dark:text-slate-400 text-sm italic border-l-2 border-emerald-200 dark:border-emerald-800 pl-4 mb-8 line-clamp-2">
                             "{item.arti}"
                         </p>
+                    </div>
 
+                    <div class="relative z-10 flex items-center justify-between mt-auto pt-4 border-t border-slate-100 dark:border-slate-800/50">
+                        <span class="text-xs font-bold text-slate-400 dark:text-slate-500 flex items-center gap-1">
+                            🌱 Nalar Teras
+                        </span>
                         <div class="flex items-center gap-2 text-xs font-bold text-emerald-700 dark:text-emerald-400 group-hover:translate-x-2 transition-transform">
                             Baca Doa <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                         </div>

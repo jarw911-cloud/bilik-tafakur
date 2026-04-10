@@ -34,18 +34,6 @@ const { materi } = Astro.props;
                 </h1>
             </div>
 
-            {materi.riwayat && (
-                <div class="flex justify-center mb-10">
-                    <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-2xl px-6 py-3 flex items-center gap-3 shadow-sm">
-                        <span class="text-xl">📜</span>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest font-bold text-amber-600 dark:text-amber-500 mb-0.5">Landasan Dalil Shahih:</p>
-                            <p class="text-sm md:text-base font-bold text-slate-800 dark:text-slate-200">{materi.riwayat}</p>
-                        </div>
-                    </div>
-                </div>
-            )}
-            
             {materi.arab && (
                 <div class="text-right mb-12 px-2 md:px-8 py-4 overflow-visible">
                     <p dir="rtl" class="font-serif text-[2.25rem] md:text-5xl lg:text-[3.25rem] text-slate-900 dark:text-slate-50" style="line-height: 3.5 !important;">
@@ -81,9 +69,27 @@ const { materi } = Astro.props;
                         <span class="text-2xl">💡</span> Makna & Tafakur
                     </h3>
                     <div class="prose prose-lg prose-emerald dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-jakarta leading-relaxed" style="white-space: pre-line;">
-                        {materi.narasi.split('\n\n').map(paragraph => (
-                            <p class="mb-4">{paragraph.trim()}</p>
-                        ))}
+                        {materi.narasi.split('\n\n').map(paragraph => {
+                            // Cek menawi paragraf niki ngandhut kata "NALAR TERAS"
+                            const isNalarTeras = paragraph.includes('NALAR TERAS');
+                            return (
+                                <>
+                                    {isNalarTeras && materi.riwayat && (
+                                        <div class="flex justify-center my-10 not-prose">
+                                            <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-2xl px-6 py-4 flex items-center gap-4 shadow-sm">
+                                                <span class="text-2xl">📜</span>
+                                                <div class="text-left">
+                                                    <p class="text-[10px] uppercase tracking-widest font-bold text-amber-600 dark:text-amber-500 mb-0.5">Landasan Dalil Shahih:</p>
+                                                    <p class="text-base md:text-lg font-bold text-slate-800 dark:text-slate-200 m-0">{materi.riwayat}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                    
+                                    <p class="mb-4" set:html={paragraph.trim().replace(/\*\*(.*?)\*\*/g, '<strong class="text-emerald-800 dark:text-emerald-400">$1</strong>')}></p>
+                                </>
+                            )
+                        })}
                     </div>
                 </div>
             )}

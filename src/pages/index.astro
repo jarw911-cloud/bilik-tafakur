@@ -41,18 +41,30 @@ const randomQuote = motivasi[Math.floor(Math.random() * motivasi.length)];
             </div>
         </div>
 
-        <span class="px-4 py-1.5 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 text-xs font-semibold rounded-full uppercase tracking-widest mb-8 border border-transparent dark:border-emerald-800/50">
-            Tafakur Hari Ini
-        </span>
+        <div class="w-full p-8 md:p-14 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md rounded-[2.5rem] border border-slate-200 dark:border-slate-800 text-center relative overflow-hidden group mb-4 shadow-sm">
+            
+            <div class="absolute inset-4 md:inset-6 border border-emerald-100 dark:border-emerald-900/40 rounded-3xl pointer-events-none transition-all group-hover:border-emerald-300 dark:group-hover:border-emerald-700/60"></div>
+            <div class="absolute top-4 left-4 md:top-6 md:left-6 w-6 h-6 border-t-2 border-l-2 border-emerald-300 dark:border-emerald-700 rounded-tl-xl pointer-events-none"></div>
+            <div class="absolute top-4 right-4 md:top-6 md:right-6 w-6 h-6 border-t-2 border-r-2 border-emerald-300 dark:border-emerald-700 rounded-tr-xl pointer-events-none"></div>
+            <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 w-6 h-6 border-b-2 border-l-2 border-emerald-300 dark:border-emerald-700 rounded-bl-xl pointer-events-none"></div>
+            <div class="absolute bottom-4 right-4 md:bottom-6 md:right-6 w-6 h-6 border-b-2 border-r-2 border-emerald-300 dark:border-emerald-700 rounded-br-xl pointer-events-none"></div>
 
-        <blockquote class="relative">
-            <h2 class="text-3xl md:text-5xl font-serif italic text-slate-900 dark:text-white leading-tight mb-6 transition-colors duration-300">
-                "{randomQuote.text}"
-            </h2>
-            <cite class="text-lg text-slate-500 dark:text-slate-400 not-italic transition-colors duration-300">— {randomQuote.source}</cite>
-        </blockquote>
+            <span class="text-7xl md:text-8xl absolute -top-4 left-6 md:left-10 opacity-[0.03] dark:opacity-10 font-serif text-emerald-900 dark:text-emerald-200 pointer-events-none">"</span>
+            
+            <div class="relative z-10 mb-8">
+                <span class="px-4 py-1.5 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 text-xs font-semibold rounded-full uppercase tracking-widest border border-transparent dark:border-emerald-800/50 inline-block">
+                    Tafakur Hari Ini
+                </span>
+            </div>
 
-        <div class="mt-12 flex flex-wrap justify-center gap-4">
+            <blockquote class="relative z-10">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif italic text-slate-900 dark:text-white leading-tight mb-6 transition-colors duration-300">
+                    "{randomQuote.text}"
+                </h2>
+                <cite class="text-base md:text-lg text-slate-500 dark:text-slate-400 not-italic transition-colors duration-300">— {randomQuote.source}</cite>
+            </blockquote>
+        </div>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
             <a href="/alquran" class="px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full text-sm font-bold hover:scale-105 transition-transform shadow-md">
                 Baca Al-Quran
             </a>

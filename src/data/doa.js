@@ -1,5 +1,262 @@
 export const daftarDoa = [
-    // 1-10: DOA HARIAN UTAMA
+    {
+        judul: "Sayyidul Istighfar (Induk Ampunan)",
+        slug: "sayyidul-istighfar",
+        arab: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ وَأَبُوءُ لَكَ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+        latin: "Allahumma anta rabbii laa ilaaha illaa anta khalaqtanii wa anaa 'abduka wa anaa 'alaa 'ahdika wa wa'dika mastatha'tu, a'uudzu bika min syarri maa shana'tu, abuu-u laka bini'matika 'alayya wa abuu-u laka bidzanbii faghfir lii fa-innahu laa yaghfirudz dzunuuba illaa anta.",
+        arti: "Ya Allah, Engkau adalah Tuhanku, tidak ada Tuhan yang berhak disembah selain Engkau. Engkau telah menciptakanku dan aku adalah hamba-Mu. Aku menepati perjanjian-Mu dan janji-Mu sesuai dengan kemampuanku. Aku berlindung kepada-Mu dari keburukan perbuatanku, aku mengakui nikmat-Mu kepadaku dan aku mengakui dosaku kepada-Mu, maka ampunilah aku. Sebab tidak ada yang dapat mengampuni dosa selain Engkau.",
+        riwayat: "HR. Bukhari no. 6306",
+        narasi: `Sayyidul Istighfar adalah puncak dari segala permohonan ampun. Ia bukan sekadar kata-kata maaf, melainkan sebuah proklamasi perhambaan yang agung. Kita mengakui Allah sebagai Rabb (Pencipta, Pemilik, Pengatur) dan mengakui diri kita sebagai hamba-Nya yang penuh kelemahan.
+        
+        Dalam doa ini, kita berdiri dengan jujur di hadapan Tuhan: mengakui segala nikmat yang telah Dia berikan tanpa henti, sekaligus mengakui segala dosa yang telah kita perbuat. Ini adalah 'pembedahan jiwa' di mana kita membuang ego dan kesombongan demi mengharap belas kasih-Nya. 
+        
+        Nabi SAW menjanjikan surga bagi siapa saja yang membacanya dengan keyakinan penuh di waktu pagi atau sore lalu meninggal dunia. Ini adalah tombol reset spiritual yang mengembalikan kita pada fitrah yang suci.`
+    },
+    {
+        judul: "Doa Sapu Jagad (Kebaikan Total)",
+        slug: "doa-sapu-jagad",
+        arab: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+        latin: "Rabbanaa aatinaa fiddunyaa hasanah, wa fil aakhirati hasanah, wa qinaa 'adzaaban naar.",
+        arti: "Ya Tuhan kami, berilah kami kebaikan di dunia dan kebaikan di akhirat, dan lindungilah kami dari azab neraka.",
+        riwayat: "QS. Al-Baqarah: 201",
+        narasi: `Ini adalah doa 'jagoan' yang paling sering dibaca oleh Rasulullah SAW karena kelengkapannya yang luar biasa. Ia merangkum seluruh hajat manusia hanya dalam satu kalimat pendek. Kita memohon 'Hasanah'—sebuah kata yang berarti kebaikan yang menyeluruh, baik itu kesehatan, kecukupan ekonomi, keluarga yang harmonis, hingga ketenangan batin.
+        
+        Islam mengajarkan keseimbangan (tawazun). Kita tidak membuang urusan dunia demi akhirat, atau sebaliknya. Kebaikan di dunia adalah jembatan menuju kebaikan di akhirat. Kita ingin sukses di dunia untuk membantu sesama, dan kita ingin sukses di akhirat sebagai tujuan akhir perjalanan jiwa kita.
+        
+        Doa ini menutup segala celah kekhawatiran dan memastikan orientasi hidup kita tetap lurus.`
+    },
+    {
+        judul: "Doa Kelapangan Hati (Nabi Musa a.s.)",
+        slug: "doa-kelapangan-dada",
+        arab: "رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي وَاحْلُلْ عُقْدَةً مِنْ لِسَانِي يَفْقَهُوا قَوْلِي",
+        latin: "Rabbisyrah lii shadrii, wa yassirlii amrii, wahlul 'uqdatam mil lisaanii, yafqahuu qaulii.",
+        arti: "Ya Tuhanku, lapangkanlah untukku dadaku, dan mudahkanlah untukku urusanku, dan lepaskanlah kekakuan dari lidahku, supaya mereka mengerti perkataanku.",
+        riwayat: "QS. Thaha: 25-28",
+        narasi: `Hati yang sempit adalah penjara bagi pemiliknya. Saat masalah datang bertubi-tubi, seringkali kita merasa sesak seolah-olah dunia ini menghimpit kita tanpa ampun. Doa Nabi Musa a.s. saat menghadapi Firaun ini adalah permohonan agar Allah meluaskan daya tampung sabar kita.
+        
+        'Lapangkan dadaku' berarti memohon kekuatan mental agar tetap tenang di tengah badai. Jika dada kita luas, maka riak-riak kecil kehidupan tidak akan membuat kita goyah. Selanjutnya, kita meminta kemudahan urusan dan kelancaran komunikasi, karena komunikasi yang baik adalah kunci menyelesaikan konflik.
+        
+        Bagi pelayan masyarakat, doa ini memberikan efek terapi psikologis yang luar biasa; sebuah keyakinan bahwa ada Dzat Yang Maha Luas yang siap membantu mengurai benang kusut birokrasi dan masalah.`
+    },
+    {
+        judul: "Doa Pelindung dari Kesedihan & Kemalasan",
+        slug: "doa-pelindung-kesedihan",
+        arab: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَأَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ، وَأَعُوذُ بِكَ مِنَ الْجُبْنِ وَالْبُخْلِ، وَأَعُوذُ بِكَ مِنْ غَلَبَةِ الدَّيْنِ وَقَهْرِ الرِّجَالِ",
+        latin: "Allahumma innii a'uudzu bika minal hammi wal hazani, wa a'uudzu bika minal 'ajzi wal kasali, wa a'uudzu bika minal jubni wal bukhli, wa a'uudzu bika min ghalabatid dayni wa qahrir rijaal.",
+        arti: "Ya Allah, sesungguhnya aku berlindung kepada-Mu dari keluh kesah dan dukacita, aku berlindung kepada-Mu dari kelemahan dan kemalasan, aku berlindung kepada-Mu dari sifat pengecut dan kikir, serta aku berlindung kepada-Mu dari lilitan utang dan penindasan orang.",
+        riwayat: "HR. Bukhari no. 2893",
+        narasi: `Doa ini menyasar akar masalah psikologis manusia modern: ketakutan akan masa depan (al-hamm), kesedihan masa lalu (al-hazan), rasa malas (al-kasal), dan tekanan mental akibat hutang. Ini adalah resep anti-depresi paling ampuh yang diajarkan Nabi.
+        
+        Lilitan hutang dan penindasan orang lain seringkali membuat martabat seseorang jatuh. Dengan doa ini, kita memohon kemerdekaan jiwa. Kita menolak menjadi pribadi yang lemah dan kehilangan gairah hidup. 
+        
+        Membaca doa ini secara rutin menjadikan seorang muslim tampil sebagai pribadi yang tangguh, mandiri, dan berani. Kita berlindung dari sifat bakhil dan pengecut karena dua hal tersebut adalah penghambat kemajuan jiwa.`
+    },
+    {
+        judul: "Doa Memohon Rezeki Halal & Ilmu Bermanfaat",
+        slug: "doa-rezeki-ilmu",
+        arab: "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا طَيِّبًا وَعَمَلًا مُتَقَبَّلًا",
+        latin: "Allahumma innii as-aluka 'ilman naafi'an, wa rizqan thayyiban, wa 'amalan mutaqabbalan.",
+        arti: "Ya Allah, sesungguhnya aku memohon kepada-Mu ilmu yang bermanfaat, rezeki yang halal, dan amal yang diterima.",
+        riwayat: "HR. Ibnu Majah no. 925",
+        narasi: `Doa ini senantiasa dibaca Nabi setiap selesai shalat Subuh. Ini adalah 'blueprint' kesuksesan harian bagi seorang muslim. Kita meminta tiga pilar utama: Ilmu (untuk pikiran), Rezeki (untuk fisik), dan Amal (untuk akhirat). Ketiganya harus seimbang agar hidup tidak timpang.
+        
+        Ilmu yang bermanfaat adalah ilmu yang membuahkan aksi. Rezeki yang baik (thayyib) adalah rezeki yang didapat secara halal dan membawa ketenangan bagi keluarga. Amalan yang diterima adalah puncak dari segalanya.
+        
+        Setiap kebijakan atau langkah yang kita ambil hari ini harus didasari ilmu, dibiayai dengan cara yang benar, dan diniatkan sebagai amal jariyah. Inilah filosofi produktivitas sejati seorang mukmin.`
+    },
+    {
+        judul: "Doa Keteguhan Iman",
+        slug: "doa-keteguhan-iman",
+        arab: "يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ",
+        latin: "Yaa muqallibal quluub thabbit qalbii 'alaa diinik.",
+        arti: "Wahai Dzat yang membolak-balikkan hati, teguhkanlah hatiku di atas agama-Mu.",
+        riwayat: "HR. Tirmidzi no. 3522",
+        narasi: `Hati manusia (Qalb) secara etimologi berarti sesuatu yang mudah berbolak-balik. Pagi ini mungkin kita merasa sangat bersemangat ibadah, namun sore nanti bisa jadi kita merasa futur atau tergoda maksiat. Doa ini adalah pengakuan jujur bahwa kita tidak punya kendali mutlak atas kemantapan hati kita sendiri.
+        
+        Bahkan Nabi Muhammad SAW, manusia yang paling mulia, paling sering membaca doa ini. Ini adalah doa 'manajemen risiko' agar kita tidak tergelincir di saat-saat kritis hidup kita.
+        
+        Filosofi 'Nalar Teras' dalam doa ini adalah tentang kerendahhatian. Kita tidak merasa aman dengan amal kita sekarang. Kita meminta bantuan dari Sang Pemilik Hati agar tetap istiqomah sampai hembusan napas terakhir.`
+    },
+    {
+        judul: "Doa Bangun Tidur",
+        slug: "doa-bangun-tidur",
+        arab: "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+        latin: "Alhamdulillahilladzii ahyaanaa ba'da maa amaatanaa wa ilaihin nusyuur.",
+        arti: "Segala puji bagi Allah yang telah menghidupkan kami setelah mematikan kami (tidur), dan kepada-Nya lah kami kembali.",
+        riwayat: "HR. Bukhari no. 6312",
+        narasi: `Tidur adalah momen di mana kita melepaskan kendali atas diri kita sepenuhnya. Dalam Islam, tidur disebut sebagai 'mati kecil'. Terbangun di pagi hari bukan sekadar proses biologis, melainkan sebuah kesempatan kedua, sebuah 'reinkarnasi' harian untuk memperbaiki apa yang rusak di hari kemarin.
+        
+        Dengan mengucapkan 'Alhamdulillah', kita menanamkan jangkar syukur di dasar hati sebelum pikiran kita diserang oleh deru ambisi dan kecemasan duniawi. Kita mengakui bahwa hidup ini adalah pinjaman.
+        
+        Kata 'dan kepada-Nya kita kembali' memberikan perspektif Stoik yang kuat. Kita diingatkan bahwa sebagaimana kita bangkit dari kasur hari ini, kelak kita akan bangkit dari kubur. Kesadaran ini membuat kita tidak membuang waktu untuk hal-hal yang sia-sia.`
+    },
+    {
+        judul: "Doa Sebelum Tidur",
+        slug: "doa-sebelum-tidur",
+        arab: "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+        latin: "Bismikallahumma amuutu wa ahyaa.",
+        arti: "Dengan nama-Mu ya Allah, aku mati dan aku hidup.",
+        riwayat: "HR. Bukhari no. 6312",
+        narasi: `Menutup hari dengan nama Allah adalah bentuk penyerahan diri (submission) yang total. Kita telah berjuang, berpikir, dan bekerja sepanjang hari. Kini saatnya kita menekan tombol 'jeda' pada kesadaran kita dan menyerahkan penjagaan tubuh serta jiwa kepada Sang Pemilik Kehidupan.
+        
+        Menyebut kematian ('aku mati') sebelum tidur adalah latihan mental harian untuk melepaskan keterikatan pada dunia. Saat mata terpejam, jabatan, harta, dan masalah tidak lagi ada artinya. Kita kembali menjadi hamba yang tidak memiliki daya apa-apa.
+        
+        Tidur dengan doa ini memastikan bahwa jika malam ini adalah malam terakhir kita di dunia, kita pergi dengan mengingat nama-Nya.`
+    },
+    {
+        judul: "Doa Memohon Husnul Khatimah",
+        slug: "doa-husnul-khatimah",
+        arab: "اللَّهُمَّ اجْعَلْ خَيْرَ عُمْرِي آخِرَهُ، وَخَيْرَ عَمَلِي خَوَاتِمَهُ، وَخَيْرَ أَيَّامِي يَوْمَ أَلْقَاكَ",
+        latin: "Allahummaj'al khaira 'umrii aakhirahu, wa khaira 'amalii khawaatimahu, wa khaira ayyaamii yauma alqaak.",
+        arti: "Ya Allah, jadikanlah sebaik-baik umurku pada akhirnya, amal terbaikku pada penutupnya, dan hari terbaikku saat bertemu dengan-Mu.",
+        riwayat: "HR. Thabrani dalam Al-Awsath",
+        narasi: `Hidup ini adalah sebuah narasi panjang, dan yang paling menentukan kualitas sebuah cerita adalah bagaimana ia berakhir. Kita memohon agar grafik keimanan dan kebaikan kita terus menanjak hingga garis finish, bukan grafik yang menurun di masa tua. Inilah esensi dari Husnul Khatimah.
+        
+        Seringkali manusia memulai dengan semangat namun berakhir dalam kelalaian. Doa ini adalah penjaga agar kita konsisten. Kita ingin menghadap Tuhan dalam kondisi yang paling dicintai-Nya.
+        
+        Menyebut hari kematian sebagai 'hari terbaik' adalah puncak dari keberanian iman. Kematian bukan lagi momok yang menakutkan, melainkan momen pertemuan yang dinanti-nantikan dengan Sang Kekasih Abadi.`
+    },
+    {
+        judul: "Doa Keluar Rumah (Tawakkal Total)",
+        slug: "doa-keluar-rumah",
+        arab: "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+        latin: "Bismillaahi tawakkaltu 'alallaah, laa hawla wa laa quwwata illaa billaah.",
+        arti: "Dengan nama Allah, aku bertawakal kepada Allah. Tiada daya dan kekuatan kecuali dengan pertolongan Allah.",
+        riwayat: "HR. Abu Dawud no. 5095",
+        narasi: `Keluar rumah berarti memasuki ruang publik yang penuh dengan variabel tak terkendali. Doa ini adalah 'baju zirah' batiniah. Dengan bertawakal, kita menyerahkan navigasi hidup kita hari ini kepada Sang Maha Penjaga, sehingga hati menjadi tenang menghadapi segala kemungkinan.
+        
+        'La hawla wala quwwata illa billah' meruntuhkan ilusi bahwa kita adalah penguasa atas nasib kita sendiri. Kita mengakui bahwa untuk menggerakkan kaki saja kita butuh suplai energi dari-Nya. Sikap rendah hati ini justru mengundang perlindungan malaikat.`
+    },
+    {
+        judul: "Doa Naik Kendaraan",
+        slug: "doa-naik-kendaraan",
+        arab: "سُبْحَانَ الَّذِيْ سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِيْنَ. وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُوْنَ",
+        latin: "Subhaanal ladzii sakhkhara lanaa haadzaa, wamaa kunnaa lahuu muqriniin. Wa innaa ilaa rabbinaa lamunqalibuun.",
+        arti: "Maha Suci Tuhan yang telah menundukkan kendaraan ini bagi kami, padahal sebelumnya kami tidak mampu menguasainya. Dan sesungguhnya hanya kepada Tuhan kami lah kami akan kembali.",
+        riwayat: "QS. Az-Zukhruf: 13-14",
+        narasi: `Saat mengendarai kendaraan, doa ini adalah bentuk kesyukuran atas teknologi sekaligus pengakuan atas kelemahan manusia. Kita menyadari bahwa tanpa izin Allah, besi dan mesin ini tidak akan tunduk melayani perjalanan kita.
+        
+        Kalimat 'kami tidak mampu menguasainya' meruntuhkan keangkuhan kita di jalan raya. Kita mungkin merasa ahli menyetir, namun hakikatnya keselamatan kita sepenuhnya berada dalam genggaman Allah. Ini melatih adab berlalu lintas yang penuh kehati-hatian.
+        
+        Menutup doa dengan 'kepada Tuhan kamilah kami kembali' adalah pengingat bahwa setiap perjalanan duniawi, sejauh apa pun itu, pada akhirnya adalah simulasi menuju perjalanan akhir kita ke akhirat.`
+    },
+    {
+        judul: "Doa Meminta Keturunan & Keluarga Penyejuk Jiwa",
+        slug: "doa-keluarga-sakinah",
+        arab: "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
+        latin: "Rabbanaa hab lanaa min azwaajinaa wa dzurriyyaatinaa qurrata a'yunin waj'alnaa lil muttaqiina imaamaa.",
+        arti: "Ya Tuhan kami, anugerahkanlah kepada kami pasangan dan keturunan kami sebagai penyejuk hati (pandangan mata), dan jadikanlah kami imam (pemimpin) bagi orang-orang yang bertaqwa.",
+        riwayat: "QS. Al-Furqan: 74",
+        narasi: `Keluarga adalah pelabuhan terakhir bagi jiwa yang lelah. Memiliki pasangan dan keturunan yang menjadi 'Qurrata A'yun' (penyejuk mata) adalah nikmat dunia yang luar biasa. Artinya, saat memandang mereka, hilanglah segala beban dan kepenatan duniawi.
+        
+        Doa ini tidak berhenti pada kebahagiaan pribadi, namun memancarkan ambisi sosial yang mulia: 'jadikanlah kami pemimpin bagi orang bertaqwa'. Kita meminta agar keluarga kita bisa menjadi teladan (role model) dalam kebaikan bagi masyarakat sekitar.
+        
+        Bagi seorang ayah atau suami, doa ini adalah komitmen untuk menciptakan atmosfer rumah tangga yang penuh cinta, keteladanan, dan nilai-nilai ketuhanan yang kokoh.`
+    },
+    {
+        judul: "Doa Masuk Masjid",
+        slug: "doa-masuk-masjid",
+        arab: "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
+        latin: "Allahummaftah lii abwaaba rahmatik.",
+        arti: "Ya Allah, bukakanlah untukku pintu-pintu rahmat-Mu.",
+        riwayat: "HR. Muslim no. 713",
+        narasi: `Masjid bukan sekadar bangunan fisik, melainkan oase di tengah padang pasir dunia yang gersang. Melangkah masuk ke dalamnya berarti melangkah keluar dari hiruk-pikuk masalah duniawi. Permohonan kita saat masuk hanya satu: Rahmat. Karena di dalam rahmat-Nya, semua kecemasan akan sirna.
+        
+        Kita meminta 'pintu-pintu' rahmat dibuka, menunjukkan bahwa rahmat Allah itu luas dan beraneka ragam bentuknya—bisa berupa ketenangan hati, pengampunan dosa, atau jawaban atas doa-doa kita. 
+        
+        Secara psikologis, doa ini membantu kita melakukan transisi mental. Kita meninggalkan identitas kita sebagai pekerja atau pejabat di ambang pintu, dan masuk semata-mata sebagai seorang hamba yang butuh belas kasih Tuhan.`
+    },
+    {
+        judul: "Doa Keluar Masjid",
+        slug: "doa-keluar-masjid",
+        arab: "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",
+        latin: "Allahumma innii as-aluka min fadhlik.",
+        arti: "Ya Allah, sesungguhnya aku memohon kepada-Mu karunia-Mu.",
+        riwayat: "HR. Muslim no. 713",
+        narasi: `Berbeda dengan saat masuk (meminta rahmat), saat keluar masjid kita meminta 'Fadhl' atau Karunia. Karunia dalam bahasa Al-Quran seringkali dikaitkan dengan rezeki duniawi dan keberhasilan usaha. Setelah mengisi 'baterai' iman di dalam masjid, sekarang saatnya kita kembali bertempur di dunia nyata.
+        
+        Doa ini adalah pengakuan bahwa keberhasilan kita mencari nafkah di luar sana tetap bergantung pada izin-Nya. Kita ingin agar harta yang kita cari menjadi berkah dan tidak melalaikan kita dari apa yang baru saja kita lakukan di dalam masjid. 
+        
+        Keluar masjid dengan doa ini berarti membawa 'bekal spiritual' untuk menghadapi dunia. Kita menjalani rutinitas dengan profesionalitas sebagai cerminan dari iman kita.`
+    },
+    {
+        judul: "Doa Sesudah Makan",
+        slug: "doa-sesudah-makan",
+        arab: "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ",
+        latin: "Alhamdulillaahil ladzii ath'amanaa wa saqaanaa wa ja'alanaa muslimiin.",
+        arti: "Segala puji bagi Allah yang telah memberi kami makan dan minum serta menjadikan kami orang-orang muslim.",
+        riwayat: "HR. Abu Dawud no. 3850",
+        narasi: `Setelah kenyang, godaan terbesar manusia adalah lalai dan menganggap rasa kenyang itu adalah mutlak karena usahanya sendiri memegang piring. Doa ini hadir sebagai 'rem' agar kita tetap membumi. Kita mengakui bahwa keberhasilan kita mengunyah dan menelan makanan adalah sepenuhnya atas izin-Nya.
+        
+        Bagian terakhir doa ini sangat istimewa: 'dan menjadikan kami muslim'. Ini menghubungkan antara nikmat fisik (makan) dengan nikmat batin tertinggi yaitu iman. Apa gunanya perut yang kenyang jika hati kosong dari arah hidup?
+        
+        Dzikir setelah makan menjaga agar energi yang baru masuk tidak langsung digunakan untuk kesia-siaan, melainkan diniatkan kembali untuk beribadah dan menebar kebaikan.`
+    },
+    {
+        judul: "Doa Bercermin",
+        slug: "doa-bercermin",
+        arab: "اللَّهُمَّ كَمَا حَسَّنْتَ خَلْقِي فَحَسِّنْ خُلُقِي",
+        latin: "Allahumma kamaa hassanta khalqii fahassin khuluqii.",
+        arti: "Ya Allah, sebagaimana Engkau telah membaguskan penciptaanku, maka baguskanlah pula akhlakku.",
+        riwayat: "HR. Ahmad no. 24392",
+        narasi: `Cermin seringkali menjadi alat bagi ego untuk tumbuh; tempat di mana narsisme dan rasa *insecure* beradu. Doa bercermin mengalihkan fokus kita dari keindahan rupa fisik menuju keindahan jiwa. Kita mengakui bahwa wajah yang kita lihat adalah mahakarya Allah, namun kualitas karakter kita adalah tanggung jawab kita sendiri.
+        
+        Kalimat 'baguskanlah pula akhlakku' adalah permintaan agar kita memiliki 'kecantikan batin' yang tidak luntur dimakan usia. Jika kulit luar bisa keriput, akhlak mulia justru akan semakin bersinar seiring bertambahnya kedewasaan. 
+        
+        Bercermin dengan doa menjadikan kita pribadi yang tidak mudah tertipu oleh bungkus, tapi fokus pada isi hati.`
+    },
+    {
+        judul: "Doa Menahan Amarah",
+        slug: "doa-menahan-amarah",
+        arab: "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",
+        latin: "A'uudzu billaahi minasy syaithaanir rajiim.",
+        arti: "Aku berlindung kepada Allah dari godaan setan yang terkutuk.",
+        riwayat: "HR. Bukhari no. 3282",
+        narasi: `Amarah adalah api yang membakar akal sehat dan seringkali merusak hubungan yang telah dibangun bertahun-tahun dalam sekejap. Dalam pandangan Nalar Teras, amarah adalah bentuk hilangnya kendali diri atas emosi. Doa perlindungan ini adalah jeda (*pause*) yang kita ciptakan agar api tersebut tidak melahap jiwa kita lebih dalam.
+        
+        Rasulullah SAW mengajarkan bahwa orang yang kuat bukanlah yang jago bergulat, melainkan yang mampu menahan dirinya saat amarah memuncak. Dengan mengucapkan kalimat ini (Ta'awudz), kita menarik diri dari pusaran api setan dan kembali ke titik nol kesadaran.
+        
+        Ini adalah teknik *mindfulness* Islami paling awal. Setan menggunakan amarah sebagai pintu masuk untuk mengadu domba. Dengan berlindung kepada Allah, kita memadamkan konflik sebelum ia membesar.`
+    },
+    {
+        judul: "Doa Ketika Turun Hujan",
+        slug: "doa-turun-hujan",
+        arab: "اللَّهُمَّ صَيِّبًا نَافِعًا",
+        latin: "Allahumma shayyiban naafi'aa.",
+        arti: "Ya Allah, turunkanlah hujan yang bermanfaat.",
+        riwayat: "HR. Bukhari no. 1032",
+        narasi: `Hujan adalah salah satu bentuk rahmat Allah yang paling nyata bagi kehidupan di bumi. Doa singkat ini adalah harapan agar air yang turun dari langit murni membawa manfaat, menyuburkan tanah, dan membersihkan udara, bukan membawa musibah.
+        
+        Nabi Muhammad SAW seringkali menyambut hujan dengan suka cita, karena saat turun hujan adalah salah satu waktu paling mustajab untuk berdoa. Pintu-pintu langit sedang terbuka lebar mengirimkan berkahnya.
+        
+        Bagi kita, doa ini melatih penerimaan terhadap kondisi alam. Seringkali kita mengeluh saat hujan karena menghambat aktivitas, padahal ada jutaan makhluk lain yang sedang bersorak syukur menerimanya. Berdoa membuat kita selaras dengan alam.`
+    },
+    {
+        judul: "Doa Saat Tertimpa Musibah",
+        slug: "doa-tertimpa-musibah",
+        arab: "إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ راجِعُونَ، اللَّهُمَّ أْجُرْنِي فِي مُصِيبَتِي، وَأَخْلِفْ لِي خَيْرًا مِنْهَا",
+        latin: "Innaa lillaahi wa innaa ilaihi raaji'uun. Allahumma'jurnii fii mushiibatii wa akhlif lii khairan minhaa.",
+        arti: "Sesungguhnya kami milik Allah dan kepada-Nya kami kembali. Ya Allah, berilah pahala dalam musibahku ini dan gantikanlah dengan yang lebih baik.",
+        riwayat: "HR. Muslim no. 918",
+        narasi: `Musibah seringkali datang sebagai badai yang meruntuhkan ekspektasi kita. Namun, kalimat 'Inna lillahi' adalah sebuah deklarasi pembebasan batin. Ia mengingatkan kita bahwa pada hakikatnya kita tidak memiliki apa pun di dunia ini; semua adalah titipan yang bisa diambil kembali oleh Sang Pemilik sah kapan saja.
+        
+        Dengan memohon 'pahala' dan 'ganti yang lebih baik', kita sedang menanam benih optimisme di tengah puing-puing rasa kehilangan. Kita percaya bahwa setiap lubang yang ditinggalkan musibah akan diisi kembali oleh Allah dengan sesuatu yang lebih indah dan tepat bagi kita.
+        
+        Ini adalah esensi ketangguhan mental kaum Stoik Islami. Kita menolak untuk hancur bersama keputusasaan dan memilih bertawakkal sepenuhnya.`
+    },
+    {
+        judul: "Doa Berlindung dari Syirik Terselubung (Riya & Pamer)",
+        slug: "doa-berlindung-syirik-terselubung",
+        arab: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ أَنْ أُشْرِكَ بِكَ وَأَنَا أَعْلَمُ، وَأَسْتَغْفِرُكَ لِمَا لَا أَعْلَمُ",
+        latin: "Allahumma innii a'uudzu bika an usyrika bika wa anaa a'lam, wa astaghfiruka limaa laa a'lam.",
+        arti: "Ya Allah, sesungguhnya aku berlindung kepada-Mu dari menyekutukan-Mu sedangkan aku mengetahuinya, dan aku memohon ampun kepada-Mu terhadap apa-apa yang tidak aku ketahui.",
+        riwayat: "HR. Ahmad no. 19606",
+        narasi: `Syirik modern bukanlah menyembah patung, melainkan menuhankan ego, jabatan, dan validasi dari manusia lain (riya'). Saat kita berbuat baik demi pamer, atau kecewa karena kebaikan kita tak dipuji, itu adalah bibit dari syirik terselubung (syirik asghar) yang menghancurkan pahala seperti api memakan kayu kering.
+        
+        Doa ini adalah filter detoksifikasi batin. Kita berlindung dari niat pamer yang kita sadari, sekaligus memohon ampun untuk niat buruk yang saking halusnya sampai kita tidak menyadarinya.
+        
+        Dalam Nalar Teras, kita belajar untuk merdeka dari opini manusia. Kita melakukan kebaikan semata-mata karena itu adalah kebenaran, sehingga tidak ada energi yang terbuang percuma hanya demi mencari simpati makhluk.`
+    } , 
     {
         judul: "Sayyidul Istighfar (Induk Ampunan)",
         slug: "sayyidul-istighfar",

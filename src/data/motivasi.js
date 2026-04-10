@@ -1,32 +1,39 @@
 // File: src/data/motivasi.js
 
 export const daftarMotivasi = [
-{
+     {
         judul: "Kabut, Jalanan, dan Kendali Diri",
         slug: "kabut-jalanan-kendali-diri",
         tanggal: "10 April 2026",
-        kutipan: "Tugas kita bukanlah menyingkirkan kabutnya dengan tangan kosong, melainkan menyalakan 'lampu' iman kita dan memacu ikhtiar di jalur yang benar.",
-        narasi: `Udara pagi masih terasa cukup menggigit kulit. Laju Vario 110 membelah jalanan aspal yang masih diselimuti kabut tipis khas hawa pegunungan Temanggung. Jarak pandang sangat terbatas; pepohonan dan bangunan di depan hanya tampak sebagai siluet buram.
+        kategori: "Renungan Batin",
+        icon: "🛵",
+        kutipan: "Tugas kita bukanlah memaki keadaan, melainkan menyalakan 'lampu' iman kita dan memacu ikhtiar di jalur yang benar.",
+        isiHtml: `
+            <p class="mb-4">Udara pagi masih terasa cukup menggigit kulit. Laju Vario 110 membelah jalanan aspal yang masih diselimuti kabut tipis khas hawa pegunungan Temanggung. Jarak pandang sangat terbatas; pepohonan dan bangunan di depan hanya tampak sebagai siluet buram.</p>
+            
+            <p class="mb-4">Dalam situasi seperti itu, seorang pengendara dihadapkan pada pilihan. Ia bisa saja menggerutu, menyalahkan cuaca, atau marah pada kabut yang menghalangi perjalanannya. Namun, sekeras apa pun ia mengumpat, kabut itu tidak akan tiba-tiba menyingkir. Alam semesta bergerak atas kehendak Rabb-nya, bukan atas dasar keinginan manusia.</p>
 
-        Dalam situasi seperti itu, seorang pengendara dihadapkan pada pilihan. Ia bisa saja menggerutu, menyalahkan cuaca, atau marah pada kabut yang menghalangi perjalanannya. Namun, sekeras apa pun ia mengumpat, kabut itu tidak akan tiba-tiba menyingkir. Alam semesta bergerak atas kehendak Rabb-nya, bukan atas dasar keinginan manusia.
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4">Nalar Teras dan Ridha pada Takdir</h3>
+            <p class="mb-4">Di sinilah letak esensi <em>Nalar Teras</em> yang bersendikan ajaran Islam. Dalam aqidah, kita mengenalnya dengan konsep Ridha terhadap <em>Qadha dan Qadar</em>. Kita menyadari dengan penuh kerendahan hati bahwa kabut di luar sana adalah zona yang sama sekali tidak bisa kita kendalikan. Itu adalah hak prerogatif Allah Subhanahu wa Ta'ala.</p>
+            
+            <p class="mb-4">Lalu, apa yang menjadi wilayah ikhtiar (kendali) kita saat kehidupan sedang dipenuhi "kabut" masalah—baik itu urusan pekerjaan, birokrasi, atau keluarga?</p>
 
-        Di sinilah letak esensi *Nalar Teras* yang bersendikan ajaran Islam. Dalam aqidah, kita mengenalnya dengan konsep Ridha terhadap *Qadha dan Qadar*. Kita menyadari dengan penuh kerendahan hati bahwa kabut di luar sana adalah zona yang sama sekali tidak bisa kita kendalikan. Itu adalah hak prerogatif dan wilayah kekuasaan Allah *Subhanahu wa Ta'ala*. 
+            <ul class="list-disc pl-5 space-y-2 mb-6 text-slate-700 dark:text-slate-300">
+                <li><strong>Nyalakan Lampu Iman:</strong> Perbanyak dzikir dan ibadah agar jalan pikiran menjadi lebih terang di tengah situasi yang membingungkan.</li>
+                <li><strong>Tarik Tuas Rem Duniawi:</strong> Perlambat ritme ambisi kita. Jangan memaksakan diri, beri jeda untuk bernapas dan mengembalikan fokus pada akhirat.</li>
+                <li><strong>Jaga Pandangan Tetap Lurus:</strong> Abaikan hiruk-pikuk komentar orang lain yang tidak penting, fokuslah pada tujuan utama perjalanan.</li>
+            </ul>
 
-        Lalu, apa yang menjadi wilayah ikhtiar (kendali) kita? 
-        Kita bisa menyalakan lampu utama agar lebih terlihat. Kita bisa sedikit menarik tuas rem untuk menurunkan kecepatan. Kita bisa memfokuskan pandangan lebih tajam ke jalanan. Dan yang terpenting, kita bisa mengatur napas dan tetap membasahi lisan dengan dzikir.
+            <p class="mb-6">Tugas kita bukanlah memaki keadaan dengan tangan kosong, melainkan terus bergerak maju dengan penuh <em>tawakkal</em>. Ingatlah doa yang diajarkan oleh Rasulullah SAW saat menghadapi jalan buntu:</p>
 
-        Bukankah hidup ini seringkali persis seperti itu? 
-
-        Terkadang Allah menguji kita dengan menghadirkan "kabut" masalah yang tebal—baik itu urusan pekerjaan, tumpukan birokrasi pemerintahan, masalah keluarga, atau rezeki yang sedang terasa sempit. Kita tidak bisa memaksa semua orang untuk langsung mengerti posisi kita, dan kita tidak bisa menyihir keadaan menjadi langsung mudah.
-
-        Tugas kita bukanlah memaki keadaan, melainkan menyalakan "lampu" iman kita, memperlambat ritme ambisi duniawi kita, dan terus bergerak maju dengan penuh *tawakkal*. Seperti doa yang diajarkan oleh Rasulullah SAW saat menghadapi jalan buntu:
-
-        اللَّهُمَّ لَا سَهْلَ إِلَّا مَا جَعَلْتَهُ سَهْلًا، وَأَنْتَ تَجْعَلُ الْحَزَنَ إِذَا شِئْتَ سَهْلًا
-        *"Allahumma laa sahla illaa maa ja'altahu sahlaa, wa anta taj'alul hazana idzaa syi'ta sahlaa."*
-        (Ya Allah, tidak ada kemudahan kecuali yang Engkau buat mudah. Dan Engkau menjadikan kesulitan menjadi mudah jika Engkau kehendaki).
-
-        Yakinlah, kabut pasti akan berlalu seiring naiknya matahari. Tugas kita hanyalah menjaga setir agar tidak melenceng dari jalan syariat-Nya, hingga cahaya kemudahan dari Allah itu tiba.`
-    }, 
+            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-800 text-center mb-4">
+                <p class="font-serif text-2xl md:text-3xl text-emerald-900 dark:text-emerald-300 mb-4" dir="rtl">اللَّهُمَّ لَا سَهْلَ إِلَّا مَا جَعَلْتَهُ سَهْلًا، وَأَنْتَ تَجْعَلُ الْحَزَنَ إِذَا شِئْتَ سَهْلًا</p>
+                <p class="text-sm italic text-slate-600 dark:text-slate-400">"Ya Allah, tidak ada kemudahan kecuali yang Engkau buat mudah. Dan Engkau menjadikan kesulitan menjadi mudah jika Engkau kehendaki." (HR. Ibnu Hibban)</p>
+            </div>
+            
+            <p class="mt-4">Yakinlah, kabut pasti akan berlalu seiring naiknya matahari. Tugas kita hanyalah menjaga setir agar tidak melenceng dari jalan syariat-Nya, hingga cahaya kemudahan dari Allah itu tiba.</p>
+        `
+    },
     {
         judul: "Menikah: Mengayuh Biduk dengan Nalar dan Sabar",
         slug: "menikah-nalar-sabar",

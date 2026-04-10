@@ -26,10 +26,17 @@ export const daftarMotivasi = [
 
             <p class="mb-6">Tugas kita bukanlah memaki keadaan dengan tangan kosong, melainkan terus bergerak maju dengan penuh <em>tawakkal</em>. Ingatlah doa yang diajarkan oleh Rasulullah SAW saat menghadapi jalan buntu:</p>
 
-            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-800 text-center mb-4">
-                <p class="font-serif text-2xl md:text-3xl text-emerald-900 dark:text-emerald-300 mb-4" dir="rtl">اللَّهُمَّ لَا سَهْلَ إِلَّا مَا جَعَلْتَهُ سَهْلًا، وَأَنْتَ تَجْعَلُ الْحَزَنَ إِذَا شِئْتَ سَهْلًا</p>
-                <p class="text-sm italic text-slate-600 dark:text-slate-400">"Ya Allah, tidak ada kemudahan kecuali yang Engkau buat mudah. Dan Engkau menjadikan kesulitan menjadi mudah jika Engkau kehendaki." (HR. Ibnu Hibban)</p>
-            </div>
+            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-6 md:p-8 rounded-2xl border border-emerald-100 dark:border-emerald-800 text-center mb-6">
+    <p class="font-serif text-[2rem] md:text-[2.5rem] text-emerald-900 dark:text-emerald-300 my-6" dir="rtl" style="line-height: 2.5 !important;">
+        اللَّهُمَّ لَا سَهْلَ إِلَّا مَا جَعَلْتَهُ سَهْلًا، وَأَنْتَ تَجْعَلُ الْحَزَنَ إِذَا شِئْتَ سَهْلًا
+    </p>
+    <div class="h-px w-16 bg-emerald-200 dark:bg-emerald-800 mx-auto mb-6"></div>
+    <p class="text-sm md:text-base italic text-slate-600 dark:text-slate-400">
+        "Ya Allah, tidak ada kemudahan kecuali yang Engkau buat mudah. Dan Engkau menjadikan kesulitan menjadi mudah jika Engkau kehendaki." <br/>
+        <span class="font-bold text-xs not-italic mt-2 inline-block text-emerald-700 dark:text-emerald-500">(HR. Ibnu Hibban)</span>
+    </p>
+</div>
+
             
             <p class="mt-4">Yakinlah, kabut pasti akan berlalu seiring naiknya matahari. Tugas kita hanyalah menjaga setir agar tidak melenceng dari jalan syariat-Nya, hingga cahaya kemudahan dari Allah itu tiba.</p>
         `

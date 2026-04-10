@@ -1,42 +1,274 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+
+const motivasi = [
+    { text: "Hati yang tenang adalah awal dari ibadah yang khusyuk.", source: "Bilik Tafakur" },
+    { text: "Maka sesungguhnya bersama kesulitan ada kemudahan.", source: "QS. Al-Insyirah: 5" },
+    { text: "Cukuplah Allah bagi kami, dan Dia adalah sebaik-baik pelindung.", source: "QS. Ali Imran: 173" },
+    { text: "Jangan menjelaskan tentang dirimu kepada siapapun, karena yang menyukaimu tidak butuh itu.", source: "Ali bin Abi Thalib" },
+    { text: "Dunia hanyalah tempat persinggahan, akhirat adalah tujuan abadi.", source: "Nasihat Bijak" }
+];
+const randomQuote = motivasi[Math.floor(Math.random() * motivasi.length)];
 ---
 
-<MainLayout title="Beranda - Bilik Tafakur">
-	<div class="max-w-6xl mx-auto py-12 px-8 md:px-12 lg:px-16 animate-fade-in">
-		
-		<div class="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-emerald-800 to-emerald-950 p-10 md:p-20 mb-16 shadow-2xl">
-			<div class="relative z-10 text-center md:text-left">
-				<h1 class="text-4xl md:text-7xl font-poppins font-bold text-white mb-6 leading-tight">
-					Ruang <span class="text-emerald-400">Tafakur</span><br/>Batin.
-				</h1>
-				<p class="text-emerald-100/80 text-lg md:text-xl max-w-2xl font-jakarta leading-relaxed mb-10">
-					Njaga ketenangan nalar lan batin saking riyuhing dunya mawi renungan Stoikisme Islami, Al-Quran, lan Fikih.
-				</p>
-				<div class="flex flex-wrap justify-center md:justify-start gap-4">
-					<a href="/alquran" class="px-8 py-4 bg-white text-emerald-900 font-bold rounded-2xl hover:bg-emerald-100 transition-all shadow-lg">Mulai Ngaji</a>
-					<a href="/motivasi" class="px-8 py-4 bg-emerald-700/50 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all border border-emerald-500/30">Waos Renungan</a>
-				</div>
-			</div>
-		</div>
+<MainLayout title="Beranda">
+    <div class="flex flex-col items-center justify-start min-h-[80vh] text-center max-w-3xl mx-auto relative pb-40 pt-4">
+        
+        <div id="last-read-container" class="hidden mb-6">
+            <a id="last-read-link" href="#" class="inline-flex items-center gap-3 px-5 py-2.5 bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 rounded-full text-sm font-medium text-emerald-800 dark:text-emerald-300 hover:shadow-md hover:scale-105 transition-all duration-300">
+                <span class="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                Lanjutkan Membaca: <strong id="last-read-name"></strong>
+            </a>
+        </div>
 
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-			<a href="/fikih" class="p-10 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all group">
-				<span class="text-5xl mb-6 block group-hover:scale-110 transition-transform">🕋</span>
-				<h3 class="text-2xl font-bold mb-3">Fikih Ibadah</h3>
-				<p class="text-slate-500 text-sm">Panduan tata cara ngibadah ingkang leres miturut madzhab.</p>
-			</a>
-			<a href="/doa" class="p-10 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all group">
-				<span class="text-5xl mb-6 block group-hover:scale-110 transition-transform">🤲</span>
-				<h3 class="text-2xl font-bold mb-3">Doa Harian</h3>
-				<p class="text-slate-500 text-sm">Kempalan donga amalan saben dinten kagem batin.</p>
-			</a>
-			<a href="/iqra" class="p-10 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all group">
-				<span class="text-5xl mb-6 block group-hover:scale-110 transition-transform">📕</span>
-				<h3 class="text-2xl font-bold mb-3">Iqra Digital</h3>
-				<p class="text-slate-500 text-sm">Media sinau maos Al-Quran kagem lare-lare lan umum.</p>
-			</a>
-		</div>
+        <div class="w-full mb-12">
+            <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-2">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center justify-center md:justify-start gap-2">
+                            <span class="text-emerald-600">🕌</span> Jadwal Sholat
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Temanggung & Sekitarnya</p>
+                    </div>
+                    <div class="text-center md:text-right">
+                        <p class="text-sm font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1 rounded-lg inline-block" id="tanggal-sholat">Memuat waktu...</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-5 gap-2 md:gap-4" id="waktu-sholat-container">
+                    <div class="col-span-5 text-sm text-slate-400 animate-pulse py-4">Menyelaraskan waktu dengan matahari...</div>
+                </div>
+            </div>
+        </div>
 
-	</div>
+        <span class="px-4 py-1.5 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 text-xs font-semibold rounded-full uppercase tracking-widest mb-8 border border-transparent dark:border-emerald-800/50">
+            Tafakur Hari Ini
+        </span>
+
+        <blockquote class="relative">
+            <h2 class="text-3xl md:text-5xl font-serif italic text-slate-900 dark:text-white leading-tight mb-6 transition-colors duration-300">
+                "{randomQuote.text}"
+            </h2>
+            <cite class="text-lg text-slate-500 dark:text-slate-400 not-italic transition-colors duration-300">— {randomQuote.source}</cite>
+        </blockquote>
+
+        <div class="mt-12 flex flex-wrap justify-center gap-4">
+            <a href="/alquran" class="px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full text-sm font-bold hover:scale-105 transition-transform shadow-md">
+                Baca Al-Quran
+            </a>
+            <a href="/doa" class="px-8 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-sm font-bold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-sm">
+                Kumpulan Doa
+            </a>
+        </div>
+
+        <div id="chat-history" class="w-full mt-16 flex flex-col gap-6 text-left"></div>
+    </div>
+
+    <div class="fixed bottom-0 left-0 w-full z-50 bg-gradient-to-t from-slate-50 via-slate-50 to-transparent dark:from-[#0f172a] dark:via-[#0f172a] dark:to-transparent pt-12 pb-6 px-4">
+        <div class="max-w-3xl mx-auto relative">
+            <div class="relative flex items-center bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-full p-2 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] focus-within:ring-2 focus-within:ring-emerald-500/50 focus-within:border-emerald-500 transition-all duration-300">
+                <span class="pl-4 text-2xl">🌱</span>
+                <input 
+                    type="text" 
+                    id="curhat-input" 
+                    class="w-full bg-transparent border-none px-4 py-3 text-sm md:text-base text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-0 placeholder-slate-400 dark:placeholder-slate-500 disabled:opacity-50" 
+                    placeholder="Apa yang sedang Panjenengan rasakan hari ini? (Ketik keluh kesah di sini...)" 
+                    autocomplete="off" 
+                />
+               <button 
+                    id="btn-submit-curhat" 
+                    class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 bg-slate-900 dark:bg-emerald-600 text-white rounded-full flex items-center justify-center hover:bg-emerald-700 hover:scale-105 transition-all shadow-sm ml-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    title="Kirim Keluh Kesah"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 19V5"/>
+                        <path d="m5 12 7-7 7 7"/>
+                    </svg>
+                </button>
+            </div>
+            <p class="text-[10.5px] text-center text-slate-400 dark:text-slate-500 mt-4 tracking-wide font-medium">
+                Sistem P3K Batin ini hanya bisa digunakan sekali per kunjungan untuk menjaga kekhusyukan.
+            </p>
+        </div>
+    </div>
+
+    <script is:inline>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 1. TERAKHIR BACA
+            const lastId = localStorage.getItem('lastReadId');
+            const lastName = localStorage.getItem('lastReadName');
+            const lastAyat = localStorage.getItem('lastReadAyat');
+            if (lastId && lastName) {
+                document.getElementById('last-read-container').classList.remove('hidden');
+                let displayText = lastName;
+                let targetUrl = `/alquran/${lastId}`;
+                if (lastAyat) { displayText += ` - Ayat ${lastAyat}`; targetUrl += `#ayat-${lastAyat}`; }
+                document.getElementById('last-read-name').innerText = displayText;
+                document.getElementById('last-read-link').href = targetUrl;
+            }
+
+            // 2. JADWAL SHOLAT
+            const container = document.getElementById('waktu-sholat-container');
+            const tanggalEl = document.getElementById('tanggal-sholat');
+            try {
+                const res = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Temanggung&country=Indonesia&method=20');
+                const data = await res.json();
+                if(data.code === 200) {
+                    const timings = data.data.timings;
+                    tanggalEl.innerText = new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                    const jadwal = [{nama:'Subuh',waktu:timings.Fajr},{nama:'Dzuhur',waktu:timings.Dhuhr},{nama:'Ashar',waktu:timings.Asr},{nama:'Maghrib',waktu:timings.Maghrib},{nama:'Isya',waktu:timings.Isha}];
+                    let html = '';
+                    jadwal.forEach(j => { html += `<div class="text-center p-2 md:p-3 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm hover:border-emerald-500 transition group cursor-default"><p class="text-[10px] md:text-xs font-bold text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 uppercase tracking-wider mb-1">${j.nama}</p><p class="text-sm md:text-xl font-bold text-emerald-700 dark:text-emerald-400">${j.waktu}</p></div>`; });
+                    container.innerHTML = html;
+                }
+            } catch (error) { container.innerHTML = '<p class="text-center w-full col-span-5 text-sm text-red-500">Gagal memuat jadwal sholat.</p>'; }
+
+            // 3. LOGIKA CHAT SALING BALAS
+            const inputCurhat = document.getElementById('curhat-input');
+            const btnSubmit = document.getElementById('btn-submit-curhat');
+            const chatHistory = document.getElementById('chat-history');
+
+            const resepNalar = {
+                kerjaan: {
+                    lelah: { k: "Istirahatlah, pekerjaanmu tidak akan pernah selesai jika kau terus mengejarnya. Bekerjalah secukupnya, beribadahlah sepenuh hati.", s: "Nalar Teras" },
+                    sedih: { k: "Mungkin usahamu saat ini tidak dihargai, tapi Allah mencatat setiap tetes keringatmu sebagai ibadah.", s: "Bilik Tafakur" },
+                    marah: { k: "Rekan atau atasan yang buruk adalah ujian kesabaran. Jangan biarkan mereka merusak pahalamu dengan amarah.", s: "Nasihat" },
+                    cemas: { k: "Rezekimu tidak akan tertukar. Pekerjaan bisa hilang, tapi Allah tidak akan pernah memutuskan rezekimu.", s: "Stoikisme Islami" },
+                    umum:  { k: "Tawakal itu setelah berusaha maksimal. Sisanya, biarkan Allah yang mengatur skenarionya.", s: "Nasihat Bijak" }
+                },
+                keuangan: {
+                    lelah: { k: "Mencari harta memang melelahkan. Tapi ingat, yang kau butuhkan hanya cukup untuk hari ini, bukan untuk seratus tahun ke depan.", s: "Nalar Teras" },
+                    sedih: { k: "Dompet yang kosong lebih baik daripada hati yang kosong. Sabarlah, rezeki Allah Maha Luas.", s: "Nasihat" },
+                    marah: { k: "Merasa marah karena tertipu atau kehilangan? Ikhlaskan. Harta yang hilang akan diganti Allah dengan yang lebih baik.", s: "Bilik Tafakur" },
+                    cemas: { k: "Burung di langit tidak punya tabungan, tapi Allah selalu mengenyangkannya. Mengapa engkau cemas akan hari esok?", s: "HR. Tirmidzi" },
+                    umum:  { k: "Kekayaan sejati bukanlah banyaknya harta, melainkan kekayaan jiwa (rasa cukup).", s: "Hadits" }
+                },
+                asmara: {
+                    lelah: { k: "Lelah karena urusan hati? Lepaskanlah. Hati yang kau paksa menggenggam duri hanya akan berdarah.", s: "Nalar Teras" },
+                    sedih: { k: "Orang yang tepat tidak akan pernah membuatmu mengemis. Kembalilah pada-Nya yang tak pernah meninggalkanmu.", s: "Bilik Tafakur" },
+                    marah: { k: "Jangan biarkan masalah seseorang membuatmu menjadi pendendam. Maafkan, agar hatimu merdeka.", s: "Nasihat" },
+                    cemas: { k: "Jodoh & keluarga sudah diatur oleh Dzat Yang Maha Mengetahui. Tenangkan hatimu dengan sholat.", s: "Stoikisme Islami" },
+                    umum:  { k: "Cintai makhluk sekadarnya, karena ia bisa pergi. Cintai Allah sepenuhnya, karena Dia kekal abadi.", s: "Nasihat" }
+                },
+                lainnya: {
+                    lelah: { k: "Dunia memang tempatnya capek. Istirahatlah di atas sajadahmu malam ini.", s: "Bilik Tafakur" },
+                    sedih: { k: "Kesedihan ini hanya tamu. Jamulah dengan sabar hingga ia pamit dengan sendirinya.", s: "Nalar Teras" },
+                    marah: { k: "Tarik napas, ucapkan istighfar. Amarah hanya akan membakar akal sehatmu.", s: "Nasihat" },
+                    cemas: { k: "Takdir Allah selalu baik, meski kadang dibungkus dengan ujian yang tidak kau sukai.", s: "Stoikisme Islami" },
+                    umum:  { k: "Apapun yang terjadi, katakan 'Alhamdulillah ala kulli hal' (Segala puji bagi Allah atas setiap keadaan).", s: "Sunnah" }
+                }
+            };
+
+            const deteksiEmosi = (teks) => {
+                const kata = teks.toLowerCase();
+                if (kata.includes('cape') || kata.includes('lelah') || kata.includes('berat') || kata.includes('mumet') || kata.includes('ngantuk')) return 'lelah';
+                if (kata.includes('sedih') || kata.includes('kecewa') || kata.includes('hancur') || kata.includes('nangis') || kata.includes('sakit')) return 'sedih';
+                if (kata.includes('marah') || kata.includes('kesal') || kata.includes('emosi') || kata.includes('benci') || kata.includes('mangkel')) return 'marah';
+                if (kata.includes('takut') || kata.includes('khawatir') || kata.includes('bingung') || kata.includes('cemas') || kata.includes('overthink') || kata.includes('gelisah')) return 'cemas';
+                return 'umum';
+            };
+
+            const kirimCurhat = () => {
+                const teks = inputCurhat.value.trim();
+                if (!teks) return;
+
+                // Kunci input agar cuma bisa sekali
+                inputCurhat.disabled = true;
+                btnSubmit.disabled = true;
+                inputCurhat.placeholder = "Sesi Nalar Teras sampun diproses.";
+
+                // 1. Tampilkan Balon User
+                chatHistory.insertAdjacentHTML('beforeend', `
+                    <div class="flex justify-end fade-in-up">
+                        <div class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 px-6 py-4 rounded-3xl rounded-br-sm max-w-[85%] text-sm md:text-base border border-slate-200 dark:border-slate-700 shadow-sm leading-relaxed">
+                            "${teks}"
+                        </div>
+                    </div>
+                `);
+
+                const emosi = deteksiEmosi(teks);
+
+                // 2. Balasan Bot + Tombol Konfirmasi (Muncul setelah delay)
+                setTimeout(() => {
+                    let tanya = "Kula ngertos rasane. Sabar nggih. Menawi angsal ngertos, napa ingkang ndamel beban niki?";
+                    if(emosi === 'sedih') tanya = "Nangis mboten napa-napa, iku tandhane manungsa. Napa ingkang ndamel Panjenengan sedih?";
+                    if(emosi === 'lelah') tanya = "Pancen donya niki panggenan kagem capek. Ingkang ndamel lelah pikiran niku babagan menapa?";
+                    if(emosi === 'marah') tanya = "Kula mangertos rasane mangkel. Sinten utawi napa ingkang mancing emosi Panjenengan dinten niki?";
+                    if(emosi === 'cemas') tanya = "Tarik napas panjang rumiyin. Napa ingkang dipun-kuwatiraken badhe kedadosan?";
+
+                    const botId = 'bot-' + Date.now();
+                    chatHistory.insertAdjacentHTML('beforeend', `
+                        <div class="flex justify-start mt-2 fade-in-up" id="${botId}">
+                            <div class="bg-emerald-50/50 dark:bg-emerald-900/10 w-full px-4 md:px-8 py-6 rounded-3xl border border-emerald-100 dark:border-emerald-900/30">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span class="text-2xl">🌿</span>
+                                    <span class="text-sm font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-widest">Nalar Teras</span>
+                                </div>
+                                <p class="text-slate-700 dark:text-slate-300 mb-5 leading-relaxed">${tanya}</p>
+                                <div class="flex flex-wrap gap-2" id="opsi-${botId}">
+                                    <button class="opsi-btn px-4 py-2 bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white transition-colors shadow-sm" data-akar="kerjaan">💼 Pekerjaan</button>
+                                    <button class="opsi-btn px-4 py-2 bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white transition-colors shadow-sm" data-akar="keuangan">💰 Keuangan</button>
+                                    <button class="opsi-btn px-4 py-2 bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white transition-colors shadow-sm" data-akar="asmara">💔 Asmara/Keluarga</button>
+                                    <button class="opsi-btn px-4 py-2 bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white transition-colors shadow-sm" data-akar="lainnya">🌫️ Liyane</button>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+                    // 3. Logika pas tombol diklik
+                    document.querySelectorAll(`#opsi-${botId} .opsi-btn`).forEach(btn => {
+                        btn.onclick = () => {
+                            const akar = btn.getAttribute('data-akar');
+                            const label = btn.innerText;
+                            
+                            // Ilangi tombol sakwise diklik
+                            document.getElementById(`opsi-${botId}`).innerHTML = '';
+
+                            // Tampilake Balon User (pilihane)
+                            chatHistory.insertAdjacentHTML('beforeend', `
+                                <div class="flex justify-end mt-4 fade-in-up">
+                                    <div class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 px-6 py-4 rounded-3xl rounded-br-sm max-w-[85%] text-sm md:text-base border border-slate-200 dark:border-slate-700 shadow-sm">
+                                        ${label}
+                                    </div>
+                                </div>
+                            `);
+
+                            // 4. Tampilake Resep Pungkasan (Final)
+                            setTimeout(() => {
+                                const resep = resepNalar[akar][emosi] || resepNalar['lainnya']['umum'];
+                                chatHistory.insertAdjacentHTML('beforeend', `
+                                    <div class="flex justify-start mt-4 fade-in-up">
+                                        <div class="bg-emerald-50/50 dark:bg-emerald-900/10 w-full px-4 md:px-8 py-6 rounded-3xl border border-emerald-100 dark:border-emerald-900/30">
+                                            <p class="text-base md:text-lg font-serif italic text-emerald-900 dark:text-emerald-100 mb-4 leading-relaxed">"${resep.k}"</p>
+                                            <div class="flex items-center gap-2">
+                                                <span class="w-4 h-[1px] bg-emerald-500"></span>
+                                                <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">${resep.s}</span>
+                                            </div>
+                                            <p class="mt-6 text-sm text-slate-600 dark:text-slate-400">Mugi-mugi Gusti Allah paring ketenangan kagem Panjenengan dinten niki. 🤍</p>
+                                        </div>
+                                    </div>
+                                `);
+                                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                            }, 800);
+                        };
+                    });
+                }, 600);
+            };
+
+            btnSubmit.onclick = kirimCurhat;
+            inputCurhat.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') kirimCurhat();
+            });
+        });
+    </script>
+
+    <style is:global>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+    </style>
 </MainLayout>

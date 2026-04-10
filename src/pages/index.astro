@@ -3,9 +3,9 @@ import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout title="Beranda - Bilik Tafakur">
-	<div class="max-w-6xl mx-auto py-12 px-8 md:px-12 lg:px-16 animate-fade-in">
+	<div class="max-w-6xl mx-auto py-12 px-4 md:px-12 lg:px-16 animate-fade-in">
 		
-		<div class="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-emerald-800 to-emerald-950 p-10 md:p-20 mb-16 shadow-2xl">
+		<div class="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-emerald-800 to-emerald-950 p-10 md:p-20 mb-16 shadow-2xl mx-2 md:mx-0">
 			<div class="relative z-10 text-center md:text-left">
 				<h1 class="text-4xl md:text-7xl font-poppins font-bold text-white mb-6 leading-tight">
 					Ruang <span class="text-emerald-400">Tafakur</span><br/>Batin.
@@ -20,23 +20,60 @@ import MainLayout from '../layouts/MainLayout.astro';
 			</div>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 px-2 md:px-0">
 			<a href="/fikih" class="p-10 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all group">
 				<span class="text-5xl mb-6 block group-hover:scale-110 transition-transform">🕋</span>
-				<h3 class="text-2xl font-bold mb-3">Fikih Ibadah</h3>
+				<h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-slate-100">Fikih Ibadah</h3>
 				<p class="text-slate-500 text-sm">Panduan tata cara ngibadah ingkang leres miturut madzhab.</p>
 			</a>
 			<a href="/doa" class="p-10 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all group">
 				<span class="text-5xl mb-6 block group-hover:scale-110 transition-transform">🤲</span>
-				<h3 class="text-2xl font-bold mb-3">Doa Harian</h3>
+				<h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-slate-100">Doa Harian</h3>
 				<p class="text-slate-500 text-sm">Kempalan donga amalan saben dinten kagem batin.</p>
 			</a>
 			<a href="/iqra" class="p-10 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all group">
 				<span class="text-5xl mb-6 block group-hover:scale-110 transition-transform">📕</span>
-				<h3 class="text-2xl font-bold mb-3">Iqra Digital</h3>
+				<h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-slate-100">Iqra Digital</h3>
 				<p class="text-slate-500 text-sm">Media sinau maos Al-Quran kagem lare-lare lan umum.</p>
 			</a>
 		</div>
 
+		<div class="max-w-4xl mx-auto px-4 md:px-0 mb-16 relative">
+			
+			<div class="flex justify-center -mb-px relative z-10">
+				<div class="w-48 h-24 bg-white dark:bg-slate-900 border-t-4 border-l-4 border-r-4 border-emerald-600 dark:border-emerald-500 rounded-t-full flex items-end justify-center pb-2">
+					<span class="text-xs font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-jakarta">Tafakur Dinten Niki</span>
+				</div>
+			</div>
+
+			<div class="bg-white dark:bg-slate-900 border-4 border-emerald-600 dark:border-emerald-500 p-8 md:p-14 text-center relative shadow-2xl rounded-b-[3rem]">
+				
+				<div class="absolute top-4 left-4 w-12 h-12 border-t-4 border-l-4 border-emerald-200 dark:border-emerald-800"></div>
+				<div class="absolute top-4 right-4 w-12 h-12 border-t-4 border-r-4 border-emerald-200 dark:border-emerald-800"></div>
+				<div class="absolute bottom-4 left-4 w-12 h-12 border-b-4 border-l-4 border-emerald-200 dark:border-emerald-800"></div>
+				<div class="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-emerald-200 dark:border-emerald-800"></div>
+
+				<p class="font-serif text-2xl text-emerald-800 dark:text-emerald-400 mb-8 opacity-80" dir="rtl">
+					بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
+				</p>
+				
+				<p class="text-xl md:text-3xl font-serif text-slate-800 dark:text-slate-100 leading-relaxed mb-10 px-4 md:px-12 relative z-10">
+					"Wong mukmin sing paling sampurna imane yaiku wong sing paling apik akhlake."
+				</p>
+				
+				<div class="flex items-center justify-center gap-4">
+					<div class="h-1 w-12 bg-emerald-200 dark:bg-emerald-800 rounded-full"></div>
+					<span class="text-sm font-bold text-emerald-700 dark:text-emerald-500 uppercase tracking-widest">Hadits Nabi SAW</span>
+					<div class="h-1 w-12 bg-emerald-200 dark:bg-emerald-800 rounded-full"></div>
+				</div>
+
+			</div>
+		</div>
+
 	</div>
 </MainLayout>
+
+<style>
+    .animate-fade-in { animation: fadeIn 0.4s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+</style>

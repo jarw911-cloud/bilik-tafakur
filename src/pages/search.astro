@@ -2,12 +2,13 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import { daftarDoa } from '../data/doa.js';
 import { daftarFikih } from '../data/fikih.js';
+import { daftarMotivasi } from '../data/motivasi.js'; // TAMBAHAN: Import data motivasi
 ---
 
 <MainLayout title="Hasil Pencarian - Bilik Tafakur">
-    <div class="max-w-4xl mx-auto py-4 animate-fade-in">
+    <div class="max-w-4xl mx-auto py-4 px-4 sm:px-6 animate-fade-in">
         
-        <div class="mb-10 text-center md:text-left">
+        <div class="mb-10 text-center md:text-left mt-8">
             <h1 class="text-3xl md:text-4xl font-poppins font-bold text-emerald-900 dark:text-emerald-400 mb-3 tracking-tight">Hasil Pencarian</h1>
             <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">
                 Menampilkan asil kagem: <span id="search-query-display" class="font-bold italic text-emerald-600 dark:text-emerald-400 text-lg">...</span>
@@ -27,7 +28,7 @@ import { daftarFikih } from '../data/fikih.js';
         </div>
     </div>
 
-    <script is:inline define:vars={{ daftarDoa, daftarFikih }}>
+    <script is:inline define:vars={{ daftarDoa, daftarFikih, daftarMotivasi }}>
         document.addEventListener('DOMContentLoaded', () => {
             // Njukuk tembung sing dipadosi saking URL (tuladha: ?q=wudhu)
             const urlParams = new URLSearchParams(window.location.search);
@@ -41,16 +42,26 @@ import { daftarFikih } from '../data/fikih.js';
                 displayQuery.innerText = `"${query}"`;
                 const lowerQuery = query.toLowerCase().trim();
 
-                // Dadekne siji data Doa lan Fikih
+                // Dadekne siji data Doa, Fikih, lan Motivasi (Ngapiki URL Slug)
                 const allData = [
-                    ...(daftarDoa || []).map((item, i) => ({ title: item.judul, type: 'Doa', url: `/doa?id=${i}`, icon: '🤲', arti: item.arti })),
-                    ...(daftarFikih || []).map((item, i) => ({ title: item.judul, type: 'Fikih', url: `/fikih?id=${i}`, icon: '🕋', arti: item.arti }))
+                    ...(daftarDoa || []).map((item) => {
+                        const slug = item.slug || item.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                        return { title: item.judul, type: 'Doa', url: `/doa/${slug}`, icon: '🤲', desc: item.arti || "Baca panduan doa lengkapnya." }
+                    }),
+                    ...(daftarFikih || []).map((item) => {
+                        const slug = item.slug || item.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                        return { title: item.judul, type: 'Fikih', url: `/fikih/${slug}`, icon: '🕋', desc: item.narasi ? item.narasi.replace(/<[^>]*>?/gm, '').substring(0, 100) + "..." : "Pelajari kajian fikih ini." }
+                    }),
+                    // TAMBAHAN: Ngolah data motivasi
+                    ...(daftarMotivasi || []).map((item) => {
+                        return { title: item.judul, type: 'Motivasi', url: `/motivasi/${item.slug}`, icon: '✨', desc: item.cuplikan || "Renungan Nalar Teras." }
+                    })
                 ];
 
-                // Golek sing judule utawi artine padha karo sing diketik
+                // Golek sing judule utawi deskripsine padha karo sing diketik
                 const filtered = allData.filter(item => 
-                    item.title.toLowerCase().includes(lowerQuery) || 
-                    item.arti.toLowerCase().includes(lowerQuery)
+                    (item.title && item.title.toLowerCase().includes(lowerQuery)) || 
+                    (item.desc && item.desc.toLowerCase().includes(lowerQuery))
                 );
 
                 // Nampilake asil
@@ -70,7 +81,7 @@ import { daftarFikih } from '../data/fikih.js';
                                 </div>
                             </div>
                             <h3 class="font-bold text-lg md:text-xl text-slate-800 dark:text-slate-200 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors mb-2">${item.title}</h3>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">${item.arti}</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">${item.desc}</p>
                         `;
                         resultsContainer.appendChild(card);
                     });

@@ -27,18 +27,24 @@ const { materi } = Astro.props;
 
         <article class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden p-8 md:p-14">
             
-            <div class="text-center mb-10 border-b border-slate-200 dark:border-slate-800 pb-8">
+            <div class="text-center mb-8 border-b border-slate-200 dark:border-slate-800 pb-8">
                 <span class="text-4xl mb-4 block">🤲</span>
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-poppins font-bold text-emerald-900 dark:text-emerald-400 mb-6 leading-tight">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-poppins font-bold text-emerald-900 dark:text-emerald-400 leading-tight">
                     {materi.judul}
                 </h1>
-                
-                {materi.riwayat && (
-                    <span class="inline-block bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold px-4 py-2 rounded-full border border-emerald-100 dark:border-emerald-800/50">
-                        {materi.riwayat}
-                    </span>
-                )}
             </div>
+
+            {materi.riwayat && (
+                <div class="flex justify-center mb-10">
+                    <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-2xl px-6 py-3 flex items-center gap-3 shadow-sm">
+                        <span class="text-xl">📜</span>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest font-bold text-amber-600 dark:text-amber-500 mb-0.5">Landasan Dalil Shahih:</p>
+                            <p class="text-sm md:text-base font-bold text-slate-800 dark:text-slate-200">{materi.riwayat}</p>
+                        </div>
+                    </div>
+                </div>
+            )}
             
             {materi.arab && (
                 <div class="text-right mb-12 px-2 md:px-8 py-4 overflow-visible">
@@ -50,14 +56,12 @@ const { materi } = Astro.props;
 
             {(materi.latin || materi.arti) && (
                 <div class="p-6 md:p-10 bg-emerald-50/50 dark:bg-emerald-900/10 rounded-3xl border border-emerald-100 dark:border-emerald-800/30 mb-12 shadow-inner flex flex-col">
-                    
                     {materi.latin && (
                         <p class="text-left text-lg md:text-xl text-emerald-800 dark:text-emerald-300 italic font-medium mb-6 font-jakarta leading-relaxed">
                             "{materi.latin}"
                         </p>
                     )}
                     
-                    {/* Garis Pemisah (Center) */}
                     {materi.latin && materi.arti && <div class="h-px w-16 bg-emerald-200 dark:bg-emerald-800 mx-auto mb-6"></div>}
                     
                     {materi.arti && (
@@ -72,10 +76,9 @@ const { materi } = Astro.props;
             )}
 
             {materi.narasi && (
-                <div class="mt-12 relative">
-                    <div class="absolute -left-4 top-0 bottom-0 w-1 bg-emerald-400 rounded-full opacity-50 hidden md:block"></div>
+                <div class="mt-12 relative border-t border-slate-100 dark:border-slate-800 pt-10">
                     <h3 class="text-xl md:text-2xl font-bold text-emerald-800 dark:text-emerald-400 mb-6 flex items-center gap-3">
-                        <span class="text-2xl">📜</span> Kisah & Hikmah
+                        <span class="text-2xl">💡</span> Makna & Tafakur
                     </h3>
                     <div class="prose prose-lg prose-emerald dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-jakarta leading-relaxed" style="white-space: pre-line;">
                         {materi.narasi.split('\n\n').map(paragraph => (

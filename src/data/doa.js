@@ -611,6 +611,127 @@ export const daftarDoa = [
         Kita tidak ingin menjadi orang yang sukses dunianya tapi hancur agamanya, atau sebaliknya. Kita mencari 'Ihsan'—kesempurnaan dalam setiap langkah. Doa ini mencerminkan cita-cita seorang muslim untuk hidup seimbang, produktif di bumi namun tetap memiliki akar yang kuat di langit.
 
         Bagi seorang pemimpin desa, doa ini adalah harapan agar masa kepemimpinannya membawa perbaikan nyata. Kita ingin setiap keputusan yang kita ambil berujung pada kebaikan kolektif. Menutup rangkaian 50 doa ini dengan permohonan perbaikan menyeluruh adalah cara terbaik untuk melangkah maju dengan optimisme tinggi.`
+    }, 
+    // --- KATEGORI: KESABARAN, KESEMBUHAN & KETEGUHAN ---
+    { 
+        judul: "Doa Memohon Kesabaran Ekstra", 
+        arab: "رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَتَوَفَّنَا مُسْلِمِينَ", 
+        latin: "Rabbanaa afrigh 'alainaa shabraw wa tawaffanaa muslimiin.", 
+        arti: "Ya Tuhan kami, limpahkanlah kesabaran kepada kami dan wafatkanlah kami dalam keadaan berserah diri (kepada-Mu).", 
+        riwayat: "QS. Al-A'raf: 126", 
+        narasi: `Kata 'afrigh' secara harfiah berarti 'tumpahkanlah' atau 'guyurlah'. Ini bukan sekadar meminta sabar biasa, melainkan memohon agar Allah mengguyur seluruh relung hati kita dengan kesabaran saat menghadapi tekanan yang luar biasa berat. Doa ini diucapkan oleh para penyihir Firaun yang baru saja beriman dan langsung diancam hukuman mati.
+
+        Dalam Nalar Teras, kita menyadari bahwa penderitaan fisik atau ancaman duniawi tidak ada artinya dibandingkan dengan kehilangan prinsip dan iman. Kita meminta diguyur kesabaran agar rasa sakit itu 'mati rasa' oleh kekuatan spiritual. 
+
+        Menutup doa dengan permintaan agar diwafatkan dalam keadaan muslim adalah penegasan visi jangka panjang. Kita tidak peduli seberapa menderita hari ini, asalkan saat nyawa lepas dari raga, kita berada di pihak Sang Pencipta. Ini adalah mentalitas baja seorang pejuang kehidupan.`
+    },
+    { 
+        judul: "Doa Kesembuhan dari Penyakit Berat", 
+        arab: "أَنِّي مَسَّنِيَ الضُّرُّ وَأَنْتَ أَرْحَمُ الرَّاحِمِينَ", 
+        latin: "Annii massaniyadl dlurru wa anta arhamur raahimiin.", 
+        arti: "Sesungguhnya aku telah ditimpa penyakit dan Engkau adalah Tuhan Yang Maha Penyayang di antara semua penyayang.", 
+        riwayat: "QS. Al-Anbiya: 83", 
+        narasi: `Inilah doa Nabi Ayyub a.s. saat menderita penyakit bertahun-tahun. Perhatikan adab luar biasa dalam doa ini: beliau tidak 'memerintah' Allah untuk menyembuhkannya. Beliau hanya mengutarakan fakta 'aku sedang sakit' dan memuji 'Engkau Maha Penyayang'. 
+
+        Mengapa demikian? Karena beliau tahu Allah lebih mengerti apa yang terbaik. Ini adalah puncak penerimaan (acceptance) kaum Stoik Islami. Kita mengeluhkan rasa sakit hanya kepada-Nya, bukan kepada manusia di media sosial.
+
+        Doa ini meruntuhkan keangkuhan manusia yang merasa tubuhnya adalah miliknya sendiri. Saat penyakit datang, kita sadar bahwa sel-sel tubuh ini tunduk pada hukum-Nya. Dengan memuji kasih sayang-Nya di tengah rasa sakit, kita menumbuhkan optimisme bahwa penyakit ini pun adalah bentuk kasih sayang untuk menggugurkan dosa.`
+    },
+    { 
+        judul: "Doa Berlindung dari Hati yang Mati", 
+        arab: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عِلْمٍ لَا يَنْفَعُ، وَمِنْ قَلْبٍ لَا يَخْشَعُ، وَمِنْ نَفْسٍ لَا تَشْبَعُ، وَمِنْ دَعْوَةٍ لَا يُسْتَجَابُ لَهَا", 
+        latin: "Allahumma innii a'uudzu bika min 'ilmin laa yanfa', wa min qalbin laa yakhsya', wa min nafsin laa tasyba', wa min da'watin laa yustajaabu lahaa.", 
+        arti: "Ya Allah, aku berlindung kepada-Mu dari ilmu yang tidak bermanfaat, dari hati yang tidak khusyuk, dari jiwa yang tidak pernah puas, dan dari doa yang tidak dikabulkan.", 
+        riwayat: "HR. Muslim", 
+        narasi: `Ini adalah permohonan perlindungan dari empat 'kanker' jiwa modern. Pertama, ilmu yang tak bermanfaat: sekadar mengumpulkan informasi tapi nol aksi. Kedua, hati yang keras: tidak tersentuh oleh nasehat atau tragedi di sekitarnya. Ketiga, jiwa yang tak pernah puas: akar dari konsumerisme dan korupsi. Keempat, doa yang tertolak: karena dosa yang menumpuk.
+
+        Dalam dunia yang serba cepat ini, kita seringkali merasa kosong meski memiliki segalanya. Itu terjadi karena jiwa kita tidak pernah merasa kenyang ('nafsin la tasyba'). Doa ini adalah obat anti-hedonisme. 
+
+        Kita memohon hati yang 'yakhsya' (khusyuk/peka), karena hati yang peka adalah radar terbaik untuk menavigasi hidup. Hati yang peka akan membuat kita mudah menangis karena takut kepada Allah dan mudah tersenyum karena bersyukur atas nikmat sekecil apa pun.`
+    },
+    { 
+        judul: "Doa Meminta Keturunan & Keluarga Penyejuk Jiwa", 
+        arab: "رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِنْ ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ", 
+        latin: "Rabbij'alnii muqiimash shalaati wa min dzurriyyatii rabbanaa wa taqabbal du'aa-i.", 
+        arti: "Ya Tuhanku, jadikanlah aku dan anak cucuku orang-orang yang tetap mendirikan shalat, ya Tuhan kami, perkenankanlah doaku.", 
+        riwayat: "QS. Ibrahim: 40", 
+        narasi: `Kesuksesan sejati seorang manusia bukanlah warisan harta yang ditinggalkan, melainkan jejak ketaatan yang diwariskan kepada anak cucu. Doa Nabi Ibrahim a.s. ini memprioritaskan shalat sebagai pondasi keluarga. Mengapa shalat? Karena keluarga yang menjaga shalatnya, pasti akan dijaga hidupnya oleh Allah.
+
+        Kita tidak hanya mendoakan anak cucu, tapi memulai dari diri sendiri ('jadikanlah aku'). Ini adalah prinsip kepemimpinan (leadership): keteladanan sebelum memerintah. 
+
+        Dalam Nalar Teras, kita menyadari bahwa kita tidak bisa mengontrol 100% masa depan anak-anak kita. Pengaruh pergaulan dan zaman sangatlah kuat. Maka, doa adalah tali pengikat yang kita pasang di leher mereka secara spiritual, agar sejauh apa pun mereka menyimpang, tali itu akan menarik mereka kembali ke sajadah.`
+    },
+    { 
+        judul: "Doa Mensyukuri Pencapaian (Doa Nabi Sulaiman)", 
+        arab: "رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَى وَالِدَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ", 
+        latin: "Rabbi auzi'nii an asykura ni'matakal latii an'amta 'alayya wa 'alaa waalidayya wa an a'mala shaalihan tardhaah...", 
+        arti: "Ya Tuhanku, berilah aku ilham untuk tetap mensyukuri nikmat-Mu yang telah Engkau anugerahkan kepadaku dan kepada dua orang ibu bapakku dan untuk mengerjakan amal saleh yang Engkau ridhai...", 
+        riwayat: "QS. An-Naml: 19", 
+        narasi: `Ketika seseorang berada di puncak karir, kekayaan, atau kekuasaan, ilusi yang sering muncul adalah merasa bahwa itu semua hasil kerja kerasnya sendiri. Nabi Sulaiman a.s., raja terkaya yang pernah hidup, justru memohon 'ilham untuk bisa bersyukur'. Beliau sadar bahwa kemampuan untuk bersyukur itu sendiri adalah anugerah.
+
+        Menariknya, beliau mengaitkan nikmatnya dengan nikmat orang tuanya. Ini menunjukkan bahwa kesuksesan kita hari ini adalah lanjutan dari perjuangan orang tua. 
+
+        Syukur yang hakiki bukan sekadar mengucapkan 'Alhamdulillah', melainkan 'beramal saleh yang Engkau ridhai'. Harta dan jabatan yang disyukuri harus diubah menjadi energi kebaikan yang berdampak pada masyarakat. Jika tidak, pencapaian itu hanyalah angka yang akan ditinggalkan saat mati.`
+    },
+    { 
+        judul: "Doa Saat Hati Terasa Gelisah Tanpa Sebab", 
+        arab: "لَا إِلَهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ السَّمَاوَاتِ وَرَبُّ الْأَرْضِ وَرَبُّ الْعَرْشِ الْكَرِيمِ", 
+        latin: "Laa ilaaha illallaahul 'azhiimul haliim, laa ilaaha illallaahu rabbul 'arsyil 'azhiim...", 
+        arti: "Tiada Tuhan selain Allah Yang Maha Agung lagi Maha Penyantun, Tiada Tuhan selain Allah Tuhan pemilik Arsy yang agung, Tiada Tuhan selain Allah Tuhan langit dan bumi serta Tuhan Arsy yang mulia.", 
+        riwayat: "HR. Bukhari", 
+        narasi: `Seringkali kecemasan (anxiety) datang tanpa alasan yang jelas. Jantung berdebar dan pikiran dipenuhi skenario terburuk. Doa ini, yang dikenal sebagai 'Doa Kurb' (doa saat genting), adalah penawar dari langit. Ia sama sekali tidak memuat permintaan; seluruhnya berisi pengagungan kepada Allah.
+
+        Mengapa demikian? Karena cara terbaik untuk mengecilkan sebuah masalah adalah dengan membesarkan nama Tuhan. Saat kita menyebut-Nya sebagai 'Rabbul Arsyil Azhim' (Pemilik Arsy yang agung), kita sedang mengingatkan diri sendiri bahwa alam semesta ini memiliki Penguasa yang absolut.
+
+        Kegelisahan lahir karena kita mencoba memikul alam semesta di pundak kita sendiri. Doa ini mengembalikan beban itu kepada Pemiliknya yang sejati. Dengan mengulang-ulang kalimat tauhid ini, detak jantung akan kembali normal, pikiran menjadi jernih, dan kita sadar bahwa tak ada satupun yang lepas dari pengawasan-Nya.`
+    },
+    { 
+        judul: "Doa Berlindung dari Syirik Terselubung (Ego/Pujian)", 
+        arab: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ أَنْ أُشْرِكَ بِكَ وَأَنَا أَعْلَمُ، وَأَسْتَغْفِرُكَ لِمَا لَا أَعْلَمُ", 
+        latin: "Allahumma innii a'uudzu bika an usyrika bika wa anaa a'lam, wa astaghfiruka limaa laa a'lam.", 
+        arti: "Ya Allah, sesungguhnya aku berlindung kepada-Mu dari menyekutukan-Mu sedangkan aku mengetahuinya, dan aku memohon ampun kepada-Mu terhadap apa-apa yang tidak aku ketahui.", 
+        riwayat: "HR. Ahmad", 
+        narasi: `Syirik modern bukanlah menyembah patung, melainkan menuhankan ego, hawa nafsu, dan validasi dari manusia lain (riya'). Saat kita berbuat baik demi pamer di media sosial, atau kecewa karena tak dipuji, itu adalah bibit dari syirik terselubung (syirik asghar) yang menghancurkan pahala seperti api memakan kayu kering.
+
+        Doa ini adalah filter detoksifikasi batin. Kita berlindung dari niat pamer yang kita sadari, sekaligus memohon ampun untuk niat buruk yang saking halusnya sampai kita tidak menyadarinya. 
+
+        Dalam Nalar Teras, kita belajar untuk merdeka dari opini manusia. Kita melakukan kebaikan semata-mata karena itu adalah kebenaran (karena Allah), bukan karena tepuk tangan orang lain. Doa ini menjaga amal kita tetap murni, sehingga tidak ada energi yang terbuang percuma hanya untuk menyenangkan makhluk.`
+    },
+    { 
+        judul: "Doa Memohon Ampunan Bagi Saudara Seiman", 
+        arab: "رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالْإِيمَانِ وَلَا تَجْعَلْ فِي قُلُوبِنَا غِلًّا لِلَّذِينَ آمَنُوا", 
+        latin: "Rabbanaghfir lanaa wa li-ikhwaaninal ladziina sabaquuna bil iimaan, wa laa taj'al fii quluubinaa ghillal lilladziina aamanuu.", 
+        arti: "Ya Tuhan kami, ampunilah kami dan saudara-saudara kami yang telah beriman lebih dulu dari kami, dan janganlah Engkau membiarkan kedengkian dalam hati kami terhadap orang-orang yang beriman.", 
+        riwayat: "QS. Al-Hasyr: 10", 
+        narasi: `Doa ini adalah resep ampuh untuk menciptakan kedamaian sosial. Konflik antar manusia seringkali bermula dari penyakit 'Ghill' (dengki, dendam, dan iri hati) yang tersembunyi di relung jiwa. Kita memohon agar Allah mencabut akar penyakit tersebut dari hati kita.
+
+        Menariknya, kita disuruh mendoakan ampunan bagi orang lain yang bahkan tidak kita kenal (yang telah beriman lebih dulu). Mendoakan kebaikan untuk orang lain tanpa sepengetahuan mereka adalah cara paling cepat untuk membersihkan hati kita sendiri. Malaikat akan membalas dengan doa: 'Aamiin, dan bagimu juga kebaikan yang sama.'
+
+        Jika doa ini diamalkan secara kolektif, maka tidak akan ada lagi sengketa atau saling menjatuhkan antar sesama. Hati yang bersih dari dengki adalah hati yang paling ringan menjalani kehidupan, karena ia turut bahagia melihat orang lain bahagia.`
+    },
+    { 
+        judul: "Doa Agar Diwafatkan Bersama Orang Shalih", 
+        arab: "فَاطِرَ السَّمَاوَاتِ وَالْأَرْضِ أَنْتَ وَلِيِّي فِي الدُّنْيَا وَالْآخِرَةِ ۖ تَوَفَّنِي مُسْلِمًا وَأَلْحِقْنِي بِالصَّالِحِينَ", 
+        latin: "Faathiras samaawaati wal ardh, anta waliyyii fid dunyaa wal aakhirah, tawaffanii muslimaw wa alhiqnii bish shaalihiin.", 
+        arti: "Wahai Pencipta langit dan bumi, Engkaulah pelindungku di dunia dan di akhirat, wafatkanlah aku dalam keadaan Islam dan gabungkanlah aku dengan orang-orang yang saleh.", 
+        riwayat: "QS. Yusuf: 101", 
+        narasi: `Ini adalah doa penutup kisah Nabi Yusuf a.s. Setelah melewati sumur yang gelap, penjara yang pengap, hingga akhirnya duduk di singgasana kekuasaan Mesir, apa permintaannya? Beliau tidak meminta kerajaannya abadi. Beliau hanya meminta akhir yang baik: diwafatkan sebagai muslim dan dikumpulkan bersama orang shalih.
+
+        Ini adalah puncak kedewasaan spiritual. Segala intrik politik, harta, dan tahta akhirnya tidak memiliki daya tarik lagi di ujung usia. Kesadaran bahwa Allah adalah satu-satunya 'Wali' (Pelindung) yang sejati membuat dunia terasa kecil.
+
+        Doa ini memandu kita untuk mencari 'circle' atau lingkungan yang baik (orang-orang shalih). Karena pada akhirnya, kita akan dikumpulkan bersama orang-orang yang kita cintai dan sering berinteraksi dengan kita. Menjadi bagian dari rombongan orang shalih adalah jaminan keselamatan di hari kiamat kelak.`
+    },
+    { 
+        judul: "Doa Memohon Terangnya Cahaya Batin", 
+        arab: "اللَّهُمَّ اجْعَلْ فِي قَلْبِي نُورًا، وَفِي بَصَرِي نُورًا، وَفِي سَمْعِي نُورًا، وَعَنْ يَمِينِي نُورًا، وَعَنْ يَسَارِي نُورًا", 
+        latin: "Allahummaj'al fii qalbii nuuraa, wa fii basharii nuuraa, wa fii sam'ii nuuraa, wa 'an yamiinii nuuraa, wa 'an yasaarii nuuraa...", 
+        arti: "Ya Allah, jadikanlah cahaya dalam hatiku, cahaya pada penglihatanku, cahaya pada pendengaranku, cahaya di kananku, cahaya di kiriku...", 
+        riwayat: "HR. Bukhari", 
+        narasi: `Dunia ini dipenuhi oleh 'kegelapan' berupa syubhat (kerancuan berpikir) dan syahwat (tarikan nafsu). Tanpa cahaya petunjuk dari Allah, kecerdasan setinggi apa pun akan mudah tersesat. Doa yang sering dibaca Nabi saat menuju shalat Subuh ini adalah permohonan agar seluruh instrumen tubuh kita diterangi oleh Nur Ilahi.
+
+        Cahaya di hati memunculkan keikhlasan. Cahaya di mata mencegah kita melihat maksiat dan membantu kita melihat hikmah di balik musibah. Cahaya di telinga menyaring gosip dan membiarkan nasehat masuk. Saat seluruh tubuh kita diliputi cahaya, maka langkah kita akan selalu memancarkan kebaikan (positive vibes) ke lingkungan sekitar.
+
+        Ini adalah puncaknya Nalar Teras: menjadi sumber pencerahan. Orang yang hidupnya dipenuhi cahaya Allah tidak akan pernah merasa kehilangan arah, karena ia sendiri telah menjadi pelita, setidaknya bagi dirinya sendiri dan keluarganya.`
     }
-// ... (Data 30-50 saget dipun jangkepi kanthi pola ingkang sami dowo lan jerone) ...
+ 
 ];

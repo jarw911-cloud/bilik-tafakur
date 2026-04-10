@@ -62,7 +62,7 @@ const { materi } = Astro.props;
                     
                     {materi.arti && (
                         <div class="text-center">
-                            <span class="font-bold uppercase tracking-widest text-[10px] block mb-2 text-slate-400">Artinya:</span> 
+                            <span class="font-bold uppercase tracking-widest text-[10px] block mb-2 text-slate-400">Terjemahan:</span> 
                             <p class="text-base md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-slate-700 dark:text-slate-200">
                                 {materi.arti}
                             </p>
@@ -75,7 +75,7 @@ const { materi } = Astro.props;
                 <div class="mt-12 relative">
                     <div class="absolute -left-4 top-0 bottom-0 w-1 bg-emerald-400 rounded-full opacity-50 hidden md:block"></div>
                     <h3 class="text-xl md:text-2xl font-bold text-emerald-800 dark:text-emerald-400 mb-6 flex items-center gap-3">
-                        <span class="text-2xl">🌱</span> Nalar Teras
+                        <span class="text-2xl">📜</span> Kisah & Hikmah
                     </h3>
                     <div class="prose prose-lg prose-emerald dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-jakarta leading-relaxed" style="white-space: pre-line;">
                         {materi.narasi.split('\n\n').map(paragraph => (

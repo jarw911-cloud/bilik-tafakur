@@ -1,13 +1,12 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind'; // <--- Niki nyawane sing ilang wau!
-import sitemap from '@astrojs/sitemap';
-// import AstroPWA from '@vite-pwa/astro'; // PWA kita pateni riyin kersane aman
+import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap'; // 1. Tambahake import niki
 
+// https://astro.build/config
 export default defineConfig({
-  site: 'https://bilik-tafakur.my.id',
-  
+  site: 'https://bilik-tafakur.my.id', // 2. Wajib isi domain asli web-e
   integrations: [
-    tailwind(), // <--- MESIN TAILWIND WAJIB WONTEN
-    sitemap(),  // Mesin Sitemap kagem Google
-  ],
+    tailwind(),
+    sitemap() // 3. Lebetake sitemap() teng mriki
+  ]
 });

@@ -5,39 +5,37 @@ import MainLayout from '../layouts/MainLayout.astro';
 <MainLayout title="Beranda - Bilik Tafakur">
 	<div class="max-w-6xl mx-auto py-12 px-8 md:px-12 lg:px-16 animate-fade-in">
 		
-		<div class="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-emerald-800 to-emerald-950 p-8 md:p-16 mb-12 shadow-2xl">
-			<div class="absolute top-0 right-0 opacity-10 translate-x-1/4 -translate-y-1/4">
-				<img src="/logo-bilik.svg" class="w-96 h-96" alt="" />
-			</div>
-			<div class="relative z-10">
-				<h1 class="text-4xl md:text-6xl font-poppins font-bold text-white mb-6 leading-tight">
-					Sugeng Rawuh ing <br/><span class="text-emerald-400">Bilik Tafakur</span>
+		<div class="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-emerald-800 to-emerald-950 p-10 md:p-20 mb-16 shadow-2xl">
+			<div class="relative z-10 text-center md:text-left">
+				<h1 class="text-4xl md:text-7xl font-poppins font-bold text-white mb-6 leading-tight">
+					Ruang <span class="text-emerald-400">Tafakur</span><br/>Batin.
 				</h1>
-				<p class="text-emerald-100/80 text-lg md:text-xl max-w-2xl font-jakarta leading-relaxed mb-8">
-					Ruang kontemplasi kagem njaga katenangan batin sela-selaning kesibukan dunya. Suguhan renungan, panduan ibadah, lan Al-Quran digital.
+				<p class="text-emerald-100/80 text-lg md:text-xl max-w-2xl font-jakarta leading-relaxed mb-10">
+					Njaga ketenangan nalar lan batin saking riyuhing dunya mawi renungan Stoikisme Islami, Al-Quran, lan Fikih.
 				</p>
-				<div class="flex flex-wrap gap-4">
+				<div class="flex flex-wrap justify-center md:justify-start gap-4">
 					<a href="/alquran" class="px-8 py-4 bg-white text-emerald-900 font-bold rounded-2xl hover:bg-emerald-100 transition-all shadow-lg">Mulai Ngaji</a>
 					<a href="/motivasi" class="px-8 py-4 bg-emerald-700/50 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all border border-emerald-500/30">Waos Renungan</a>
 				</div>
 			</div>
 		</div>
 
-		<h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-8 px-2 border-l-4 border-emerald-500 pl-4">Menu Utama</h2>
-		<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-			{[
-				{ judul: 'Al-Quran', icon: '📖', color: 'bg-blue-50', link: '/alquran' },
-				{ judul: 'Doa Harian', icon: '🤲', color: 'bg-amber-50', link: '/doa' },
-				{ judul: 'Fikih', icon: '🕋', color: 'bg-emerald-50', link: '/fikih' },
-				{ judul: 'Iqra Digital', icon: '📕', color: 'bg-rose-50', link: '/iqra' }
-			].map((item, index) => (
-				<a href={item.link} class={`p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 hover:shadow-xl transition-all group flex flex-col items-center text-center
-					${index % 2 === 0 ? 'rounded-tl-[2rem] rounded-br-[2rem]' : 'rounded-tr-[2rem] rounded-bl-[2rem]'}
-				`}>
-					<span class="text-4xl mb-4 group-hover:scale-125 transition-transform">{item.icon}</span>
-					<span class="font-bold text-slate-800 dark:text-slate-100">{item.judul}</span>
-				</a>
-			))}
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+			<a href="/fikih" class="p-10 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all group">
+				<span class="text-5xl mb-6 block group-hover:scale-110 transition-transform">🕋</span>
+				<h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-slate-100">Fikih Ibadah</h3>
+				<p class="text-slate-500 text-sm">Panduan tata cara ngibadah ingkang leres miturut madzhab.</p>
+			</a>
+			<a href="/doa" class="p-10 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all group">
+				<span class="text-5xl mb-6 block group-hover:scale-110 transition-transform">🤲</span>
+				<h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-slate-100">Doa Harian</h3>
+				<p class="text-slate-500 text-sm">Kempalan donga amalan saben dinten kagem batin.</p>
+			</a>
+			<a href="/iqra" class="p-10 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all group">
+				<span class="text-5xl mb-6 block group-hover:scale-110 transition-transform">📕</span>
+				<h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-slate-100">Iqra Digital</h3>
+				<p class="text-slate-500 text-sm">Media sinau maos Al-Quran kagem lare-lare lan umum.</p>
+			</a>
 		</div>
 
 		<div class="p-10 md:p-14 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 text-center relative overflow-hidden group">

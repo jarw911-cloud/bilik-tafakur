@@ -9,7 +9,7 @@ export const daftarMotivasi = [
         icon: "🛵",
         kutipan: "Tugas kita bukanlah memaki keadaan, melainkan menyalakan 'lampu' iman kita dan memacu ikhtiar di jalur yang benar.",
         isiHtml: `
-            <p class="mb-4">Udara pagi masih terasa cukup menggigit kulit. Laju Vario 110 membelah jalanan aspal yang masih diselimuti kabut tipis khas hawa pegunungan Temanggung. Jarak pandang sangat terbatas; pepohonan dan bangunan di depan hanya tampak sebagai siluet buram.</p>
+            <p class="mb-4">Udara pagi masih terasa cukup menggigit kulit. Laju motor membelah jalanan aspal yang masih diselimuti kabut tipis khas hawa pegunungan Temanggung. Jarak pandang sangat terbatas; pepohonan dan bangunan di depan hanya tampak sebagai siluet buram.</p>
             
             <p class="mb-4">Dalam situasi seperti itu, seorang pengendara dihadapkan pada pilihan. Ia bisa saja menggerutu, menyalahkan cuaca, atau marah pada kabut yang menghalangi perjalanannya. Namun, sekeras apa pun ia mengumpat, kabut itu tidak akan tiba-tiba menyingkir. Alam semesta bergerak atas kehendak Rabb-nya, bukan atas dasar keinginan manusia.</p>
 

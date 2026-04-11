@@ -1,6 +1,64 @@
 // File: src/data/motivasi.js
-
 export const daftarMotivasi = [
+    {
+        judul: "Rezeki Tak Akan Tertukar: Seni Menerima Ketetapan-Nya",
+        slug: "rezeki-tak-akan-tertukar",
+        tanggal: "12 April 2026",
+        kategori: "Ketenangan Batin",
+        icon: "💼",
+        kutipan: "Kita lelah karena terus berlari mengejar sesuatu yang belum tentu milik kita, dan lupa mensyukuri apa yang sudah ada di genggaman.",
+        isiHtml: `
+            <p>Dalam hiruk-pikuk kehidupan modern, kita sering kali dilanda kecemasan yang mendalam mengenai masa depan. Berapa pendapatan bulan ini? Apakah usaha pertanian atau proyek kita akan berhasil? Ketakutan akan kemiskinan atau kegagalan sering kali merampas ketenangan tidur kita di malam hari.</p>
+            
+            <p><strong class="text-emerald-800 dark:text-emerald-400">NALAR TERAS:</strong><br/>
+            Filsafat Stoikisme mengajarkan kita tentang <em>Amor Fati</em>, yaitu seni mencintai takdir. Kita dianjurkan untuk merencanakan dan melakukan yang terbaik, namun pada saat yang sama, kita harus siap menerima hasil apa pun yang terjadi dengan lapang dada. Penderitaan muncul ketika realitas tidak sesuai dengan ekspektasi kita. Maka, orang yang bijak akan menyelaraskan ekspektasinya dengan realitas.</p>
+            
+            <p><strong class="text-emerald-800 dark:text-emerald-400">TAFAKUR ISLAMI:</strong><br/>
+            Dalam kacamata Islam, rezeki setiap makhluk hidup telah dijamin dan ditakar oleh Allah SWT dengan sangat presisi. Konsep ini membebaskan jiwa dari penjara keserakahan dan kekhawatiran yang berlebihan. Rezeki bukan sekadar uang; kesehatan, keluarga yang harmonis, dan ketentraman hati adalah rezeki yang nilainya tak terhingga.</p>
+            
+            <p>Rasulullah SAW bersabda, <em>"Kalaulah anak Adam lari dari rezekinya (sebagaimana ia lari dari kematian), niscaya rezekinya akan mengejarnya sebagaimana kematian itu akan mengejarnya."</em></p>
+            
+            <p>Tugas kita bukanlah memastikan seberapa besar rezeki yang akan didapat, melainkan memastikan bahwa cara kita menjemput rezeki tersebut adalah halal. Lakukan ikhtiar terbaikmu hari ini—lalu pulanglah dengan hati yang tenang. Rezekimu tidak akan pernah salah alamat, dan ia tidak akan pernah tertukar dengan milik tetanggamu.</p>
+        `
+    },
+    {
+        judul: "Memisahkan Ikhtiar dan Takdir (Dikotomi Kendali)",
+        slug: "memisahkan-ikhtiar-dan-takdir",
+        tanggal: "11 April 2026",
+        kategori: "Mindset & Ikhtiar",
+        icon: "🌱",
+        kutipan: "Fokuslah pada apa yang bisa kamu usahakan, dan lepaskan apa yang di luar kendalimu kepada Sang Penguasa Alam.",
+        isiHtml: `
+            <p>Dalam kehidupan sehari-hari, kita sering kali merasa cemas, stres, dan kecewa. Mengapa? Karena kita terlalu sibuk memikirkan hal-hal yang sebenarnya berada di luar kendali kita. Kita memikirkan bagaimana penilaian orang lain atau apakah rencana kita akan berhasil 100 persen tanpa hambatan.</p>
+            
+            <p><strong class="text-emerald-800 dark:text-emerald-400">NALAR TERAS:</strong><br/>
+            Epictetus mengajarkan tentang "Dikotomi Kendali". Ada hal yang bisa kita kendalikan (pikiran kita, tindakan kita, usaha kita), dan ada hal yang tidak bisa kita kendalikan (cuaca, opini orang lain, hasil akhir). Kebahagiaan sejati dimulai saat kita berhenti menguras energi untuk memikirkan apa yang tidak bisa kita atur.</p>
+            
+            <p><strong class="text-emerald-800 dark:text-emerald-400">TAFAKUR ISLAMI:</strong><br/>
+            Islam mengajarkan konsep yang sangat selaras dengan hal ini, yaitu <strong>Tawakkal</strong>. Tugas manusia hanyalah berikhtiar dengan sebaik-baiknya. Menyempurnakan proses, bekerja keras, dan berdoa. Itu adalah wilayah kendali kita.</p>
+            
+            <p>Saat kita sudah menanam benih jagung dengan baik, menyiramnya, dan memberinya pupuk, tugas kita selesai. Apakah esok akan turun hujan lebat atau kemarau panjang, itu adalah urusan Pemilik Semesta. Lepaskan beban hasil akhir kepada-Nya, maka batinmu akan merasakan ketenangan yang luar biasa. <em>"Barangsiapa bertawakkal kepada Allah, niscaya Allah akan mencukupkan (keperluan)nya."</em> (QS. At-Thalaq: 3)</p>
+        `
+    },
+    {
+        judul: "Merdeka dari Penilaian Manusia",
+        slug: "merdeka-dari-penilaian-manusia",
+        tanggal: "10 April 2026",
+        kategori: "Filsafat Sosial",
+        icon: "🛡️",
+        kutipan: "Jangan biarkan ketenangan batinmu dirampas oleh lisan orang lain. Jadikan ridha Allah sebagai satu-satunya tujuan.",
+        isiHtml: `
+            <p>Banyak dari kita yang tanpa sadar memenjarakan diri sendiri di dalam pikiran orang lain. Kita bertindak, berpakaian, bahkan bekerja sering kali hanya untuk mencari validasi, pujian, atau untuk menghindari gunjingan masyarakat sekitar.</p>
+            
+            <p><strong class="text-emerald-800 dark:text-emerald-400">NALAR TERAS:</strong><br/>
+            Marcus Aurelius menulis dalam jurnalnya, <em>"Sungguh aneh bahwa kita semua lebih mencintai diri kita sendiri daripada orang lain, namun kita lebih menghargai pendapat orang lain tentang kita dibandingkan pendapat kita sendiri."</em> Jika seseorang mencacimu, cacian itu hanyalah getaran udara. Ia tidak akan melukaimu kecuali kamu mengizinkan pikiranmu untuk merasa terluka.</p>
+            
+            <p><strong class="text-emerald-800 dark:text-emerald-400">TAFAKUR ISLAMI:</strong><br/>
+            Dalam Islam, mencari rida manusia adalah tujuan yang tidak akan pernah tercapai, dan sering kali berujung pada kekecewaan. Imam Syafi'i pernah berkata, <em>"Rida manusia adalah tujuan yang tak bisa digapai. Maka sibukkanlah dirimu dengan apa yang bermanfaat bagimu, dan tinggalkan selainnya."</em></p>
+            
+            <p>Tingkatkan kualitas keikhlasan kita. Bekerjalah yang benar, layani keluarga dan masyarakat dengan baik karena Allah semata (Lillahita'ala). Orang mau memuji, Alhamdulillah. Orang mau mencaci, tidak akan mengurangi nilai kita di mata Sang Pencipta. Jika niatmu sudah benar, omongan miring tak akan mampu menembus perisai ketenangan jiwamu.</p>
+        `
+    }, 
     {
         judul: "Rezeki Tak Akan Tertukar: Seni Menerima Ketetapan-Nya",
         slug: "rezeki-tak-akan-tertukar",

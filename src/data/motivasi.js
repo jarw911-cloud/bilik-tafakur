@@ -1,5 +1,6 @@
 // File: src/data/motivasi.js
 export const daftarMotivasi = [
+
     {
         judul: "Rezeki Tak Akan Tertukar: Seni Menerima Ketetapan-Nya",
         slug: "rezeki-tak-akan-tertukar",

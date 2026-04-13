@@ -95,7 +95,7 @@ try {
 
     {surat.preBismillah && (
         <div class="py-6 border-y border-slate-200 dark:border-slate-800 text-center mb-10">
-            <p class="teks-arab font-serif text-slate-800 dark:text-slate-200 leading-[2.2]" style="font-size: 40px;">
+            <p class="teks-arab font-quran text-slate-800 dark:text-slate-200" style="font-size: 40px;">
                 {surat.preBismillah.text.arab}
             </p>
         </div>
@@ -108,14 +108,15 @@ try {
             return (
             <div class="group relative pt-4 scroll-mt-24 border-b border-slate-100 dark:border-slate-800/50 pb-8" id={`ayat-${ayat.number.inSurah}`}>
                 <div class="flex flex-col gap-4">
-                    <div class="text-right w-full">
-                        <p class="teks-arab font-serif text-slate-900 dark:text-slate-100 leading-[2.2]" 
-                           style="font-size: 40px; word-wrap: break-word;" 
+                    <div class="text-right w-full mb-4">
+                        {/* WONTEN MRIKI PERUBAHANIPUN: class font-serif digantos font-quran, line-height lan style sanese ngikut saking CSS global mangke */}
+                        <p class="teks-arab font-quran text-slate-900 dark:text-slate-100" 
+                           style="font-size: 40px;" 
                            set:html={tajwidAyat}>
                         </p>
                     </div>
                     
-                    <div class="flex flex-col gap-2 border-l-2 border-emerald-100 dark:border-emerald-900/50 pl-4 md:pl-6">
+                    <div class="flex flex-col gap-2 border-l-2 border-emerald-100 dark:border-emerald-900/50 pl-4 md:pl-6 mt-4">
                         <div class="teks-latin">
                             <p class="text-emerald-700 dark:text-emerald-400 font-medium text-xs md:text-sm italic">
                                 {ayat.text.transliteration.en}
@@ -159,7 +160,7 @@ try {
             const btnIn = document.getElementById('btn-zoom-in'); const btnOut = document.getElementById('btn-zoom-out');
             const tLatin = document.getElementById('toggle-latin'); const tTerjemah = document.getElementById('toggle-terjemah');
             const teksArab = document.querySelectorAll('.teks-arab'); const teksLatin = document.querySelectorAll('.teks-latin'); const teksTerjemah = document.querySelectorAll('.teks-terjemah');
-            let size = parseInt(localStorage.getItem('fSize')) || 40; let sLat = localStorage.getItem('sLat') !== 'f'; let sTer = localStorage.getItem('sTer') !== 'f';
+            let size = parseInt(localStorage.getItem('fSize')) || 44; let sLat = localStorage.getItem('sLat') !== 'f'; let sTer = localStorage.getItem('sTer') !== 'f';
             const updateUI = () => {
                 teksArab.forEach(el => el.style.fontSize = size + 'px');
                 teksLatin.forEach(el => el.style.display = sLat ? 'block' : 'none');
@@ -168,12 +169,12 @@ try {
                 tLatin.checked = sLat; tTerjemah.checked = sTer;
             };
             updateUI();
-            btnIn.onclick = () => { if(size < 80) size += 4; updateUI(); };
-            btnOut.onclick = () => { if(size > 20) size -= 4; updateUI(); };
+            btnIn.onclick = () => { if(size < 90) size += 4; updateUI(); };
+            btnOut.onclick = () => { if(size > 24) size -= 4; updateUI(); };
             tLatin.onchange = (e) => { sLat = e.target.checked; updateUI(); };
             tTerjemah.onchange = (e) => { sTer = e.target.checked; updateUI(); };
 
-            // LOGIKA AUDIO (MAHAKARYA BARU)
+            // LOGIKA AUDIO
             let currentAudio = null;
             const btnAudios = document.querySelectorAll('.btn-audio');
             
@@ -228,7 +229,16 @@ try {
 </MainLayout>
 
 <style is:global>
-    /* Style Tajwid sama seperti sebelumnya */
+    /* Tambahan Class khusus kagem Al-Quran */
+    .font-quran {
+        font-family: 'Scheherazade New', 'Amiri', serif;
+        font-weight: 700;
+        line-height: 2.8 !important; /* Jarak dhuwur-ngisor ekstra longgar */
+        word-spacing: 0.15rem; /* Jarak antar tembung */
+        word-wrap: break-word; /* Mencegah tulisan mblubud (overflow) */
+    }
+
+    /* Style Tajwid tetep jalan nggih */
     [class*="madda"] { color: #2144C1; } [class*="ghunnah"] { color: #FF7E1E; } [class*="idgham"] { color: #169777; } [class*="ikhfa"] { color: #9400D3; } [class*="iqlab"] { color: #26BFFD; } [class*="qalaqah"], [class*="qalqalah"] { color: #DD0008; } [class*="slnt"] { color: #94A3B8; }
     html.dark [class*="madda"] { color: #60A5FA; } html.dark [class*="ghunnah"] { color: #FDBA74; } html.dark [class*="idgham"] { color: #34D399; } html.dark [class*="ikhfa"] { color: #C084FC; } html.dark [class*="iqlab"] { color: #7DD3FC; } html.dark [class*="qalaqah"] { color: #F87171; }
 </style>

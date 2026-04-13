@@ -173,5 +173,16 @@ import MainLayout from '../layouts/MainLayout.astro';
 
         cekIdentitas();
         muatChat();
+        // --- RADAR REAL-TIME SUPABASE ---
+        supabase
+            .channel('pantau_konsultasi')
+            .on('postgres_changes', 
+                { event: '*', schema: 'public', table: 'konsultasi' }, 
+                (payload) => {
+                    // Menawi wonten data anyar utawi admin mbales, otomatis muat ulang chat!
+                    muatChat(); 
+                }
+            )
+            .subscribe();
     </script>
 </MainLayout>

@@ -1,6 +1,44 @@
 // File: src/data/motivasi.js
 export const daftarMotivasi = [
+{
+        judul: "Filosofi Petani: Menanam Ikhtiar, Menuai Tawakkal",
+        slug: "filosofi-petani-ikhtiar-tawakkal",
+        tanggal: "13 April 2026",
+        kategori: "Kehidupan & Alam",
+        icon: "🌽",
+        kutipan: "Tugas kita hanyalah merawat benih dan mengairi tanah. Kapan ia bertumbuh dan seberapa lebat buahnya, biarlah Langit yang bekerja.",
+        isiHtml: `
+            <p class="mb-4">Pernahkah kita mengamati ketenangan jiwa seorang petani tulen? Saat mereka menabur benih jagung atau merawat hewan ternak, ada sebuah kesadaran kosmik yang tertanam di alam bawah sadar mereka: <em>Bahwa alam tidak bisa dipaksa, dan waktu memiliki ritmenya sendiri.</em></p>
 
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4">Dikotomi Kendali di Atas Tanah Berlumpur</h3>
+            <p class="mb-4">Dalam kehidupan modern, kita sering stres karena ingin mengendalikan segalanya—karir, opini tetangga, hingga kesuksesan finansial. Kita marah saat rencana meleset. Padahal, seorang petani tahu betul batas kendalinya.</p>
+            
+            <p class="mb-4"><strong>NALAR TERAS:</strong> Epictetus sang filsuf Stoik akan sangat setuju dengan cara kerja petani. Wilayah kendali sang petani hanyalah: memilih benih terbaik, mencangkul tanah, memberi pupuk, dan mengairi ladang. Cuaca besok pagi, hama yang datang, atau harga panen di pasar adalah mutlak di luar kendalinya. Stres muncul ketika manusia mencoba mengatur "cuaca", bukan fokus pada "cangkulnya".</p>
+
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4">Tawakkal: Menyerahkan Hasil Kepada Sang Pemilik Musim</h3>
+            <p class="mb-4">Islam menyempurnakan filosofi ini dengan konsep <strong>Tawakkal</strong>. Setelah seharian berkeringat di ladang atau melayani urusan warga di kantor, seorang mukmin akan pulang, membersihkan diri, dan menyerahkan sisa urusannya kepada Allah SWT.</p>
+
+            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-6 md:p-8 rounded-2xl border border-emerald-100 dark:border-emerald-800 text-center my-8 shadow-sm">
+                <p class="font-serif text-[1.75rem] md:text-[2.25rem] text-emerald-900 dark:text-emerald-300 my-6" dir="rtl" style="line-height: 2.5 !important;">
+                    أَفَرَأَيْتُمْ مَا تَحْرُثُونَ * أَأَنْتُمْ تَزْرَعُونَهُ أَمْ نَحْنُ الزَّارِعُونَ
+                </p>
+                <div class="h-px w-16 bg-emerald-200 dark:bg-emerald-800 mx-auto mb-6"></div>
+                <p class="text-sm md:text-base italic text-slate-600 dark:text-slate-400">
+                    "Maka terangkanlah kepadaku tentang yang kamu tanam. Kamukah yang menumbuhkannya atau Kamikah yang menumbuhkannya?" <br/>
+                    <span class="font-bold text-xs not-italic mt-2 inline-block text-emerald-700 dark:text-emerald-500">(QS. Al-Waqi'ah: 63-64)</span>
+                </p>
+            </div>
+
+            <p class="mb-4">Ayat di atas adalah tamparan lembut bagi ego manusia. Sehebat apa pun teknologi pertanian kita, atau sepintar apa pun strategi bisnis kita, yang meniupkan ruh kehidupan pada benih itu hanyalah Allah.</p>
+
+            <ul class="list-disc pl-5 space-y-2 mb-6 text-slate-700 dark:text-slate-300">
+                <li><strong>Kerja Keras adalah Ibadah:</strong> Jangan jadikan takdir sebagai alasan untuk malas. Petani yang tidak menanam benih tidak punya hak untuk mengharap panen.</li>
+                <li><strong>Ikhlas Menerima Kegagalan:</strong> Jika suatu saat ladang diserang hama atau proyek mengalami kerugian, jiwa yang tawakkal tidak akan hancur lebur. Ia sadar sedari awal bahwa ia hanya "pekerja", bukan "pemilik" alam semesta.</li>
+            </ul>
+
+            <p>Teruslah menanam kebaikan hari ini—entah itu di ladang, di meja kerja, atau di tengah keluarga. Rawat ikhtiarmu, lalu tidurlah dengan tenang. Biarkan Sang Pemilik Musim yang mengurus sisanya.</p>
+        `
+    },
     {
         judul: "Rezeki Tak Akan Tertukar: Seni Menerima Ketetapan-Nya",
         slug: "rezeki-tak-akan-tertukar",

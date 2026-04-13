@@ -1,6 +1,49 @@
 // File: src/data/motivasi.js
 export const daftarMotivasi = [
 {
+        judul: "Pelajaran Sabar dari Lereng Sumbing: Menunggu Waktu-Nya",
+        slug: "sabar-lereng-sumbing",
+        tanggal: "13 April 2026",
+        kategori: "Alam & Spiritualitas",
+        icon: "⛰️",
+        gambar: "https://ik.imagekit.io/goodid/gnfi/uploads/articles/large-gunung-sumbing-8c5f744ebd837229e43e2e34f896a1b6.jpg", 
+        kutipan: "Gunung tidak pernah terburu-buru untuk tumbuh tinggi, ia hanya tekun menumpuk batu demi batu dalam ketenangan.",
+        isiHtml: `
+            <div class="mb-8 rounded-3xl overflow-hidden shadow-lg border-4 border-emerald-100 dark:border-emerald-900/30">
+                <img src="https://ik.imagekit.io/goodid/gnfi/uploads/articles/large-gunung-sumbing-8c5f744ebd837229e43e2e34f896a1b6.jpg" alt="Gunung Sumbing Temanggung" class="w-full h-64 object-cover" />
+            </div>
+
+            <p class="mb-4">Ketika kita duduk di gubug yang terletak dipemantang sawah sambil memandang gagahnya Gunung Sumbing yang berselimut kabut, ada sebuah pelajaran besar tentang sebuah <strong>Kesabaran</strong> yang tidak pernah dia ucapkan.</p>
+    
+
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4">Sabar: Antara Menunggu dan Berproses</h3>
+            <p class="mb-4">Seringkali, hidup begitu tergesa-gesa, semua terasa diburu oleh waktu. Ingin cepat sukses, kita pengen pekerjaan kita cepat selesai dan segera mendapatkan hasil dari pekerjaan kita. namun ketika apa yang kita dapatkan tidak sesuai dengan apa yang ada didalamm angan kita, kita akan stres dan iri terhadap apa yang diperoleh orang lain.</p>
+            
+            <p class="mb-4"><strong>NALAR TERAS:</strong> Epictetus pernah menyampaikan bahwa tidak ada hal yang besar itu datang dari hal instan. Seperti pohon anggur atau padi, semua butuh waktu untuk tumbuh, berbunga, berbuah baru kemudian bisa dipanen. Kalau ingin hasil yang baik, bukan hanya menunggu kita juga harus mengorbakan daya dan biaya pada prosesnya.</p>
+
+            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-6 md:p-8 rounded-2xl border border-emerald-100 dark:border-emerald-800 text-center my-8 shadow-sm">
+                <p class="font-serif text-[1.75rem] md:text-[2.25rem] text-emerald-900 dark:text-emerald-300 my-6" dir="rtl" style="line-height: 2.5 !important;">
+                    وَاصْبِرْ لِحُكْمِ رَبِّكَ فَإِنَّكَ بِأَعْيُنِنَا
+                </p>
+                <div class="h-px w-16 bg-emerald-200 dark:bg-emerald-800 mx-auto mb-6"></div>
+                <p class="text-sm md:text-base italic text-slate-600 dark:text-slate-400">
+                    "Dan bersabarlah menunggu ketetapan Tuhanmu, karena sesungguhnya kamu berada dalam penglihatan Kami." <br/>
+                    <span class="font-bold text-xs not-italic mt-2 inline-block text-emerald-700 dark:text-emerald-500">(QS. At-Thur: 48)</span>
+                </p>
+            </div>
+
+            <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4">Menikmati Jalur Pendakian</h3>
+            <p class="mb-4">Hidup itu seperti pendakian sebuah gunung. jika kita hanya fokus untuk ke puncaknya, kita akan kehilangan keindahan pemandangan dan pelajaran selala proses pendakian. Meskipun jalan pendakian menanjak dan melelahkan, itua adalah bagian dari proses yang seharusnya menjadi nikmat kita.</p>
+
+            <ul class="list-disc pl-5 space-y-3 mb-6 text-slate-700 dark:text-slate-300">
+                <li><strong>Sabar Itu Aktif:</strong> Sabar bukan berarti hanya berpangku tangan, namun tetap bergerak walaupun perlahan agar tetap dijalur yang diinginkan.</li>
+                <li><strong>Percaya Skenario-Nya:</strong> Jika saat ini belum nampak jelas, percayalah Allah sedang menyiapkan hasil yang lebih indah di saat yang pas.</li>
+            </ul>
+
+            <p>Maka dari itu, tetaplah tersenyum disetiap hari. Lakukan semampumu, dan pasrahkan sisanya kapada Allah.</p>
+        `
+    },
+{
         judul: "Filosofi Petani: Menanam Ikhtiar, Menuai Tawakkal",
         slug: "filosofi-petani-ikhtiar-tawakkal",
         tanggal: "13 April 2026",

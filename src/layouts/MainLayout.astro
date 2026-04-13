@@ -20,7 +20,8 @@ const currentUrl = Astro.url.href;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
     <meta name="description" content={description}>
-
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#064e3b" /> <link rel="apple-touch-icon" href="/icon-192x192.png" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content={currentUrl} />
     <meta property="og:title" content={title} />
@@ -135,8 +136,12 @@ const currentUrl = Astro.url.href;
                     ))}
                 </div>
             </div>
+           
         </nav>
-        
+         <a href="/tanya-jawab" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all mt-4 border border-emerald-100 dark:border-emerald-800/50 bg-emerald-50/50 dark:bg-emerald-900/10">
+                <span class="text-xl">🔏</span> 
+                <span class="font-semibold text-sm text-emerald-700 dark:text-emerald-400">Bilik Sapa</span>
+            </a>
         <div class="p-6 border-t border-slate-100 dark:border-slate-800 bg-emerald-50/30 dark:bg-black/20 mt-auto flex-shrink-0 text-center">
             <p class="text-[11px] text-emerald-800 dark:text-emerald-400 font-serif italic mb-1">"Mengharap Ridho Allah semata."</p>
             <div class="h-1 w-6 bg-emerald-300 dark:bg-emerald-700 mx-auto my-2 rounded-full"></div>
@@ -303,7 +308,17 @@ const currentUrl = Astro.url.href;
             }
         });
     </script>
-
+    <script is:inline>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful');
+                }).catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
     <style is:global>
         :root { --font-jakarta: 'Plus Jakarta Sans', sans-serif; --font-poppins: 'Poppins', sans-serif; }
         .font-jakarta { font-family: var(--font-jakarta); }

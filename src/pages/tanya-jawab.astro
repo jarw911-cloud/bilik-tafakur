@@ -1,0 +1,177 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Bilik Tanya Jawab - Bilik Tafakur">
+    <div class="flex flex-col h-[calc(100vh-120px)] max-w-4xl mx-auto shadow-2xl rounded-[2rem] overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        
+        <div class="p-6 bg-emerald-700 text-white flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center text-2xl">👤</div>
+                <div>
+                    <h1 class="font-bold text-lg">Admin Bilik Tafakur</h1>
+                    <p class="text-xs text-emerald-200">Online | Siap melayani warga</p>
+                </div>
+            </div>
+            <div id="user-info" class="hidden text-right">
+                <p class="text-[10px] opacity-70">Chatting sebagai:</p>
+                <p id="display-nama" class="font-bold text-xs"></p>
+                <button id="btn-ganti-nama" class="text-[9px] underline opacity-50 hover:opacity-100">Ganti Nama</button>
+            </div>
+        </div>
+
+        <div id="chat-container" class="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-50 dark:bg-slate-950/50 scroll-smooth">
+            <div id="loading-chat" class="text-center py-10 text-slate-400 animate-pulse text-sm">
+                Memuat percakapan... ⏳
+            </div>
+        </div>
+
+        <div class="p-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+            <form id="form-chat" class="flex flex-col gap-3">
+                
+                <div id="nama-container" class="animate-fade-in">
+                    <label class="block text-[10px] font-bold text-slate-500 mb-1 ml-2">Sapa Asma Panjenengan?</label>
+                    <input type="text" id="nama" placeholder="Ketik nama Anda di sini..." class="w-full text-sm p-3 bg-slate-100 dark:bg-slate-800 rounded-xl outline-none border-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <select id="kategori" class="text-[10px] font-bold bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-2 py-1 rounded-lg outline-none cursor-pointer">
+                        <option value="Konsultasi">KONSULTASI</option>
+                        <option value="Masukan">MASUKAN</option>
+                        <option value="Tulisan">KIRIM TULISAN</option>
+                    </select>
+                </div>
+                
+                <div class="flex items-end gap-2">
+                    <div class="flex-1 relative">
+                        <textarea id="pesan" required placeholder="Ketik pesan..." rows="1" class="w-full p-3 pr-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border-none outline-none focus:ring-2 focus:ring-emerald-500 resize-none text-sm"></textarea>
+                        
+                        <label id="upload-label" class="absolute right-3 bottom-2 cursor-pointer p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition-all">
+                            <input type="file" id="file-input" class="hidden">
+                            <span>📎</span>
+                        </label>
+                    </div>
+                    <button type="submit" id="btn-send" class="p-3 bg-emerald-700 hover:bg-emerald-800 text-white rounded-full shadow-lg transition-transform active:scale-90">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </button>
+                </div>
+                <p id="file-name" class="text-[10px] text-emerald-600 font-bold hidden px-2 italic"></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        import { supabase } from '../lib/supabase.js';
+
+        const chatContainer = document.getElementById('chat-container');
+        const form = document.getElementById('form-chat') as HTMLFormElement;
+        const namaInput = document.getElementById('nama') as HTMLInputElement;
+        const namaContainer = document.getElementById('nama-container');
+        const userInfo = document.getElementById('user-info');
+        const displayNama = document.getElementById('display-nama');
+        const btnGantiNama = document.getElementById('btn-ganti-nama');
+        
+        const kategoriSelect = document.getElementById('kategori') as HTMLSelectElement;
+        const fileNameDisplay = document.getElementById('file-name');
+        const fileInput = document.getElementById('file-input') as HTMLInputElement;
+
+        // --- CEK LOCALSTORAGE ---
+        function cekIdentitas() {
+            const savedNama = localStorage.getItem('bt_user_nama');
+            if (savedNama) {
+                namaContainer?.classList.add('hidden');
+                userInfo?.classList.remove('hidden');
+                if(displayNama) displayNama.innerText = savedNama;
+                namaInput.removeAttribute('required');
+            } else {
+                namaContainer?.classList.remove('hidden');
+                userInfo?.classList.add('hidden');
+                namaInput.setAttribute('required', 'true');
+            }
+        }
+
+        btnGantiNama?.addEventListener('click', () => {
+            localStorage.removeItem('bt_user_nama');
+            cekIdentitas();
+        });
+
+        // Nampilake jeneng file pas bar milih file
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files?.[0]) {
+                fileNameDisplay!.innerText = "📄 " + fileInput.files[0].name;
+                fileNameDisplay!.classList.remove('hidden');
+            }
+        });
+
+        async function muatChat() {
+            const { data, error } = await supabase
+                .from('konsultasi')
+                .select('*')
+                .eq('is_published', true)
+                .order('created_at', { ascending: true });
+
+            if (data && chatContainer) {
+                document.getElementById('loading-chat')?.remove();
+                chatContainer.innerHTML = data.map(item => `
+                    <div class="flex flex-col items-end animate-fade-in">
+                        <div class="max-w-[80%] bg-emerald-100 dark:bg-emerald-900/40 text-emerald-900 dark:text-emerald-100 p-4 rounded-2xl rounded-tr-none shadow-sm relative border border-emerald-200/50">
+                            <span class="block text-[10px] font-bold mb-1 opacity-60">${item.kategori} - ${item.nama}</span>
+                            <p class="text-sm">${item.pertanyaan}</p>
+                            ${item.file_url ? `<a href="${item.file_url}" target="_blank" class="block mt-2 text-[10px] underline font-bold">📄 Lampiran File</a>` : ''}
+                        </div>
+                    </div>
+
+                    ${item.jawaban ? `
+                    <div class="flex flex-col items-start animate-fade-in">
+                        <div class="max-w-[80%] bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 p-4 rounded-2xl rounded-tl-none shadow-md border border-slate-100 dark:border-slate-700">
+                            <span class="block text-[10px] font-bold mb-1 text-emerald-600 uppercase tracking-tighter">Admin Bilik Tafakur</span>
+                            <p class="text-sm whitespace-pre-wrap">${item.jawaban}</p>
+                            <span class="block text-[9px] mt-2 opacity-50 text-right">${new Date(item.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                        </div>
+                    </div>
+                    ` : ''}
+                `).join('');
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+        }
+
+        form?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('btn-send');
+            btn?.setAttribute('disabled', 'true');
+
+            let namaFinal = localStorage.getItem('bt_user_nama');
+            if (!namaFinal) {
+                namaFinal = namaInput.value;
+                localStorage.setItem('bt_user_nama', namaFinal);
+            }
+
+            const pesan = (document.getElementById('pesan') as HTMLTextAreaElement).value;
+            const kategori = kategoriSelect.value;
+            
+            let fileUrl = null;
+
+            // Syarat kategori === 'Tulisan' dibusak, dadi kabeh kategori iso upload
+            if (fileInput.files?.[0]) {
+                const file = fileInput.files[0];
+                const fileName = `${Date.now()}_${file.name}`;
+                await supabase.storage.from('tulisan-warga').upload(fileName, file);
+                const { data: publicUrl } = supabase.storage.from('tulisan-warga').getPublicUrl(fileName);
+                fileUrl = publicUrl.publicUrl;
+            }
+
+            const { error } = await supabase.from('konsultasi').insert([{ nama: namaFinal, pertanyaan: pesan, kategori, file_url: fileUrl }]);
+
+            if (!error) {
+                alert("Pesan terkirim! Admin badhe paring wangsulan sakedhap malih.");
+                form.reset();
+                fileNameDisplay?.classList.add('hidden');
+                cekIdentitas();
+            }
+            btn?.removeAttribute('disabled');
+        });
+
+        cekIdentitas();
+        muatChat();
+    </script>
+</MainLayout>

@@ -11,6 +11,10 @@ const {
 } = Astro.props;
 
 const currentUrl = Astro.url.href;
+const currentPath = Astro.url.pathname;
+
+// LOGIKA PINTER: Ndeteksi halaman pundi ingkang mboten butuh Sidebar Tengen
+const isWidePage = currentPath.startsWith('/doa') || currentPath.startsWith('/alquran');
 
 // Nyiapake data kagem widget "Sering Dibaca" ing Sidebar Tengen
 const allData = [
@@ -168,7 +172,9 @@ const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
 
     <div class="flex flex-row min-h-screen w-full relative justify-center">
         
-        <div class="hidden xl:block w-[280px] 2xl:w-[320px] flex-shrink-0 pointer-events-none bg-transparent"></div>
+        {!isWidePage && (
+            <div class="hidden xl:block w-[280px] 2xl:w-[320px] flex-shrink-0 pointer-events-none bg-transparent"></div>
+        )}
 
         <div class="flex-1 flex flex-col min-h-screen relative overflow-hidden max-w-[100vw]">
             
@@ -205,7 +211,7 @@ const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
             <main class="flex-1 overflow-y-auto no-scrollbar flex flex-col">
                 <slot />
                 
-                <footer class="xl:hidden mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-8 text-center flex-shrink-0">
+                <footer class={`${isWidePage ? 'flex' : 'xl:hidden'} mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-8 text-center flex-shrink-0 flex-col items-center justify-center`}>
                     <div class="max-w-2xl mx-auto">
                         <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Wonten Klentu Seratan?</h3>
                         <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Menawi wonten kesalahan harokat utawi terjemahan, mangga kersoa paring masukan.</p>
@@ -219,43 +225,45 @@ const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
             <div id="sidebar-overlay" class="fixed inset-0 bg-black/30 backdrop-blur-[2px] z-[90] hidden"></div>
         </div>
 
-        <aside class="hidden xl:flex w-[280px] 2xl:w-[320px] bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl border-l border-slate-200 dark:border-slate-800 flex-col flex-shrink-0 z-[100] shadow-sm">
-            <div class="sticky top-0 h-screen overflow-y-auto no-scrollbar p-6 space-y-8">
-                
-                <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/50 dark:from-emerald-900/20 dark:to-emerald-900/10 rounded-3xl p-6 border border-emerald-100 dark:border-emerald-800/50 text-center relative overflow-hidden group shadow-sm">
-                    <div class="absolute -right-4 -top-4 text-5xl opacity-20 group-hover:scale-110 group-hover:-rotate-12 transition-all duration-300">💡</div>
-                    <h3 class="font-bold text-emerald-900 dark:text-emerald-400 text-lg mb-2 relative z-10">Koreksi & Masukan</h3>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400 mb-5 leading-relaxed relative z-10 font-medium">
-                        "Jika ada kesalahan penulisan, harokat, maupun ketidaksepahaman makna, silakan berikan masukan Anda."
-                    </p>
-                    <button onclick="document.getElementById('modal-bilik-sapa').showModal()" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 relative z-10 flex items-center justify-center gap-2">
-                        <span class="text-base">🔏</span> Mampir Bilik Sapa
-                    </button>
-                </div>
-
-                <div>
-                    <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-5 flex items-center gap-2 text-sm uppercase tracking-wider">
-                        <span class="text-emerald-500">🔥</span> Sering Dibaca
-                    </h3>
-                    <div class="space-y-4">
-                        {popularContent.map(item => (
-                            <a href={item.url} class="flex gap-3 items-start group">
-                                <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-lg group-hover:bg-emerald-50 dark:group-hover:bg-emerald-900/30 group-hover:border-emerald-200 transition-colors flex-shrink-0 shadow-sm">
-                                    {item.icon}
-                                </div>
-                                <div>
-                                    <p class="text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 line-clamp-2 transition-colors leading-relaxed mb-0.5">
-                                        {item.title}
-                                    </p>
-                                    <p class="text-[9px] font-bold uppercase tracking-wider text-emerald-600/70 dark:text-emerald-400/70">{item.type}</p>
-                                </div>
-                            </a>
-                        ))}
+        {!isWidePage && (
+            <aside class="hidden xl:flex w-[280px] 2xl:w-[320px] bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl border-l border-slate-200 dark:border-slate-800 flex-col flex-shrink-0 z-[100] shadow-sm">
+                <div class="sticky top-0 h-screen overflow-y-auto no-scrollbar p-6 space-y-8">
+                    
+                    <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/50 dark:from-emerald-900/20 dark:to-emerald-900/10 rounded-3xl p-6 border border-emerald-100 dark:border-emerald-800/50 text-center relative overflow-hidden group shadow-sm">
+                        <div class="absolute -right-4 -top-4 text-5xl opacity-20 group-hover:scale-110 group-hover:-rotate-12 transition-all duration-300">💡</div>
+                        <h3 class="font-bold text-emerald-900 dark:text-emerald-400 text-lg mb-2 relative z-10">Koreksi & Masukan</h3>
+                        <p class="text-[11px] text-slate-600 dark:text-slate-400 mb-5 leading-relaxed relative z-10 font-medium">
+                            "Jika ada kesalahan penulisan, harokat, maupun ketidaksepahaman makna, silakan berikan masukan Anda."
+                        </p>
+                        <button onclick="document.getElementById('modal-bilik-sapa').showModal()" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 relative z-10 flex items-center justify-center gap-2">
+                            <span class="text-base">🔏</span> Mampir Bilik Sapa
+                        </button>
                     </div>
-                </div>
 
-            </div>
-        </aside>
+                    <div>
+                        <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-5 flex items-center gap-2 text-sm uppercase tracking-wider">
+                            <span class="text-emerald-500">🔥</span> Sering Dibaca
+                        </h3>
+                        <div class="space-y-4">
+                            {popularContent.map(item => (
+                                <a href={item.url} class="flex gap-3 items-start group">
+                                    <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-lg group-hover:bg-emerald-50 dark:group-hover:bg-emerald-900/30 group-hover:border-emerald-200 transition-colors flex-shrink-0 shadow-sm">
+                                        {item.icon}
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 line-clamp-2 transition-colors leading-relaxed mb-0.5">
+                                            {item.title}
+                                        </p>
+                                        <p class="text-[9px] font-bold uppercase tracking-wider text-emerald-600/70 dark:text-emerald-400/70">{item.type}</p>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+        )}
     </div>
 
     <dialog id="modal-bilik-sapa" class="w-[95%] max-w-xl bg-transparent p-0 border-none m-auto open:animate-zoom-in overflow-hidden z-[150]">

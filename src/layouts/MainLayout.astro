@@ -13,10 +13,10 @@ const {
 const currentUrl = Astro.url.href;
 const currentPath = Astro.url.pathname;
 
-// LOGIKA PINTER: Ndeteksi halaman pundi ingkang mboten butuh Sidebar Tengen
+// Ndeteksi halaman pundi ingkang mboten butuh Sidebar Tengen
 const isWidePage = currentPath.startsWith('/doa') || currentPath.startsWith('/alquran');
 
-// Nyiapake data kagem widget "Sering Dibaca" ing Sidebar Tengen
+// Nyiapake Data kagem Widget "Sering Dibaca"
 const allData = [
     ...(daftarDoa || []).map((item) => {
         const slug = item.slug || item.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -31,8 +31,10 @@ const allData = [
     }))
 ];
 
-// Milih 5 artikel kagem konten populer
 const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
+
+// Passing data search kagem Javascript (Supados VS Code mboten error)
+const searchDataJson = JSON.stringify(allData);
 ---
 
 <!DOCTYPE html>
@@ -44,7 +46,6 @@ const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
     <meta name="description" content={description}>
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#064e3b" />
-    
     <link rel="icon" type="image/svg+xml" href="/logo-bilik.svg" />
     
     <meta property="og:type" content="article" />
@@ -52,162 +53,156 @@ const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
-    <meta property="twitter:card" content="summary_large_image" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-emerald-200 dark:selection:bg-emerald-900">  
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-emerald-200 dark:selection:bg-emerald-900 overflow-x-hidden">  
     
-    <aside id="sidebar" class={`fixed top-0 left-0 h-full w-72 ${!isWidePage ? 'xl:w-[280px] 2xl:w-[320px] xl:translate-x-0 xl:shadow-none' : ''} bg-white dark:bg-slate-950 z-[200] transform -translate-x-full transition-transform duration-300 border-r border-slate-200 dark:border-slate-800 flex flex-col shadow-2xl`}>
-        <div class="h-20 flex items-center px-6 border-b border-slate-100 dark:border-slate-800 bg-gradient-to-br from-emerald-50/50 to-white dark:from-emerald-950/20">
-            <div class="flex items-center gap-3">
-                <img src="/logo-bilik.svg" class="w-10 h-10 rounded-full shadow-sm" alt="Logo" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Bilik'"/>
-                <h1 class="font-poppins font-bold text-lg text-emerald-800 dark:text-emerald-400">Bilik Tafakur</h1>
-            </div>
-        </div>
+    <div id="app-data" data-search={searchDataJson} class="hidden"></div>
 
-        <nav class="flex-1 px-3 py-6 space-y-1.5 overflow-y-auto no-scrollbar">
-            <a href="/" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all">
-                <span>🏠</span> <span class="font-semibold text-sm">Beranda</span>
-            </a>
-            <a href="/alquran" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all">
-                <span>📖</span> <span class="font-semibold text-sm">Al-Quran Digital</span>
-            </a>
-
-            <div class="relative">
-                <a href="#" id="nav-doa" class="flex items-center justify-between px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group">
-                    <div class="flex items-center gap-4"><span>🤲</span> <span class="font-semibold text-sm">Doa Harian</span></div>
-                    <svg id="icon-doa" class="w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </a>
-                <div id="submenu-doa" class="hidden flex-col gap-2 pl-[3.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
-                    <a href="/doa" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
-                        <span>Lihat Semua Doa</span>
-                    </a>
-                    {daftarDoa && daftarDoa.slice(0, 10).map((item) => {
-                        const slugDoa = item.slug || item.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-                        return (
-                        <a href={`/doa/${slugDoa}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{item.judul}</span>
-                        </a>
-                        )
-                    })}
-                </div>
-            </div>
-
-            <div class="relative">
-                <a href="#" id="nav-fikih" class="flex items-center justify-between px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group">
-                    <div class="flex items-center gap-4"><span>🕋</span> <span class="font-semibold text-sm">Fikih & Ibadah</span></div>
-                    <svg id="icon-fikih" class="w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </a>
-                <div id="submenu-fikih" class="hidden flex-col gap-2 pl-[3.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
-                    <a href="/fikih" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
-                        <span>Lihat Semua Fikih</span>
-                    </a>
-                    {daftarFikih && daftarFikih.slice(0, 10).map((item) => {
-                        const slugFikih = item.slug || item.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-                        return (
-                        <a href={`/fikih/${slugFikih}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{item.judul}</span>
-                        </a>
-                        )
-                    })}
-                </div>
-            </div>
-
-            <div class="relative">
-                <a href="#" id="nav-iqra" class="flex items-center justify-between px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all duration-300">
-                    <div class="flex items-center gap-4">
-                        <span class="flex items-center justify-center text-xl group-hover:scale-110 transition-transform flex-shrink-0">📕</span>
-                        <span class="font-semibold text-sm tracking-tight">Iqra Digital</span>
-                    </div>
-                    <svg id="icon-iqra" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 transition-transform duration-300 flex-shrink-0"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </a>
-                <div id="submenu-iqra" class="hidden flex-col gap-2 pl-[3.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
-                    <a href="/iqra" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
-                        <span>Lihat Semua Iqra</span>
-                    </a>
-                    {[1, 2, 3, 4, 5, 6].map((jilid) => (
-                        <a href={`/iqra/jilid-${jilid}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">Iqra Jilid {jilid}</span>
-                        </a>
-                    ))}
-                </div>
-            </div>
-
-            <div class="relative">
-                <a href="#" id="nav-motivasi" class="flex items-center justify-between px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all duration-300">
-                    <div class="flex items-center gap-4">
-                        <span class="flex items-center justify-center text-xl group-hover:scale-110 transition-transform flex-shrink-0">✨</span>
-                        <span class="font-semibold text-sm tracking-tight">Motivasi & Tafakur</span>
-                    </div>
-                    <svg id="icon-motivasi" class="text-slate-400 transition-transform duration-300 flex-shrink-0 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </a>
-                <div id="submenu-motivasi" class="hidden flex-col gap-2 pl-[3.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
-                    <a href="/motivasi" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
-                        <span>Lihat Semua Motivasi</span>
-                    </a>
-                    {daftarMotivasi && daftarMotivasi.slice(0, 10).map((item) => (
-                        <a href={`/motivasi/${item.slug}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{item.judul}</span>
-                        </a>
-                    ))}
-                </div>
-            </div>
-           
-            <button onclick="document.getElementById('modal-bilik-sapa').showModal()" class="w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all mt-4 border border-emerald-100 dark:border-emerald-800/50 bg-emerald-50/50 dark:bg-emerald-900/10">
-                <span class="text-xl">🔏</span> 
-                <span class="font-semibold text-sm text-emerald-700 dark:text-emerald-400">Bilik Sapa</span>
+    <header class="fixed top-0 left-0 w-full h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-[300] flex items-center justify-between px-4 md:px-8">
+        <div class="flex items-center gap-3 w-72">
+            <button id="btn-hamburger" class={`p-2.5 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 rounded-2xl transition-all ${!isWidePage ? 'xl:hidden' : ''}`}>
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
-        </nav>
-
-        <div class="p-6 border-t border-slate-100 dark:border-slate-800 bg-emerald-50/30 dark:bg-black/20 mt-auto flex-shrink-0 text-center">
-            <p class="text-[11px] text-emerald-800 dark:text-emerald-400 font-serif italic mb-1">"Mengharap Ridho Allah semata."</p>
-            <div class="h-1 w-6 bg-emerald-300 dark:bg-emerald-700 mx-auto my-2 rounded-full"></div>
-            <p class="text-[9px] text-slate-400 uppercase tracking-[0.2em] mb-1">Katur kagem</p>
-            <p class="text-sm font-bold text-emerald-900 dark:text-white">Widd 🤍</p>
+            <a href="/" class="flex items-center gap-3 group">
+                <img src="/logo-bilik.svg" class="w-8 h-8 object-contain flex-shrink-0 drop-shadow-md rounded-full group-hover:rotate-12 transition-all" alt="Logo" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Bilik'"/>
+                <span class="font-poppins font-bold text-lg text-emerald-900 dark:text-emerald-400 hidden sm:block">Bilik Tafakur</span>
+            </a>
         </div>
-    </aside>
 
-    <div class="flex flex-row min-h-screen w-full relative justify-center">
+        <div class="flex items-center gap-2 relative">
+            <div id="global-search-container" class="flex items-center bg-slate-100 dark:bg-slate-800 rounded-full transition-all w-10 overflow-hidden relative z-[120]">
+                <button id="btn-search-trigger" class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-slate-500 hover:text-emerald-600 outline-none">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+                <input type="text" id="global-search-input" placeholder="Cari..." autocomplete="off" class="bg-transparent border-none outline-none focus:outline-none text-sm w-0 opacity-0 transition-all font-jakarta pr-4 dark:text-white" />
+            </div>
+
+            <div id="search-dropdown" class="absolute top-[120%] right-0 md:right-10 w-64 md:w-80 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl opacity-0 invisible scale-95 origin-top-right transition-all z-[130] flex flex-col overflow-hidden">
+                <div id="search-results-list" class="max-h-72 overflow-y-auto p-2 flex flex-col gap-1 no-scrollbar"></div>
+                <div id="search-enter-hint" class="hidden p-3 bg-slate-50 dark:bg-black/20 text-center text-[10px] text-slate-500 border-t">Tekan <kbd class="font-mono">Enter</kbd> kagem asil lengkap</div>
+            </div>
+
+            <button id="theme-toggle" class="p-2.5 rounded-2xl bg-slate-100 dark:bg-slate-800 shadow-sm outline-none">
+                <span class="hidden dark:block">☀️</span> <span class="block dark:hidden">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="flex flex-row min-h-screen w-full relative justify-center pt-16">
         
+        <aside id="sidebar" class={`fixed top-16 left-0 h-[calc(100vh-4rem)] w-72 ${!isWidePage ? 'xl:translate-x-0 xl:shadow-none' : ''} bg-white dark:bg-slate-950 z-[200] transform -translate-x-full transition-transform duration-300 border-r border-slate-200 dark:border-slate-800 flex flex-col shadow-2xl`}>
+            
+            <nav class="flex-1 px-3 py-6 space-y-1.5 overflow-y-auto no-scrollbar">
+                <a href="/" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all">
+                    <span>🏠</span> <span class="font-semibold text-sm">Beranda</span>
+                </a>
+                <a href="/alquran" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all">
+                    <span>📖</span> <span class="font-semibold text-sm">Al-Quran Digital</span>
+                </a>
+
+                <div class="relative">
+                    <button id="btn-nav-doa" class="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group outline-none">
+                        <div class="flex items-center gap-4"><span>🤲</span> <span class="font-semibold text-sm">Doa Harian</span></div>
+                        <svg id="icon-nav-doa" class="w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div id="sub-nav-doa" class="hidden flex-col gap-2 pl-[3.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
+                        <a href="/doa" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
+                            <span>Lihat Semua Doa</span>
+                        </a>
+                        {daftarDoa && daftarDoa.slice(0, 10).map((item) => {
+                            const slugDoa = item.slug || item.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                            return (
+                            <a href={`/doa/${slugDoa}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{item.judul}</span>
+                            </a>
+                            )
+                        })}
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <button id="btn-nav-fikih" class="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group outline-none">
+                        <div class="flex items-center gap-4"><span>🕋</span> <span class="font-semibold text-sm">Fikih & Ibadah</span></div>
+                        <svg id="icon-nav-fikih" class="w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div id="sub-nav-fikih" class="hidden flex-col gap-2 pl-[3.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
+                        <a href="/fikih" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
+                            <span>Lihat Semua Fikih</span>
+                        </a>
+                        {daftarFikih && daftarFikih.slice(0, 10).map((item) => {
+                            const slugFikih = item.slug || item.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                            return (
+                            <a href={`/fikih/${slugFikih}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{item.judul}</span>
+                            </a>
+                            )
+                        })}
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <button id="btn-nav-iqra" class="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all duration-300 outline-none">
+                        <div class="flex items-center gap-4">
+                            <span class="flex items-center justify-center text-xl group-hover:scale-110 transition-transform flex-shrink-0">📕</span>
+                            <span class="font-semibold text-sm tracking-tight">Iqra Digital</span>
+                        </div>
+                        <svg id="icon-nav-iqra" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 transition-transform duration-300 flex-shrink-0"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div id="sub-nav-iqra" class="hidden flex-col gap-2 pl-[3.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
+                        <a href="/iqra" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
+                            <span>Lihat Semua Iqra</span>
+                        </a>
+                        {[1, 2, 3, 4, 5, 6].map((jilid) => (
+                            <a href={`/iqra/jilid-${jilid}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">Iqra Jilid {jilid}</span>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <button id="btn-nav-motivasi" class="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all duration-300 outline-none">
+                        <div class="flex items-center gap-4">
+                            <span class="flex items-center justify-center text-xl group-hover:scale-110 transition-transform flex-shrink-0">✨</span>
+                            <span class="font-semibold text-sm tracking-tight">Motivasi & Tafakur</span>
+                        </div>
+                        <svg id="icon-nav-motivasi" class="text-slate-400 transition-transform duration-300 flex-shrink-0 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div id="sub-nav-motivasi" class="hidden flex-col gap-2 pl-[3.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
+                        <a href="/motivasi" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
+                            <span>Lihat Semua Motivasi</span>
+                        </a>
+                        {daftarMotivasi && daftarMotivasi.slice(0, 10).map((item) => (
+                            <a href={`/motivasi/${item.slug}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{item.judul}</span>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+               
+                <button class="btn-open-sapa w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all mt-4 border border-emerald-100 dark:border-emerald-800/50 bg-emerald-50/50 dark:bg-emerald-900/10">
+                    <span class="text-xl">🔏</span> 
+                    <span class="font-semibold text-sm text-emerald-700 dark:text-emerald-400">Bilik Sapa</span>
+                </button>
+            </nav>
+
+            <div class="p-6 border-t border-slate-100 dark:border-slate-800 bg-emerald-50/30 dark:bg-black/20 mt-auto flex-shrink-0 text-center">
+                <p class="text-[11px] text-emerald-800 dark:text-emerald-400 font-serif italic mb-1">"Mengharap Ridho Allah semata."</p>
+                <div class="h-1 w-6 bg-emerald-300 dark:bg-emerald-700 mx-auto my-2 rounded-full"></div>
+                <p class="text-[9px] text-slate-400 uppercase tracking-[0.2em] mb-1">Katur kagem</p>
+                <p class="text-sm font-bold text-emerald-900 dark:text-white">Widd 🤍</p>
+            </div>
+        </aside>
+
         {!isWidePage && (
-            <div class="hidden xl:block w-[280px] 2xl:w-[320px] flex-shrink-0 pointer-events-none bg-transparent"></div>
+            <div id="left-spacer" class="hidden xl:block w-72 flex-shrink-0 pointer-events-none bg-transparent transition-all duration-300"></div>
         )}
 
-        <div class="flex-1 flex flex-col min-h-screen relative overflow-hidden max-w-[100vw]">
-            
-            <header class="h-16 sticky top-0 flex items-center justify-between px-4 md:px-8 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-[110]">
-                <div class="flex items-center gap-3">
-                    <button id="btn-menu" class={`p-2.5 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 rounded-2xl transition-all ${!isWidePage ? 'xl:hidden' : ''}`}>
-                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                    </button>
-                    <a href="/" class={`flex items-center gap-2 group ${!isWidePage ? 'xl:hidden' : ''}`}>
-                        <img src="/logo-bilik.svg" class="w-8 h-8 rounded-full shadow-sm group-hover:rotate-12 transition-all" alt="Logo" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Bilik'"/>
-                        <span class="font-poppins font-bold text-lg text-emerald-900 dark:text-emerald-400 hidden sm:block">Bilik Tafakur</span>
-                    </a>
-                </div>
-
-                <div class="flex items-center gap-2 relative">
-                    <div id="global-search-container" class="flex items-center bg-slate-100 dark:bg-slate-800 rounded-full transition-all w-10 overflow-hidden relative z-[120]">
-                        <button id="btn-search-trigger" class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-slate-500 hover:text-emerald-600">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        </button>
-                        <input type="text" id="global-search-input" placeholder="Cari..." autocomplete="off" class="bg-transparent border-none focus:outline-none text-sm w-0 opacity-0 transition-all font-jakarta pr-4 dark:text-white" />
-                    </div>
-
-                    <div id="search-dropdown" class="absolute top-[120%] right-10 w-64 md:w-80 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl opacity-0 invisible scale-95 origin-top-right transition-all z-[130] flex flex-col overflow-hidden">
-                        <div id="search-results-list" class="max-h-72 overflow-y-auto p-2 flex flex-col gap-1 no-scrollbar"></div>
-                        <div id="search-enter-hint" class="hidden p-3 bg-slate-50 dark:bg-black/20 text-center text-[10px] text-slate-500 border-t">Tekan <kbd class="font-mono">Enter</kbd> untuk hasil lengkap</div>
-                    </div>
-
-                    <button id="theme-toggle" class="p-2.5 rounded-2xl bg-slate-100 dark:bg-slate-800 shadow-sm">
-                        <span class="hidden dark:block">☀️</span> <span class="block dark:hidden">🌙</span>
-                    </button>
-                </div>
-            </header>
-
+        <div class="flex-1 flex flex-col min-h-[calc(100vh-4rem)] relative overflow-hidden max-w-[100vw]">
             <main class="flex-1 overflow-y-auto no-scrollbar flex flex-col">
                 <slot />
                 
@@ -215,27 +210,26 @@ const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
                     <div class="max-w-2xl mx-auto">
                         <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Wonten Klentu Seratan?</h3>
                         <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Menawi wonten kesalahan harokat utawi terjemahan, mangga kersoa paring masukan.</p>
-                        <button onclick="document.getElementById('modal-bilik-sapa').showModal()" class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 font-bold text-sm rounded-full border border-emerald-100 dark:border-emerald-800 hover:bg-emerald-700 hover:text-white transition-all">
+                        <button class="btn-open-sapa inline-flex items-center gap-2 px-6 py-3 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 font-bold text-sm rounded-full border border-emerald-100 dark:border-emerald-800 hover:bg-emerald-700 hover:text-white transition-all">
                             <span>🔏</span> Mampir Bilik Sapa
                         </button>
                     </div>
                 </footer>
             </main>
             
-            <div id="sidebar-overlay" class={`fixed inset-0 bg-black/30 backdrop-blur-[2px] z-[90] hidden ${!isWidePage ? 'xl:hidden' : ''}`}></div>
+            <div id="sidebar-overlay" class="fixed inset-0 top-16 bg-black/30 backdrop-blur-[2px] z-[90] hidden xl:hidden"></div>
         </div>
 
         {!isWidePage && (
-            <aside class="hidden xl:flex w-[280px] 2xl:w-[320px] bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl border-l border-slate-200 dark:border-slate-800 flex-col flex-shrink-0 z-[100] shadow-sm">
-                <div class="sticky top-0 h-screen overflow-y-auto no-scrollbar p-6 space-y-8">
-                    
+            <aside class="hidden xl:flex w-[280px] 2xl:w-[320px] sticky top-16 h-[calc(100vh-4rem)] bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl border-l border-slate-200 dark:border-slate-800 flex-col flex-shrink-0 z-[100] shadow-sm">
+                <div class="overflow-y-auto no-scrollbar p-6 space-y-8">
                     <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/50 dark:from-emerald-900/20 dark:to-emerald-900/10 rounded-3xl p-6 border border-emerald-100 dark:border-emerald-800/50 text-center relative overflow-hidden group shadow-sm">
                         <div class="absolute -right-4 -top-4 text-5xl opacity-20 group-hover:scale-110 group-hover:-rotate-12 transition-all duration-300">💡</div>
                         <h3 class="font-bold text-emerald-900 dark:text-emerald-400 text-lg mb-2 relative z-10">Koreksi & Masukan</h3>
                         <p class="text-[11px] text-slate-600 dark:text-slate-400 mb-5 leading-relaxed relative z-10 font-medium">
                             "Jika ada kesalahan penulisan, harokat, maupun ketidaksepahaman makna, silakan berikan masukan Anda."
                         </p>
-                        <button onclick="document.getElementById('modal-bilik-sapa').showModal()" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 relative z-10 flex items-center justify-center gap-2">
+                        <button class="btn-open-sapa w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 relative z-10 flex items-center justify-center gap-2">
                             <span class="text-base">🔏</span> Mampir Bilik Sapa
                         </button>
                     </div>
@@ -260,13 +254,12 @@ const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
                             ))}
                         </div>
                     </div>
-
                 </div>
             </aside>
         )}
     </div>
 
-    <dialog id="modal-bilik-sapa" class="w-[95%] max-w-xl bg-transparent p-0 border-none m-auto open:animate-zoom-in overflow-hidden z-[150]">
+    <dialog id="modal-bilik-sapa" class="w-[95%] max-w-xl bg-transparent p-0 border-none m-auto open:animate-zoom-in overflow-hidden z-[400]">
         <div class="flex flex-col h-[85vh] max-h-[700px] bg-white dark:bg-slate-900 rounded-[2rem] shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
             <div class="p-4 bg-emerald-700 text-white flex items-center justify-between shadow-md z-10">
                 <div class="flex items-center gap-3">
@@ -328,28 +321,91 @@ const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
     <script>
         import { supabase } from '../lib/supabase.js';
 
-        // SEARCH LOGIC
+        // 1. HAMBURGER MENU
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const btnHamburger = document.getElementById('btn-hamburger');
+        const leftSpacer = document.getElementById('left-spacer');
+        
+        if(btnHamburger && sidebar && overlay) {
+            btnHamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isDesktop = window.innerWidth >= 1280; 
+                
+                if (isDesktop) {
+                    if (sidebar.classList.contains('xl:translate-x-0')) {
+                        sidebar.classList.replace('xl:translate-x-0', 'xl:-translate-x-full');
+                        if (leftSpacer) leftSpacer.classList.remove('xl:block');
+                    } else {
+                        sidebar.classList.replace('xl:-translate-x-full', 'xl:translate-x-0');
+                        if (leftSpacer) leftSpacer.classList.add('xl:block');
+                    }
+                } else {
+                    sidebar.classList.toggle('-translate-x-full');
+                    overlay.classList.toggle('hidden');
+                }
+            });
+            overlay.addEventListener('click', () => { 
+                sidebar.classList.add('-translate-x-full'); 
+                overlay.classList.add('hidden'); 
+            });
+        }
+
+        // 2. DROPDOWN SUB-MENU
+        const setupDropdown = (btnId: string, subId: string, iconId: string) => {
+            const btn = document.getElementById(btnId); 
+            const sub = document.getElementById(subId); 
+            const icon = document.getElementById(iconId);
+            
+            if(btn && sub) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault(); 
+                    const isHidden = sub.classList.contains('hidden');
+                    sub.classList.toggle('hidden', !isHidden); 
+                    sub.classList.toggle('flex', isHidden);
+                    if(icon) icon.classList.toggle('rotate-180', isHidden);
+                });
+            }
+        };
+        setupDropdown('btn-nav-doa', 'sub-nav-doa', 'icon-nav-doa');
+        setupDropdown('btn-nav-fikih', 'sub-nav-fikih', 'icon-nav-fikih');
+        setupDropdown('btn-nav-iqra', 'sub-nav-iqra', 'icon-nav-iqra');
+        setupDropdown('btn-nav-motivasi', 'sub-nav-motivasi', 'icon-nav-motivasi');
+
+        // 3. POP-UP BILIK SAPA
+        document.querySelectorAll('.btn-open-sapa').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modal = document.getElementById('modal-bilik-sapa') as HTMLDialogElement | null;
+                if(modal) modal.showModal(); 
+            });
+        });
+
+        // 4. THEME TOGGLE
+        const themeToggle = document.getElementById('theme-toggle');
+        if(themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        }
+
+        // 5. SEARCH BOX
         const searchContainer = document.getElementById('global-search-container');
         const searchTrigger = document.getElementById('btn-search-trigger');
         const searchInput = document.getElementById('global-search-input') as HTMLInputElement | null;
         const searchDropdown = document.getElementById('search-dropdown');
         const searchResultsList = document.getElementById('search-results-list');
         const searchEnterHint = document.getElementById('search-enter-hint');
-
-        const allData = [
-            ...((window as any).daftarDoa || []).map((item: any) => {
-                const slugDoa = item.slug || item.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-                return { title: item.judul, type: 'Doa', url: `/doa/${slugDoa}`, icon: '🤲' };
-            }),
-            ...((window as any).daftarFikih || []).map((item: any) => {
-                const slugFikih = item.slug || item.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-                return { title: item.judul, type: 'Fikih', url: `/fikih/${slugFikih}`, icon: '🕋' };
-            }),
-            ...((window as any).daftarMotivasi || []).map((item: any) => ({ title: item.judul, type: 'Motivasi', url: `/motivasi/${item.slug}`, icon: '✨' }))
-        ];
+        const appDataEl = document.getElementById('app-data');
+        
+        let allData: any[] = [];
+        if (appDataEl && appDataEl.dataset.search) {
+            try { allData = JSON.parse(appDataEl.dataset.search); } catch (e) {}
+        }
 
         if(searchTrigger && searchContainer && searchInput && searchDropdown && searchResultsList && searchEnterHint) {
-            searchTrigger.onclick = () => {
+            searchTrigger.addEventListener('click', () => {
                 const isOpen = searchContainer.classList.contains('w-48');
                 if (!isOpen) {
                     searchContainer.classList.replace('w-10', 'w-48');
@@ -364,8 +420,9 @@ const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
                     searchInput.classList.replace('opacity-100', 'opacity-0');
                     searchDropdown.classList.add('opacity-0', 'invisible');
                 }
-            };
-            searchInput.oninput = (e) => {
+            });
+
+            searchInput.addEventListener('input', (e) => {
                 const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
                 searchResultsList.innerHTML = '';
                 if (query.length < 2) { searchDropdown.classList.add('opacity-0', 'invisible'); return; }
@@ -385,59 +442,16 @@ const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
                     searchDropdown.classList.remove('opacity-0', 'invisible');
                     searchEnterHint.classList.add('hidden');
                 }
-            };
-            searchInput.onkeydown = (e) => {
+            });
+
+            searchInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' && searchInput.value.trim() !== '') {
                     window.location.href = `/search?q=${encodeURIComponent(searchInput.value.trim())}`;
                 }
-            };
+            });
         }
 
-        document.addEventListener('click', (e) => {
-            if (searchContainer && searchDropdown && searchTrigger && !searchContainer.contains(e.target as Node) && !searchDropdown.contains(e.target as Node)) {
-                if (searchContainer.classList.contains('w-48')) { searchTrigger.click(); }
-            }
-        });
-
-        // SIDEBAR TOGGLE LOGIC
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebar-overlay');
-        const btnMenu = document.getElementById('btn-menu');
-        
-        if(btnMenu && sidebar && overlay) {
-            btnMenu.onclick = (e) => {
-                e.stopPropagation();
-                const isHidden = sidebar.classList.contains('-translate-x-full');
-                if (isHidden) { sidebar.classList.remove('-translate-x-full'); overlay.classList.remove('hidden'); } 
-                else { sidebar.classList.add('-translate-x-full'); overlay.classList.add('hidden'); }
-            };
-            overlay.onclick = () => { sidebar.classList.add('-translate-x-full'); overlay.classList.add('hidden'); };
-        }
-
-        const setupDropdown = (btnId: string, subId: string, iconId: string) => {
-            const btn = document.getElementById(btnId); const sub = document.getElementById(subId); const icon = document.getElementById(iconId);
-            let isOpen = false;
-            if(btn && sub) btn.onclick = (e) => {
-                e.preventDefault(); isOpen = !isOpen;
-                sub.classList.toggle('hidden', !isOpen); sub.classList.toggle('flex', isOpen);
-                if(icon) icon.classList.toggle('rotate-180', isOpen);
-            };
-        };
-        
-        setupDropdown('nav-doa', 'submenu-doa', 'icon-doa');
-        setupDropdown('nav-fikih', 'submenu-fikih', 'icon-fikih');
-        setupDropdown('nav-iqra', 'submenu-iqra', 'icon-iqra');
-        setupDropdown('nav-motivasi', 'submenu-motivasi', 'icon-motivasi');
-
-        const themeToggle = document.getElementById('theme-toggle');
-        if(themeToggle) {
-            themeToggle.onclick = () => {
-                const isDark = document.documentElement.classList.toggle('dark');
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            };
-        }
-
-        // CHAT SUPABASE LOGIC
+        // 6. CHAT SUPABASE (Typecasting leres kagem TS)
         const chatContainer = document.getElementById('chat-container');
         const formChat = document.getElementById('form-chat') as HTMLFormElement | null;
         const namaInput = document.getElementById('chat-nama') as HTMLInputElement | null;
@@ -446,23 +460,37 @@ const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
         const displayNama = document.getElementById('display-nama');
         const btnGantiNama = document.getElementById('btn-ganti-nama');
         const kategoriSelect = document.getElementById('chat-kategori') as HTMLSelectElement | null;
+        const pesanInput = document.getElementById('chat-pesan') as HTMLTextAreaElement | null;
         const fileInput = document.getElementById('chat-file') as HTMLInputElement | null;
         const fileNameDisplay = document.getElementById('chat-file-name');
 
         function cekIdentitas() {
             const savedNama = localStorage.getItem('bt_user_nama');
             if (savedNama && namaContainer && userInfo && displayNama && namaInput) {
-                namaContainer.classList.add('hidden'); userInfo.classList.remove('hidden'); displayNama.innerText = savedNama; namaInput.removeAttribute('required');
+                namaContainer.classList.add('hidden'); 
+                userInfo.classList.remove('hidden'); 
+                displayNama.innerText = savedNama; 
+                namaInput.removeAttribute('required');
             } else if (namaContainer && userInfo && namaInput) {
-                namaContainer.classList.remove('hidden'); userInfo.classList.add('hidden'); namaInput.setAttribute('required', 'true');
+                namaContainer.classList.remove('hidden'); 
+                userInfo.classList.add('hidden'); 
+                namaInput.setAttribute('required', 'true');
             }
         }
 
-        if(btnGantiNama) { btnGantiNama.addEventListener('click', () => { localStorage.removeItem('bt_user_nama'); cekIdentitas(); }); }
+        if(btnGantiNama) { 
+            btnGantiNama.addEventListener('click', () => { 
+                localStorage.removeItem('bt_user_nama'); 
+                cekIdentitas(); 
+            }); 
+        }
 
         if(fileInput && fileNameDisplay) {
             fileInput.addEventListener('change', () => {
-                if (fileInput.files && fileInput.files[0]) { fileNameDisplay.innerText = "📄 " + fileInput.files[0].name; fileNameDisplay.classList.remove('hidden'); }
+                if (fileInput.files && fileInput.files[0]) { 
+                    fileNameDisplay.innerText = "📄 " + fileInput.files[0].name; 
+                    fileNameDisplay.classList.remove('hidden'); 
+                }
             });
         }
 
@@ -494,32 +522,46 @@ const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
         if(formChat) {
             formChat.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const btn = document.getElementById('btn-send-chat'); if(btn) btn.setAttribute('disabled', 'true');
+                const btn = document.getElementById('btn-send-chat'); 
+                if(btn) btn.setAttribute('disabled', 'true');
+                
                 let namaFinal = localStorage.getItem('bt_user_nama');
-                if (!namaFinal && namaInput) { namaFinal = namaInput.value || 'Hamba Allah'; localStorage.setItem('bt_user_nama', namaFinal); }
+                if (!namaFinal && namaInput) { 
+                    namaFinal = namaInput.value || 'Hamba Allah'; 
+                    localStorage.setItem('bt_user_nama', namaFinal); 
+                }
 
-                const pesanInput = document.getElementById('chat-pesan') as HTMLTextAreaElement | null;
                 const pesan = pesanInput ? pesanInput.value : '';
                 const kategori = kategoriSelect ? kategoriSelect.value : 'Umum';
                 let fileUrl = null;
 
                 if (fileInput && fileInput.files && fileInput.files[0]) {
-                    const file = fileInput.files[0]; const fileName = `${Date.now()}_${file.name}`;
+                    const file = fileInput.files[0]; 
+                    const fileName = `${Date.now()}_${file.name}`;
                     await supabase.storage.from('tulisan-warga').upload(fileName, file);
-                    const { data: publicUrl } = supabase.storage.from('tulisan-warga').getPublicUrl(fileName); fileUrl = publicUrl.publicUrl;
+                    const { data: publicUrl } = supabase.storage.from('tulisan-warga').getPublicUrl(fileName); 
+                    fileUrl = publicUrl.publicUrl;
                 }
 
                 const { error } = await supabase.from('konsultasi').insert([{ nama: namaFinal as string, pertanyaan: pesan, kategori, file_url: fileUrl }]);
-                if (!error) { alert("Masukan/Pesan terkirim! Admin badhe paring wangsulan sakedhap malih."); formChat.reset(); if(fileNameDisplay) fileNameDisplay.classList.add('hidden'); cekIdentitas(); }
+                if (!error) { 
+                    alert("Masukan/Pesan terkirim! Admin badhe paring wangsulan sakedhap malih."); 
+                    formChat.reset(); 
+                    if(fileNameDisplay) fileNameDisplay.classList.add('hidden'); 
+                    cekIdentitas(); 
+                }
                 if(btn) btn.removeAttribute('disabled');
             });
         }
 
         cekIdentitas();
+        
         const modal = document.getElementById('modal-bilik-sapa');
         if(modal) {
             const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => { if (mutation.attributeName === 'open' && modal.hasAttribute('open')) muatChat(); });
+                mutations.forEach((mutation) => { 
+                    if (mutation.attributeName === 'open' && modal.hasAttribute('open')) muatChat(); 
+                });
             });
             observer.observe(modal, { attributes: true });
         }
@@ -532,12 +574,9 @@ const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
     <script is:inline>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(registration => { console.log('ServiceWorker registration successful'); }).catch(err => { console.log('ServiceWorker registration failed: ', err); });
+                navigator.serviceWorker.register('/sw.js').catch(err => { console.log('SW failed: ', err); });
             });
         }
-        window.daftarDoa = typeof daftarDoa !== 'undefined' ? daftarDoa : [];
-        window.daftarFikih = typeof daftarFikih !== 'undefined' ? daftarFikih : [];
-        window.daftarMotivasi = typeof daftarMotivasi !== 'undefined' ? daftarMotivasi : [];
     </script>
 
     <style is:global>

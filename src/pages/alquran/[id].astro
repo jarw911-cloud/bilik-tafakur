@@ -20,6 +20,7 @@ const detailResponse = await fetch(`https://api.quran.gading.dev/surah/${id}`);
 const detailData = await detailResponse.json();
 const surat = detailData.data;
 
+
 let tajweedVerses = [];
 try {
     const tajweedResponse = await fetch(`https://api.quran.com/api/v4/quran/verses/uthmani_tajweed?chapter_number=${id}`);
@@ -28,9 +29,13 @@ try {
 } catch (e) {
     console.error("Gagal mengambil data tajwid", e);
 }
+// Tambahaken variabel deskripsi niki ing ngandhapipun blok JS (sakderengipun '---' panutup)
+const deskripsiSurat = `Baca Surat ${surat.name.transliteration.id} lengkap dengan tulisan Arab, Latin, terjemahan Indonesia, dan tajwid. Terdiri dari ${surat.numberOfVerses} ayat.`;
 ---
-
-<MainLayout title={`Surat ${surat.name.transliteration.id}`}>
+<MainLayout 
+    title={`Surat ${surat.name.transliteration.id} Lengkap Arab, Latin & Terjemah`} 
+    description={deskripsiSurat}
+>
     
     <div class="flex items-center justify-between mb-8 relative z-40">
         <a href="/alquran" class="inline-flex items-center text-sm font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors group">

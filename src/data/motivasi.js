@@ -1,6 +1,53 @@
 // File: src/data/motivasi.js
 export const daftarMotivasi = [
 {
+        judul: "Diludahi Musuh: Seni Mengendalikan Amarah ala Ali bin Abi Thalib",
+        slug: "seni-mengendalikan-amarah-ali",
+        kategori: "Kisah Hikmah & Nalar Teras",
+        kutipan:"Luruskan kembali niatmu, jangan sampai niat yang salah merusak amalanmu",
+        ringkasan: "Kisah luar biasa saat Ali bin Abi Thalib mengurungkan niat menebas musuhnya karena sebuah ludahan. Pelajaran berharga tentang memisahkan ego dari tindakan.",
+        isiHtml: `
+            <p>Dalam sebuah pertempuran yang sengit, Ali bin Abi Thalib berhasil mendesak musuhnya hingga jatuh tersungkur. Pedang Ali sudah terhunus, siap untuk mengakhiri perlawanan tersebut.</p>
+            <p>Namun, dalam keadaan tak berdaya dan penuh kebencian, musuh itu justru meludahi wajah Ali.</p>
+            <p>Seketika itu juga, Ali menarik kembali pedangnya, melangkah mundur, dan membiarkan musuhnya hidup. Musuh tersebut kebingungan dan bertanya, "Mengapa engkau tidak membunuhku padahal aku telah menghinamu?"</p>
+            <p>Ali menjawab dengan tenang, <em>"Tadinya aku bertempur dan hendak membunuhmu semata-mata karena Allah. Namun, ketika engkau meludahiku, amarah dan egoku bangkit. Aku tidak ingin membunuhmu karena luapan emosi pribadiku."</em></p>
+            <br>
+            <p><strong>Tafakur Nalar Teras:</strong> Kisah ini adalah puncak dari pengendalian diri. Seringkali kita bertindak karena dorongan emosi sesaat, bukan karena prinsip. Ali mengajarkan kita jeda (pause) sejenak antara rangsangan (diludahi) dan respon (menebas pedang), untuk memastikan bahwa niat kita tetap murni, bukan diperbudak oleh amarah.</p>
+        `
+    },
+    {
+        judul: "Kaki yang Diamputasi dan Syukur 'Urwah bin Zubair",
+        slug: "syukur-urwah-bin-zubair-saat-musibah",
+        kategori: "Kisah Hikmah & Nalar Teras",
+        kutipan:"Kehilangan bukanlah Halangan",
+        ringkasan: "Bagaimana seorang ulama besar merespon ujian bertubi-tubi: kehilangan kaki sekaligus putra kesayangannya di hari yang sama.",
+        isiHtml: `
+            <p>'Urwah bin Zubair, seorang ulama besar dari kalangan Tabi'in, pernah mengalami ujian yang sangat berat. Kakinya terkena penyakit yang menyebar dengan cepat (gangren), sehingga tabib memutuskan kakinya harus diamputasi agar nyawanya selamat.</p>
+            <p>Di masa itu belum ada obat bius. 'Urwah menolak meminum khamr untuk menghilangkan rasa sakit. Ia justru meminta agar kakinya dipotong saat ia sedang tenggelam dalam shalat malamnya.</p>
+            <p>Belum kering luka amputasi itu, datanglah kabar duka lain: putra kesayangannya meninggal dunia akibat ditendang oleh seekor kuda.</p>
+            <p>Dalam kondisi kehilangan kaki dan kehilangan anak dalam waktu bersamaan, 'Urwah menengadah ke langit dan mengucapkan kalimat yang menggetarkan sejarah:</p>
+            <p><em>"Ya Allah, Engkau telah memberiku empat anak, lalu Engkau mengambil satu dan menyisakan tiga untukku. Engkau memberiku empat anggota badan (tangan dan kaki), lalu Engkau mengambil satu dan menyisakan tiga untukku. Jika Engkau mengambil, Engkau pun telah memberi. Jika Engkau menguji, Engkau pun telah menyembuhkan."</em></p>
+            <br>
+            <p><strong>Tafakur Nalar Teras:</strong> Dalam Stoikisme, kita diajarkan untuk fokus pada apa yang masih kita miliki, bukan meratapi apa yang hilang. 'Urwah mempraktikkan "Amor Fati" (Mencintai Takdir) versi Islami dengan tingkat tertinggi. Ia mengembalikan segalanya kepada Sang Pemilik Sejati dengan kelapangan dada yang luar biasa.</p>
+        `
+    },
+    {
+        judul: "Tukang Sepatu yang Hajinya Diterima Tanpa Berangkat ke Mekkah",
+        slug: "tukang-sepatu-haji-mabrur",
+        kategori: "Kisah Hikmah & Nalar Teras",
+        kutipan:"Lepaskan ego demi tujuan lebih besar",
+        ringkasan: "Kisah Ali bin Muwaffaq tentang seorang tukang sepatu bernama Ali bin Al-Muwaffaq yang mendapatkan pahala haji mabrur karena mengorbankan tabungan hajinya untuk tetangga yang kelaparan.",
+        isiHtml: `
+            <p>Suatu ketika, seorang ulama terkemuka bernama Abdullah bin Mubarak tertidur usai melaksanakan ibadah haji. Dalam mimpinya, ia mendengar percakapan dua malaikat. Malaikat pertama bertanya, "Berapa banyak yang haji tahun ini?" Malaikat kedua menjawab, "Enam ratus ribu orang. Namun semuanya ditolak, kecuali pahala haji milik Muwaffaq, seorang tukang sepatu di Damaskus yang bahkan tidak berangkat haji."</p>
+            <p>Terkejut dengan mimpi itu, Abdullah bin Mubarak mencari Muwaffaq di Damaskus. Saat bertemu, ia bertanya amalan apa yang dilakukan sang tukang sepatu.</p>
+            <p>Muwaffaq bercerita bahwa ia telah menabung bertahun-tahun untuk naik haji. Suatu hari, istrinya yang sedang hamil mencium aroma daging panggang dari rumah tetangganya dan memintanya untuk meminta sedikit.</p>
+            <p>Ketika Muwaffaq mengetuk pintu tetangganya, sang tetangga menangis dan berkata, "Daging ini halal bagi kami, tetapi haram bagi kalian. Anak-anakku sudah berhari-hari tidak makan hingga nyaris mati. Aku menemukan bangkai keledai dan memanggangnya sekadar untuk menyambung nyawa."</p>
+            <p>Mendengar hal itu, hati Muwaffaq hancur. Ia berlari pulang, mengambil seluruh tabungan hajinya, dan memberikannya kepada tetangga tersebut seraya berkata, "Gunakan ini untuk keluargamu. Inilah hajiku."</p>
+            <br>
+            <p><strong>Tafakur Nalar Teras:</strong> Terkadang, tujuan yang kita impikan dan rencanakan terhalang oleh keadaan di luar kendali kita. Namun, kebijaksanaan sejati adalah melihat panggilan kebaikan yang ada tepat di depan mata. Muwaffaq melepaskan egonya untuk bergelar "Haji" demi tugas kemanusiaan yang mendesak. Tindakan nyata yang selaras dengan akal budi selalu bernilai di mata Tuhan.</p>
+        `
+    },
+{
         judul: "Pelajaran Sabar dari Lereng Sumbing: Menunggu Waktu-Nya",
         slug: "sabar-lereng-sumbing",
         tanggal: "13 April 2026",

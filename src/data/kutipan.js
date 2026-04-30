@@ -1,0 +1,32 @@
+// File: src/data/kutipan.js
+
+export const daftarKutipan = [
+    { text: "Hati yang tenang adalah awal dari ibadah yang khusyuk.", source: "Bilik Tafakur" },
+    { text: "Maka sesungguhnya bersama kesulitan ada kemudahan.", source: "QS. Al-Insyirah: 5" },
+    { text: "Cukuplah Allah bagi kami, dan Dia adalah sebaik-baik pelindung.", source: "QS. Ali Imran: 173" },
+    { text: "Jangan menjelaskan tentang dirimu kepada siapapun, karena yang menyukaimu tidak butuh itu.", source: "Ali bin Abi Thalib" },
+    { text: "Dunia hanyalah tempat persinggahan, akhirat adalah tujuan abadi.", source: "Nasihat Bijak" },
+    { text: "Apa yang melewatkanmu tidak akan pernah menjadi takdirmu, dan apa yang ditakdirkan untukmu tidak akan pernah melewatkanmu.", source: "Umar bin Khattab" },
+    { text: "Ketahuilah bahwa kemenangan bersama kesabaran, kelapangan bersama kesempitan, dan kesulitan bersama kemudahan.", source: "HR. Tirmidzi" },
+    { text: "Boleh jadi kamu membenci sesuatu, padahal ia amat baik bagimu. Allah mengetahui, sedang kamu tidak mengetahui.", source: "QS. Al-Baqarah: 216" },
+    { text: "Kita lebih sering menderita dalam ketakutan dan imajinasi kita sendiri, daripada dalam kenyataan.", source: "Nalar Teras" },
+    { text: "Orang yang kuat bukanlah yang jago bergulat, melainkan yang mampu mengendalikan dirinya saat marah.", source: "HR. Bukhari" },
+    { text: "Jangan bersedih atas apa yang hilang dari genggaman, karena Allah selalu memiliki ganti yang lebih baik bagi mereka yang ridha.", source: "Bilik Tafakur" },
+    { text: "Barangsiapa yang memperbaiki hubungannya dengan Allah, maka Allah akan memperbaiki hubungannya dengan sesama manusia.", source: "Sufyan Ats-Tsauri" },
+    { text: "Setiap napas yang kita hela adalah langkah menuju ajal. Maka jadikanlah ia langkah yang bernilai kebaikan.", source: "Hasan Al-Bashri" },
+    { text: "Tidak ada penderitaan yang abadi, sebagaimana tidak ada kebahagiaan dunia yang kekal. Bersikaplah sewajarnya.", source: "Nalar Teras" },
+    { text: "Lelahmu hari ini adalah tabungan pahalamu di akhirat kelak, jika engkau menjalaninya dengan sabar dan ikhlas.", source: "Bilik Tafakur" },
+    { text: "Barangsiapa bertakwa kepada Allah niscaya Dia akan mengadakan baginya jalan keluar, dan memberinya rezeki dari arah yang tiada disangka-sangkanya.", source: "QS. At-Thalaq: 2-3" },
+    { text: "Kesabaran itu ada pada benturan pertama.", source: "HR. Bukhari" },
+    { text: "Pekerjaan terberat adalah mengendalikan lisan dan menjaga hati dari prasangka buruk.", source: "Nasihat Ulama" },
+    { text: "Jika engkau tidak bisa melakukan semua kebaikan, jangan tinggalkan semuanya. Lakukanlah semampumu.", source: "Kaidah Fikih" },
+    { text: "Lepaskanlah apa yang bukan dalam kendalimu, dan kerjakanlah dengan sebaik-baiknya apa yang ada di depan matamu.", source: "Nalar Teras" },
+    { text: "Hanya dengan mengingat Allah hati menjadi tenteram.", source: "QS. Ar-Ra'd: 28" },
+    { text: "Janganlah kamu berduka cita, sesungguhnya Allah bersama kita.", source: "QS. At-Taubah: 40" },
+    { text: "Janganlah kamu bersikap lemah, dan janganlah (pula) kamu bersedih hati.", source: "QS. Ali Imran: 139" },
+    { text: "Allah tidak membebani seseorang melainkan sesuai dengan kesanggupannya.", source: "QS. Al-Baqarah: 286" },
+    { text: "Jadikanlah sabar dan shalat sebagai penolongmu.", source: "QS. Al-Baqarah: 153" },
+    { text: "Dan hanya kepada Allah hendaknya kamu bertawakal.", source: "QS. Al-Ma'idah: 23" },
+    { text: "Dan barangsiapa bertawakal kepada Allah, niscaya Allah akan mencukupkan (keperluan)nya.", source: "QS. At-Thalaq: 3" },
+    { text: "Dan bersabarlah terhadap apa yang mereka ucapkan.", source: "QS. Al-Muzzammil: 10" }
+];

@@ -16,7 +16,7 @@ const currentPath = Astro.url.pathname;
 // Ndeteksi halaman pundi ingkang mboten butuh Sidebar Tengen
 const isWidePage = currentPath.startsWith('/doa') || currentPath.startsWith('/alquran');
 
-// Nyiapake Data kagem Widget "Sering Dibaca"
+// Nyiapake Data kagem Widget "Sering Dibaca" & Search
 const allData = [
     ...(daftarDoa || []).map((item) => {
         const slug = item.slug || item.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -32,9 +32,6 @@ const allData = [
 ];
 
 const popularContent = allData.sort(() => 0.5 - Math.random()).slice(0, 5);
-
-// Passing data search kagem Javascript (Supados VS Code mboten error)
-const searchDataJson = JSON.stringify(allData);
 ---
 
 <!DOCTYPE html>
@@ -60,14 +57,12 @@ const searchDataJson = JSON.stringify(allData);
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-emerald-200 dark:selection:bg-emerald-900 overflow-x-hidden">  
     
-    <div id="app-data" data-search={searchDataJson} class="hidden"></div>
-
     <header class="fixed top-0 left-0 w-full h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 z-[300] flex items-center justify-between px-4 md:px-8">
         <div class="flex items-center gap-3 w-72">
             <button id="btn-hamburger" class={`p-2.5 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 rounded-2xl transition-all ${!isWidePage ? 'xl:hidden' : ''}`}>
                 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
-            <a href="/" class="flex items-center gap-3 group">
+            <a href="/" class="flex items-center gap-3 group outline-none">
                 <img src="/logo-bilik.svg" class="w-8 h-8 object-contain flex-shrink-0 drop-shadow-md rounded-full group-hover:rotate-12 transition-all" alt="Logo" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Bilik'"/>
                 <span class="font-poppins font-bold text-lg text-emerald-900 dark:text-emerald-400 hidden sm:block">Bilik Tafakur</span>
             </a>
@@ -95,12 +90,11 @@ const searchDataJson = JSON.stringify(allData);
     <div class="flex flex-row min-h-screen w-full relative justify-center pt-16">
         
         <aside id="sidebar" class={`fixed top-16 left-0 h-[calc(100vh-4rem)] w-72 ${!isWidePage ? 'xl:translate-x-0 xl:shadow-none' : ''} bg-white dark:bg-slate-950 z-[200] transform -translate-x-full transition-transform duration-300 border-r border-slate-200 dark:border-slate-800 flex flex-col shadow-2xl`}>
-            
             <nav class="flex-1 px-3 py-6 space-y-1.5 overflow-y-auto no-scrollbar">
-                <a href="/" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all">
+                <a href="/" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all outline-none">
                     <span>🏠</span> <span class="font-semibold text-sm">Beranda</span>
                 </a>
-                <a href="/alquran" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all">
+                <a href="/alquran" class="flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all outline-none">
                     <span>📖</span> <span class="font-semibold text-sm">Al-Quran Digital</span>
                 </a>
 
@@ -110,13 +104,13 @@ const searchDataJson = JSON.stringify(allData);
                         <svg id="icon-nav-doa" class="w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     <div id="sub-nav-doa" class="hidden flex-col gap-2 pl-[3.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
-                        <a href="/doa" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
+                        <a href="/doa" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1 outline-none">
                             <span>Lihat Semua Doa</span>
                         </a>
                         {daftarDoa && daftarDoa.slice(0, 10).map((item) => {
                             const slugDoa = item.slug || item.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
                             return (
-                            <a href={`/doa/${slugDoa}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
+                            <a href={`/doa/${slugDoa}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1 outline-none">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{item.judul}</span>
                             </a>
                             )
@@ -130,13 +124,13 @@ const searchDataJson = JSON.stringify(allData);
                         <svg id="icon-nav-fikih" class="w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     <div id="sub-nav-fikih" class="hidden flex-col gap-2 pl-[3.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
-                        <a href="/fikih" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
+                        <a href="/fikih" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1 outline-none">
                             <span>Lihat Semua Fikih</span>
                         </a>
                         {daftarFikih && daftarFikih.slice(0, 10).map((item) => {
                             const slugFikih = item.slug || item.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
                             return (
-                            <a href={`/fikih/${slugFikih}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
+                            <a href={`/fikih/${slugFikih}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1 outline-none">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{item.judul}</span>
                             </a>
                             )
@@ -153,11 +147,11 @@ const searchDataJson = JSON.stringify(allData);
                         <svg id="icon-nav-iqra" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 transition-transform duration-300 flex-shrink-0"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     <div id="sub-nav-iqra" class="hidden flex-col gap-2 pl-[3.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
-                        <a href="/iqra" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
+                        <a href="/iqra" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1 outline-none">
                             <span>Lihat Semua Iqra</span>
                         </a>
                         {[1, 2, 3, 4, 5, 6].map((jilid) => (
-                            <a href={`/iqra/jilid-${jilid}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
+                            <a href={`/iqra/jilid-${jilid}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1 outline-none">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">Iqra Jilid {jilid}</span>
                             </a>
                         ))}
@@ -173,18 +167,18 @@ const searchDataJson = JSON.stringify(allData);
                         <svg id="icon-nav-motivasi" class="text-slate-400 transition-transform duration-300 flex-shrink-0 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     <div id="sub-nav-motivasi" class="hidden flex-col gap-2 pl-[3.5rem] pr-4 py-3 mt-1 bg-slate-50/50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-800/50">
-                        <a href="/motivasi" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1">
+                        <a href="/motivasi" class="text-[12px] font-bold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-2 border-b border-slate-200/70 dark:border-slate-800 mb-1 outline-none">
                             <span>Lihat Semua Motivasi</span>
                         </a>
                         {daftarMotivasi && daftarMotivasi.slice(0, 10).map((item) => (
-                            <a href={`/motivasi/${item.slug}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1">
+                            <a href={`/motivasi/${item.slug}`} class="text-[12px] font-medium text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors flex items-center gap-2 py-1 outline-none">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/50 flex-shrink-0"></span> <span class="truncate">{item.judul}</span>
                             </a>
                         ))}
                     </div>
                 </div>
                
-                <button class="btn-open-sapa w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all mt-4 border border-emerald-100 dark:border-emerald-800/50 bg-emerald-50/50 dark:bg-emerald-900/10">
+                <button class="btn-open-sapa w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 group transition-all mt-4 border border-emerald-100 dark:border-emerald-800/50 bg-emerald-50/50 dark:bg-emerald-900/10 outline-none">
                     <span class="text-xl">🔏</span> 
                     <span class="font-semibold text-sm text-emerald-700 dark:text-emerald-400">Bilik Sapa</span>
                 </button>
@@ -210,13 +204,12 @@ const searchDataJson = JSON.stringify(allData);
                     <div class="max-w-2xl mx-auto">
                         <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Wonten Klentu Seratan?</h3>
                         <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Menawi wonten kesalahan harokat utawi terjemahan, mangga kersoa paring masukan.</p>
-                        <button class="btn-open-sapa inline-flex items-center gap-2 px-6 py-3 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 font-bold text-sm rounded-full border border-emerald-100 dark:border-emerald-800 hover:bg-emerald-700 hover:text-white transition-all">
+                        <button class="btn-open-sapa inline-flex items-center gap-2 px-6 py-3 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 font-bold text-sm rounded-full border border-emerald-100 dark:border-emerald-800 hover:bg-emerald-700 hover:text-white transition-all outline-none">
                             <span>🔏</span> Mampir Bilik Sapa
                         </button>
                     </div>
                 </footer>
             </main>
-            
             <div id="sidebar-overlay" class="fixed inset-0 top-16 bg-black/30 backdrop-blur-[2px] z-[90] hidden xl:hidden"></div>
         </div>
 
@@ -229,7 +222,7 @@ const searchDataJson = JSON.stringify(allData);
                         <p class="text-[11px] text-slate-600 dark:text-slate-400 mb-5 leading-relaxed relative z-10 font-medium">
                             "Jika ada kesalahan penulisan, harokat, maupun ketidaksepahaman makna, silakan berikan masukan Anda."
                         </p>
-                        <button class="btn-open-sapa w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 relative z-10 flex items-center justify-center gap-2">
+                        <button class="btn-open-sapa w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 relative z-10 flex items-center justify-center gap-2 outline-none">
                             <span class="text-base">🔏</span> Mampir Bilik Sapa
                         </button>
                     </div>
@@ -240,7 +233,7 @@ const searchDataJson = JSON.stringify(allData);
                         </h3>
                         <div class="space-y-4">
                             {popularContent.map(item => (
-                                <a href={item.url} class="flex gap-3 items-start group">
+                                <a href={item.url} class="flex gap-3 items-start group outline-none">
                                     <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-lg group-hover:bg-emerald-50 dark:group-hover:bg-emerald-900/30 group-hover:border-emerald-200 transition-colors flex-shrink-0 shadow-sm">
                                         {item.icon}
                                     </div>
@@ -272,10 +265,10 @@ const searchDataJson = JSON.stringify(allData);
                 <div class="flex items-center gap-4">
                     <div id="user-info" class="hidden text-right">
                         <p id="display-nama" class="font-bold text-[11px]"></p>
-                        <button id="btn-ganti-nama" class="text-[9px] underline opacity-70 hover:opacity-100">Ganti</button>
+                        <button id="btn-ganti-nama" class="text-[9px] underline opacity-70 hover:opacity-100 outline-none">Ganti</button>
                     </div>
                     <form method="dialog">
-                        <button class="w-8 h-8 bg-emerald-800 hover:bg-red-500 rounded-full flex items-center justify-center transition-colors font-bold text-white">✕</button>
+                        <button class="w-8 h-8 bg-emerald-800 hover:bg-red-500 rounded-full flex items-center justify-center transition-colors font-bold text-white outline-none">✕</button>
                     </form>
                 </div>
             </div>
@@ -306,7 +299,7 @@ const searchDataJson = JSON.stringify(allData);
                                 <span>📎</span>
                             </label>
                         </div>
-                        <button type="submit" id="btn-send-chat" class="p-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl shadow-md transition-transform active:scale-90">
+                        <button type="submit" id="btn-send-chat" class="p-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl shadow-md transition-transform active:scale-90 outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                         </button>
                     </div>
@@ -318,140 +311,135 @@ const searchDataJson = JSON.stringify(allData);
 
     <Analytics />
 
+    <script is:inline define:vars={{ allData }}>
+        window.appSearchData = allData || [];
+    </script>
+
+    <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const btnHamburger = document.getElementById('btn-hamburger');
+            const leftSpacer = document.getElementById('left-spacer');
+            
+            if(btnHamburger && sidebar && overlay) {
+                btnHamburger.onclick = (e) => {
+                    e.stopPropagation();
+                    const isDesktop = window.innerWidth >= 1280; 
+                    if (isDesktop) {
+                        if (sidebar.classList.contains('xl:translate-x-0')) {
+                            sidebar.classList.replace('xl:translate-x-0', 'xl:-translate-x-full');
+                            if (leftSpacer) leftSpacer.classList.remove('xl:block');
+                        } else {
+                            sidebar.classList.replace('xl:-translate-x-full', 'xl:translate-x-0');
+                            if (leftSpacer) leftSpacer.classList.add('xl:block');
+                        }
+                    } else {
+                        sidebar.classList.toggle('-translate-x-full');
+                        overlay.classList.toggle('hidden');
+                    }
+                };
+                overlay.onclick = () => { 
+                    sidebar.classList.add('-translate-x-full'); 
+                    overlay.classList.add('hidden'); 
+                };
+            }
+
+            const setupDropdown = (btnId, subId, iconId) => {
+                const btn = document.getElementById(btnId); 
+                const sub = document.getElementById(subId); 
+                const icon = document.getElementById(iconId);
+                if(btn && sub) {
+                    btn.onclick = (e) => {
+                        e.preventDefault(); 
+                        const isHidden = sub.classList.contains('hidden');
+                        sub.classList.toggle('hidden', !isHidden); 
+                        sub.classList.toggle('flex', isHidden);
+                        if(icon) icon.classList.toggle('rotate-180', isHidden);
+                    };
+                }
+            };
+            setupDropdown('btn-nav-doa', 'sub-nav-doa', 'icon-nav-doa');
+            setupDropdown('btn-nav-fikih', 'sub-nav-fikih', 'icon-nav-fikih');
+            setupDropdown('btn-nav-iqra', 'sub-nav-iqra', 'icon-nav-iqra');
+            setupDropdown('btn-nav-motivasi', 'sub-nav-motivasi', 'icon-nav-motivasi');
+
+            document.querySelectorAll('.btn-open-sapa').forEach(btn => {
+                btn.onclick = (e) => {
+                    e.preventDefault();
+                    const modal = document.getElementById('modal-bilik-sapa');
+                    if(modal && typeof modal.showModal === 'function') modal.showModal(); 
+                };
+            });
+
+            const themeToggle = document.getElementById('theme-toggle');
+            if(themeToggle) {
+                themeToggle.onclick = () => {
+                    const isDark = document.documentElement.classList.toggle('dark');
+                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                };
+            }
+
+            const searchContainer = document.getElementById('global-search-container');
+            const searchTrigger = document.getElementById('btn-search-trigger');
+            const searchInput = document.getElementById('global-search-input');
+            const searchDropdown = document.getElementById('search-dropdown');
+            const searchResultsList = document.getElementById('search-results-list');
+            const searchEnterHint = document.getElementById('search-enter-hint');
+            const searchData = window.appSearchData || [];
+
+            if(searchTrigger && searchContainer && searchInput && searchDropdown && searchResultsList && searchEnterHint) {
+                searchTrigger.onclick = () => {
+                    const isOpen = searchContainer.classList.contains('w-48');
+                    if (!isOpen) {
+                        searchContainer.classList.replace('w-10', 'w-48');
+                        searchContainer.classList.add('md:w-64', 'px-1');
+                        searchInput.classList.replace('w-0', 'w-full');
+                        searchInput.classList.replace('opacity-0', 'opacity-100');
+                        searchInput.focus();
+                    } else {
+                        searchContainer.classList.replace('w-48', 'w-10');
+                        searchContainer.classList.remove('md:w-64', 'px-1');
+                        searchInput.classList.replace('w-full', 'w-0');
+                        searchInput.classList.replace('opacity-100', 'opacity-0');
+                        searchDropdown.classList.add('opacity-0', 'invisible');
+                    }
+                };
+
+                searchInput.oninput = (e) => {
+                    const query = e.target.value.toLowerCase().trim();
+                    searchResultsList.innerHTML = '';
+                    if (query.length < 2) { searchDropdown.classList.add('opacity-0', 'invisible'); return; }
+                    const filtered = searchData.filter(item => item.title.toLowerCase().includes(query));
+                    if (filtered.length > 0) {
+                        filtered.slice(0, 5).forEach(item => {
+                            const a = document.createElement('a');
+                            a.href = item.url;
+                            a.className = 'flex items-center gap-3 p-3 hover:bg-emerald-50 dark:hover:bg-slate-800 rounded-xl outline-none';
+                            a.innerHTML = `<span class="text-lg">${item.icon}</span><div><p class="text-sm font-bold truncate">${item.title}</p><p class="text-[9px] uppercase font-bold text-emerald-600">${item.type}</p></div>`;
+                            searchResultsList.appendChild(a);
+                        });
+                        searchDropdown.classList.remove('opacity-0', 'invisible');
+                        searchEnterHint.classList.remove('hidden');
+                    } else {
+                        searchResultsList.innerHTML = `<div class="p-4 text-center text-sm text-slate-500 italic">Mboten wonten asil kagem "${query}"</div>`;
+                        searchDropdown.classList.remove('opacity-0', 'invisible');
+                        searchEnterHint.classList.add('hidden');
+                    }
+                };
+
+                searchInput.onkeydown = (e) => {
+                    if (e.key === 'Enter' && searchInput.value.trim() !== '') {
+                        window.location.href = `/search?q=${encodeURIComponent(searchInput.value.trim())}`;
+                    }
+                };
+            }
+        });
+    </script>
+
     <script>
         import { supabase } from '../lib/supabase.js';
 
-        // 1. HAMBURGER MENU
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebar-overlay');
-        const btnHamburger = document.getElementById('btn-hamburger');
-        const leftSpacer = document.getElementById('left-spacer');
-        
-        if(btnHamburger && sidebar && overlay) {
-            btnHamburger.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isDesktop = window.innerWidth >= 1280; 
-                
-                if (isDesktop) {
-                    if (sidebar.classList.contains('xl:translate-x-0')) {
-                        sidebar.classList.replace('xl:translate-x-0', 'xl:-translate-x-full');
-                        if (leftSpacer) leftSpacer.classList.remove('xl:block');
-                    } else {
-                        sidebar.classList.replace('xl:-translate-x-full', 'xl:translate-x-0');
-                        if (leftSpacer) leftSpacer.classList.add('xl:block');
-                    }
-                } else {
-                    sidebar.classList.toggle('-translate-x-full');
-                    overlay.classList.toggle('hidden');
-                }
-            });
-            overlay.addEventListener('click', () => { 
-                sidebar.classList.add('-translate-x-full'); 
-                overlay.classList.add('hidden'); 
-            });
-        }
-
-        // 2. DROPDOWN SUB-MENU
-        const setupDropdown = (btnId: string, subId: string, iconId: string) => {
-            const btn = document.getElementById(btnId); 
-            const sub = document.getElementById(subId); 
-            const icon = document.getElementById(iconId);
-            
-            if(btn && sub) {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault(); 
-                    const isHidden = sub.classList.contains('hidden');
-                    sub.classList.toggle('hidden', !isHidden); 
-                    sub.classList.toggle('flex', isHidden);
-                    if(icon) icon.classList.toggle('rotate-180', isHidden);
-                });
-            }
-        };
-        setupDropdown('btn-nav-doa', 'sub-nav-doa', 'icon-nav-doa');
-        setupDropdown('btn-nav-fikih', 'sub-nav-fikih', 'icon-nav-fikih');
-        setupDropdown('btn-nav-iqra', 'sub-nav-iqra', 'icon-nav-iqra');
-        setupDropdown('btn-nav-motivasi', 'sub-nav-motivasi', 'icon-nav-motivasi');
-
-        // 3. POP-UP BILIK SAPA
-        document.querySelectorAll('.btn-open-sapa').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const modal = document.getElementById('modal-bilik-sapa') as HTMLDialogElement | null;
-                if(modal) modal.showModal(); 
-            });
-        });
-
-        // 4. THEME TOGGLE
-        const themeToggle = document.getElementById('theme-toggle');
-        if(themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                const isDark = document.documentElement.classList.toggle('dark');
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            });
-        }
-
-        // 5. SEARCH BOX
-        const searchContainer = document.getElementById('global-search-container');
-        const searchTrigger = document.getElementById('btn-search-trigger');
-        const searchInput = document.getElementById('global-search-input') as HTMLInputElement | null;
-        const searchDropdown = document.getElementById('search-dropdown');
-        const searchResultsList = document.getElementById('search-results-list');
-        const searchEnterHint = document.getElementById('search-enter-hint');
-        const appDataEl = document.getElementById('app-data');
-        
-        let allData: any[] = [];
-        if (appDataEl && appDataEl.dataset.search) {
-            try { allData = JSON.parse(appDataEl.dataset.search); } catch (e) {}
-        }
-
-        if(searchTrigger && searchContainer && searchInput && searchDropdown && searchResultsList && searchEnterHint) {
-            searchTrigger.addEventListener('click', () => {
-                const isOpen = searchContainer.classList.contains('w-48');
-                if (!isOpen) {
-                    searchContainer.classList.replace('w-10', 'w-48');
-                    searchContainer.classList.add('md:w-64', 'px-1');
-                    searchInput.classList.replace('w-0', 'w-full');
-                    searchInput.classList.replace('opacity-0', 'opacity-100');
-                    searchInput.focus();
-                } else {
-                    searchContainer.classList.replace('w-48', 'w-10');
-                    searchContainer.classList.remove('md:w-64', 'px-1');
-                    searchInput.classList.replace('w-full', 'w-0');
-                    searchInput.classList.replace('opacity-100', 'opacity-0');
-                    searchDropdown.classList.add('opacity-0', 'invisible');
-                }
-            });
-
-            searchInput.addEventListener('input', (e) => {
-                const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
-                searchResultsList.innerHTML = '';
-                if (query.length < 2) { searchDropdown.classList.add('opacity-0', 'invisible'); return; }
-                const filtered = allData.filter(item => item.title.toLowerCase().includes(query));
-                if (filtered.length > 0) {
-                    filtered.slice(0, 5).forEach(item => {
-                        const a = document.createElement('a');
-                        a.href = item.url;
-                        a.className = 'flex items-center gap-3 p-3 hover:bg-emerald-50 dark:hover:bg-slate-800 rounded-xl';
-                        a.innerHTML = `<span class="text-lg">${item.icon}</span><div><p class="text-sm font-bold truncate">${item.title}</p><p class="text-[9px] uppercase font-bold text-emerald-600">${item.type}</p></div>`;
-                        searchResultsList.appendChild(a);
-                    });
-                    searchDropdown.classList.remove('opacity-0', 'invisible');
-                    searchEnterHint.classList.remove('hidden');
-                } else {
-                    searchResultsList.innerHTML = `<div class="p-4 text-center text-sm text-slate-500 italic">Mboten wonten asil kagem "${query}"</div>`;
-                    searchDropdown.classList.remove('opacity-0', 'invisible');
-                    searchEnterHint.classList.add('hidden');
-                }
-            });
-
-            searchInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' && searchInput.value.trim() !== '') {
-                    window.location.href = `/search?q=${encodeURIComponent(searchInput.value.trim())}`;
-                }
-            });
-        }
-
-        // 6. CHAT SUPABASE (Typecasting leres kagem TS)
         const chatContainer = document.getElementById('chat-container');
         const formChat = document.getElementById('form-chat') as HTMLFormElement | null;
         const namaInput = document.getElementById('chat-nama') as HTMLInputElement | null;
@@ -465,7 +453,7 @@ const searchDataJson = JSON.stringify(allData);
         const fileNameDisplay = document.getElementById('chat-file-name');
 
         function cekIdentitas() {
-            const savedNama = localStorage.getItem('bt_user_nama');
+            const savedNama = localStorage.getItem('bt_user_nama') || '';
             if (savedNama && namaContainer && userInfo && displayNama && namaInput) {
                 namaContainer.classList.add('hidden'); 
                 userInfo.classList.remove('hidden'); 
@@ -479,7 +467,8 @@ const searchDataJson = JSON.stringify(allData);
         }
 
         if(btnGantiNama) { 
-            btnGantiNama.addEventListener('click', () => { 
+            btnGantiNama.addEventListener('click', (e) => { 
+                e.preventDefault();
                 localStorage.removeItem('bt_user_nama'); 
                 cekIdentitas(); 
             }); 
@@ -487,8 +476,9 @@ const searchDataJson = JSON.stringify(allData);
 
         if(fileInput && fileNameDisplay) {
             fileInput.addEventListener('change', () => {
-                if (fileInput.files && fileInput.files[0]) { 
-                    fileNameDisplay.innerText = "📄 " + fileInput.files[0].name; 
+                const files = fileInput.files;
+                if (files && files.length > 0) { 
+                    fileNameDisplay.innerText = "📄 " + files[0].name; 
                     fileNameDisplay.classList.remove('hidden'); 
                 }
             });
@@ -525,7 +515,7 @@ const searchDataJson = JSON.stringify(allData);
                 const btn = document.getElementById('btn-send-chat'); 
                 if(btn) btn.setAttribute('disabled', 'true');
                 
-                let namaFinal = localStorage.getItem('bt_user_nama');
+                let namaFinal = localStorage.getItem('bt_user_nama') || '';
                 if (!namaFinal && namaInput) { 
                     namaFinal = namaInput.value || 'Hamba Allah'; 
                     localStorage.setItem('bt_user_nama', namaFinal); 
@@ -535,15 +525,16 @@ const searchDataJson = JSON.stringify(allData);
                 const kategori = kategoriSelect ? kategoriSelect.value : 'Umum';
                 let fileUrl = null;
 
-                if (fileInput && fileInput.files && fileInput.files[0]) {
-                    const file = fileInput.files[0]; 
+                const files = fileInput ? fileInput.files : null;
+                if (files && files.length > 0) {
+                    const file = files[0]; 
                     const fileName = `${Date.now()}_${file.name}`;
                     await supabase.storage.from('tulisan-warga').upload(fileName, file);
                     const { data: publicUrl } = supabase.storage.from('tulisan-warga').getPublicUrl(fileName); 
                     fileUrl = publicUrl.publicUrl;
                 }
 
-                const { error } = await supabase.from('konsultasi').insert([{ nama: namaFinal as string, pertanyaan: pesan, kategori, file_url: fileUrl }]);
+                const { error } = await supabase.from('konsultasi').insert([{ nama: namaFinal, pertanyaan: pesan, kategori, file_url: fileUrl }]);
                 if (!error) { 
                     alert("Masukan/Pesan terkirim! Admin badhe paring wangsulan sakedhap malih."); 
                     formChat.reset(); 
@@ -556,7 +547,7 @@ const searchDataJson = JSON.stringify(allData);
 
         cekIdentitas();
         
-        const modal = document.getElementById('modal-bilik-sapa');
+        const modal = document.getElementById('modal-bilik-sapa') as HTMLDialogElement | null;
         if(modal) {
             const observer = new MutationObserver((mutations) => {
                 mutations.forEach((mutation) => { 
@@ -567,7 +558,8 @@ const searchDataJson = JSON.stringify(allData);
         }
 
         supabase.channel('pantau_konsultasi_popup').on('postgres_changes', { event: '*', schema: 'public', table: 'konsultasi' }, () => {
-            if(document.getElementById('modal-bilik-sapa')?.hasAttribute('open')) muatChat();
+            const modalCheck = document.getElementById('modal-bilik-sapa');
+            if(modalCheck?.hasAttribute('open')) muatChat();
         }).subscribe();
     </script>
 
